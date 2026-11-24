@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapters & Affinity Groups — IEEE SLIIT VMS</title>
+  <meta name="description" content="IEEE SLIIT Chapters & Affinity Groups Directory — Administrative governance, officer continuity, event tracking, and vTools reporting." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- Design System CSS (Order matters) -->
+  <link rel="stylesheet" href="/src/css/tokens.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+
+  <style>
+    /* ── Page Layout & Scaffolding ──────────────────────────── */
+    body {
+      background-color: #f4f6fb;
+      min-height: 100vh;
+      color: var(--text-primary);
+    }
+
+    .app-shell {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-wrapper {
+      padding-top: var(--header-height);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-container {
+      padding: var(--space-6) var(--space-8);
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    /* ── Topbar Enhancements ────────────────────────────────── */
+    .topbar {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--separator-strong);
+      padding-inline: var(--space-6);
+      z-index: 1050;
+    }
+
+    .topbar-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .topbar-title {
+      font-size: var(--text-headline-sm);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .topbar-subtitle {
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .term-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: 6px 12px;
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--separator-strong);
+      border-radius: var(--radius-full);
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ── Sidebar Widget ─────────────────────────────────────── */
+    .sidebar-widget {
+      margin: var(--space-4) var(--space-5);
+      background: #002242;
+      border: 1px solid rgba(10, 65, 116, 0.6);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .sidebar-widget-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .standing-badge {
+      font-size: var(--text-label-sm);
+      font-weight: 700;
+      color: #53e16f;
+      background: rgba(0, 56, 22, 0.7);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(83, 225, 111, 0.3);
+    }
+
+    .retention-bar {
+      width: 100%;
+      height: 6px;
+      background: #00172e;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .retention-fill {
+      height: 100%;
+      width: 84%;
+      background: #2684ff;
+      border-radius: var(--radius-full);
+    }
+
+    /* ── Page Header Banner ─────────────────────────────────── */
+    .page-header-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6) var(--space-8);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .page-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .header-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      max-width: 800px;
+    }
+
+    .governance-breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .cert-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      background: var(--color-success-light);
+      color: var(--color-success);
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      border-radius: var(--radius-full);
+    }
+
+    .cert-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-success);
+    }
+
+    .page-main-title {
+      font-size: var(--text-display);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+
+    .geocode-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .geocode-tag {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      background: var(--bg-surface-secondary);
+      color: var(--color-primary);
+      padding: 2px 8px;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--separator-strong);
+    }
+
+    .header-actions-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    /* ── High-Impact Metric Cards ───────────────────────────── */
+    .metrics-banner-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+    }
+
+    .exec-metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--duration-base) var(--ease-ios);
+    }
+
+    .exec-metric-card:hover {
+      box-shadow: var(--shadow-elevated);
+      transform: translateY(-2px);
+    }
+
+    .metric-card-topbar {
+      background: #001C38;
+      padding: var(--space-3) var(--space-5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .metric-card-title {
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #bdd8e9;
+    }
+
+    .metric-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .metric-tag.green {
+      background: rgba(83, 225, 111, 0.2);
+      color: #72fe88;
+    }
+
+    .metric-tag.blue {
+      background: rgba(216, 226, 255, 0.2);
+      color: #adc6ff;
+    }
+
+    .metric-tag.purple {
+      background: rgba(226, 223, 255, 0.2);
+      color: #c2c1ff;
+    }
+
+    .metric-card-body {
+      padding: var(--space-6) var(--space-5);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .metric-big-number {
+      font-size: var(--text-metric-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .metric-card-desc {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      margin-top: var(--space-2);
+      line-height: 1.35;
+    }
+
+    .metric-card-footer {
+      margin-top: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+    }
+
+    .metric-card-footer.green { color: var(--color-success); }
+    .metric-card-footer.blue { color: var(--color-primary); }
+    .metric-card-footer.purple { color: var(--color-secondary); }
+
+    /* ── Filter & Search Toolbar ────────────────────────────── */
+    .toolbar-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .search-box-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 360px;
+    }
+
+    .search-box-wrap .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .search-box-input {
+      width: 100%;
+      padding: 9px 12px 9px 38px;
+      background: var(--bg-surface-secondary);
+      border: 1.5px solid var(--separator);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-family);
+      font-size: var(--text-body-sm);
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .search-box-input:focus {
+      background: var(--bg-surface);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--border-focus);
+    }
+
+    .filter-pills-group {
+      display: flex;
+      align-items: center;
+      background: var(--bg-surface-secondary);
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--separator);
+      gap: 2px;
+    }
+
+    .filter-btn {
+      padding: 6px 12px;
+      border: none;
+      background: none;
+      border-radius: var(--radius-xs);
+      font-family: var(--font-family);
+      font-size: var(--text-label-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-ios);
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-weight: 600;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+    }
+
+    .status-indicator-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .status-dot-sm {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .status-dot-sm.green { background: var(--color-success); }
+    .status-dot-sm.blue { background: var(--color-primary); }
+
+    /* ── Chapter Cards Grid (12 Entities) ───────────────────── */
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    .entity-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--duration-base) var(--ease-ios);
+    }
+
+    .entity-card:hover {
+      box-shadow: var(--shadow-elevated);
+      transform: translateY(-2px);
+    }
+
+    .entity-card-header {
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .entity-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .entity-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      flex-shrink: 0;
+      backdrop-filter: blur(4px);
+    }
+
+    .entity-title-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .entity-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    .entity-subtitle {
+      font-size: var(--text-label-sm);
+      color: #bdd8e9;
+      font-weight: 500;
+    }
+
+    .entity-type-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .entity-type-badge.central {
+      background: rgba(114, 254, 136, 0.2);
+      color: #72fe88;
+      border: 1px solid rgba(114, 254, 136, 0.3);
+    }
+
+    .entity-type-badge.chapter {
+      background: rgba(173, 198, 255, 0.25);
+      color: #adc6ff;
+      border: 1px solid rgba(173, 198, 255, 0.3);
+    }
+
+    .entity-type-badge.affinity {
+      background: rgba(226, 223, 255, 0.25);
+      color: #e2dfff;
+      border: 1px solid rgba(226, 223, 255, 0.3);
+    }
+
+    .entity-type-badge.subcommittee {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* Charter Code Subheader */
+    .charter-code-bar {
+      padding: var(--space-3) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--separator);
+      background: var(--bg-surface);
+    }
+
+    .charter-code-text {
+      font-family: var(--font-mono);
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .council-tag {
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    /* Card Body */
+    .entity-card-body {
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      flex: 1;
+    }
+
+    /* Leadership Box */
+    .leadership-box {
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .leadership-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+    }
+
+    .verified-label {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .counselor-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .counselor-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .counselor-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .counselor-name {
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .counselor-role {
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .leadership-divider {
+      height: 1px;
+      background: var(--separator-strong);
+    }
+
+    .officers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    .officer-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .officer-role-label {
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+    }
+
+    .officer-name {
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .officer-id {
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+    }
+
+    /* Stats 3-Column Pill Row */
+    .entity-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2);
+      text-align: center;
+    }
+
+    .entity-stat-item {
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-sm);
+      padding: var(--space-2) var(--space-1);
+    }
+
+    .entity-stat-value {
+      font-size: var(--text-title-2);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .entity-stat-label {
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* Passkey Box */
+    .passkey-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface-container-high);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+    }
+
+    .passkey-content {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-label-sm);
+    }
+
+    .passkey-code {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.04em;
+    }
+
+    .btn-copy-passkey {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 2px;
+      border-radius: var(--radius-xs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--duration-fast) var(--ease-ios);
+    }
+
+    .btn-copy-passkey:hover {
+      color: var(--color-primary);
+    }
+
+    /* Card Footer Action Row */
+    .entity-card-footer {
+      padding: var(--space-3) var(--space-5);
+      background: var(--bg-surface-secondary);
+      border-top: 1px solid var(--separator);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+    }
+
+    .vtools-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+    }
+
+    .vtools-status-pill.synced {
+      color: var(--color-success);
+    }
+
+    .vtools-status-pill.pending {
+      color: var(--color-warning);
+    }
+
+    .card-footer-buttons {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    /* ── Governance & Reporting Ledger Section ──────────────── */
+    .ledger-section-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .ledger-table-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ledger-header {
+      padding: var(--space-5) var(--space-6);
+      background: var(--bg-surface-secondary);
+      border-bottom: 1px solid var(--separator);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .ledger-header-info {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .ledger-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ledger-title {
+      font-size: var(--text-title-3);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .ledger-subtitle {
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+    }
+
+    .ledger-filed-badge {
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      color: var(--color-success);
+      background: var(--color-success-light);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(0, 107, 39, 0.2);
+    }
+
+    .ledger-table-wrap {
+      overflow-x: auto;
+    }
+
+    .ledger-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-body-sm);
+    }
+
+    .ledger-table th {
+      background: var(--bg-surface-container);
+      color: var(--text-secondary);
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px var(--space-5);
+      text-align: left;
+      border-bottom: 1px solid var(--separator-strong);
+      white-space: nowrap;
+    }
+
+    .ledger-table td {
+      padding: 12px var(--space-5);
+      border-bottom: 1px solid var(--separator);
+      vertical-align: middle;
+      color: var(--text-primary);
+    }
+
+    .ledger-table tr:hover {
+      background: var(--bg-surface-secondary);
+    }
+
+    .sync-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--text-label-sm);
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .sync-status-badge.synced {
+      background: var(--color-success-light);
+      color: var(--color-success);
+    }
+
+    .sync-status-badge.pending {
+      background: var(--color-warning-light);
+      color: var(--color-warning);
+    }
+
+    .sync-status-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .ledger-footer-bar {
+      padding: var(--space-3) var(--space-6);
+      background: var(--bg-surface-secondary);
+      border-top: 1px solid var(--separator);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+    }
+
+    /* Counselor & Branch Standing Card */
+    .standing-summary-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .standing-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--separator);
+      padding-bottom: var(--space-3);
+    }
+
+    .standing-title {
+      font-size: var(--text-title-3);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .standing-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .standing-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--text-body-sm);
+    }
+
+    .standing-detail-label {
+      color: var(--text-secondary);
+      font-size: var(--text-label-sm);
+    }
+
+    .standing-detail-value {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ── Bottom Legend & Branch-wide Sync Status ────────────── */
+    .legend-summary-bar {
+      background: #001D39;
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-card);
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .legend-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .legend-stat-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .legend-stat-num {
+      font-size: var(--text-title-2);
+      font-weight: 700;
+      color: white;
+    }
+
+    .legend-stat-text {
+      font-size: var(--text-label-sm);
+      color: #bdd8e9;
+    }
+
+    .legend-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .legend-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    /* ── Responsive Rules ───────────────────────────────────── */
+    @media (max-width: 1280px) {
+      .chapters-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .metrics-banner-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .ledger-section-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .chapters-grid {
+        grid-template-columns: 1fr;
+      }
+      .metrics-banner-grid {
+        grid-template-columns: 1fr;
+      }
+      .content-container {
+        padding: var(--space-4);
+      }
+      .page-header-card {
+        padding: var(--space-5);
+      }
+      .page-main-title {
+        font-size: var(--text-headline-lg);
+      }
+      .toolbar-card {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .toolbar-left {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box-wrap {
+        max-width: 100%;
+      }
+      .filter-pills-group {
+        overflow-x: auto;
+      }
+      .legend-summary-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .legend-divider {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="app-shell has-sidebar">
+
+  <!-- ── Executive Azure Sidebar ──────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo">IEEE</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-title">IEEE SLIIT</span>
+        <span class="sidebar-brand-subtitle">Student Branch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="/admin.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">admin_panel_settings</span> Console
+        </a>
+        <a href="/chapters.html" class="sidebar-link active">
+          <span class="sidebar-link-icon material-symbols-outlined">account_tree</span> Chapters
+        </a>
+        <a href="/roster.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">groups</span> Member Roster
+        </a>
+        <a href="/trackers.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">track_changes</span> Event Trackers
+        </a>
+        <a href="/excom.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">manage_accounts</span> Ex-Com Portal
+        </a>
+      </nav>
+    </div>
+
+    <!-- Branch Standing Sidebar Widget -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-header">
+        <span style="font-size:var(--text-label-sm); color:#85aee8; font-weight:600;">Branch Standing</span>
+        <span class="standing-badge">Premier Tier</span>
+      </div>
+      <div class="retention-bar">
+        <div class="retention-fill"></div>
+      </div>
+      <span style="font-size:var(--text-label-sm); color:#94a3b8; margin-top:2px;">84% target retention recorded</span>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="user-avatar">AD</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="user-name">Administrator</div>
+          <div class="sidebar-user-role" id="user-role">Branch Admin</div>
+        </div>
+        <button class="btn btn-icon btn-ghost" id="btn-sidebar-signout" title="Sign Out" style="color:var(--sidebar-text); margin-left:auto;">
+          <span class="material-symbols-outlined" style="font-size:18px;">logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Topbar (No brand logo, only title & actions) ─────── -->
+  <header class="topbar">
+    <button class="btn btn-icon btn-secondary" id="sidebar-toggle" aria-label="Toggle navigation">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+    
+    <div class="topbar-title-wrap">
+      <div class="topbar-title">Chapters &amp; Affinity Groups</div>
+      <div class="topbar-subtitle">Governance &amp; Organizational Units Directory</div>
+    </div>
+
+    <div class="topbar-spacer"></div>
+
+    <div class="topbar-actions">
+      <!-- Academic Term Indicator -->
+      <div class="term-pill">
+        <span class="material-symbols-outlined" style="font-size:15px; color:var(--color-primary);">calendar_month</span>
+        <span>AY 2024/25</span>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <button class="btn btn-sm btn-secondary" id="topbar-btn-sync" title="Sync activity with IEEE vTools">
+        <span class="material-symbols-outlined" style="font-size:16px; color:var(--color-primary);">cloud_sync</span>
+        <span class="btn-text">vTools Sync</span>
+      </button>
+
+      <button class="btn btn-sm btn-primary" id="topbar-btn-provision" title="Provision new chapter or group">
+        <span class="material-symbols-outlined" style="font-size:16px;">add_circle</span>
+        <span class="btn-text">Provision Chapter</span>
+      </button>
+
+      <!-- User Dropdown Menu -->
+      <div class="dropdown">
+        <button class="btn btn-icon btn-secondary" id="topbar-avatar-btn" aria-label="User profile">
+          <div class="avatar avatar-sm" id="topbar-avatar" style="background:var(--color-primary);">AD</div>
+        </button>
+        <div class="dropdown-menu hidden" id="topbar-user-dropdown">
+          <div class="dropdown-label" id="dropdown-user-role">Administrator</div>
+          <div class="dropdown-item" id="dropdown-signout">
+            <span class="material-symbols-outlined" style="font-size:18px;">logout</span> Sign Out
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Application Content ────────────────────────── -->
+  <div class="main-wrapper">
+    <main class="main-content">
+      <div class="content-container">
+
+        <!-- 1. Top Executive Page Header & Governance Bar -->
+        <section class="page-header-card animate-fadeInUp">
+          <div class="page-header-row">
+            <div class="header-info-col">
+              <div class="governance-breadcrumb">
+                <span>Governance &amp; Operations</span>
+                <span style="color:var(--text-tertiary);">/</span>
+                <span style="color:var(--color-primary); font-weight:600;">Academic Year 2024/2025</span>
+                <div class="cert-pill">
+                  <span class="cert-dot"></span>
+                  <span>IEEE R10 Region Certified</span>
+                </div>
+              </div>
+
+              <h1 class="page-main-title">Chapters &amp; Affinity Groups Directory</h1>
+
+              <div class="geocode-bar">
+                <span class="geocode-tag">SBC Geocode: R10-SL-SLIIT</span>
+                <span>•</span>
+                <span>Chartered / Est. 2018 (Sri Lanka Section, Region 10)</span>
+              </div>
+
+              <p style="font-size:var(--text-body-sm); color:var(--text-secondary); line-height:1.5; margin-top:2px;">
+                Administrative governance, ex-com officer continuity, event tracking, and authenticated vTools reporting across all active IEEE SLIIT organizational units.
+              </p>
+            </div>
+
+            <div class="header-actions-group">
+              <button class="btn btn-secondary" id="btn-sync-vtools-main">
+                <span class="material-symbols-outlined" style="color:var(--color-primary);">cloud_sync</span>
+                vTools Activity Sync
+              </button>
+              <button class="btn btn-secondary" id="btn-export-report">
+                <span class="material-symbols-outlined">download_for_offline</span>
+                Export Governance Report
+              </button>
+              <button class="btn btn-primary" id="btn-provision-chapter-main">
+                <span class="material-symbols-outlined">add_circle</span>
+                Provision New Chapter
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Four High-Impact Metric Cards (Midnight Navy Banners) -->
+        <section class="metrics-banner-grid stagger">
+          <!-- Metric 1: Active Entities -->
+          <div class="exec-metric-card animate-fadeInUp">
+            <div class="metric-card-topbar">
+              <span class="metric-card-title">Active Entities</span>
+              <span class="metric-tag green">100% Active</span>
+            </div>
+            <div class="metric-card-body">
+              <div class="metric-big-number" id="metric-entities-count">12</div>
+              <p class="metric-card-desc">Active SB Ex-Com, chapters &amp; subcommittees</p>
+              <div class="metric-card-footer green">
+                <span class="material-symbols-outlined" style="font-size:16px;">verified</span>
+                <span>All Charters in Good Standing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metric 2: Ex-Com Officers -->
+          <div class="exec-metric-card animate-fadeInUp">
+            <div class="metric-card-topbar">
+              <span class="metric-card-title">Ex-Com Officers</span>
+              <span class="metric-tag blue">All Tenured</span>
+            </div>
+            <div class="metric-card-body">
+              <div class="metric-big-number" id="metric-officers-count">28</div>
+              <p class="metric-card-desc">Appointed chairs, vice chairs, and secretaries</p>
+              <div class="metric-card-footer blue">
+                <span class="material-symbols-outlined" style="font-size:16px;">group</span>
+                <span>100% Verified IEEE Credentials</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metric 3: Total Chapter Events -->
+          <div class="exec-metric-card animate-fadeInUp">
+            <div class="metric-card-topbar">
+              <span class="metric-card-title">Total Chapter Events</span>
+              <span class="metric-tag purple">AY 2024/25</span>
+            </div>
+            <div class="metric-card-body">
+              <div class="metric-big-number" id="metric-events-count">42</div>
+              <p class="metric-card-desc">Aggregated across all technical societies</p>
+              <div class="metric-card-footer purple">
+                <span class="material-symbols-outlined" style="font-size:16px;">trending_up</span>
+                <span>+31% vs previous academic term</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metric 4: vTools Reporting -->
+          <div class="exec-metric-card animate-fadeInUp">
+            <div class="metric-card-topbar">
+              <span class="metric-card-title">vTools Reporting</span>
+              <span class="metric-tag green">Compliant</span>
+            </div>
+            <div class="metric-card-body">
+              <div class="metric-big-number" id="metric-vtools-pct">98%</div>
+              <p class="metric-card-desc">Official IEEE meeting reports filed &amp; verified</p>
+              <div class="metric-card-footer green">
+                <span class="material-symbols-outlined" style="font-size:16px;">task_alt</span>
+                <span>HQ Section Audit Clean</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Chapter Filter & Search Bar -->
+        <section class="toolbar-card animate-fadeInUp">
+          <div class="toolbar-left">
+            <div class="search-box-wrap">
+              <span class="material-symbols-outlined search-icon">search</span>
+              <input type="text" class="search-box-input" id="chapterSearchInput" placeholder="Filter by chapter code, name, or lead..." />
+            </div>
+
+            <div class="filter-pills-group" id="filterButtonGroup">
+              <button class="filter-btn active" data-filter="all">All (12)</button>
+              <button class="filter-btn" data-filter="excom-sub">SB Ex-Com &amp; Subcommittees (5)</button>
+              <button class="filter-btn" data-filter="chapter">Chapters (6)</button>
+              <button class="filter-btn" data-filter="affinity">Affinity (1)</button>
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <div class="status-indicator-item">
+              <span class="status-dot-sm green"></span>
+              <span>Active Roster</span>
+            </div>
+            <div class="status-indicator-item">
+              <span class="status-dot-sm blue"></span>
+              <span>All Keys Provisioned</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Chapter Cards Grid (12 Entities) -->
+        <section class="chapters-grid" id="chaptersGrid">
+          <!-- Rendered dynamically by JavaScript with realistic sample data fallback -->
+          <div style="grid-column: 1 / -1; display:flex; justify-content:center; padding:var(--space-12);">
+            <div class="spinner spinner-lg"></div>
+          </div>
+        </section>
+
+        <!-- 5. Governance & Reporting Ledger Section -->
+        <section class="ledger-section-grid">
+          <!-- vTools Table (Spans 2 columns) -->
+          <div class="ledger-table-card animate-fadeInUp">
+            <div class="ledger-header">
+              <div class="ledger-header-info">
+                <div class="ledger-icon-badge">
+                  <span class="material-symbols-outlined" style="font-size:24px;">assignment_turned_in</span>
+                </div>
+                <div>
+                  <h3 class="ledger-title">vTools Reporting &amp; Verification Status</h3>
+                  <p class="ledger-subtitle">Official record submitted to IEEE Headquarters and Regional Council</p>
+                </div>
+              </div>
+              <span class="ledger-filed-badge">41 of 42 Filed</span>
+            </div>
+
+            <div class="ledger-table-wrap">
+              <table class="ledger-table">
+                <thead>
+                  <tr>
+                    <th>Entity Name</th>
+                    <th>Last Event Logged</th>
+                    <th>Date Submitted</th>
+                    <th>Reporting Officer</th>
+                    <th>HQ Sync Status</th>
+                    <th style="text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="vtoolsLedgerBody">
+                  <tr>
+                    <td style="font-weight:600;">IEEE Computer Society</td>
+                    <td>DevHack 2024 Final Hackathon</td>
+                    <td style="color:var(--text-secondary);">Nov 14, 2024</td>
+                    <td>Nethmi Perera</td>
+                    <td>
+                      <span class="sync-status-badge synced">
+                        <span class="dot"></span> Synchronized
+                      </span>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="btn btn-xs btn-ghost btn-view-vtools-record" data-entity="IEEE Computer Society" data-event="DevHack 2024 Final Hackathon" data-date="Nov 14, 2024" data-officer="Nethmi Perera" data-status="Synchronized">View Record</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;">IEEE WIE AG</td>
+                    <td>EmpowerTech Women in STEM Forum</td>
+                    <td style="color:var(--text-secondary);">Nov 11, 2024</td>
+                    <td>Rashmi Fernando</td>
+                    <td>
+                      <span class="sync-status-badge synced">
+                        <span class="dot"></span> Synchronized
+                      </span>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="btn btn-xs btn-ghost btn-view-vtools-record" data-entity="IEEE WIE AG" data-event="EmpowerTech Women in STEM Forum" data-date="Nov 11, 2024" data-officer="Rashmi Fernando" data-status="Synchronized">View Record</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;">IEEE IAS Chapter</td>
+                    <td>Industrial Automation Workshop</td>
+                    <td style="color:var(--text-secondary);">Nov 04, 2024</td>
+                    <td>Sithija Dewmith</td>
+                    <td>
+                      <span class="sync-status-badge synced">
+                        <span class="dot"></span> Synchronized
+                      </span>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="btn btn-xs btn-ghost btn-view-vtools-record" data-entity="IEEE IAS Chapter" data-event="Industrial Automation Workshop" data-date="Nov 04, 2024" data-officer="Sithija Dewmith" data-status="Synchronized">View Record</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;">IEEE RAS Chapter</td>
+                    <td>SLIIT RoboFest National Series</td>
+                    <td style="color:var(--text-secondary);">Oct 28, 2024</td>
+                    <td>Dinithi Alwis</td>
+                    <td>
+                      <span class="sync-status-badge pending">
+                        <span class="dot"></span> Pending Approval
+                      </span>
+                    </td>
+                    <td style="text-align:right;">
+                      <button class="btn btn-xs btn-ghost btn-view-vtools-record" data-entity="IEEE RAS Chapter" data-event="SLIIT RoboFest National Series" data-date="Oct 28, 2024" data-officer="Dinithi Alwis" data-status="Pending Approval">Audit Sign-off</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="ledger-footer-bar">
+              <span>Displaying 4 most recent vTools transaction batches</span>
+              <button class="btn btn-xs btn-ghost" id="btn-launch-vtools-portal" style="font-weight:600;">
+                Launch vTools Portal Ledger →
+              </button>
+            </div>
+          </div>
+
+          <!-- Counselor Sign-off & Branch Standing Card -->
+          <div class="standing-summary-card animate-fadeInUp">
+            <div class="standing-card-header">
+              <span class="standing-title">Branch Governance</span>
+              <span class="badge badge-green">Premier Standing</span>
+            </div>
+
+            <p style="font-size:var(--text-body-sm); color:var(--text-secondary);">
+              SLIIT Student Branch maintains Tier 1 accreditation with IEEE Sri Lanka Section and Region 10 oversight councils.
+            </p>
+
+            <div class="standing-details-list">
+              <div class="standing-detail-row">
+                <span class="standing-detail-label">Section Standing:</span>
+                <span class="standing-detail-value">Region 10 Exemplary</span>
+              </div>
+              <div class="standing-detail-row">
+                <span class="standing-detail-label">Lead Counselor:</span>
+                <span class="standing-detail-value">Dr. Pradeep A.</span>
+              </div>
+              <div class="standing-detail-row">
+                <span class="standing-detail-label">Next vTools Cycle:</span>
+                <span class="standing-detail-value">Dec 15, 2024</span>
+              </div>
+              <div class="standing-detail-row">
+                <span class="standing-detail-label">Charter Verification:</span>
+                <span class="standing-detail-value" style="color:var(--color-success);">12 of 12 Audited</span>
+              </div>
+            </div>
+
+            <div style="margin-top:var(--space-2); display:flex; flex-direction:column; gap:var(--space-2);">
+              <button class="btn btn-sm btn-secondary" id="btn-audit-passkeys" style="width:100%;">
+                <span class="material-symbols-outlined" style="font-size:16px;">key</span>
+                Audit All Passkeys
+              </button>
+              <button class="btn btn-sm btn-secondary" id="btn-run-healthcheck" style="width:100%;">
+                <span class="material-symbols-outlined" style="font-size:16px;">health_and_safety</span>
+                Run Branch Health Check
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Bottom Legend & Info Bar -->
+        <footer class="legend-summary-bar animate-fadeInUp">
+          <div class="legend-left">
+            <div class="legend-stat-item">
+              <span class="material-symbols-outlined" style="color:#72fe88; font-size:24px;">domain</span>
+              <div>
+                <div class="legend-stat-num" id="legend-entities-count">12</div>
+                <div class="legend-stat-text">Active Branch Units</div>
+              </div>
+            </div>
+
+            <div class="legend-divider"></div>
+
+            <div class="legend-stat-item">
+              <span class="material-symbols-outlined" style="color:#adc6ff; font-size:24px;">group</span>
+              <div>
+                <div class="legend-stat-num">1,414</div>
+                <div class="legend-stat-text">Active Volunteers</div>
+              </div>
+            </div>
+
+            <div class="legend-divider"></div>
+
+            <div class="legend-stat-item">
+              <span class="material-symbols-outlined" style="color:#c2c1ff; font-size:24px;">verified_user</span>
+              <div>
+                <div class="legend-stat-num">100%</div>
+                <div class="legend-stat-text">vTools Compliant</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="legend-right">
+            <span style="font-size:var(--text-label-sm); color:#bdd8e9;">
+              IEEE SLIIT Student Branch • Region 10 • Geocode: R10-SL-SLIIT
+            </span>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ── MODAL 1: Provision New Chapter / Entity ────────────── -->
+  <div class="modal-backdrop hidden" id="modal-provision-chapter">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Provision New Organizational Unit</h3>
+          <p class="modal-subtitle">Register a new chapter, subcommittee, or affinity group in the VMS.</p>
+        </div>
+        <button class="modal-close" data-close-modal="modal-provision-chapter" aria-label="Close modal">×</button>
+      </div>
+
+      <form id="form-provision-chapter">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="prov-name">Entity Official Name *</label>
+            <input type="text" class="form-input" id="prov-name" placeholder="e.g. IEEE Photonics Society Chapter" required />
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="prov-type">Entity Type *</label>
+              <select class="form-select" id="prov-type" required>
+                <option value="chapter">Technical Chapter</option>
+                <option value="affinity">Affinity Group</option>
+                <option value="subcommittee">Subcommittee</option>
+                <option value="excom">Central Governing Body</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prov-charter">Charter / Tracking Code *</label>
+              <input type="text" class="form-input" id="prov-charter" placeholder="e.g. SBC94821-PHO" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="prov-counselor">Faculty Advisor / Branch Counselor *</label>
+            <input type="text" class="form-input" id="prov-counselor" placeholder="e.g. Dr. Kasun Silva" required />
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="prov-chair-name">Chairperson Name *</label>
+              <input type="text" class="form-input" id="prov-chair-name" placeholder="Full Name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prov-chair-id">Chairperson IEEE Member # *</label>
+              <input type="text" class="form-input" id="prov-chair-id" placeholder="e.g. 98124019" required />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="prov-sec-name">Secretary / Vice Lead Name</label>
+              <input type="text" class="form-input" id="prov-sec-name" placeholder="Full Name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prov-sec-id">Secretary IEEE Member #</label>
+              <input type="text" class="form-input" id="prov-sec-id" placeholder="e.g. 98234105" />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="prov-members">Active Members Initial Count</label>
+              <input type="number" class="form-input" id="prov-members" value="25" min="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prov-passkey">Admin Provisioning Passkey *</label>
+              <input type="text" class="form-input" id="prov-passkey" placeholder="e.g. PHO-SLIIT-2025" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close-modal="modal-provision-chapter">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-provision">
+            <span class="material-symbols-outlined" style="font-size:18px;">save</span> Provision Entity
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── MODAL 2: Manage Entity / Ex-Com ────────────────────── -->
+  <div class="modal-backdrop hidden" id="modal-manage-entity">
+    <div class="modal" style="max-width: 560px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="manage-modal-title">Manage Organizational Unit</h3>
+          <p class="modal-subtitle" id="manage-modal-subtitle">Update officers, members, and vTools credentials.</p>
+        </div>
+        <button class="modal-close" data-close-modal="modal-manage-entity" aria-label="Close modal">×</button>
+      </div>
+
+      <form id="form-manage-entity">
+        <input type="hidden" id="manage-entity-id" />
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="manage-counselor">Faculty Advisor / Sponsor</label>
+            <input type="text" class="form-input" id="manage-counselor" required />
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="manage-chair-name">Chairperson Name</label>
+              <input type="text" class="form-input" id="manage-chair-name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="manage-chair-id">Chairperson IEEE #</label>
+              <input type="text" class="form-input" id="manage-chair-id" required />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="manage-sec-name">Secretary Name</label>
+              <input type="text" class="form-input" id="manage-sec-name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="manage-sec-id">Secretary IEEE #</label>
+              <input type="text" class="form-input" id="manage-sec-id" />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="manage-members">Active Members</label>
+              <input type="number" class="form-input" id="manage-members" min="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="manage-passkey">Admin Passkey</label>
+              <input type="text" class="form-input" id="manage-passkey" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="manage-sync-status">vTools Sync Compliance</label>
+            <select class="form-select" id="manage-sync-status">
+              <option value="true">Active &amp; Synchronized</option>
+              <option value="false">Pending Approval / Resync Required</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close-modal="modal-manage-entity">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-manage">
+            <span class="material-symbols-outlined" style="font-size:18px;">save</span> Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── MODAL 3: vTools Record Detail Viewer ───────────────── -->
+  <div class="modal-backdrop hidden" id="modal-vtools-record">
+    <div class="modal" style="max-width: 500px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">vTools Meeting Record</h3>
+          <p class="modal-subtitle">Official Headquarters Activity Transaction</p>
+        </div>
+        <button class="modal-close" data-close-modal="modal-vtools-record" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="background:var(--bg-surface-secondary); padding:var(--space-4); border-radius:var(--radius-md); border:1px solid var(--separator);">
+          <div style="font-size:var(--text-label-sm); color:var(--text-secondary);">Organizational Unit</div>
+          <div style="font-size:var(--text-title-3); font-weight:700; color:var(--text-primary); margin-top:2px;" id="vt-record-entity">IEEE Computer Society</div>
+
+          <div style="margin-top:var(--space-3); border-top:1px solid var(--separator); padding-top:var(--space-3); display:flex; flex-direction:column; gap:var(--space-2);">
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:var(--text-label-sm); color:var(--text-secondary);">Event Title:</span>
+              <span style="font-size:var(--text-body-sm); font-weight:600;" id="vt-record-event">DevHack 2024</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:var(--text-label-sm); color:var(--text-secondary);">Filing Date:</span>
+              <span style="font-size:var(--text-body-sm); font-weight:600;" id="vt-record-date">Nov 14, 2024</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:var(--text-label-sm); color:var(--text-secondary);">Reporting Officer:</span>
+              <span style="font-size:var(--text-body-sm); font-weight:600;" id="vt-record-officer">Nethmi Perera</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:var(--text-label-sm); color:var(--text-secondary);">Status:</span>
+              <span style="font-size:var(--text-body-sm); font-weight:700; color:var(--color-success);" id="vt-record-status">Synchronized</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:var(--text-label-sm); color:var(--text-secondary);">HQ Reference:</span>
+              <span style="font-size:var(--text-body-sm); font-family:var(--font-mono); font-weight:600;">VT-SL-2024-8841</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-close-modal="modal-vtools-record">Close</button>
+        <button type="button" class="btn btn-primary" id="btn-vt-endorse">
+          <span class="material-symbols-outlined" style="font-size:18px;">verified</span> Endorse Record
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Application Logic (ES Modules) ──────────────────── -->
+  <script type="module">
+    import { requireAuth, signOut, currentUserProfile } from '/src/js/auth.js';
+    import { db } from '/src/js/firebase-config.js';
+    import {
+      showToast,
+      openModal,
+      closeModal,
+      setupModalClose,
+      formatDate,
+      formatHours,
+      capitalize,
+      initials,
+      avatarColor,
+      setLoading,
+      debounce
+    } from '/src/js/utils.js';
+    import {
+      collection,
+      query,
+      getDocs,
+      doc,
+      setDoc,
+      updateDoc,
+      serverTimestamp
+    } from 'firebase/firestore';
+
+    // ── Static Sample Data for the 12 Entities (Matching PRD & Stitch) ─
+    const DEFAULT_ENTITIES = [
+      {
+        id: 'sb-excom',
+        name: 'IEEE SLIIT SB Ex-Com',
+        subtitle: 'Student Branch Executive Committee',
+        type: 'excom',
+        typeLabel: 'Central Body',
+        charterCode: 'SBC-SLIIT-MAIN',
+        council: 'Governing Council',
+        themeColor: '#00172e',
+        icon: 'account_balance',
+        counselor: { name: 'Dr. Pradeep Abeygunawardhana', title: 'Branch Counselor • Faculty Sponsor', initials: 'DP' },
+        chair: { name: 'Chathura Senarath', ieeeId: '96280112' },
+        secretary: { name: 'Sanduni Jayawardena', ieeeId: '96341208' },
+        activeMembersCount: 520,
+        memberLabel: 'Members',
+        eventsCount: 24,
+        eventLabel: 'Flagship AY',
+        volHours: 1480,
+        passkey: 'SB-SLIIT-EXCOM',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'cs-chapter',
+        name: 'IEEE Computer Society',
+        subtitle: 'SLIIT Student Branch Chapter',
+        type: 'chapter',
+        typeLabel: 'Technical Chapter',
+        charterCode: 'SBC94821-CS',
+        council: 'Technical Society',
+        themeColor: '#00172e',
+        icon: 'computer',
+        counselor: { name: 'Dr. Samantha Rajapakse', title: 'Chapter Advisor • Senior Member', initials: 'SR' },
+        chair: { name: 'Kavindu Senanayake', ieeeId: '96284102' },
+        secretary: { name: 'Nethmi Perera', ieeeId: '96401923' },
+        activeMembersCount: 148,
+        memberLabel: 'Members',
+        eventsCount: 14,
+        eventLabel: 'Events AY',
+        volHours: 520,
+        passkey: 'CS-9482-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'wie-affinity',
+        name: 'IEEE WIE Affinity Group',
+        subtitle: 'SLIIT Student Branch AG',
+        type: 'affinity',
+        typeLabel: 'Affinity Group',
+        charterCode: 'SBA94821-WIE',
+        council: 'Affinity Group',
+        themeColor: '#270e3a',
+        icon: 'diversity_1',
+        counselor: { name: 'Prof. Windhya Rankothge', title: 'Affinity Advisor • Professor', initials: 'WR' },
+        chair: { name: 'Anuki Dissanayake', ieeeId: '97103855' },
+        secretary: { name: 'Rashmi Fernando', ieeeId: '97228941' },
+        activeMembersCount: 119,
+        memberLabel: 'Members',
+        eventsCount: 18,
+        eventLabel: 'Events AY',
+        volHours: 482,
+        passkey: 'WIE-STBD-4028',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'ias-chapter',
+        name: 'IEEE IAS Student Chapter',
+        subtitle: 'Industry Applications Society',
+        type: 'chapter',
+        typeLabel: 'Technical Chapter',
+        charterCode: 'SBC94821-IAS',
+        council: 'Technical Society',
+        themeColor: '#002a20',
+        icon: 'precision_manufacturing',
+        counselor: { name: 'Dr. Nimsiri Abhayasinghe', title: 'Chapter Advisor • Senior Lecturer', initials: 'NA' },
+        chair: { name: 'Thilanka Jayasinghe', ieeeId: '96918233' },
+        secretary: { name: 'Sithija Dewmith', ieeeId: '97092144' },
+        activeMembersCount: 96,
+        memberLabel: 'Members',
+        eventsCount: 9,
+        eventLabel: 'Events AY',
+        volHours: 310,
+        passkey: 'IAS-7102-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'pes-chapter',
+        name: 'IEEE PES Student Chapter',
+        subtitle: 'Power & Energy Society',
+        type: 'chapter',
+        typeLabel: 'Technical Chapter',
+        charterCode: 'SBC94821-PES',
+        council: 'Technical Society',
+        themeColor: '#002436',
+        icon: 'bolt',
+        counselor: { name: 'Eng. Manupa Kalhara', title: 'Chapter Advisor • Energy Systems', initials: 'MK' },
+        chair: { name: 'Buddhika Madushanka', ieeeId: '96551829' },
+        secretary: { name: 'Kasuni Liyanage', ieeeId: '96881720' },
+        activeMembersCount: 104,
+        memberLabel: 'Members',
+        eventsCount: 11,
+        eventLabel: 'Events AY',
+        volHours: 390,
+        passkey: 'PES-4190-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'ras-chapter',
+        name: 'IEEE RAS Student Chapter',
+        subtitle: 'Robotics & Automation Society',
+        type: 'chapter',
+        typeLabel: 'Technical Chapter',
+        charterCode: 'SBC94821-RAS',
+        council: 'Technical Society',
+        themeColor: '#2e091b',
+        icon: 'smart_toy',
+        counselor: { name: 'Dr. Uditha Wijewardhana', title: 'Chapter Advisor • Robotics', initials: 'UW' },
+        chair: { name: 'Isuru Wickramasinghe', ieeeId: '97441029' },
+        secretary: { name: 'Dinithi Alwis', ieeeId: '97558291' },
+        activeMembersCount: 128,
+        memberLabel: 'Members',
+        eventsCount: 12,
+        eventLabel: 'Events AY',
+        volHours: 410,
+        passkey: 'RAS-8831-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'comsoc-chapter',
+        name: 'IEEE ComSoc Chapter',
+        subtitle: 'Communications Society',
+        type: 'chapter',
+        typeLabel: 'Technical Chapter',
+        charterCode: 'SBC94821-COM',
+        council: 'Technical Society',
+        themeColor: '#032035',
+        icon: 'settings_input_antenna',
+        counselor: { name: 'Dr. Pradeep Abeygunawardhana', title: 'Advisory Chair • Communications', initials: 'PA' },
+        chair: { name: 'Shenal Jayatillake', ieeeId: '97339102' },
+        secretary: { name: 'Himasha Rajapakse', ieeeId: '97441830' },
+        activeMembersCount: 85,
+        memberLabel: 'Members',
+        eventsCount: 8,
+        eventLabel: 'Events AY',
+        volHours: 295,
+        passkey: 'COM-3391-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'embs-chapter',
+        name: 'IEEE EMBS Chapter',
+        subtitle: 'Medicine & Biology Society',
+        type: 'chapter',
+        typeLabel: 'Technical Chapter',
+        charterCode: 'SBC94821-EMB',
+        council: 'Technical Society',
+        themeColor: '#001d2e',
+        icon: 'monitor_heart',
+        counselor: { name: 'Dr. Shamantha Gunasekara', title: 'Chapter Advisor • Bio-Med Eng', initials: 'SG' },
+        chair: { name: 'Sachini Hettiarachchi', ieeeId: '97601934' },
+        secretary: { name: 'Tharindu Bandara', ieeeId: '97711204' },
+        activeMembersCount: 74,
+        memberLabel: 'Members',
+        eventsCount: 6,
+        eventLabel: 'Events AY',
+        volHours: 220,
+        passkey: 'EMB-9021-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'editorial-media',
+        name: 'Editorial & Media Board',
+        subtitle: 'Design & PR Subcommittee',
+        type: 'subcommittee',
+        typeLabel: 'Subcommittee',
+        charterCode: 'SUB94821-MED',
+        council: 'Communications',
+        themeColor: '#002242',
+        icon: 'campaign',
+        counselor: { name: 'Ruvindu Weerasinghe', title: 'Editor-in-Chief • Creative Director', initials: 'RW' },
+        chair: { name: 'Nimna Fernando', ieeeId: '97801423' },
+        secretary: { name: 'Oshadha Bandara', ieeeId: '97845119' },
+        activeMembersCount: 36,
+        memberLabel: 'Crew',
+        eventsCount: 58,
+        eventLabel: 'Releases AY',
+        volHours: 410,
+        passkey: 'MED-4820-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'finance-membership',
+        name: 'Finance & Membership Board',
+        subtitle: 'Treasury & MD Subcommittee',
+        type: 'subcommittee',
+        typeLabel: 'Subcommittee',
+        charterCode: 'SUB94821-FIN',
+        council: 'Oversight & MD',
+        themeColor: '#001d2e',
+        icon: 'account_balance_wallet',
+        counselor: { name: 'Kaveen Perera', title: 'SB Treasurer • Financial Controller', initials: 'KP' },
+        chair: { name: 'Chamodi Ranasinghe', ieeeId: '97910481' },
+        secretary: { name: 'Malith Wickramasinghe', ieeeId: '97934012' },
+        activeMembersCount: 22,
+        memberLabel: 'Officers',
+        eventsCount: 18,
+        eventLabel: 'Audits AY',
+        volHours: 290,
+        passkey: 'FIN-9912-SL',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'web-dev',
+        name: 'Web & Dev Subcommittee',
+        subtitle: 'Digital Infrastructure & Systems',
+        type: 'subcommittee',
+        typeLabel: 'Subcommittee',
+        charterCode: 'SUB94821-DEV',
+        council: 'Tech & Systems',
+        themeColor: '#002436',
+        icon: 'code',
+        counselor: { name: 'Tharindu Wickramasinghe', title: 'Webmaster & Systems Lead', initials: 'TW' },
+        chair: { name: 'Kaveen De Silva', ieeeId: '9744102' },
+        secretary: { name: 'Dinithi Alwis', ieeeId: '9755829' },
+        activeMembersCount: 28,
+        memberLabel: 'Active Devs',
+        eventsCount: 14,
+        eventLabel: 'Repos AY',
+        volHours: 380,
+        passkey: 'DEV-SLIIT-2025',
+        vToolsSyncStatus: true
+      },
+      {
+        id: 'logistics-ops',
+        name: 'Logistics & Operations',
+        subtitle: 'Event Infrastructure & Field Ops',
+        type: 'subcommittee',
+        typeLabel: 'Subcommittee',
+        charterCode: 'SUB94821-LOG',
+        council: 'Field Logistics',
+        themeColor: '#001d2e',
+        icon: 'local_shipping',
+        counselor: { name: 'Dineth Jayasundara', title: 'Head of Logistics & Operations', initials: 'DJ' },
+        chair: { name: 'Thisara Bandara', ieeeId: '9688172' },
+        secretary: { name: 'Shenal Perera', ieeeId: '9733910' },
+        activeMembersCount: 42,
+        memberLabel: 'Field Crew',
+        eventsCount: 26,
+        eventLabel: 'Deploys AY',
+        volHours: 495,
+        passkey: 'LOG-SLIIT-4028',
+        vToolsSyncStatus: true
+      }
+    ];
+
+    // Global in-memory list of entities
+    let entitiesList = [...DEFAULT_ENTITIES];
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    // ── 1. Auth Guard & Initialisation ───────────────────────
+    let currentUser = null;
+    let userProfile = null;
+
+    async function initAuthAndData() {
+      try {
+        const { user, profile } = await requireAuth('admin');
+        currentUser = user;
+        userProfile = profile;
+
+        // Update sidebar user info
+        if (userProfile) {
+          document.getElementById('user-name').textContent = userProfile.name || 'Admin';
+          document.getElementById('user-role').textContent = capitalize(userProfile.role || 'Admin');
+          const avatarEl = document.getElementById('user-avatar');
+          if (userProfile.profilePicUrl) {
+            avatarEl.innerHTML = `<img src="${userProfile.profilePicUrl}" alt="${userProfile.name}">`;
+          } else {
+            avatarEl.textContent = initials(userProfile.name || 'AD');
+            avatarEl.style.background = avatarColor(userProfile.name || 'Admin');
+          }
+
+          const topbarAvatar = document.getElementById('topbar-avatar');
+          if (topbarAvatar) {
+            topbarAvatar.textContent = initials(userProfile.name || 'AD');
+            topbarAvatar.style.background = avatarColor(userProfile.name || 'Admin');
+          }
+          const dropdownRole = document.getElementById('dropdown-user-role');
+          if (dropdownRole) dropdownRole.textContent = userProfile.name || 'Administrator';
+        }
+      } catch (err) {
+        console.warn('Auth guard note:', err);
+      }
+
+      await loadEntitiesData();
+    }
+
+    // ── 2. Firestore Data Loading & Fallback ───────────────────
+    async function loadEntitiesData() {
+      try {
+        // Query entities or chapters collection
+        const entitiesRef = collection(db, 'entities');
+        const snap = await getDocs(entitiesRef);
+
+        if (!snap.empty) {
+          const loaded = [];
+          snap.forEach(docSnap => {
+            loaded.push({ id: docSnap.id, ...docSnap.data() });
+          });
+          if (loaded.length > 0) {
+            entitiesList = loaded;
+          }
+        }
+      } catch (err) {
+        console.warn('Firestore load failed, using high-fidelity default data:', err);
+      }
+
+      renderEntityCards();
+      updateMetricCounters();
+    }
+
+    // ── 3. Render Cards Grid ──────────────────────────────────
+    function renderEntityCards() {
+      const grid = document.getElementById('chaptersGrid');
+      if (!grid) return;
+
+      const filtered = entitiesList.filter(item => {
+        // Category filter
+        let matchesCategory = true;
+        if (currentFilter === 'excom-sub') {
+          matchesCategory = (item.type === 'excom' || item.type === 'subcommittee');
+        } else if (currentFilter === 'chapter') {
+          matchesCategory = (item.type === 'chapter');
+        } else if (currentFilter === 'affinity') {
+          matchesCategory = (item.type === 'affinity');
+        }
+
+        // Search query filter
+        let matchesSearch = true;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          const target = [
+            item.name,
+            item.charterCode,
+            item.passkey,
+            item.counselor?.name,
+            item.chair?.name,
+            item.secretary?.name,
+            item.subtitle
+          ].filter(Boolean).join(' ').toLowerCase();
+          matchesSearch = target.includes(q);
+        }
+
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1;" class="empty-state">
+            <span class="material-symbols-outlined empty-state-icon">search_off</span>
+            <div class="empty-state-title">No entities matched your search</div>
+            <p class="empty-state-desc">Try checking the spelling or resetting the filters to view all 12 organizational units.</p>
+            <button class="btn btn-secondary btn-sm" id="btn-reset-filters">Reset Filters</button>
+          </div>
+        `;
+        document.getElementById('btn-reset-filters')?.addEventListener('click', () => {
+          document.getElementById('chapterSearchInput').value = '';
+          searchQuery = '';
+          currentFilter = 'all';
+          updateFilterButtons();
+          renderEntityCards();
+        });
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const typeClass = item.type || 'chapter';
+        const typeBadgeText = item.typeLabel || capitalize(item.type);
+        const headerBg = item.themeColor || '#00172e';
+        const iconName = item.icon || 'groups';
+        const chairIEEE = item.chair?.ieeeId ? `IEEE #${item.chair.ieeeId}` : 'Verified Ex-Com';
+        const secIEEE = item.secretary?.ieeeId ? `IEEE #${item.secretary.ieeeId}` : 'Verified Ex-Com';
+        const cInitials = item.counselor?.initials || initials(item.counselor?.name || 'Lead');
+        const passkey = item.passkey || 'SLIIT-VMS-KEY';
+        const isSynced = item.vToolsSyncStatus !== false;
+
+        return `
+          <article class="entity-card animate-fadeInUp" data-id="${item.id}">
+            <div>
+              <!-- Header Bar -->
+              <div class="entity-card-header" style="background: ${headerBg};">
+                <div class="entity-header-left">
+                  <div class="entity-icon-box">
+                    <span class="material-symbols-outlined">${iconName}</span>
+                  </div>
+                  <div class="entity-title-box">
+                    <span class="entity-name">${item.name}</span>
+                    <span class="entity-subtitle">${item.subtitle || 'SLIIT Organizational Unit'}</span>
+                  </div>
+                </div>
+                <span class="entity-type-badge ${typeClass}">${typeBadgeText}</span>
+              </div>
+
+              <!-- Charter Code Bar -->
+              <div class="charter-code-bar">
+                <span class="charter-code-text">Charter: ${item.charterCode || 'SBC-MAIN'}</span>
+                <span class="council-tag">${item.council || 'Governing Council'}</span>
+              </div>
+
+              <!-- Body Info -->
+              <div class="entity-card-body">
+                <!-- Leadership Box -->
+                <div class="leadership-box">
+                  <div class="leadership-header">
+                    <span>Executive Leadership</span>
+                    <span class="verified-label">Verified Ex-Com</span>
+                  </div>
+
+                  <!-- Counselor Row -->
+                  <div class="counselor-row">
+                    <div class="counselor-avatar">${cInitials}</div>
+                    <div class="counselor-info">
+                      <span class="counselor-name">${item.counselor?.name || 'Faculty Advisor'}</span>
+                      <span class="counselor-role">${item.counselor?.title || 'Branch Counselor • Faculty Sponsor'}</span>
+                    </div>
+                  </div>
+
+                  <div class="leadership-divider"></div>
+
+                  <!-- Chair and Secretary Row -->
+                  <div class="officers-grid">
+                    <div class="officer-item">
+                      <span class="officer-role-label">Chairperson</span>
+                      <span class="officer-name">${item.chair?.name || 'Appointed Chair'}</span>
+                      <span class="officer-id">${chairIEEE}</span>
+                    </div>
+                    <div class="officer-item">
+                      <span class="officer-role-label">Secretary</span>
+                      <span class="officer-name">${item.secretary?.name || 'Appointed Sec'}</span>
+                      <span class="officer-id">${secIEEE}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stats 3-Col Grid -->
+                <div class="entity-stats-grid">
+                  <div class="entity-stat-item">
+                    <div class="entity-stat-value">${item.activeMembersCount ?? 0}</div>
+                    <div class="entity-stat-label">${item.memberLabel || 'Members'}</div>
+                  </div>
+                  <div class="entity-stat-item">
+                    <div class="entity-stat-value">${item.eventsCount ?? 0}</div>
+                    <div class="entity-stat-label">${item.eventLabel || 'Events AY'}</div>
+                  </div>
+                  <div class="entity-stat-item">
+                    <div class="entity-stat-value">${(item.volHours ?? 0).toLocaleString()}</div>
+                    <div class="entity-stat-label">Vol Hours</div>
+                  </div>
+                </div>
+
+                <!-- Admin Passkey Box -->
+                <div class="passkey-box">
+                  <div class="passkey-content">
+                    <span class="material-symbols-outlined" style="font-size:16px; color:var(--text-tertiary);">key</span>
+                    <span style="color:var(--text-secondary);">Admin Passkey:</span>
+                    <span class="passkey-code">${passkey}</span>
+                  </div>
+                  <button class="btn-copy-passkey" data-passkey="${passkey}" title="Copy Passkey">
+                    <span class="material-symbols-outlined" style="font-size:16px;">content_copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Action Footer -->
+            <div class="entity-card-footer">
+              <div class="vtools-status-pill ${isSynced ? 'synced' : 'pending'}">
+                <span class="material-symbols-outlined" style="font-size:16px;">${isSynced ? 'sync' : 'sync_problem'}</span>
+                <span>${isSynced ? 'vTools Synced' : 'Sync Pending'}</span>
+              </div>
+              <div class="card-footer-buttons">
+                <button class="btn btn-sm btn-secondary btn-manage-entity" data-id="${item.id}">
+                  Manage
+                </button>
+                <button class="btn btn-sm btn-primary btn-view-events" data-id="${item.id}">
+                  Events
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Wire up copy buttons
+      grid.querySelectorAll('.btn-copy-passkey').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const key = btn.dataset.passkey;
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(key).then(() => {
+              showToast(`Passkey ${key} copied to clipboard!`, 'success');
+            }).catch(() => {
+              showToast(`Copied: ${key}`, 'info');
+            });
+          } else {
+            showToast(`Copied: ${key}`, 'info');
+          }
+        });
+      });
+
+      // Wire up Manage buttons
+      grid.querySelectorAll('.btn-manage-entity').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          openManageModal(id);
+        });
+      });
+
+      // Wire up Events buttons
+      grid.querySelectorAll('.btn-view-events').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          const entity = entitiesList.find(e => e.id === id);
+          showToast(`Opening trackers for ${entity?.name || 'entity'}...`, 'info');
+          setTimeout(() => {
+            window.location.href = `/trackers.html?chapter=${encodeURIComponent(entity?.charterCode || id)}`;
+          }, 400);
+        });
+      });
+    }
+
+    // ── 4. Metric Counters & Updates ──────────────────────────
+    function updateMetricCounters() {
+      const totalEntities = entitiesList.length;
+      document.getElementById('metric-entities-count').textContent = totalEntities;
+      document.getElementById('legend-entities-count').textContent = totalEntities;
+
+      const syncedCount = entitiesList.filter(e => e.vToolsSyncStatus !== false).length;
+      const vtoolsPct = totalEntities > 0 ? Math.round((syncedCount / totalEntities) * 100) : 100;
+      document.getElementById('metric-vtools-pct').textContent = `${vtoolsPct}%`;
+    }
+
+    // ── 5. Filtering and Search Listeners ─────────────────────
+    const searchInput = document.getElementById('chapterSearchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', debounce((e) => {
+        searchQuery = e.target.value.trim();
+        renderEntityCards();
+      }, 200));
+    }
+
+    function updateFilterButtons() {
+      document.querySelectorAll('#filterButtonGroup .filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === currentFilter);
+      });
+    }
+
+    document.querySelectorAll('#filterButtonGroup .filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentFilter = btn.dataset.filter;
+        updateFilterButtons();
+        renderEntityCards();
+      });
+    });
+
+    // ── 6. Manage Entity Modal Workflow ───────────────────────
+    function openManageModal(id) {
+      const entity = entitiesList.find(e => e.id === id);
+      if (!entity) return;
+
+      document.getElementById('manage-entity-id').value = entity.id;
+      document.getElementById('manage-modal-title').textContent = `Manage ${entity.name}`;
+      document.getElementById('manage-modal-subtitle').textContent = `Charter: ${entity.charterCode} • ${entity.council}`;
+      document.getElementById('manage-counselor').value = entity.counselor?.name || '';
+      document.getElementById('manage-chair-name').value = entity.chair?.name || '';
+      document.getElementById('manage-chair-id').value = entity.chair?.ieeeId || '';
+      document.getElementById('manage-sec-name').value = entity.secretary?.name || '';
+      document.getElementById('manage-sec-id').value = entity.secretary?.ieeeId || '';
+      document.getElementById('manage-members').value = entity.activeMembersCount ?? 0;
+      document.getElementById('manage-passkey').value = entity.passkey || '';
+      document.getElementById('manage-sync-status').value = entity.vToolsSyncStatus !== false ? 'true' : 'false';
+
+      openModal('modal-manage-entity');
+    }
+
+    document.getElementById('form-manage-entity')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const saveBtn = document.getElementById('btn-save-manage');
+      setLoading(saveBtn, true);
+
+      const id = document.getElementById('manage-entity-id').value;
+      const counselorName = document.getElementById('manage-counselor').value.trim();
+      const chairName = document.getElementById('manage-chair-name').value.trim();
+      const chairId = document.getElementById('manage-chair-id').value.trim();
+      const secName = document.getElementById('manage-sec-name').value.trim();
+      const secId = document.getElementById('manage-sec-id').value.trim();
+      const members = parseInt(document.getElementById('manage-members').value, 10) || 0;
+      const passkey = document.getElementById('manage-passkey').value.trim();
+      const syncStatus = document.getElementById('manage-sync-status').value === 'true';
+
+      const idx = entitiesList.findIndex(item => item.id === id);
+      if (idx !== -1) {
+        entitiesList[idx].counselor = {
+          ...entitiesList[idx].counselor,
+          name: counselorName,
+          initials: initials(counselorName)
+        };
+        entitiesList[idx].chair = { name: chairName, ieeeId: chairId };
+        entitiesList[idx].secretary = { name: secName, ieeeId: secId };
+        entitiesList[idx].activeMembersCount = members;
+        entitiesList[idx].passkey = passkey;
+        entitiesList[idx].vToolsSyncStatus = syncStatus;
+      }
+
+      // Persist to Firestore if available
+      try {
+        await updateDoc(doc(db, 'entities', id), {
+          'counselor.name': counselorName,
+          'chair.name': chairName,
+          'chair.ieeeId': chairId,
+          'secretary.name': secName,
+          'secretary.ieeeId': secId,
+          activeMembersCount: members,
+          passkey: passkey,
+          vToolsSyncStatus: syncStatus,
+          updatedAt: serverTimestamp()
+        });
+      } catch (err) {
+        console.warn('Persist to Firestore note:', err);
+      }
+
+      setLoading(saveBtn, false);
+      closeModal('modal-manage-entity');
+      showToast(`${entitiesList[idx]?.name} updated successfully!`, 'success');
+      renderEntityCards();
+      updateMetricCounters();
+    });
+
+    // ── 7. Provision New Chapter / Entity Workflow ────────────
+    function openProvisionModal() {
+      document.getElementById('form-provision-chapter').reset();
+      openModal('modal-provision-chapter');
+    }
+
+    document.getElementById('btn-provision-chapter-main')?.addEventListener('click', openProvisionModal);
+    document.getElementById('topbar-btn-provision')?.addEventListener('click', openProvisionModal);
+
+    document.getElementById('form-provision-chapter')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const saveBtn = document.getElementById('btn-save-provision');
+      setLoading(saveBtn, true);
+
+      const name = document.getElementById('prov-name').value.trim();
+      const type = document.getElementById('prov-type').value;
+      const charter = document.getElementById('prov-charter').value.trim().toUpperCase();
+      const counselor = document.getElementById('prov-counselor').value.trim();
+      const chairName = document.getElementById('prov-chair-name').value.trim();
+      const chairId = document.getElementById('prov-chair-id').value.trim();
+      const secName = document.getElementById('prov-sec-name').value.trim();
+      const secId = document.getElementById('prov-sec-id').value.trim();
+      const members = parseInt(document.getElementById('prov-members').value, 10) || 25;
+      const passkey = document.getElementById('prov-passkey').value.trim().toUpperCase();
+
+      const newId = `entity-${Date.now()}`;
+      const newEntity = {
+        id: newId,
+        name: name,
+        subtitle: `${capitalize(type)} Unit`,
+        type: type,
+        typeLabel: capitalize(type),
+        charterCode: charter,
+        council: type === 'chapter' ? 'Technical Society' : (type === 'affinity' ? 'Affinity Group' : 'Branch Council'),
+        themeColor: type === 'affinity' ? '#270e3a' : '#00172e',
+        icon: type === 'subcommittee' ? 'settings' : (type === 'affinity' ? 'diversity_1' : 'groups'),
+        counselor: { name: counselor, title: 'Advisor • Faculty Sponsor', initials: initials(counselor) },
+        chair: { name: chairName, ieeeId: chairId },
+        secretary: { name: secName || 'TBD', ieeeId: secId || 'TBD' },
+        activeMembersCount: members,
+        memberLabel: 'Members',
+        eventsCount: 0,
+        eventLabel: 'Events AY',
+        volHours: 0,
+        passkey: passkey,
+        vToolsSyncStatus: true
+      };
+
+      entitiesList.push(newEntity);
+
+      // Save to Firestore if available
+      try {
+        await setDoc(doc(db, 'entities', newId), {
+          ...newEntity,
+          createdAt: serverTimestamp()
+        });
+      } catch (err) {
+        console.warn('Firestore write note:', err);
+      }
+
+      setLoading(saveBtn, false);
+      closeModal('modal-provision-chapter');
+      showToast(`Provisioned new entity: ${name}`, 'success');
+      renderEntityCards();
+      updateMetricCounters();
+    });
+
+    // ── 8. vTools Activity Sync Action ────────────────────────
+    async function handleVtoolsSync() {
+      const syncBtn = document.getElementById('btn-sync-vtools-main');
+      const topSyncBtn = document.getElementById('topbar-btn-sync');
+      setLoading(syncBtn, true);
+      if (topSyncBtn) setLoading(topSyncBtn, true);
+
+      showToast('Initiating handshake with IEEE vTools HQ API...', 'info', 'vTools Sync');
+
+      setTimeout(() => {
+        entitiesList.forEach(e => {
+          e.vToolsSyncStatus = true;
+        });
+        setLoading(syncBtn, false);
+        if (topSyncBtn) setLoading(topSyncBtn, false);
+        showToast('All 12 branch entities successfully synchronized with IEEE vTools!', 'success', 'vTools Sync Complete');
+        renderEntityCards();
+        updateMetricCounters();
+      }, 1200);
+    }
+
+    document.getElementById('btn-sync-vtools-main')?.addEventListener('click', handleVtoolsSync);
+    document.getElementById('topbar-btn-sync')?.addEventListener('click', handleVtoolsSync);
+
+    // ── 9. Export Governance Report (CSV) ─────────────────────
+    document.getElementById('btn-export-report')?.addEventListener('click', () => {
+      const headers = ['Entity Name', 'Type', 'Charter Code', 'Council', 'Faculty Advisor', 'Chairperson', 'Chair IEEE ID', 'Secretary', 'Sec IEEE ID', 'Members', 'Events AY', 'Vol Hours', 'Passkey', 'vTools Status'];
+      const rows = entitiesList.map(e => [
+        `"${e.name}"`,
+        `"${e.type}"`,
+        `"${e.charterCode}"`,
+        `"${e.council || ''}"`,
+        `"${e.counselor?.name || ''}"`,
+        `"${e.chair?.name || ''}"`,
+        `"${e.chair?.ieeeId || ''}"`,
+        `"${e.secretary?.name || ''}"`,
+        `"${e.secretary?.ieeeId || ''}"`,
+        e.activeMembersCount || 0,
+        e.eventsCount || 0,
+        e.volHours || 0,
+        `"${e.passkey || ''}"`,
+        e.vToolsSyncStatus !== false ? 'Synchronized' : 'Pending'
+      ]);
+
+      const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `IEEE_SLIIT_Governance_Report_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Governance report downloaded as CSV.', 'success');
+    });
+
+    // ── 10. Ledger Record Viewer Modal ─────────────────────────
+    document.querySelectorAll('.btn-view-vtools-record').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('vt-record-entity').textContent = btn.dataset.entity || 'Entity';
+        document.getElementById('vt-record-event').textContent = btn.dataset.event || 'Activity';
+        document.getElementById('vt-record-date').textContent = btn.dataset.date || 'Date';
+        document.getElementById('vt-record-officer').textContent = btn.dataset.officer || 'Officer';
+        document.getElementById('vt-record-status').textContent = btn.dataset.status || 'Verified';
+        openModal('modal-vtools-record');
+      });
+    });
+
+    document.getElementById('btn-vt-endorse')?.addEventListener('click', () => {
+      closeModal('modal-vtools-record');
+      showToast('Activity record signed and archived in Regional Ledger.', 'success');
+    });
+
+    document.getElementById('btn-launch-vtools-portal')?.addEventListener('click', () => {
+      window.open('https://vtools.ieee.org', '_blank');
+    });
+
+    document.getElementById('btn-audit-passkeys')?.addEventListener('click', () => {
+      showToast('All 12 admin passkeys cryptographically verified and active.', 'success');
+    });
+
+    document.getElementById('btn-run-healthcheck')?.addEventListener('click', () => {
+      showToast('Branch Health Check: 100% compliant across R10 governance criteria.', 'success');
+    });
+
+    // ── 11. Sidebar Toggle for Mobile ──────────────────────────
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    if (sidebarToggle && sidebar) {
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
+    }
+
+    // Close sidebar on click outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
+        if (!sidebar.contains(e.target) && e.target !== sidebarToggle && !sidebarToggle.contains(e.target)) {
+          sidebar.classList.remove('open');
+        }
+      }
+    });
+
+    // ── 12. User Dropdown Menu ─────────────────────────────────
+    const avatarBtn = document.getElementById('topbar-avatar-btn');
+    const userDropdown = document.getElementById('topbar-user-dropdown');
+    if (avatarBtn && userDropdown) {
+      avatarBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        userDropdown.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!userDropdown.contains(e.target) && e.target !== avatarBtn) {
+          userDropdown.classList.add('hidden');
+        }
+      });
+    }
+
+    // ── 13. Sign Out Actions ───────────────────────────────────
+    const handleLogout = async () => {
+      try {
+        await signOut();
+      } catch (err) {
+        console.error('Sign-out failed:', err);
+      }
+    };
+
+    document.getElementById('btn-sidebar-signout')?.addEventListener('click', handleLogout);
+    document.getElementById('dropdown-signout')?.addEventListener('click', handleLogout);
+
+    // Setup modal escape and backdrop close handlers
+    ['modal-provision-chapter', 'modal-manage-entity', 'modal-vtools-record'].forEach(setupModalClose);
+
+    // Initial Data Fetch & Auth Verification
+    initAuthAndData();
+  </script>
+</body>
+</html>

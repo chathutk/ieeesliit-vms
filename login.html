@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — IEEE SLIIT VMS</title>
+  <meta name="description" content="Sign in to the IEEE Student Branch of SLIIT Volunteer Management System." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/css/tokens.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #0A0A1A 0%, #0D1B3E 45%, #0A1628 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated background orbs */
+    .bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+    .bg-orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #007AFF, transparent);
+      top: -200px; left: -200px;
+      animation-delay: 0s;
+    }
+    .bg-orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #5856D6, transparent);
+      bottom: -150px; right: -100px;
+      animation-delay: -4s;
+    }
+    .bg-orb-3 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #FF2D55, transparent);
+      top: 50%; right: 20%;
+      animation-delay: -2s;
+      opacity: 0.08;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50%       { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* Grid pattern overlay */
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    /* Login card */
+    .login-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(28, 28, 30, 0.85);
+      backdrop-filter: blur(40px) saturate(200%);
+      -webkit-backdrop-filter: blur(40px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      padding: var(--space-12) var(--space-10);
+      width: 100%;
+      max-width: 440px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.05) inset,
+        0 40px 80px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(0, 122, 255, 0.08);
+      animation: scaleInSpring 0.6s var(--ease-spring) both;
+    }
+
+    /* IEEE Logo mark */
+    .ieee-logomark {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #007AFF, #5856D6);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-6);
+      box-shadow: 0 8px 32px rgba(0, 122, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ieee-logomark::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.2) 0%,
+        transparent 50%
+      );
+    }
+
+    .ieee-logomark svg {
+      width: 38px;
+      height: 38px;
+      fill: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .login-title {
+      font-size: var(--text-title-1);
+      font-weight: var(--weight-bold);
+      color: #FFFFFF;
+      text-align: center;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-2);
+    }
+
+    .login-subtitle {
+      font-size: var(--text-subhead);
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      margin-bottom: var(--space-10);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Google Sign-in button */
+    .btn-google {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      width: 100%;
+      padding: 14px var(--space-6);
+      background: #FFFFFF;
+      color: #1C1C1E;
+      font-size: var(--text-body);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-family);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--duration-base) var(--ease-spring);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.01em;
+    }
+
+    .btn-google:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-google:active { transform: translateY(0); }
+
+    .btn-google.loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .google-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    /* Divider */
+    .login-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-block: var(--space-6);
+    }
+
+    .login-divider::before,
+    .login-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .login-divider span {
+      font-size: var(--text-caption-2);
+      color: rgba(255,255,255,0.3);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Info strip */
+    .login-info {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      background: rgba(0, 122, 255, 0.12);
+      border: 1px solid rgba(0, 122, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    .login-info-icon { font-size: 18px; flex-shrink: 0; }
+
+    .login-info-text {
+      font-size: var(--text-caption-1);
+      color: rgba(255, 255, 255, 0.6);
+      line-height: var(--leading-relaxed);
+    }
+
+    .login-info-text strong { color: rgba(255,255,255,0.85); }
+
+    /* Footer */
+    .login-footer {
+      margin-top: var(--space-8);
+      text-align: center;
+      font-size: var(--text-caption-2);
+      color: rgba(255,255,255,0.25);
+    }
+
+    .login-footer a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: underline;
+    }
+
+    /* Error state */
+    .login-error {
+      display: none;
+      background: rgba(255, 59, 48, 0.15);
+      border: 1px solid rgba(255, 59, 48, 0.3);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-caption-1);
+      color: #FF6B6B;
+      text-align: center;
+      margin-top: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background elements -->
+  <div class="grid-overlay"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+
+  <!-- Login Card -->
+  <div class="login-card" role="main">
+    <!-- IEEE Logo -->
+    <div class="ieee-logomark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 3h18v4H3V3zm0 5h4v8H3V8zm5 0h4v8H8V8zm5 0h4v8h-4V8zm5 0h1v8h-1V8zM3 17h18v4H3v-4z"/>
+      </svg>
+    </div>
+
+    <h1 class="login-title">IEEE SLIIT VMS</h1>
+    <p class="login-subtitle">
+      Volunteer Management System<br />
+      IEEE Student Branch of SLIIT
+    </p>
+
+    <!-- Google Sign-in -->
+    <button class="btn-google" id="btn-google-signin" onclick="handleGoogleSignIn()">
+      <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
+        <path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.615 24 12.255 24z"/>
+        <path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 0 0 0 10.76l3.98-3.09z"/>
+        <path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.64 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>
+      </svg>
+      <span id="btn-google-text">Continue with Google</span>
+    </button>
+
+    <!-- Error message -->
+    <div class="login-error" id="login-error" role="alert"></div>
+
+    <div class="login-divider"><span>Or Instant Preview (Demo)</span></div>
+
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <button class="btn btn-secondary" type="button" onclick="handleDemo('volunteer')" style="width:100%; justify-content:center; padding:10px; font-size:13px; border-radius:10px; background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.15); cursor:pointer;">
+        👤 Explore as Volunteer
+      </button>
+      <button class="btn btn-secondary" type="button" onclick="handleDemo('excom')" style="width:100%; justify-content:center; padding:10px; font-size:13px; border-radius:10px; background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.15); cursor:pointer;">
+        ⚡ Explore as Ex-Com Officer
+      </button>
+      <button class="btn btn-secondary" type="button" onclick="handleDemo('admin')" style="width:100%; justify-content:center; padding:10px; font-size:13px; border-radius:10px; background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.15); cursor:pointer;">
+        🛡️ Explore as Branch Admin
+      </button>
+    </div>
+
+    <div class="login-divider"><span>Access info</span></div>
+
+    <div class="login-info">
+      <span class="login-info-icon">🔒</span>
+      <p class="login-info-text">
+        Sign in with your <strong>SLIIT Google Workspace account</strong> or personal Google account.
+        Role and chapter access are assigned by your branch administrator.
+      </p>
+    </div>
+
+    <footer class="login-footer">
+      <p>IEEE Student Branch of SLIIT &copy; 2024</p>
+      <p style="margin-top:4px;">
+        <a href="mailto:ieee@sliit.lk">ieee@sliit.lk</a>
+      </p>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { signInWithGoogle, onAuthChange, redirectByRole, loginAsDemo } from '/src/js/auth.js';
+
+    // If already signed in, redirect
+    onAuthChange((user, profile) => {
+      if (user && profile) {
+        redirectByRole(profile.role);
+      }
+    });
+
+    window.handleDemo = function(role) {
+      loginAsDemo(role);
+    };
+
+    window.handleGoogleSignIn = async function () {
+      const btn  = document.getElementById('btn-google-signin');
+      const text = document.getElementById('btn-google-text');
+      const err  = document.getElementById('login-error');
+
+      btn.classList.add('loading');
+      text.textContent = 'Signing in…';
+      err.style.display = 'none';
+
+      try {
+        await signInWithGoogle();
+        // onAuthChange will trigger redirect
+      } catch (e) {
+        console.error('Sign-in error:', e);
+        if (e.code !== 'auth/popup-closed-by-user') {
+          let msg = e.message || 'Sign-in failed. Please try again.';
+          if (e.code === 'auth/unauthorized-domain') {
+            msg = 'This domain (localhost) is not in Firebase Auth Authorized Domains. Add it in Firebase Console → Authentication → Settings.';
+          } else if (e.code === 'auth/operation-not-allowed') {
+            msg = 'Google provider is not enabled in Firebase Console → Authentication → Sign-in method.';
+          } else if (e.code === 'auth/popup-blocked') {
+            msg = 'Pop-up window was blocked by the browser. Please allow popups for localhost.';
+          }
+          err.innerHTML = `<strong>${e.code || 'Sign-in Error'}</strong><br/>${msg}`;
+          err.style.display = 'block';
+        }
+        btn.classList.remove('loading');
+        text.textContent = 'Continue with Google';
+      }
+    };
+  </script>
+</body>
+</html>

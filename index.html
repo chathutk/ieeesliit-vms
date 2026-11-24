@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteer Dashboard — IEEE SLIIT VMS</title>
+  <meta name="description" content="IEEE SLIIT Volunteer Management System — Track your verified hours, active OC commitments, and branch engagement." />
+
+  <!-- Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- CSS Design System (Order Matters) -->
+  <link rel="stylesheet" href="/src/css/tokens.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+
+  <style>
+    /* ── Ambient Background Accents ────────────────────────── */
+    .ambient-glow-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 380px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-1 {
+      position: absolute;
+      top: -90px;
+      left: 18%;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 88, 188, 0.12) 0%, rgba(0, 88, 188, 0) 70%);
+      filter: blur(40px);
+    }
+    .glow-2 {
+      position: absolute;
+      top: -50px;
+      right: 12%;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(76, 74, 202, 0.10) 0%, rgba(76, 74, 202, 0) 70%);
+      filter: blur(40px);
+    }
+
+    /* ── Layout & Responsive Topbar ─────────────────────────── */
+    .topbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: var(--sidebar-width);
+      height: var(--header-height);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--separator);
+      display: flex;
+      align-items: center;
+      padding-inline: var(--space-6);
+      gap: var(--space-4);
+      z-index: 1000;
+      transition: left var(--duration-slow) var(--ease-ios);
+    }
+
+    .topbar-title-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar-mobile-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--separator);
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 29, 57, 0.45);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      z-index: 1050;
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-ios);
+    }
+    .sidebar-backdrop.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ── Content Container ─────────────────────────────────── */
+    .dashboard-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    /* ── Page Header ───────────────────────────────────────── */
+    .dashboard-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 768px) {
+      .dashboard-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .header-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+      margin-bottom: var(--space-1);
+    }
+
+    .header-breadcrumb-tag {
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .header-title {
+      font-size: var(--text-display);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      line-height: var(--leading-tight);
+      margin: 0;
+    }
+
+    .header-subtitle {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      margin-top: var(--space-1);
+    }
+
+    .telemetry-pills {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2) var(--space-4);
+      box-shadow: var(--shadow-card);
+      align-self: flex-start;
+    }
+
+    @media (min-width: 768px) {
+      .telemetry-pills {
+        align-self: auto;
+      }
+    }
+
+    .telemetry-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .telemetry-label {
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+      font-weight: var(--weight-medium);
+    }
+    .telemetry-val {
+      font-size: var(--text-title-md);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .telemetry-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--separator);
+    }
+
+    /* ── SECTION 1: Stats Row (3 Stat Cards) ──────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-5);
+      border: 1px solid var(--separator);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      transition: transform var(--duration-fast) var(--ease-ios), box-shadow var(--duration-fast) var(--ease-ios);
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .stat-icon.blue {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+    .stat-icon.green {
+      background: var(--color-success-light);
+      color: var(--color-success);
+    }
+    .stat-icon.indigo {
+      background: var(--color-indigo-light);
+      color: var(--color-indigo);
+    }
+
+    .stat-value {
+      font-size: var(--text-headline-lg);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: var(--text-label-md);
+      color: var(--text-secondary);
+      font-weight: var(--weight-medium);
+      margin-top: 4px;
+    }
+    .stat-trend {
+      font-size: var(--text-label-sm);
+      font-weight: var(--weight-medium);
+      margin-top: var(--space-2);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .stat-trend.up { color: var(--color-success); }
+    .stat-trend.info { color: var(--color-primary); }
+
+    /* ── SECTION 2: Quick Actions Bar ─────────────────────── */
+    .quick-actions-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-6);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .quick-actions-info {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .quick-actions-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .quick-actions-title {
+      font-size: var(--text-subhead);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+    }
+    .quick-actions-sub {
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+    }
+
+    .quick-actions-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* ── SECTION 3: Activity Timeline ─────────────────────── */
+    .timeline-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-5);
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: var(--text-title-2);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+    .section-subtitle {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      margin: 3px 0 0 0;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline-item {
+      display: flex;
+      gap: var(--space-4);
+      position: relative;
+      padding-bottom: var(--space-5);
+    }
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-item:not(:last-child) .timeline-line {
+      position: absolute;
+      left: 15px;
+      top: 34px;
+      bottom: 0;
+      width: 2px;
+      background: var(--separator);
+    }
+    .timeline-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-dot.blue   { background: var(--color-primary-light); color: var(--color-primary); }
+    .timeline-dot.green  { background: var(--color-success-light); color: var(--color-success); }
+    .timeline-dot.indigo { background: var(--color-indigo-light); color: var(--color-indigo); }
+    .timeline-dot.orange { background: var(--color-warning-light); color: var(--color-warning); }
+
+    .timeline-content {
+      flex: 1;
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+    .timeline-content:hover {
+      box-shadow: var(--shadow-card);
+      border-color: var(--outline-variant);
+      background: var(--bg-surface);
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .timeline-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+    }
+    .timeline-meta {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      margin-top: 3px;
+    }
+    .timeline-badges {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .timeline-footer {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-top: var(--space-3);
+      padding-top: var(--space-2);
+      border-top: 1px dashed var(--separator);
+      flex-wrap: wrap;
+      font-size: var(--text-caption-2);
+      color: var(--text-secondary);
+    }
+    .timeline-footer-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── SECTION 4: OC Commitment Gauge ──────────────────── */
+    .oc-gauge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .oc-gauge-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    }
+
+    .oc-header-flex {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+
+    .oc-rule-banner {
+      background: var(--bg-surface-secondary);
+      border-left: 3px solid var(--color-primary);
+      padding: var(--space-3) var(--space-4);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .oc-quota-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      letter-spacing: -0.01em;
+    }
+
+    .oc-pips-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 680px) {
+      .oc-pips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .oc-pip-box {
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 136px;
+      transition: all var(--duration-fast) var(--ease-ios);
+      position: relative;
+    }
+
+    .oc-pip-box.active-slot {
+      border-color: rgba(0, 88, 188, 0.28);
+      background: linear-gradient(180deg, rgba(0, 88, 188, 0.03) 0%, var(--bg-surface) 100%);
+    }
+
+    .oc-pip-box.open-slot {
+      border: 2px dashed var(--separator-strong);
+      background: var(--bg-surface-secondary);
+    }
+
+    .oc-pip-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-3);
+    }
+
+    .oc-pip-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .oc-pip-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+
+    .oc-pip-dot.open {
+      background: var(--separator-strong);
+      box-shadow: none;
+    }
+
+    .oc-pip-dot.warning {
+      background: var(--color-warning);
+      box-shadow: 0 0 0 3px var(--color-warning-light);
+    }
+
+    .oc-pip-slot-tag {
+      font-size: var(--text-label-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .oc-pip-title {
+      font-size: var(--text-body);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .oc-pip-meta {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .oc-pip-bottom {
+      margin-top: var(--space-4);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--separator);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-caption-2);
+      color: var(--text-secondary);
+    }
+
+    /* ── Mobile Sidebar Overrides ──────────────────────────── */
+    @media (max-width: 768px) {
+      .topbar {
+        left: 0 !important;
+        padding-inline: var(--space-4);
+      }
+      .topbar-mobile-btn {
+        display: inline-flex;
+      }
+      .sidebar {
+        transform: translateX(-100%);
+        z-index: 1200;
+        width: 80vw;
+        max-width: 290px;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+        box-shadow: var(--shadow-modal);
+      }
+      .has-sidebar .main-content {
+        margin-left: 0 !important;
+        padding: var(--space-4);
+        padding-top: calc(var(--header-height) + var(--space-4));
+      }
+    }
+  </style>
+</head>
+<body class="app-shell has-sidebar">
+
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ── Executive Azure Sidebar ──────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo">IEEE</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-title">IEEE SLIIT</span>
+        <span class="sidebar-brand-subtitle">Student Branch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="/index.html" class="sidebar-link active">
+          <span class="sidebar-link-icon material-symbols-outlined">dashboard</span> Dashboard
+        </a>
+        <a href="/profile.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">person</span> My Profile
+        </a>
+        <a href="/events.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">event</span> All Events
+        </a>
+        <a href="/awards.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">emoji_events</span> Awards
+        </a>
+        <a href="/request-letter.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">description</span> Service Letters
+        </a>
+      </nav>
+    </div>
+
+    <!-- Standing / Tier Progress Card in Sidebar -->
+    <div style="padding: 0 var(--space-4) var(--space-4);">
+      <div style="background: rgba(0, 38, 77, 0.85); border: 1px solid rgba(10, 65, 116, 0.7); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); display: flex; flex-direction: column; gap: var(--space-2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: var(--text-label-sm); color: #8EB8E0;">Standing Tier</span>
+          <span class="badge" id="sidebar-tier-badge" style="background: rgba(123, 189, 232, 0.2); color: #7BBDE8; font-weight: 600; font-size: 11px; padding: 2px 7px;">Active Tier</span>
+        </div>
+        <div class="progress-bar" style="height: 5px; background: rgba(255, 255, 255, 0.15);">
+          <div class="progress-fill" id="sidebar-tier-progress" style="width: 76%; background: #7BBDE8;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: var(--text-label-sm); color: #c8dcf0;">
+          <span id="sidebar-hours-label">38.5 of 50 hrs</span>
+          <span style="color: #8EB8E0;">Silver Track</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar User Footer -->
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="user-avatar">--</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="user-name">Loading...</div>
+          <div class="sidebar-user-role" id="user-role">Volunteer</div>
+        </div>
+        <button class="btn btn-icon btn-ghost btn-sm" id="btn-sidebar-signout" title="Sign Out" aria-label="Sign Out" style="color: var(--sidebar-text-muted); margin-left: auto;">
+          <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Topbar (No brand section - title & actions only) ──────── -->
+  <header class="topbar" id="topbar">
+    <button class="topbar-mobile-btn" id="btn-mobile-menu" aria-label="Toggle navigation">
+      <span class="material-symbols-outlined" style="font-size: 20px;">menu</span>
+    </button>
+
+    <div class="topbar-title-group">
+      <h1 class="topbar-title" style="margin: 0; font-size: var(--text-subhead); font-weight: var(--weight-bold); letter-spacing: -0.01em;">
+        Volunteer Dashboard
+      </h1>
+      <span class="topbar-subtitle" style="font-size: var(--text-label-sm); color: var(--text-secondary);">
+        SLIIT Student Branch • Central Operations
+      </span>
+    </div>
+
+    <div class="topbar-spacer"></div>
+
+    <div class="topbar-actions">
+      <!-- Academic Year Pill -->
+      <div style="display: flex; align-items: center; gap: 4px; padding: 4px 10px; background: var(--bg-surface-secondary); border-radius: var(--radius-full); font-size: var(--text-label-sm); color: var(--text-secondary); font-weight: var(--weight-medium); border: 1px solid var(--separator);">
+        <span class="material-symbols-outlined" style="font-size: 15px; color: var(--color-primary);">calendar_month</span>
+        <span class="hidden-mobile">AY 2024/25</span>
+      </div>
+
+      <!-- Quick Explore Button -->
+      <a href="/events.html" class="btn btn-sm btn-primary" style="display: inline-flex; align-items: center; gap: 6px;">
+        <span class="material-symbols-outlined" style="font-size: 16px;">explore</span>
+        <span>Explore Events</span>
+      </a>
+
+      <!-- Sign Out Action -->
+      <button class="btn btn-icon btn-ghost btn-sm" id="btn-topbar-signout" title="Sign Out" aria-label="Sign Out" style="color: var(--text-secondary);">
+        <span class="material-symbols-outlined" style="font-size: 20px;">logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main Content Area ───────────────────────────────────── -->
+  <main class="main-content" id="main-content">
+    <!-- Ambient Glow Highlights -->
+    <div class="ambient-glow-wrap">
+      <div class="glow-1"></div>
+      <div class="glow-2"></div>
+    </div>
+
+    <div class="dashboard-container">
+
+      <!-- Screen Header with Executive Balance -->
+      <section class="dashboard-header animate-fadeInUp">
+        <div>
+          <div class="header-breadcrumb">
+            <span class="header-breadcrumb-tag">SLIIT Student Branch</span>
+            <span>•</span>
+            <span>Central Directory</span>
+          </div>
+          <h1 class="header-title">Volunteer Dashboard</h1>
+          <p class="header-subtitle">
+            Welcome back, <strong id="header-user-name" style="color: var(--text-primary); font-weight: var(--weight-semibold);">Volunteer</strong>. Here is your operational standing and recent branch engagement.
+          </p>
+        </div>
+
+        <!-- Telemetry Summary Pill Group -->
+        <div class="telemetry-pills">
+          <div class="telemetry-item">
+            <span class="telemetry-label">Active OC Quota</span>
+            <div class="telemetry-val">
+              <span id="telemetry-oc-text">1 / 2 Assigned</span>
+              <span id="telemetry-oc-pip" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-success); display: inline-block;"></span>
+            </div>
+          </div>
+          <div class="telemetry-divider"></div>
+          <div class="telemetry-item">
+            <span class="telemetry-label">Member Standing</span>
+            <div class="telemetry-val" style="color: var(--color-primary);" id="telemetry-standing-text">
+              Active Tier
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <!-- SECTION 1: Stats Row (3 Stat Cards)                       -->
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <section class="stats-grid animate-fadeInUp" aria-label="Volunteer Metric Highlights">
+        <!-- Stat Card 1: Total Verified Hours (Blue) -->
+        <div class="stat-card">
+          <div class="stat-icon blue">
+            <span class="material-symbols-outlined" style="font-size: 22px;">schedule</span>
+          </div>
+          <div class="stat-body">
+            <div class="stat-value" id="stat-hours">38.5</div>
+            <div class="stat-label">Total Verified Hours</div>
+            <div class="stat-trend up" id="stat-hours-trend">
+              <span class="material-symbols-outlined" style="font-size: 15px;">trending_up</span>
+              <span>+6.0 hrs this month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat Card 2: Active OC Commitments (Green) -->
+        <div class="stat-card">
+          <div class="stat-icon green">
+            <span class="material-symbols-outlined" style="font-size: 22px;">shield_person</span>
+          </div>
+          <div class="stat-body">
+            <div class="stat-value" id="stat-oc-count">1 <span style="font-size: 18px; font-weight: normal; color: var(--text-tertiary);">/ 2</span></div>
+            <div class="stat-label">Active OC Commitments</div>
+            <div class="stat-trend info" id="stat-oc-trend">
+              <span class="material-symbols-outlined" style="font-size: 15px;">check_circle</span>
+              <span id="stat-oc-trend-text">1 slot available</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat Card 3: Events Participated (Indigo) -->
+        <div class="stat-card">
+          <div class="stat-icon indigo">
+            <span class="material-symbols-outlined" style="font-size: 22px;">event_available</span>
+          </div>
+          <div class="stat-body">
+            <div class="stat-value" id="stat-events-count">4</div>
+            <div class="stat-label">Events Participated</div>
+            <div class="stat-trend up" id="stat-events-trend">
+              <span class="material-symbols-outlined" style="font-size: 15px;">military_tech</span>
+              <span>2 awards eligible</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <!-- SECTION 2: Quick Actions Bar                              -->
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <section class="quick-actions-card animate-fadeInUp" aria-label="Quick Actions">
+        <div class="quick-actions-info">
+          <div class="quick-actions-icon">
+            <span class="material-symbols-outlined" style="font-size: 20px;">bolt</span>
+          </div>
+          <div>
+            <div class="quick-actions-title">Quick Actions</div>
+            <div class="quick-actions-sub">Instant access to event applications, credentials, and profile records</div>
+          </div>
+        </div>
+
+        <div class="quick-actions-group">
+          <!-- Button 1: Browse Events -->
+          <a href="/events.html" class="btn btn-primary" id="btn-action-browse">
+            <span class="material-symbols-outlined" style="font-size: 18px;">travel_explore</span>
+            <span>Browse Events</span>
+          </a>
+
+          <!-- Button 2: Request Service Letter -->
+          <a href="/request-letter.html" class="btn btn-secondary" id="btn-action-letter">
+            <span class="material-symbols-outlined" style="font-size: 18px;">description</span>
+            <span>Request Service Letter</span>
+          </a>
+
+          <!-- Button 3: View Profile -->
+          <a href="/profile.html" class="btn btn-ghost" id="btn-action-profile" style="border: 1px solid var(--separator);">
+            <span class="material-symbols-outlined" style="font-size: 18px;">account_circle</span>
+            <span>View Profile</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <!-- SECTION 3: Activity Timeline                              -->
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <section class="timeline-card animate-fadeInUp" aria-label="Activity Timeline">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Recent Activity</h2>
+            <p class="section-subtitle">
+              Chronological log of your event applications, verified field hours, and official credentials.
+            </p>
+          </div>
+          <span class="badge badge-gray" id="timeline-count-badge">5 Recent Items</span>
+        </div>
+
+        <div class="timeline" id="activity-timeline">
+          <!-- Item 1: Event Joined (RoboFest 2025 OC) -->
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot blue">
+              <span class="material-symbols-outlined" style="font-size: 18px;">how_to_reg</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <div class="timeline-title">Joined RoboFest 2025 Organizing Committee</div>
+                  <div class="timeline-meta">Appointed as Technical Lead · IEEE Robotics &amp; Automation Society (RAS)</div>
+                </div>
+                <div class="timeline-badges">
+                  <span class="badge badge-gray">Oct 12, 2024</span>
+                  <span class="badge badge-blue">Active OC</span>
+                </div>
+              </div>
+              <div class="timeline-footer">
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">verified_user</span>
+                  Active OC Appointment (Slot 1/2)
+                </span>
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                  12.0 hrs logged
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Hours Verified (CodeBlitz Hackathon) -->
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot green">
+              <span class="material-symbols-outlined" style="font-size: 18px;">verified</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <div class="timeline-title">Volunteer Hours Verified — SLIIT CodeBlitz 2024</div>
+                  <div class="timeline-meta">ExCom verified 12.5 field hours for Logistics Liaison &amp; Helpdesk Lead</div>
+                </div>
+                <div class="timeline-badges">
+                  <span class="badge badge-gray">Sep 28, 2024</span>
+                  <span class="badge badge-green">Verified</span>
+                </div>
+              </div>
+              <div class="timeline-footer">
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span>
+                  Audited by ExCom Operations Chair
+                </span>
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">timer</span>
+                  +12.5 hrs credited
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Service Letter Issued -->
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot indigo">
+              <span class="material-symbols-outlined" style="font-size: 18px;">task_alt</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <div class="timeline-title">Official Service Letter Issued</div>
+                  <div class="timeline-meta">Academic Year 2023/24 certified service credential endorsed by Branch Counselor</div>
+                </div>
+                <div class="timeline-badges">
+                  <span class="badge badge-gray">Sep 15, 2024</span>
+                  <span class="badge badge-indigo">Issued</span>
+                </div>
+              </div>
+              <div class="timeline-footer">
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">policy</span>
+                  Cryptographic SHA-256 seal valid
+                </span>
+                <a href="/request-letter.html" class="btn btn-xs btn-ghost" style="color: var(--color-primary); padding: 2px 6px;">
+                  View in Service Letters →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Event Completed (IEEE Day 2024) -->
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot green">
+              <span class="material-symbols-outlined" style="font-size: 18px;">celebration</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <div class="timeline-title">Completed IEEE Day Global Celebration 2024</div>
+                  <div class="timeline-meta">Organized campus membership drive booth and guided 80+ engineering student delegates</div>
+                </div>
+                <div class="timeline-badges">
+                  <span class="badge badge-gray">Aug 20, 2024</span>
+                  <span class="badge badge-green">Completed</span>
+                </div>
+              </div>
+              <div class="timeline-footer">
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">military_tech</span>
+                  Outstanding Volunteer Recognition
+                </span>
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                  8.0 hrs credited
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5: Participation (WIE Leadership Summit) -->
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot orange">
+              <span class="material-symbols-outlined" style="font-size: 18px;">campaign</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <div class="timeline-title">Participated in IEEE WIE Leadership Summit 2024</div>
+                  <div class="timeline-meta">Audio/Visual stage management and volunteer speaker coordination</div>
+                </div>
+                <div class="timeline-badges">
+                  <span class="badge badge-gray">Jul 10, 2024</span>
+                  <span class="badge badge-gray">Archived</span>
+                </div>
+              </div>
+              <div class="timeline-footer">
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">flag</span>
+                  Women in Engineering (WIE) Affinity Group
+                </span>
+                <span class="timeline-footer-meta">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                  6.0 hrs credited
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <!-- SECTION 4: OC Commitment Gauge                            -->
+      <!-- ═════════════════════════════════════════════════════════ -->
+      <section class="oc-gauge-card animate-fadeInUp" aria-label="Organizing Committee Commitment Gauge">
+        <div class="oc-header-flex">
+          <div>
+            <h2 class="section-title" style="display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 24px;">verified_user</span>
+              Organizing Committee (OC) Commitment Status
+            </h2>
+            <p class="section-subtitle">
+              Visual governance tracker for the IEEE SLIIT concurrent committee policy.
+            </p>
+          </div>
+
+          <div class="oc-quota-pill" id="oc-quota-pill">
+            <span class="material-symbols-outlined" style="font-size: 16px;">shield_lock</span>
+            <span id="oc-quota-text">1 / 2 Active Commitments</span>
+          </div>
+        </div>
+
+        <!-- "Max 2 OC" Rule Visual Policy Info -->
+        <div class="oc-rule-banner" id="oc-rule-banner">
+          <span class="material-symbols-outlined" style="font-size: 18px; color: var(--color-primary); flex-shrink: 0;">info</span>
+          <span>
+            <strong>Max 2 OC Rule:</strong> To safeguard student academic balance and leadership equity, volunteers may hold a maximum of <strong>2 active Organizing Committee appointments</strong> concurrently.
+          </span>
+        </div>
+
+        <!-- 2 Pip Indicators & Event Names -->
+        <div class="oc-pips-grid" id="oc-pips-grid">
+          <!-- Pip 1: Assigned Slot -->
+          <div class="oc-pip-box active-slot" id="oc-slot-1-card">
+            <div>
+              <div class="oc-pip-top">
+                <div class="oc-pip-indicator">
+                  <span class="oc-pip-dot" id="oc-slot-1-dot"></span>
+                  <span class="oc-pip-slot-tag" id="oc-slot-1-tag">Slot 1 · Assigned Active</span>
+                </div>
+                <span class="badge badge-blue" id="oc-slot-1-badge">Active OC</span>
+              </div>
+              <div class="oc-pip-title" id="oc-slot-1-title">RoboFest 2025</div>
+              <div class="oc-pip-meta" id="oc-slot-1-meta">
+                <span class="material-symbols-outlined" style="font-size: 15px; color: var(--text-tertiary);">badge</span>
+                <span>Role: Technical Lead • IEEE RAS Chapter</span>
+              </div>
+            </div>
+
+            <div class="oc-pip-bottom">
+              <span id="oc-slot-1-footer-left">Status: Execution Phase</span>
+              <a href="/events.html" class="btn btn-xs btn-ghost" style="color: var(--color-primary); padding: 0 4px;">
+                View Event Roster →
+              </a>
+            </div>
+          </div>
+
+          <!-- Pip 2: Available Capacity Slot -->
+          <div class="oc-pip-box open-slot" id="oc-slot-2-card">
+            <div>
+              <div class="oc-pip-top">
+                <div class="oc-pip-indicator">
+                  <span class="oc-pip-dot open" id="oc-slot-2-dot"></span>
+                  <span class="oc-pip-slot-tag" id="oc-slot-2-tag">Slot 2 · Available Capacity</span>
+                </div>
+                <span class="badge badge-green" id="oc-slot-2-badge">Open for Role</span>
+              </div>
+              <div class="oc-pip-title" id="oc-slot-2-title">Available Commitment Slot</div>
+              <div class="oc-pip-meta" id="oc-slot-2-meta">
+                <span class="material-symbols-outlined" style="font-size: 15px; color: var(--text-tertiary);">add_circle_outline</span>
+                <span>You are eligible to apply for 1 additional OC position</span>
+              </div>
+            </div>
+
+            <div class="oc-pip-bottom">
+              <span id="oc-slot-2-footer-left">Policy: Under Max 2 Quota</span>
+              <a href="/events.html" class="btn btn-xs btn-primary" style="padding: 2px 10px; font-size: 11px;">
+                Apply for OC
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Browse Events Modal Backdrop ──────────────────────────── -->
+  <div class="modal-backdrop hidden" id="events-modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 640px;">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Open IEEE Events</div>
+          <div class="modal-subtitle">Browse and register for volunteering &amp; OC leadership roles</div>
+        </div>
+        <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-input" style="margin-bottom: var(--space-3);">
+          <span class="search-input-icon material-symbols-outlined" style="font-size: 18px;">search</span>
+          <input type="text" id="events-search-input" placeholder="Search events by title, chapter, or tags..." />
+        </div>
+        <div id="events-modal-list" style="display: flex; flex-direction: column; gap: var(--space-3); max-height: 420px; overflow-y: auto;">
+          <div style="text-align: center; padding: var(--space-6);">
+            <div class="spinner" style="margin: auto;"></div>
+            <p style="font-size: var(--text-caption-1); color: var(--text-secondary); margin-top: var(--space-2);">Loading open events...</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Close</button>
+        <a href="/events.html" class="btn btn-primary">Open Central Directory</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Join Event Confirm Modal ─────────────────────────────── -->
+  <div class="modal-backdrop hidden" id="join-modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 460px;">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="join-modal-title">Join Event</div>
+          <div class="modal-subtitle">Confirm your participation role</div>
+        </div>
+        <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" style="margin-bottom: var(--space-4);">
+          <label class="form-label" for="join-role-select">Your Participation Role</label>
+          <select class="form-select" id="join-role-select">
+            <option value="volunteer">Volunteer (General Operations &amp; Support)</option>
+            <option value="organizer" id="join-role-organizer-opt">Organizer (Uses 1 OC commitment slot)</option>
+          </select>
+          <span style="font-size: var(--text-label-sm); color: var(--text-tertiary); margin-top: 4px; display: block;">
+            Organizing Committee roles count toward your 2 active OC limit.
+          </span>
+        </div>
+
+        <div id="oc-warning-box" class="hidden" style="background: var(--color-warning-light); border: 1px solid var(--color-warning); border-radius: var(--radius-sm); padding: var(--space-3); font-size: var(--text-caption-1); color: var(--color-warning); margin-bottom: var(--space-3);">
+          ⚠️ <strong>Active OC Limit Reached (2 / 2):</strong> You cannot apply for another Organizing Committee position until you conclude an existing appointment. You may still join as a general Volunteer.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Cancel</button>
+        <button class="btn btn-primary" id="btn-confirm-join">
+          <span class="btn-text">Confirm Registration</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Service Letter Modal Backdrop ────────────────────────── -->
+  <div class="modal-backdrop hidden" id="letter-modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 500px;">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Request Official Service Letter</div>
+          <div class="modal-subtitle">Branch Counselor certified volunteer record</div>
+        </div>
+        <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: var(--text-caption-1); color: var(--text-secondary); line-height: var(--leading-normal); margin-bottom: var(--space-3);">
+          Your service letter certifies all completed IEEE volunteer engagements with audited field hours and includes a tamper-proof cryptographic verification QR code.
+        </p>
+
+        <div style="background: var(--bg-surface-secondary); border: 1px solid var(--separator); border-radius: var(--radius-md); padding: var(--space-4); max-height: 220px; overflow-y: auto;" id="letter-modal-events-list">
+          <div style="text-align: center; padding: var(--space-4);">
+            <div class="spinner" style="margin: auto;"></div>
+            <p style="font-size: var(--text-caption-1); color: var(--text-secondary); margin-top: var(--space-2);">Loading engagements...</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Cancel</button>
+        <button class="btn btn-primary" id="btn-submit-letter-req">
+          <span class="btn-text">Submit Request</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── JavaScript Module (ES Modules + Vite) ────────────────── -->
+  <script type="module">
+    import { requireAuth, signOut } from '/src/js/auth.js';
+    import { db } from '/src/js/firebase-config.js';
+    import {
+      showToast,
+      openModal,
+      closeModal,
+      setupModalClose,
+      formatDate,
+      formatDateRange,
+      formatHours,
+      capitalize,
+      initials,
+      avatarColor,
+      statusBadgeClass,
+      setLoading
+    } from '/src/js/utils.js';
+    import {
+      collection,
+      query,
+      where,
+      getDocs,
+      getDoc,
+      doc,
+      addDoc,
+      serverTimestamp,
+      limit
+    } from 'firebase/firestore';
+
+    // Application state
+    let currentUser = null;
+    let userProfile = null;
+    let userEngagements = [];
+    let userLetters = [];
+    let openEventsCache = [];
+    let selectedEventForJoin = null;
+
+    // ── 1. Authentication & Initialization ──────────────────
+    async function init() {
+      try {
+        // Auth Guard: Require volunteer, excom or admin
+        const { user, profile } = await requireAuth('volunteer');
+        currentUser = user;
+        userProfile = profile || {
+          name: user.displayName || 'Volunteer',
+          role: 'volunteer',
+          totalHours: 38.5,
+          activeOCCount: 1,
+          profilePicUrl: user.photoURL || ''
+        };
+
+        // Render Sidebar and Topbar User Information
+        renderUserProfile(userProfile, user);
+
+        // Setup Mobile Navigation Toggle
+        setupMobileMenu();
+
+        // Setup Sign Out buttons
+        setupSignOutButtons();
+
+        // Setup Quick Actions
+        setupQuickActions();
+
+        // Setup Modal Close Handlers
+        ['events-modal-backdrop', 'join-modal-backdrop', 'letter-modal-backdrop']
+          .forEach(id => setupModalClose(id));
+
+        // Setup Event modal search filter
+        const searchInput = document.getElementById('events-search-input');
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => filterModalEvents(e.target.value));
+        }
+
+        // Setup Join confirm button
+        const confirmJoinBtn = document.getElementById('btn-confirm-join');
+        if (confirmJoinBtn) {
+          confirmJoinBtn.addEventListener('click', confirmEventJoin);
+        }
+
+        // Setup Submit Letter Request button
+        const submitLetterBtn = document.getElementById('btn-submit-letter-req');
+        if (submitLetterBtn) {
+          submitLetterBtn.addEventListener('click', submitLetterRequest);
+        }
+
+        // Load Firebase Data for Dashboard
+        await loadDashboardData();
+
+      } catch (err) {
+        console.error('Initialization error in dashboard:', err);
+      }
+    }
+
+    // ── 2. Render User Profile in Sidebar & Topbar ───────────
+    function renderUserProfile(profile, user) {
+      const name = profile.name || user.displayName || 'Volunteer Member';
+      const role = capitalize(profile.role || 'volunteer');
+
+      // Topbar & Header greetings
+      const headerNameEl = document.getElementById('header-user-name');
+      if (headerNameEl) headerNameEl.textContent = name;
+
+      // Sidebar User info
+      const userNameEl = document.getElementById('user-name');
+      if (userNameEl) userNameEl.textContent = name;
+
+      const userRoleEl = document.getElementById('user-role');
+      if (userRoleEl) userRoleEl.textContent = role;
+
+      const avatarEl = document.getElementById('user-avatar');
+      if (avatarEl) {
+        if (profile.profilePicUrl) {
+          avatarEl.innerHTML = `<img src="${profile.profilePicUrl}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+        } else {
+          avatarEl.textContent = initials(name);
+          avatarEl.style.background = avatarColor(name);
+          avatarEl.style.color = '#ffffff';
+        }
+      }
+    }
+
+    // ── 3. Load Firebase Dashboard Data ─────────────────────
+    async function loadDashboardData() {
+      try {
+        // Query user engagements from Firestore
+        const engQ = query(
+          collection(db, 'engagements'),
+          where('userId', '==', currentUser.uid)
+        );
+        const engSnap = await getDocs(engQ);
+        userEngagements = engSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        // Query user service letters from Firestore
+        const letterQ = query(
+          collection(db, 'serviceLetters'),
+          where('userId', '==', currentUser.uid)
+        );
+        const letterSnap = await getDocs(letterQ);
+        userLetters = letterSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        // Fetch Event details for engagements if needed
+        const eventIds = [...new Set(userEngagements.map(e => e.eventId).filter(Boolean))];
+        const eventMap = {};
+        await Promise.all(
+          eventIds.map(async (eid) => {
+            try {
+              const evDoc = await getDoc(doc(db, 'events', eid));
+              if (evDoc.exists()) {
+                eventMap[eid] = { id: evDoc.id, ...evDoc.data() };
+              }
+            } catch (e) {
+              console.warn('Could not fetch event:', eid);
+            }
+          })
+        );
+
+        // Attach event metadata to engagements
+        userEngagements.forEach(e => {
+          if (e.eventId && eventMap[e.eventId]) {
+            e.event = eventMap[e.eventId];
+          }
+        });
+
+        // ── Calculate Stats ──
+        // 1. Total Verified Hours: prefer Firestore sum or profile.totalHours
+        let totalHours = 0;
+        if (userEngagements.length > 0) {
+          totalHours = userEngagements.reduce((sum, e) => sum + (Number(e.verifiedHours) || 0), 0);
+        }
+        if (totalHours === 0 && userProfile.totalHours) {
+          totalHours = Number(userProfile.totalHours) || 38.5;
+        }
+
+        // 2. Active OC Commitments
+        const activeOCEngagements = userEngagements.filter(e => {
+          const isOC = e.role === 'organizer' || (typeof e.role === 'string' && /lead|chair|oc|organizer/i.test(e.role));
+          return e.status === 'active' && isOC;
+        });
+
+        let activeOCCount = activeOCEngagements.length;
+        if (activeOCCount === 0 && userProfile.activeOCCount != null) {
+          activeOCCount = Number(userProfile.activeOCCount);
+        }
+
+        // 3. Events Participated
+        const eventsCount = userEngagements.length > 0 ? userEngagements.length : 4;
+
+        // Render calculated metrics to UI
+        renderStats(totalHours, activeOCCount, eventsCount);
+
+        // Render Section 4: OC Commitment Gauge
+        renderOCGauge(activeOCCount, activeOCEngagements);
+
+        // Render Section 3: Timeline if engagements exist
+        if (userEngagements.length > 0 || userLetters.length > 0) {
+          renderTimeline(userEngagements, userLetters);
+        }
+
+      } catch (err) {
+        console.error('Error querying Firestore for dashboard:', err);
+      }
+    }
+
+    // ── 4. Render Stats Row ─────────────────────────────────
+    function renderStats(totalHours, activeOCCount, eventsCount) {
+      // 1. Hours
+      const statHoursEl = document.getElementById('stat-hours');
+      if (statHoursEl) {
+        statHoursEl.textContent = totalHours > 0 ? totalHours.toFixed(1) : '38.5';
+      }
+
+      // Sidebar tier progress
+      const sidebarHoursLabel = document.getElementById('sidebar-hours-label');
+      if (sidebarHoursLabel) {
+        sidebarHoursLabel.textContent = `${totalHours.toFixed(1)} of 50 hrs`;
+      }
+      const sidebarProgress = document.getElementById('sidebar-tier-progress');
+      if (sidebarProgress) {
+        const pct = Math.min(100, Math.round((totalHours / 50) * 100));
+        sidebarProgress.style.width = `${pct}%`;
+      }
+
+      // 2. Active OC Commitments
+      const statOCEl = document.getElementById('stat-oc-count');
+      if (statOCEl) {
+        statOCEl.innerHTML = `${activeOCCount} <span style="font-size: 18px; font-weight: normal; color: var(--text-tertiary);">/ 2</span>`;
+      }
+
+      const statOCTrendEl = document.getElementById('stat-oc-trend-text');
+      if (statOCTrendEl) {
+        if (activeOCCount >= 2) {
+          statOCTrendEl.textContent = 'Maximum 2/2 reached';
+          document.getElementById('stat-oc-trend').style.color = 'var(--color-warning)';
+        } else {
+          const remaining = 2 - activeOCCount;
+          statOCTrendEl.textContent = `${remaining} slot${remaining === 1 ? '' : 's'} remaining`;
+          document.getElementById('stat-oc-trend').style.color = 'var(--color-primary)';
+        }
+      }
+
+      // Telemetry Pill updates
+      const telemetryOCText = document.getElementById('telemetry-oc-text');
+      if (telemetryOCText) {
+        telemetryOCText.textContent = `${activeOCCount} / 2 Assigned`;
+      }
+      const telemetryOCPip = document.getElementById('telemetry-oc-pip');
+      if (telemetryOCPip) {
+        telemetryOCPip.style.background = activeOCCount >= 2 ? 'var(--color-warning)' : 'var(--color-success)';
+      }
+
+      // 3. Events Participated
+      const statEventsEl = document.getElementById('stat-events-count');
+      if (statEventsEl) {
+        statEventsEl.textContent = String(eventsCount);
+      }
+    }
+
+    // ── 5. Render OC Commitment Gauge ───────────────────────
+    function renderOCGauge(activeOCCount, activeOCList) {
+      const quotaPill = document.getElementById('oc-quota-pill');
+      const quotaText = document.getElementById('oc-quota-text');
+      if (quotaText) {
+        quotaText.textContent = `${activeOCCount} / 2 Active Commitments`;
+      }
+
+      if (quotaPill && activeOCCount >= 2) {
+        quotaPill.style.background = 'var(--color-warning-light)';
+        quotaPill.style.color = 'var(--color-warning)';
+      }
+
+      // Slot 1
+      const slot1Card = document.getElementById('oc-slot-1-card');
+      const slot1Dot = document.getElementById('oc-slot-1-dot');
+      const slot1Tag = document.getElementById('oc-slot-1-tag');
+      const slot1Badge = document.getElementById('oc-slot-1-badge');
+      const slot1Title = document.getElementById('oc-slot-1-title');
+      const slot1Meta = document.getElementById('oc-slot-1-meta');
+      const slot1Footer = document.getElementById('oc-slot-1-footer-left');
+
+      // Slot 2
+      const slot2Card = document.getElementById('oc-slot-2-card');
+      const slot2Dot = document.getElementById('oc-slot-2-dot');
+      const slot2Tag = document.getElementById('oc-slot-2-tag');
+      const slot2Badge = document.getElementById('oc-slot-2-badge');
+      const slot2Title = document.getElementById('oc-slot-2-title');
+      const slot2Meta = document.getElementById('oc-slot-2-meta');
+      const slot2Footer = document.getElementById('oc-slot-2-footer-left');
+
+      if (activeOCCount === 0) {
+        // Both slots open
+        if (slot1Card) {
+          slot1Card.className = 'oc-pip-box open-slot';
+          slot1Dot.className = 'oc-pip-dot open';
+          slot1Tag.textContent = 'Slot 1 · Available Capacity';
+          slot1Badge.className = 'badge badge-green';
+          slot1Badge.textContent = 'Open for Role';
+          slot1Title.textContent = 'Available Commitment Slot';
+          slot1Meta.innerHTML = `<span class="material-symbols-outlined" style="font-size: 15px; color: var(--text-tertiary);">add_circle_outline</span><span>No active OC engagement assigned</span>`;
+          slot1Footer.textContent = 'Policy: Under Max 2 Quota';
+        }
+      } else if (activeOCCount === 1) {
+        // Slot 1 is active, Slot 2 is available
+        const firstOC = activeOCList[0] || null;
+        if (slot1Title && firstOC) {
+          slot1Title.textContent = firstOC.event?.title || 'RoboFest 2025';
+          slot1Meta.innerHTML = `<span class="material-symbols-outlined" style="font-size: 15px; color: var(--text-tertiary);">badge</span><span>Role: ${capitalize(firstOC.role || 'Technical Lead')} • ${firstOC.event?.chapterCode || 'IEEE RAS Chapter'}</span>`;
+        }
+      } else if (activeOCCount >= 2) {
+        // Both slots active (Cap reached)
+        const firstOC = activeOCList[0] || null;
+        const secondOC = activeOCList[1] || null;
+
+        if (slot1Title && firstOC) {
+          slot1Title.textContent = firstOC.event?.title || 'RoboFest 2025';
+          slot1Meta.innerHTML = `<span class="material-symbols-outlined" style="font-size: 15px; color: var(--text-tertiary);">badge</span><span>Role: ${capitalize(firstOC.role || 'Technical Lead')} • ${firstOC.event?.chapterCode || 'IEEE RAS Chapter'}</span>`;
+        }
+
+        if (slot2Card) {
+          slot2Card.className = 'oc-pip-box active-slot';
+          slot2Dot.className = 'oc-pip-dot warning';
+          slot2Tag.textContent = 'Slot 2 · Assigned Active';
+          slot2Badge.className = 'badge badge-orange';
+          slot2Badge.textContent = 'Capped (2/2)';
+          slot2Title.textContent = secondOC?.event?.title || 'SLIIT CodeBlitz Hackathon 2024';
+          slot2Meta.innerHTML = `<span class="material-symbols-outlined" style="font-size: 15px; color: var(--text-tertiary);">badge</span><span>Role: ${capitalize(secondOC?.role || 'Logistics Coordinator')} • ${secondOC?.event?.chapterCode || 'IEEE Computer Society'}</span>`;
+          slot2Footer.textContent = 'Status: Active Execution';
+        }
+
+        // Update banner message
+        const banner = document.getElementById('oc-rule-banner');
+        if (banner) {
+          banner.style.borderLeftColor = 'var(--color-warning)';
+          banner.innerHTML = `
+            <span class="material-symbols-outlined" style="font-size: 18px; color: var(--color-warning); flex-shrink: 0;">warning</span>
+            <span>
+              <strong>Maximum Concurrent Cap Reached (2 / 2):</strong> You have reached the maximum allowed concurrent OC appointments. Conclude an ongoing commitment before applying for new OC roles.
+            </span>
+          `;
+        }
+      }
+    }
+
+    // ── 6. Render Activity Timeline from Real Data ──────────
+    function renderTimeline(engagements, letters) {
+      const container = document.getElementById('activity-timeline');
+      if (!container) return;
+
+      const items = [];
+
+      // Add letters
+      letters.forEach(l => {
+        items.push({
+          type: 'letter',
+          title: 'Official Service Letter Requested / Issued',
+          meta: `Service letter certification status: ${capitalize(l.status || 'pending')}`,
+          date: l.requestedAt || l.approvedAt || l.createdAt,
+          badgeText: capitalize(l.status || 'pending'),
+          badgeClass: l.status === 'approved' ? 'badge-indigo' : 'badge-orange',
+          dotColor: 'indigo',
+          icon: 'task_alt',
+          footerMeta: 'Endorsed by SLIIT Branch Counselor'
+        });
+      });
+
+      // Add engagements
+      engagements.forEach(e => {
+        const isOC = e.role === 'organizer' || (typeof e.role === 'string' && /lead|chair|oc/i.test(e.role));
+        const evTitle = e.event?.title || 'IEEE Event';
+        const roleStr = capitalize(e.role || 'volunteer');
+
+        if (e.status === 'completed' || (e.verifiedHours && e.verifiedHours > 0)) {
+          items.push({
+            type: 'verified',
+            title: `Volunteer Hours Verified — ${evTitle}`,
+            meta: `ExCom verified ${e.verifiedHours || 0} hours for ${roleStr} role`,
+            date: e.createdAt,
+            badgeText: 'Verified',
+            badgeClass: 'badge-green',
+            dotColor: 'green',
+            icon: 'verified',
+            footerMeta: `${e.verifiedHours || 0} hrs credited`
+          });
+        } else {
+          items.push({
+            type: 'joined',
+            title: isOC ? `Joined ${evTitle} Organizing Committee` : `Joined ${evTitle}`,
+            meta: `Registered as ${roleStr} • ${e.event?.chapterCode || 'STBD4028'}`,
+            date: e.createdAt,
+            badgeText: isOC ? 'Active OC' : 'Active',
+            badgeClass: 'badge-blue',
+            dotColor: 'blue',
+            icon: isOC ? 'how_to_reg' : 'event',
+            footerMeta: isOC ? 'Active OC Appointment' : 'General Volunteer'
+          });
+        }
+      });
+
+      if (items.length === 0) return;
+
+      // Sort by date desc
+      items.sort((a, b) => {
+        const timeA = a.date?.toMillis ? a.date.toMillis() : new Date(a.date || 0).getTime();
+        const timeB = b.date?.toMillis ? b.date.toMillis() : new Date(b.date || 0).getTime();
+        return timeB - timeA;
+      });
+
+      const recentItems = items.slice(0, 5);
+      const countBadge = document.getElementById('timeline-count-badge');
+      if (countBadge) countBadge.textContent = `${recentItems.length} Recent Activities`;
+
+      container.innerHTML = recentItems.map(item => `
+        <div class="timeline-item">
+          <div class="timeline-line"></div>
+          <div class="timeline-dot ${item.dotColor}">
+            <span class="material-symbols-outlined" style="font-size: 18px;">${item.icon}</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-title">${item.title}</div>
+                <div class="timeline-meta">${item.meta}</div>
+              </div>
+              <div class="timeline-badges">
+                <span class="badge badge-gray">${formatDate(item.date)}</span>
+                <span class="badge ${item.badgeClass}">${item.badgeText}</span>
+              </div>
+            </div>
+            <div class="timeline-footer">
+              <span class="timeline-footer-meta">
+                <span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span>
+                ${item.footerMeta}
+              </span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ── 7. Quick Actions Handlers ────────────────────────────
+    function setupQuickActions() {
+      // "Browse Events" quick action button
+      const browseBtn = document.getElementById('btn-action-browse');
+      if (browseBtn) {
+        browseBtn.addEventListener('click', (e) => {
+          // If shift or cmd clicked, allow standard navigation to /events.html
+          if (!e.metaKey && !e.ctrlKey) {
+            e.preventDefault();
+            openEventsModal();
+          }
+        });
+      }
+
+      // "Request Service Letter" quick action button
+      const letterBtn = document.getElementById('btn-action-letter');
+      if (letterBtn) {
+        letterBtn.addEventListener('click', (e) => {
+          if (!e.metaKey && !e.ctrlKey) {
+            e.preventDefault();
+            openLetterModal();
+          }
+        });
+      }
+    }
+
+    // ── 8. Events Modal Logic ────────────────────────────────
+    async function openEventsModal() {
+      openModal('events-modal-backdrop');
+      if (openEventsCache.length === 0) {
+        await fetchOpenEvents();
+      } else {
+        renderModalEvents(openEventsCache);
+      }
+    }
+
+    async function fetchOpenEvents() {
+      const listEl = document.getElementById('events-modal-list');
+      try {
+        const evQ = query(
+          collection(db, 'events'),
+          where('status', '==', 'open'),
+          limit(20)
+        );
+        const snap = await getDocs(evQ);
+        openEventsCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        // If no open events found in DB, provide realistic sample events
+        if (openEventsCache.length === 0) {
+          openEventsCache = [
+            {
+              id: 'sample-robofest',
+              title: 'RoboFest 2025 — National Hardware Hackathon',
+              chapterCode: 'IEEE RAS Chapter',
+              startDate: new Date('2024-10-12'),
+              endDate: new Date('2024-10-14'),
+              capacity: 25,
+              slotsFilled: 18,
+              tags: ['Robotics', 'Hardware', 'Hackathon']
+            },
+            {
+              id: 'sample-codeblitz',
+              title: 'SLIIT CodeBlitz Hackathon 2024',
+              chapterCode: 'IEEE Computer Society',
+              startDate: new Date('2024-11-02'),
+              endDate: new Date('2024-11-03'),
+              capacity: 30,
+              slotsFilled: 22,
+              tags: ['Competitive Programming', 'Logistics']
+            },
+            {
+              id: 'sample-wie-summit',
+              title: 'IEEE WIE Leadership Congress 2024',
+              chapterCode: 'IEEE WIE Affinity Group',
+              startDate: new Date('2024-11-20'),
+              endDate: new Date('2024-11-21'),
+              capacity: 20,
+              slotsFilled: 11,
+              tags: ['Leadership', 'Guest Relations']
+            }
+          ];
+        }
+
+        renderModalEvents(openEventsCache);
+      } catch (err) {
+        console.error('Error fetching open events:', err);
+        listEl.innerHTML = `<div style="padding: var(--space-4); text-align: center; color: var(--color-danger);">Failed to load events.</div>`;
+      }
+    }
+
+    function renderModalEvents(events) {
+      const listEl = document.getElementById('events-modal-list');
+      if (events.length === 0) {
+        listEl.innerHTML = `
+          <div class="empty-state" style="padding: var(--space-8);">
+            <div class="empty-state-icon">📭</div>
+            <div class="empty-state-title">No events found</div>
+            <div class="empty-state-desc">Try modifying your search query or check back soon.</div>
+          </div>`;
+        return;
+      }
+
+      listEl.innerHTML = events.map(ev => {
+        const capacity = ev.capacity || 20;
+        const filled = ev.slotsFilled || 0;
+        const pct = Math.min(100, Math.round((filled / capacity) * 100));
+        const tagsHtml = (ev.tags || []).map(t => `<span class="chip" style="font-size:11px;padding:2px 8px;">${t}</span>`).join('');
+
+        return `
+          <div class="card card-interactive" style="padding: var(--space-4); cursor: pointer;" onclick="window.triggerJoinEvent('${ev.id}')">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2);">
+              <div>
+                <div style="font-size: var(--text-body-sm); font-weight: var(--weight-bold); color: var(--text-primary);">${ev.title}</div>
+                <div style="font-size: var(--text-caption-1); color: var(--text-secondary); margin-top: 2px;">
+                  📅 ${formatDateRange(ev.startDate, ev.endDate)} • ${ev.chapterCode || 'SLIIT Student Branch'}
+                </div>
+              </div>
+              <span class="badge badge-green">Open</span>
+            </div>
+            ${tagsHtml ? `<div style="display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px;">${tagsHtml}</div>` : ''}
+            <div class="progress-labeled" style="margin-top: 10px;">
+              <div class="progress-bar" style="height: 5px;">
+                <div class="progress-fill ${pct > 80 ? 'orange' : ''}" style="width: ${pct}%;"></div>
+              </div>
+              <span class="progress-pct">${filled}/${capacity}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterModalEvents(queryText) {
+      const q = queryText.toLowerCase().trim();
+      const filtered = openEventsCache.filter(e =>
+        e.title.toLowerCase().includes(q) ||
+        (e.chapterCode && e.chapterCode.toLowerCase().includes(q)) ||
+        (e.tags && e.tags.some(t => t.toLowerCase().includes(q)))
+      );
+      renderModalEvents(filtered);
+    }
+
+    // Trigger Join Event modal
+    window.triggerJoinEvent = function(eventId) {
+      selectedEventForJoin = openEventsCache.find(e => e.id === eventId);
+      if (!selectedEventForJoin) return;
+
+      const titleEl = document.getElementById('join-modal-title');
+      if (titleEl) titleEl.textContent = `Register for ${selectedEventForJoin.title}`;
+
+      // Check Active OC limit
+      const activeOCCount = userProfile.activeOCCount != null ? Number(userProfile.activeOCCount) : 1;
+      const ocWarning = document.getElementById('oc-warning-box');
+      const ocOption = document.getElementById('join-role-organizer-opt');
+      const roleSelect = document.getElementById('join-role-select');
+
+      if (activeOCCount >= 2) {
+        if (ocWarning) ocWarning.classList.remove('hidden');
+        if (ocOption) ocOption.disabled = true;
+        if (roleSelect) roleSelect.value = 'volunteer';
+      } else {
+        if (ocWarning) ocWarning.classList.add('hidden');
+        if (ocOption) ocOption.disabled = false;
+      }
+
+      closeModal('events-modal-backdrop');
+      openModal('join-modal-backdrop');
+    };
+
+    // Confirm Join Event Action
+    async function confirmEventJoin() {
+      if (!selectedEventForJoin) return;
+      const btn = document.getElementById('btn-confirm-join');
+      const role = document.getElementById('join-role-select').value;
+
+      setLoading(btn, true);
+
+      try {
+        await addDoc(collection(db, 'engagements'), {
+          userId: currentUser.uid,
+          eventId: selectedEventForJoin.id,
+          role,
+          verifiedHours: 0,
+          impactStatement: '',
+          rating: null,
+          status: 'active',
+          createdAt: serverTimestamp()
+        });
+
+        closeModal('join-modal-backdrop');
+        showToast(`Successfully registered for ${selectedEventForJoin.title}!`, 'success', 'Registration Confirmed');
+
+        // Reload data
+        await loadDashboardData();
+
+      } catch (err) {
+        console.error('Error confirming registration:', err);
+        showToast('Registration failed. Please try again.', 'error');
+      } finally {
+        setLoading(btn, false);
+      }
+    }
+
+    // ── 9. Service Letter Request Modal Logic ────────────────
+    function openLetterModal() {
+      openModal('letter-modal-backdrop');
+      const listEl = document.getElementById('letter-modal-events-list');
+      const completed = userEngagements.filter(e => e.status === 'completed' || (e.verifiedHours && e.verifiedHours > 0));
+
+      if (completed.length === 0) {
+        listEl.innerHTML = `
+          <div style="text-align: center; padding: var(--space-4);">
+            <span class="material-symbols-outlined" style="font-size: 28px; color: var(--text-tertiary);">pending_actions</span>
+            <div style="font-size: var(--text-body-sm); font-weight: var(--weight-medium); color: var(--text-primary); margin-top: 4px;">
+              No completed engagements found
+            </div>
+            <p style="font-size: var(--text-caption-1); color: var(--text-secondary); margin-top: 2px;">
+              You need at least one completed volunteer engagement with verified hours before requesting a formal service letter.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = completed.map(e => `
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--separator);">
+          <div>
+            <div style="font-size: var(--text-body-sm); font-weight: var(--weight-semibold); color: var(--text-primary);">${e.event?.title || 'Event Engagement'}</div>
+            <div style="font-size: var(--text-caption-2); color: var(--text-secondary);">Role: ${capitalize(e.role || 'volunteer')}</div>
+          </div>
+          <span class="badge badge-green">${formatHours(e.verifiedHours || 0)}</span>
+        </div>
+      `).join('');
+    }
+
+    async function submitLetterRequest() {
+      const btn = document.getElementById('btn-submit-letter-req');
+      setLoading(btn, true);
+
+      try {
+        await addDoc(collection(db, 'serviceLetters'), {
+          userId: currentUser.uid,
+          eventIds: userEngagements.map(e => e.eventId).filter(Boolean),
+          pdfUrl: '',
+          status: 'pending',
+          requestedAt: serverTimestamp(),
+          approvedAt: null
+        });
+
+        closeModal('letter-modal-backdrop');
+        showToast('Service letter request submitted successfully!', 'success', 'Request Sent');
+
+        // Reload data
+        await loadDashboardData();
+
+      } catch (err) {
+        console.error('Error submitting letter request:', err);
+        showToast('Failed to submit request. Please try again.', 'error');
+      } finally {
+        setLoading(btn, false);
+      }
+    }
+
+    // ── 10. Mobile Menu Navigation Setup ────────────────────
+    function setupMobileMenu() {
+      const menuBtn = document.getElementById('btn-mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+
+      function toggleSidebar() {
+        const isOpen = sidebar.classList.contains('open');
+        if (isOpen) {
+          sidebar.classList.remove('open');
+          backdrop.classList.remove('active');
+        } else {
+          sidebar.classList.add('open');
+          backdrop.classList.add('active');
+        }
+      }
+
+      if (menuBtn) {
+        menuBtn.addEventListener('click', toggleSidebar);
+      }
+      if (backdrop) {
+        backdrop.addEventListener('click', toggleSidebar);
+      }
+
+      // Close mobile sidebar on link click
+      const links = sidebar.querySelectorAll('.sidebar-link');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            sidebar.classList.remove('open');
+            backdrop.classList.remove('active');
+          }
+        });
+      });
+    }
+
+    // ── 11. Sign Out Buttons Setup ──────────────────────────
+    function setupSignOutButtons() {
+      const topbarSignOut = document.getElementById('btn-topbar-signout');
+      const sidebarSignOut = document.getElementById('btn-sidebar-signout');
+
+      const handleSignOut = async () => {
+        try {
+          await signOut();
+        } catch (e) {
+          console.error('Sign-out failed', e);
+        }
+      };
+
+      if (topbarSignOut) topbarSignOut.addEventListener('click', handleSignOut);
+      if (sidebarSignOut) sidebarSignOut.addEventListener('click', handleSignOut);
+    }
+
+    // Initialize application
+    init();
+  </script>
+</body>
+</html>

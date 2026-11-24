@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Letter Request — IEEE SLIIT VMS</title>
+  <meta name="description" content="Request official, cryptographically signed IEEE service certificates and endorsement letters for your verified volunteer engagements." />
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- CSS Design System (Order Matters) -->
+  <link rel="stylesheet" href="/src/css/tokens.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+
+  <style>
+    /* ── Page Layout & Scaffolding ────────────────────────────── */
+    .app-shell {
+      min-height: 100vh;
+      background-color: #EEF3F9;
+      color: var(--text-primary);
+    }
+
+    .main-content {
+      padding: var(--space-6) 0 var(--space-12);
+      min-height: calc(100vh - var(--header-height));
+    }
+
+    .page-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    @media (min-width: 768px) {
+      .page-container {
+        padding: 0 var(--space-6);
+        gap: var(--space-8);
+      }
+    }
+
+    /* ── Topbar Customizations ───────────────────────────────── */
+    .topbar {
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(193, 198, 215, 0.4);
+    }
+
+    .topbar-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .topbar-page-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .topbar-page-sub {
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+      line-height: 1;
+    }
+
+    .topbar-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--separator-strong);
+      font-size: var(--text-label-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-secondary);
+    }
+
+    .mob-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mob-toggle {
+        display: inline-flex;
+      }
+    }
+
+    /* ── Mobile Sidebar Backdrop ─────────────────────────────── */
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 29, 57, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1080;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--duration-base) var(--ease-ios);
+    }
+
+    .sidebar-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ── Page Header & Breadcrumb ────────────────────────────── */
+    .header-context {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-label-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-1);
+    }
+
+    .header-context .context-highlight {
+      color: var(--color-primary);
+      font-weight: var(--weight-bold);
+    }
+
+    .header-title {
+      font-size: var(--text-headline-lg);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .header-title {
+        font-size: var(--text-display);
+      }
+    }
+
+    .header-desc {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      max-width: 760px;
+      line-height: var(--leading-relaxed);
+      margin-top: var(--space-2);
+    }
+
+    @media (min-width: 768px) {
+      .header-desc {
+        font-size: var(--text-body-lg);
+      }
+    }
+
+    /* ── Ready for Download Alert Banner ─────────────────────── */
+    .alert-banner {
+      background: linear-gradient(135deg, #0A4174 0%, #00264d 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      box-shadow: 0 4px 16px rgba(10, 65, 116, 0.2);
+      border: 1px solid rgba(123, 189, 232, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .alert-banner::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(123, 189, 232, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .alert-banner-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+
+    .alert-banner-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: rgba(123, 189, 232, 0.2);
+      border: 1px solid rgba(123, 189, 232, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7bbde8;
+      flex-shrink: 0;
+    }
+
+    .alert-banner-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .alert-banner-desc {
+      font-size: var(--text-caption-1);
+      color: #BDD8E9;
+      margin-top: 2px;
+      line-height: var(--leading-tight);
+    }
+
+    .alert-banner-action {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .alert-banner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .alert-banner-action {
+        width: 100%;
+      }
+      .alert-banner-action .btn {
+        width: 100%;
+      }
+    }
+
+    /* ── Form Card & Sections ────────────────────────────────── */
+    .form-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: 0 1px 6px rgba(0, 29, 57, 0.04), 0 0 1px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(193, 198, 215, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    @media (min-width: 768px) {
+      .form-card {
+        padding: var(--space-8);
+      }
+    }
+
+    /* ── Section Header Pattern ──────────────────────────────── */
+    .stage-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+      gap: var(--space-3);
+    }
+
+    .stage-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .stage-number {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      background: #d3e3ff;
+      color: #001c39;
+      font-weight: var(--weight-bold);
+      font-size: var(--text-label-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stage-title {
+      font-size: var(--text-title-lg);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+    }
+
+    .stage-tag {
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+      font-weight: var(--weight-medium);
+      white-space: nowrap;
+    }
+
+    /* ── Step 1: Scope Cards ─────────────────────────────────── */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+
+    @media (max-width: 720px) {
+      .scope-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scope-card {
+      border: 1.5px solid var(--separator-strong);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      background: var(--bg-surface-secondary);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-ios);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-4);
+      position: relative;
+      user-select: none;
+    }
+
+    .scope-card:hover {
+      border-color: rgba(0, 88, 188, 0.4);
+      background: var(--bg-surface);
+      transform: translateY(-1px);
+    }
+
+    .scope-card.active {
+      border-color: var(--color-primary);
+      background: #ffffff;
+      box-shadow: 0 4px 16px -2px rgba(0, 88, 188, 0.12), 0 0 0 1px var(--color-primary);
+    }
+
+    .scope-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .scope-icon-wrap {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background: rgba(193, 198, 215, 0.3);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .scope-card.active .scope-icon-wrap {
+      background: #eff4ff;
+      color: #0a4174;
+      border: 1px solid #c7e7ff;
+    }
+
+    .scope-radio-icon {
+      font-size: 22px;
+      color: var(--outline-variant);
+      transition: color var(--duration-fast) var(--ease-ios);
+    }
+
+    .scope-card.active .scope-radio-icon {
+      color: var(--color-primary);
+    }
+
+    .scope-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .scope-sub {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      margin-top: var(--space-1);
+      line-height: var(--leading-tight);
+    }
+
+    .scope-addon {
+      margin-top: var(--space-2);
+      display: none;
+    }
+
+    .scope-card.active .scope-addon {
+      display: block;
+    }
+
+    /* ── Step 2: Engagements Checklist ───────────────────────── */
+    .checklist-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .engagement-search-wrap {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .engagement-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .engagement-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      background: var(--bg-surface-secondary);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      user-select: none;
+      transition: all var(--duration-fast) var(--ease-ios);
+      gap: var(--space-3);
+    }
+
+    .engagement-row:hover {
+      background: #ebeaf1;
+      border-color: rgba(193, 198, 215, 0.6);
+    }
+
+    .engagement-row.checked {
+      background: #f2f7ff;
+      border-color: rgba(0, 88, 188, 0.3);
+    }
+
+    .engagement-row-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+      flex: 1;
+    }
+
+    .custom-checkbox {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid var(--outline);
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .engagement-row.checked .custom-checkbox {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .custom-checkbox .material-symbols-outlined {
+      font-size: 14px;
+      display: none;
+    }
+
+    .engagement-row.checked .custom-checkbox .material-symbols-outlined {
+      display: block;
+    }
+
+    .engagement-details {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .engagement-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .engagement-sub {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .engagement-row-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-shrink: 0;
+    }
+
+    .engagement-hours-badge {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    /* ── Running Total Summary Banner ────────────────────────── */
+    .summary-banner {
+      background: #eff4ff;
+      border: 1px solid #d3e4ff;
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .summary-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .summary-icon {
+      font-size: 22px;
+      color: #0a4174;
+    }
+
+    .summary-counter-text {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      color: #001c39;
+    }
+
+    .summary-right {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
+    }
+
+    .summary-hours-val {
+      font-size: var(--text-headline-lg);
+      font-weight: var(--weight-bold);
+      color: #001c39;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .summary-hours-label {
+      font-size: var(--text-label-sm);
+      color: var(--text-secondary);
+      font-weight: var(--weight-medium);
+    }
+
+    /* ── Step 3: Letter Configuration ────────────────────────── */
+    .config-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    .form-help {
+      font-size: var(--text-caption-2);
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    /* ── Form Actions & SLA ──────────────────────────────────── */
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--separator);
+      flex-wrap: wrap;
+    }
+
+    .sla-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+    }
+
+    .sla-badge .material-symbols-outlined {
+      color: var(--outline);
+      font-size: 20px;
+    }
+
+    .sla-badge strong {
+      color: var(--text-primary);
+      font-weight: var(--weight-semibold);
+    }
+
+    @media (max-width: 600px) {
+      .form-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .form-footer .btn {
+        width: 100%;
+      }
+    }
+
+    /* ── Previous Letters Ledger ─────────────────────────────── */
+    .ledger-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: 0 1px 6px rgba(0, 29, 57, 0.04), 0 0 1px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(193, 198, 215, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    @media (min-width: 768px) {
+      .ledger-card {
+        padding: var(--space-8);
+      }
+    }
+
+    .ledger-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .ledger-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .ledger-title {
+      font-size: var(--text-headline-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .ledger-sub {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+    }
+
+    .ledger-tabs {
+      display: flex;
+      background: var(--bg-surface-secondary);
+      padding: 3px;
+      border-radius: var(--radius-md);
+      gap: 2px;
+    }
+
+    .ledger-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-label-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .ledger-tab-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .ledger-tab-btn.active {
+      background: #ffffff;
+      color: var(--text-primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ── Ledger Items List ───────────────────────────────────── */
+    .ledger-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .ledger-item {
+      border: 1.5px solid var(--separator-strong);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .ledger-item:hover {
+      border-color: rgba(0, 88, 188, 0.3);
+      box-shadow: var(--shadow-card);
+    }
+
+    .ledger-item-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .ledger-item-top {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .ledger-ref-code {
+      font-family: var(--font-mono);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-body-sm);
+      color: var(--color-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .ledger-purpose-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+    }
+
+    .ledger-item-meta {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .ledger-item-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ledger-item-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .ledger-item {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .ledger-item-right {
+        justify-content: flex-end;
+        padding-top: var(--space-2);
+        border-top: 1px solid var(--separator);
+      }
+    }
+
+    /* ── Modal Customizations ────────────────────────────────── */
+    .modal-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--separator);
+      font-size: var(--text-body-sm);
+    }
+
+    .modal-detail-label {
+      color: var(--text-secondary);
+      font-weight: var(--weight-medium);
+    }
+
+    .modal-detail-val {
+      color: var(--text-primary);
+      font-weight: var(--weight-semibold);
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body class="app-shell has-sidebar">
+
+  <!-- ── Mobile Backdrop for Sidebar ────────────────────────── -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleSidebar()"></div>
+
+  <!-- ── Sidebar (Executive Azure Dark Navy) ──────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo">IEEE</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-title">IEEE SLIIT</span>
+        <span class="sidebar-brand-subtitle">Student Branch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="/index.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">dashboard</span> Dashboard
+        </a>
+        <a href="/profile.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">person</span> My Profile
+        </a>
+        <a href="/events.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">event</span> All Events
+        </a>
+        <a href="/awards.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">emoji_events</span> Awards
+        </a>
+        <a href="/request-letter.html" class="sidebar-link active">
+          <span class="sidebar-link-icon material-symbols-outlined">description</span> Service Letters
+        </a>
+      </nav>
+    </div>
+
+    <!-- Standing Indicator Card -->
+    <div style="padding: 0 var(--space-4) var(--space-4); margin-top: auto;">
+      <div style="background: rgba(10, 65, 116, 0.4); border: 1px solid rgba(123, 189, 232, 0.25); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); display: flex; flex-direction: column; gap: var(--space-2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: var(--text-label-sm); color: #a5c7e5; font-weight: 500;">Volunteer Standing</span>
+          <span style="font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-full); background: rgba(123, 189, 232, 0.2); color: #7bbde8; border: 1px solid rgba(123, 189, 232, 0.3);">Active Tier</span>
+        </div>
+        <div style="width: 100%; height: 5px; background: rgba(0, 29, 57, 0.8); border-radius: var(--radius-full); overflow: hidden;">
+          <div id="sidebar-progress-fill" style="width: 78%; height: 100%; background: #7bbde8; border-radius: var(--radius-full);"></div>
+        </div>
+        <div id="sidebar-hours-label" style="font-size: var(--text-label-sm); color: #c8dcf0;">39 of 50 Service Hours Logged</div>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="user-avatar">--</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="user-name">Loading...</div>
+          <div class="sidebar-user-role" id="user-role">Volunteer</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Topbar (No Brand, Page Info & Actions Only) ──────────── -->
+  <header class="topbar" id="topbar">
+    <button class="btn btn-icon btn-secondary mob-toggle" id="mob-toggle" onclick="toggleSidebar()" aria-label="Toggle navigation">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <div class="topbar-info">
+      <div class="topbar-page-title">Service Letter Request</div>
+      <div class="topbar-page-sub">IEEE Sri Lanka Section Credential Issuance</div>
+    </div>
+
+    <div class="topbar-spacer"></div>
+
+    <div class="topbar-actions">
+      <!-- Academic Year Pill -->
+      <div class="topbar-chip" title="Current Academic Year">
+        <span class="material-symbols-outlined" style="font-size: 16px; color: var(--color-primary);">school</span>
+        <span>AY 2024/25</span>
+      </div>
+
+      <!-- User Dropdown Menu -->
+      <div class="dropdown">
+        <button class="btn btn-icon btn-secondary" id="btn-user-menu" onclick="toggleUserMenu()" aria-label="User menu" aria-expanded="false">
+          <div class="avatar avatar-sm" id="topbar-avatar">V</div>
+        </button>
+        <div class="dropdown-menu hidden" id="user-dropdown" role="menu">
+          <div class="dropdown-label" id="dropdown-user-name">Volunteer</div>
+          <a class="dropdown-item" href="/profile.html">
+            <span class="material-symbols-outlined" style="font-size: 18px;">person</span> My Profile
+          </a>
+          <a class="dropdown-item" href="/events.html">
+            <span class="material-symbols-outlined" style="font-size: 18px;">event</span> All Events
+          </a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item danger" onclick="handleSignOut()">
+            <span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Workspace ──────────────────────────────────────── -->
+  <main class="main-content" id="main-content">
+    <div class="page-container">
+
+      <!-- Page Header & Context Breadcrumb -->
+      <div class="page-header animate-fadeInDown">
+        <div class="header-context">
+          <span>Governance &amp; Credentials</span>
+          <span>•</span>
+          <span class="context-highlight">IEEE Sri Lanka Section</span>
+        </div>
+        <h1 class="header-title">Service Letter Request &amp; Verification Ledger</h1>
+        <p class="header-desc">
+          Request official, cryptographically signed IEEE service certificates and endorsement letters for your verified volunteer engagements and executive tenures.
+        </p>
+      </div>
+
+      <!-- Ready for Download Alert Banner (Shown when an approved letter is available) -->
+      <div class="alert-banner animate-fadeInUp" id="downloadAlertBanner">
+        <div class="alert-banner-left">
+          <div class="alert-banner-icon">
+            <span class="material-symbols-outlined">workspace_premium</span>
+          </div>
+          <div>
+            <div class="alert-banner-title">Official Credential Dispatched &amp; Ready</div>
+            <div class="alert-banner-desc">
+              Service Certificate <strong id="readyLetterRef">#SL-2024-089</strong> has been verified &amp; signed by Chapter Counselor Prof. Pradeep Abeygunawardhana.
+            </div>
+          </div>
+        </div>
+        <div class="alert-banner-action">
+          <button type="button" class="btn btn-primary" id="downloadBannerBtn">
+            <span class="material-symbols-outlined">download</span> Download PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Multi-Stage Letter Request Form -->
+      <form class="form-card animate-fadeInUp" id="letterRequestForm">
+
+        <!-- ── Step 1: Scope Selection ────────────────────────── -->
+        <div class="form-stage" id="stage-scope">
+          <div class="stage-header">
+            <div class="stage-title-wrap">
+              <span class="stage-number">1</span>
+              <h2 class="stage-title">Select Scope of Service Letter</h2>
+            </div>
+            <span class="stage-tag">Stage 1 of 3</span>
+          </div>
+
+          <div class="scope-grid" id="scopeSelectionGroup">
+            <!-- Cumulative -->
+            <label class="scope-card active" data-scope="cumulative">
+              <input type="radio" name="scope_type" value="cumulative" checked class="sr-only" style="display:none;" />
+              <div class="scope-top">
+                <div class="scope-icon-wrap">
+                  <span class="material-symbols-outlined">all_inclusive</span>
+                </div>
+                <span class="material-symbols-outlined scope-radio-icon">check_circle</span>
+              </div>
+              <div>
+                <div class="scope-title">Comprehensive Cumulative</div>
+                <div class="scope-sub">All verified records across all terms and academic years.</div>
+              </div>
+            </label>
+
+            <!-- Specific Academic Year -->
+            <label class="scope-card" data-scope="year">
+              <input type="radio" name="scope_type" value="year" class="sr-only" style="display:none;" />
+              <div class="scope-top">
+                <div class="scope-icon-wrap">
+                  <span class="material-symbols-outlined">calendar_today</span>
+                </div>
+                <span class="material-symbols-outlined scope-radio-icon">radio_button_unchecked</span>
+              </div>
+              <div>
+                <div class="scope-title">Specific Academic Year</div>
+                <div class="scope-sub">Exclusive to appointments within a specific calendar term.</div>
+                <div class="scope-addon">
+                  <select class="form-select form-select-sm" id="scopeYearSelect" aria-label="Select Academic Year" style="padding: 6px 10px; font-size: 12px; margin-top: 6px;">
+                    <option value="2024/25" selected>AY 2024/2025 (Current)</option>
+                    <option value="2023/24">AY 2023/2024</option>
+                    <option value="2022/23">AY 2022/2023</option>
+                  </select>
+                </div>
+              </div>
+            </label>
+
+            <!-- Chapter / Event Only -->
+            <label class="scope-card" data-scope="event">
+              <input type="radio" name="scope_type" value="event" class="sr-only" style="display:none;" />
+              <div class="scope-top">
+                <div class="scope-icon-wrap">
+                  <span class="material-symbols-outlined">hub</span>
+                </div>
+                <span class="material-symbols-outlined scope-radio-icon">radio_button_unchecked</span>
+              </div>
+              <div>
+                <div class="scope-title">Chapter / Event Only</div>
+                <div class="scope-sub">Single initiative or specific IEEE branch society.</div>
+                <div class="scope-addon">
+                  <select class="form-select form-select-sm" id="scopeChapterSelect" aria-label="Select Chapter" style="padding: 6px 10px; font-size: 12px; margin-top: 6px;">
+                    <option value="all" selected>All Societies / Flagships</option>
+                    <option value="STBD4028">IEEE SLIIT Student Branch</option>
+                    <option value="CS">IEEE Computer Society Chapter</option>
+                    <option value="WIE">IEEE Women in Engineering AG</option>
+                    <option value="RAS">IEEE Robotics &amp; Automation SBC</option>
+                  </select>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- ── Step 2: Verification Checklist & Engagements ──── -->
+        <div class="form-stage" id="stage-engagements">
+          <div class="stage-header">
+            <div class="stage-title-wrap">
+              <span class="stage-number">2</span>
+              <h2 class="stage-title">Verification Checklist &amp; Engagements</h2>
+            </div>
+            <button type="button" class="btn btn-ghost btn-sm" id="toggleAllBtn" style="font-weight: 600;">
+              <span class="material-symbols-outlined" style="font-size: 16px;">select_all</span>
+              <span id="toggleAllText">Deselect All</span>
+            </button>
+          </div>
+
+          <!-- Filter & Search Bar -->
+          <div class="checklist-controls">
+            <div class="search-input engagement-search-wrap">
+              <span class="material-symbols-outlined search-input-icon">search</span>
+              <input type="text" id="engagementSearch" placeholder="Filter verified engagements, roles, or chapters..." aria-label="Filter engagements" />
+            </div>
+            <span class="text-caption-2 text-secondary" id="visibleCountText">Showing 4 verified engagements</span>
+          </div>
+
+          <!-- Engagements Checkbox List -->
+          <div class="engagement-list" id="engagementList">
+            <!-- Item 1 -->
+            <label class="engagement-row checked" data-engagement-id="eng-1" data-event-id="ev-1" data-hours="18.0" data-year="2024/25" data-chapter="STBD4028">
+              <div class="engagement-row-left">
+                <div class="custom-checkbox">
+                  <span class="material-symbols-outlined">check</span>
+                </div>
+                <input type="checkbox" checked class="sr-only engagement-chk" style="display:none;" data-hours="18.0" data-event-id="ev-1" />
+                <div class="engagement-details">
+                  <span class="engagement-title">Assistant Secretary — IEEE SLIIT SB</span>
+                  <div class="engagement-sub">
+                    <span>Executive Tenure</span>
+                    <span>•</span>
+                    <span>Oct 2024 – Present</span>
+                    <span class="badge badge-blue">SLIIT SB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="engagement-row-right">
+                <span class="badge badge-green">Verified</span>
+                <span class="engagement-hours-badge">18.0 hrs</span>
+              </div>
+            </label>
+
+            <!-- Item 2 -->
+            <label class="engagement-row checked" data-engagement-id="eng-2" data-event-id="ev-2" data-hours="24.0" data-year="2024/25" data-chapter="RAS">
+              <div class="engagement-row-left">
+                <div class="custom-checkbox">
+                  <span class="material-symbols-outlined">check</span>
+                </div>
+                <input type="checkbox" checked class="sr-only engagement-chk" style="display:none;" data-hours="24.0" data-event-id="ev-2" />
+                <div class="engagement-details">
+                  <span class="engagement-title">RoboFest 2025 — Technical Committee Lead</span>
+                  <div class="engagement-sub">
+                    <span>Flagship Robotics Competition</span>
+                    <span>•</span>
+                    <span>Jan 2025</span>
+                    <span class="badge badge-indigo">IEEE RAS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="engagement-row-right">
+                <span class="badge badge-green">Verified</span>
+                <span class="engagement-hours-badge">24.0 hrs</span>
+              </div>
+            </label>
+
+            <!-- Item 3 -->
+            <label class="engagement-row checked" data-engagement-id="eng-3" data-event-id="ev-3" data-hours="18.0" data-year="2024/25" data-chapter="CS">
+              <div class="engagement-row-left">
+                <div class="custom-checkbox">
+                  <span class="material-symbols-outlined">check</span>
+                </div>
+                <input type="checkbox" checked class="sr-only engagement-chk" style="display:none;" data-hours="18.0" data-event-id="ev-3" />
+                <div class="engagement-details">
+                  <span class="engagement-title">MoraXtreme 9.0 — Logistics Lead</span>
+                  <div class="engagement-sub">
+                    <span>Inter-University Hackathon</span>
+                    <span>•</span>
+                    <span>Dec 2024</span>
+                    <span class="badge badge-teal">IEEE CS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="engagement-row-right">
+                <span class="badge badge-green">Verified</span>
+                <span class="engagement-hours-badge">18.0 hrs</span>
+              </div>
+            </label>
+
+            <!-- Item 4 -->
+            <label class="engagement-row checked" data-engagement-id="eng-4" data-event-id="ev-4" data-hours="8.0" data-year="2024/25" data-chapter="CS">
+              <div class="engagement-row-left">
+                <div class="custom-checkbox">
+                  <span class="material-symbols-outlined">check</span>
+                </div>
+                <input type="checkbox" checked class="sr-only engagement-chk" style="display:none;" data-hours="8.0" data-event-id="ev-4" />
+                <div class="engagement-details">
+                  <span class="engagement-title">TechPulse AI Symposium — Delegate &amp; Session Support</span>
+                  <div class="engagement-sub">
+                    <span>IEEE CS Chapter Event</span>
+                    <span>•</span>
+                    <span>Nov 2024</span>
+                    <span class="badge badge-teal">IEEE CS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="engagement-row-right">
+                <span class="badge badge-green">Verified</span>
+                <span class="engagement-hours-badge">8.0 hrs</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Running Total Metrics Summary Banner -->
+          <div class="summary-banner" id="summaryBanner">
+            <div class="summary-left">
+              <span class="material-symbols-outlined summary-icon">fact_check</span>
+              <span class="summary-counter-text" id="summaryCounter">4 Engagements Selected</span>
+            </div>
+            <div class="summary-right">
+              <span class="summary-hours-val" id="summaryHours">68.0</span>
+              <span class="summary-hours-label">Verified Total Hours</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Letter Configuration ──────────────────── -->
+        <div class="form-stage" id="stage-config">
+          <div class="stage-header">
+            <div class="stage-title-wrap">
+              <span class="stage-number">3</span>
+              <h2 class="stage-title">Letter Configuration &amp; Purpose</h2>
+            </div>
+            <span class="stage-tag">Final Stage</span>
+          </div>
+
+          <div class="config-grid">
+            <!-- Purpose Select -->
+            <div class="form-group">
+              <label class="form-label" for="purposeSelect">Primary Purpose of Letter *</label>
+              <select class="form-select" id="purposeSelect" name="purpose" required>
+                <option value="education" selected>Higher Education / Master's Application</option>
+                <option value="scholarship">Scholarship &amp; Academic Grant Application</option>
+                <option value="visa">Visa &amp; Immigration Documentation</option>
+                <option value="employment">Employment / Industry Verification</option>
+                <option value="award">IEEE Regional Award Nomination</option>
+                <option value="general">General Record &amp; Portfolio Dossier</option>
+                <option value="other">Other / Custom Addressee</option>
+              </select>
+              <span class="form-help">Specifies the endorsement format and salutation standard on the certificate.</span>
+            </div>
+
+            <!-- Custom Addressee Note Textarea -->
+            <div class="form-group">
+              <label class="form-label" for="addresseeNote">Addressee &amp; Specific Endorsement Notes (Optional)</label>
+              <textarea
+                class="form-textarea"
+                id="addresseeNote"
+                name="addresseeNote"
+                rows="3"
+                placeholder="e.g., 'To the Admissions Committee, Department of Computer Science' or note specific leadership achievements you wish highlighted..."
+              ></textarea>
+              <span class="form-help">Provide recipient institution details or special notes for the Chapter Counselor's review.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Footer / Submission Panel -->
+        <div class="form-footer">
+          <div class="sla-badge">
+            <span class="material-symbols-outlined">schedule</span>
+            <span>Counselor sign-off SLA: <strong>24–48 hours</strong></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" id="submitRequestBtn">
+            <span class="material-symbols-outlined" style="font-size: 20px;">send</span>
+            <span class="btn-text">Submit Service Letter Request</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- ── Previous Letters Ledger ───────────────────────────── -->
+      <section class="ledger-card animate-fadeInUp" id="ledgerSection">
+        <div class="ledger-header">
+          <div class="ledger-title-group">
+            <h2 class="ledger-title">
+              <span class="material-symbols-outlined" style="color: var(--color-primary);">receipt_long</span>
+              Dispatched Service Letters &amp; Verification Ledger
+            </h2>
+            <p class="ledger-sub">Official cryptographic audit ledger of requested and issued IEEE service endorsements.</p>
+          </div>
+
+          <!-- Status Filter Tabs -->
+          <div class="ledger-tabs" role="tablist">
+            <button type="button" class="ledger-tab-btn active" data-filter="all">All</button>
+            <button type="button" class="ledger-tab-btn" data-filter="approved">Approved</button>
+            <button type="button" class="ledger-tab-btn" data-filter="pending">Pending</button>
+            <button type="button" class="ledger-tab-btn" data-filter="rejected">Rejected</button>
+          </div>
+        </div>
+
+        <!-- Ledger Entries List -->
+        <div class="ledger-list" id="lettersList">
+          <!-- Sample Approved Letter -->
+          <div class="ledger-item" data-status="approved" data-letter-id="letter-sample-089">
+            <div class="ledger-item-left">
+              <div class="ledger-item-top">
+                <span class="ledger-ref-code">Ref: SL-2024-089</span>
+                <span class="badge badge-green"><span class="material-symbols-outlined" style="font-size: 12px;">verified</span> Approved</span>
+                <span class="ledger-purpose-title">Scholarship &amp; Academic Grant Application</span>
+              </div>
+              <div class="ledger-item-meta">
+                <span class="ledger-item-meta-item">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">calendar_month</span>
+                  <span>Issued 14 Dec 2024</span>
+                </span>
+                <span>•</span>
+                <span class="ledger-item-meta-item">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">timelapse</span>
+                  <span>52.0 Verified Hours</span>
+                </span>
+                <span>•</span>
+                <span>Scope: Specific Academic Year (AY 2023/24)</span>
+              </div>
+            </div>
+            <div class="ledger-item-right">
+              <button type="button" class="btn btn-sm btn-primary download-btn" data-letter-id="letter-sample-089" data-ref="SL-2024-089">
+                <span class="material-symbols-outlined" style="font-size: 16px;">download</span> Download PDF
+              </button>
+              <button type="button" class="btn btn-sm btn-secondary view-btn" data-letter-id="letter-sample-089">
+                <span class="material-symbols-outlined" style="font-size: 16px;">visibility</span> Details
+              </button>
+            </div>
+          </div>
+
+          <!-- Sample Pending Letter -->
+          <div class="ledger-item" data-status="pending" data-letter-id="letter-sample-001">
+            <div class="ledger-item-left">
+              <div class="ledger-item-top">
+                <span class="ledger-ref-code">Ref: SL-2025-001</span>
+                <span class="badge badge-orange"><span class="material-symbols-outlined" style="font-size: 12px;">pending</span> In Review</span>
+                <span class="ledger-purpose-title">Higher Education / Master's Application</span>
+              </div>
+              <div class="ledger-item-meta">
+                <span class="ledger-item-meta-item">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                  <span>Submitted 2 days ago</span>
+                </span>
+                <span>•</span>
+                <span class="ledger-item-meta-item">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">timelapse</span>
+                  <span>68.0 Verified Hours</span>
+                </span>
+                <span>•</span>
+                <span>Scope: Comprehensive Cumulative</span>
+              </div>
+            </div>
+            <div class="ledger-item-right">
+              <button type="button" class="btn btn-sm btn-secondary view-btn" data-letter-id="letter-sample-001">
+                <span class="material-symbols-outlined" style="font-size: 16px;">visibility</span> View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State (Hidden unless filter matches nothing) -->
+        <div class="empty-state hidden" id="ledgerEmptyState" style="padding: var(--space-8) var(--space-4); text-align: center;">
+          <span class="material-symbols-outlined" style="font-size: 40px; color: var(--outline-variant); margin-bottom: var(--space-2);">inventory_2</span>
+          <div style="font-size: var(--text-body-sm); font-weight: var(--weight-semibold); color: var(--text-primary);">No Service Letters Found</div>
+          <div style="font-size: var(--text-caption-1); color: var(--text-secondary); margin-top: 2px;">No historical service letters match the selected filter.</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Letter Details Modal ──────────────────────────────────── -->
+  <div class="modal-backdrop hidden" id="letterDetailsModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="modalLetterRef">Service Letter Details</div>
+          <div class="modal-subtitle" id="modalLetterDate">Reference Code &amp; Timeline</div>
+        </div>
+        <button type="button" class="modal-close" data-close-modal aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-detail-row">
+          <span class="modal-detail-label">Status</span>
+          <span class="modal-detail-val" id="modalLetterStatus">Pending</span>
+        </div>
+        <div class="modal-detail-row">
+          <span class="modal-detail-label">Letter Scope</span>
+          <span class="modal-detail-val" id="modalLetterScope">Comprehensive Cumulative</span>
+        </div>
+        <div class="modal-detail-row">
+          <span class="modal-detail-label">Primary Purpose</span>
+          <span class="modal-detail-val" id="modalLetterPurpose">Master's Application</span>
+        </div>
+        <div class="modal-detail-row">
+          <span class="modal-detail-label">Total Verified Hours</span>
+          <span class="modal-detail-val" id="modalLetterHours">68.0 hrs</span>
+        </div>
+        <div class="modal-detail-row">
+          <span class="modal-detail-label">Engagements Included</span>
+          <span class="modal-detail-val" id="modalLetterCount">4 events</span>
+        </div>
+        <div class="modal-detail-row" style="flex-direction: column; gap: 4px;">
+          <span class="modal-detail-label">Addressee Notes</span>
+          <span class="modal-detail-val" id="modalLetterNote" style="text-align: left; font-size: 13px; font-weight: normal; color: var(--text-secondary);">
+            None provided
+          </span>
+        </div>
+
+        <div style="margin-top: var(--space-3);">
+          <div style="font-size: var(--text-label-sm); font-weight: var(--weight-bold); color: var(--text-primary); text-transform: uppercase; margin-bottom: var(--space-2);">
+            Signing Officers &amp; Counselor Sign-Off
+          </div>
+          <div style="background: var(--bg-surface-secondary); border-radius: var(--radius-sm); padding: var(--space-3); font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+            <div><strong>Advisor:</strong> Prof. Pradeep Abeygunawardhana (Chapter Counselor)</div>
+            <div><strong>Chairperson:</strong> IEEE Student Branch of SLIIT</div>
+            <div style="margin-top: 4px; color: var(--text-tertiary);">Cryptographically sealed via IEEE SLIIT Volunteer Management System</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-close-modal>Close</button>
+        <button type="button" class="btn btn-primary" id="modalDownloadBtn" style="display: none;">
+          <span class="material-symbols-outlined" style="font-size: 16px;">download</span> Download PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main Application Module ──────────────────────────────── -->
+  <script type="module">
+    import { requireAuth, signOut } from '/src/js/auth.js';
+    import { db } from '/src/js/firebase-config.js';
+    import {
+      showToast,
+      formatDate,
+      formatHours,
+      capitalize,
+      initials,
+      avatarColor,
+      statusBadgeClass,
+      roleBadgeClass,
+      setLoading,
+      openModal,
+      closeModal,
+      setupModalClose
+    } from '/src/js/utils.js';
+    import { buildServiceLetterPdf, downloadPdf } from '/src/js/pdf-service.js';
+    import {
+      collection,
+      query,
+      where,
+      orderBy,
+      getDocs,
+      getDoc,
+      doc,
+      addDoc,
+      serverTimestamp
+    } from 'firebase/firestore';
+
+    // ── Global State ──────────────────────────────────────────
+    let currentUser = null;
+    let currentUserProfile = null;
+    let userEngagements = [];
+    let allEventsMap = {};
+    let serviceLettersList = [];
+    let activeScope = 'cumulative';
+    let currentFilter = 'all';
+
+    // Default sample engagements (used if Firestore has no records)
+    const defaultEngagements = [
+      {
+        id: 'eng-1',
+        eventId: 'ev-1',
+        title: 'Assistant Secretary — IEEE SLIIT SB',
+        role: 'volunteer',
+        roleDisplay: 'Assistant Secretary',
+        category: 'Executive Tenure',
+        dateDisplay: 'Oct 2024 – Present',
+        verifiedHours: 18.0,
+        chapterCode: 'STBD4028',
+        chapterName: 'SLIIT SB',
+        academicYear: '2024/25'
+      },
+      {
+        id: 'eng-2',
+        eventId: 'ev-2',
+        title: 'RoboFest 2025 — Technical Committee Lead',
+        role: 'organizer',
+        roleDisplay: 'Technical Committee Lead',
+        category: 'Flagship Robotics Competition',
+        dateDisplay: 'Jan 2025',
+        verifiedHours: 24.0,
+        chapterCode: 'RAS',
+        chapterName: 'IEEE RAS',
+        academicYear: '2024/25'
+      },
+      {
+        id: 'eng-3',
+        eventId: 'ev-3',
+        title: 'MoraXtreme 9.0 — Logistics Lead',
+        role: 'organizer',
+        roleDisplay: 'Logistics Lead',
+        category: 'Inter-University Hackathon',
+        dateDisplay: 'Dec 2024',
+        verifiedHours: 18.0,
+        chapterCode: 'CS',
+        chapterName: 'IEEE CS',
+        academicYear: '2024/25'
+      },
+      {
+        id: 'eng-4',
+        eventId: 'ev-4',
+        title: 'TechPulse AI Symposium — Delegate & Session Support',
+        role: 'delegate',
+        roleDisplay: 'Delegate & Support',
+        category: 'IEEE CS Chapter Event',
+        dateDisplay: 'Nov 2024',
+        verifiedHours: 8.0,
+        chapterCode: 'CS',
+        chapterName: 'IEEE CS',
+        academicYear: '2024/25'
+      }
+    ];
+
+    // Default sample service letters
+    const defaultLetters = [
+      {
+        id: 'letter-sample-089',
+        referenceCode: 'SL-2024-089',
+        status: 'approved',
+        purpose: 'scholarship',
+        purposeLabel: 'Scholarship & Academic Grant Application',
+        scope: 'year',
+        scopeLabel: 'Specific Academic Year (AY 2023/24)',
+        academicYear: '2023/24',
+        totalHours: 52.0,
+        engagementsCount: 3,
+        addresseeNote: 'To the Scholarship Board of Trustees, Dean of Engineering Faculty.',
+        requestedAt: new Date('2024-12-10T10:00:00'),
+        approvedAt: new Date('2024-12-14T14:30:00'),
+        eventIds: ['ev-1', 'ev-2', 'ev-3']
+      },
+      {
+        id: 'letter-sample-001',
+        referenceCode: 'SL-2025-001',
+        status: 'pending',
+        purpose: 'education',
+        purposeLabel: 'Higher Education / Master\'s Application',
+        scope: 'cumulative',
+        scopeLabel: 'Comprehensive Cumulative',
+        academicYear: '2024/25',
+        totalHours: 68.0,
+        engagementsCount: 4,
+        addresseeNote: 'Addressed to Graduate Admissions Committee, MSc in Advanced Computer Science.',
+        requestedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+        approvedAt: null,
+        eventIds: ['ev-1', 'ev-2', 'ev-3', 'ev-4']
+      }
+    ];
+
+    // ── Application Initialization ────────────────────────────
+    async function init() {
+      setupModalClose('letterDetailsModal');
+
+      try {
+        const { user, profile } = await requireAuth('volunteer');
+        currentUser = user;
+        currentUserProfile = profile;
+
+        updateSidebarUserInfo(profile);
+      } catch (err) {
+        console.warn('Auth check proceeded in preview mode:', err);
+        currentUser = { uid: 'preview-volunteer-id', displayName: 'Volunteer Member', email: 'volunteer@sliit.lk' };
+        currentUserProfile = { name: 'Volunteer Member', role: 'volunteer', totalHours: 68 };
+        updateSidebarUserInfo(currentUserProfile);
+      }
+
+      // Load data from Firebase
+      await Promise.allSettled([
+        loadEngagements(),
+        loadServiceLetters()
+      ]);
+
+      // Wire user interactions
+      bindScopeCards();
+      bindCheckboxInteractions();
+      bindFilterTabs();
+      bindFormSubmit();
+      bindDownloadEvents();
+
+      // Recalculate metrics on start
+      updateSummaryMetrics();
+    }
+
+    // ── UI Updates ────────────────────────────────────────────
+    function updateSidebarUserInfo(profile) {
+      if (!profile) return;
+      const nameEl = document.getElementById('user-name');
+      const roleEl = document.getElementById('user-role');
+      const avatarEl = document.getElementById('user-avatar');
+      const topbarAvatarEl = document.getElementById('topbar-avatar');
+      const dropdownName = document.getElementById('dropdown-user-name');
+
+      const displayName = profile.name || currentUser?.displayName || 'Volunteer';
+      const roleName = capitalize(profile.role || 'volunteer');
+
+      if (nameEl) nameEl.textContent = displayName;
+      if (roleEl) roleEl.textContent = roleName;
+      if (dropdownName) dropdownName.textContent = displayName;
+
+      if (avatarEl) {
+        if (profile.profilePicUrl) {
+          avatarEl.innerHTML = `<img src="${profile.profilePicUrl}" alt="${displayName}">`;
+        } else {
+          avatarEl.textContent = initials(displayName);
+          avatarEl.style.background = avatarColor(displayName);
+        }
+      }
+
+      if (topbarAvatarEl) {
+        if (profile.profilePicUrl) {
+          topbarAvatarEl.innerHTML = `<img src="${profile.profilePicUrl}" alt="${displayName}">`;
+        } else {
+          topbarAvatarEl.textContent = initials(displayName);
+          topbarAvatarEl.style.background = avatarColor(displayName);
+        }
+      }
+
+      // Update sidebar standing
+      const hrs = profile.totalHours || 68;
+      const targetHours = 80;
+      const pct = Math.min(Math.round((hrs / targetHours) * 100), 100);
+      const fill = document.getElementById('sidebar-progress-fill');
+      const hrsLabel = document.getElementById('sidebar-hours-label');
+      if (fill) fill.style.width = `${pct}%`;
+      if (hrsLabel) hrsLabel.textContent = `${hrs} of ${targetHours} Service Hours Logged`;
+    }
+
+    // ── Data Loading: Engagements ─────────────────────────────
+    async function loadEngagements() {
+      if (!currentUser?.uid) return;
+
+      try {
+        const q = query(
+          collection(db, 'engagements'),
+          where('userId', '==', currentUser.uid),
+          where('status', '==', 'completed')
+        );
+        const snap = await getDocs(q);
+
+        if (!snap.empty) {
+          const rawEngagements = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+          // Fetch event details
+          const eventIds = [...new Set(rawEngagements.map(e => e.eventId).filter(Boolean))];
+          await Promise.all(
+            eventIds.map(async eid => {
+              if (!allEventsMap[eid]) {
+                const evSnap = await getDoc(doc(db, 'events', eid));
+                if (evSnap.exists()) {
+                  allEventsMap[eid] = { id: evSnap.id, ...evSnap.data() };
+                }
+              }
+            })
+          );
+
+          userEngagements = rawEngagements.map(eng => {
+            const ev = allEventsMap[eng.eventId] || {};
+            return {
+              id: eng.id,
+              eventId: eng.eventId,
+              title: ev.title || 'IEEE Event Engagement',
+              role: eng.role || 'volunteer',
+              roleDisplay: capitalize(eng.role || 'Volunteer'),
+              category: ev.category || 'IEEE Activity',
+              dateDisplay: formatDate(ev.startDate || eng.completedAt),
+              verifiedHours: parseFloat(eng.verifiedHours || 0),
+              chapterCode: ev.chapterCode || 'STBD4028',
+              chapterName: ev.chapterName || 'IEEE SLIIT',
+              academicYear: ev.academicYear || '2024/25'
+            };
+          });
+
+          renderEngagementsList(userEngagements);
+        } else {
+          // If no completed records in Firestore yet, render the verified default records
+          userEngagements = defaultEngagements;
+          renderEngagementsList(userEngagements);
+        }
+      } catch (err) {
+        console.warn('Error fetching Firestore engagements, using defaults:', err);
+        userEngagements = defaultEngagements;
+        renderEngagementsList(userEngagements);
+      }
+    }
+
+    function renderEngagementsList(engagements) {
+      const listEl = document.getElementById('engagementList');
+      if (!listEl) return;
+
+      if (!engagements || engagements.length === 0) {
+        listEl.innerHTML = `
+          <div style="padding: var(--space-6); text-align: center; color: var(--text-tertiary); background: var(--bg-surface-secondary); border-radius: var(--radius-md);">
+            <span class="material-symbols-outlined" style="font-size: 32px; margin-bottom: 4px;">playlist_remove</span>
+            <div style="font-size: var(--text-body-sm); font-weight: 600;">No Verified Engagements Found</div>
+            <div style="font-size: var(--text-caption-1);">Complete volunteer roles in upcoming events to build your verification record.</div>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = engagements.map(item => `
+        <label class="engagement-row checked"
+          data-engagement-id="${item.id}"
+          data-event-id="${item.eventId || item.id}"
+          data-hours="${item.verifiedHours}"
+          data-year="${item.academicYear || '2024/25'}"
+          data-chapter="${item.chapterCode || 'STBD4028'}"
+        >
+          <div class="engagement-row-left">
+            <div class="custom-checkbox">
+              <span class="material-symbols-outlined">check</span>
+            </div>
+            <input type="checkbox" checked class="sr-only engagement-chk" style="display:none;"
+              data-hours="${item.verifiedHours}"
+              data-event-id="${item.eventId || item.id}"
+              data-engagement-id="${item.id}"
+            />
+            <div class="engagement-details">
+              <span class="engagement-title">${escapeHTML(item.title)}</span>
+              <div class="engagement-sub">
+                <span>${escapeHTML(item.category || 'Volunteer Tenure')}</span>
+                <span>•</span>
+                <span>${escapeHTML(item.dateDisplay || 'Verified')}</span>
+                <span class="badge ${roleBadgeClass(item.role)}">${escapeHTML(item.chapterName || item.roleDisplay || 'IEEE')}</span>
+              </div>
+            </div>
+          </div>
+          <div class="engagement-row-right">
+            <span class="badge badge-green">Verified</span>
+            <span class="engagement-hours-badge">${item.verifiedHours.toFixed(1)} hrs</span>
+          </div>
+        </label>
+      `).join('');
+
+      bindCheckboxInteractions();
+      updateSummaryMetrics();
+    }
+
+    // ── Data Loading: Service Letters ─────────────────────────
+    async function loadServiceLetters() {
+      if (!currentUser?.uid) {
+        serviceLettersList = defaultLetters;
+        renderLettersLedger(serviceLettersList);
+        return;
+      }
+
+      try {
+        const q = query(
+          collection(db, 'serviceLetters'),
+          where('userId', '==', currentUser.uid)
+        );
+        const snap = await getDocs(q);
+
+        if (!snap.empty) {
+          const fetchedLetters = snap.docs.map(d => ({
+            id: d.id,
+            ...d.data(),
+            requestedAt: d.data().requestedAt?.toDate ? d.data().requestedAt.toDate() : (d.data().createdAt?.toDate ? d.data().createdAt.toDate() : new Date()),
+            approvedAt: d.data().approvedAt?.toDate ? d.data().approvedAt.toDate() : null
+          }));
+
+          // Sort by date descending
+          fetchedLetters.sort((a, b) => b.requestedAt - a.requestedAt);
+          serviceLettersList = fetchedLetters;
+        } else {
+          serviceLettersList = defaultLetters;
+        }
+
+        renderLettersLedger(serviceLettersList);
+        updateDownloadAlertBanner();
+      } catch (err) {
+        console.warn('Error loading service letters, using defaults:', err);
+        serviceLettersList = defaultLetters;
+        renderLettersLedger(serviceLettersList);
+        updateDownloadAlertBanner();
+      }
+    }
+
+    function renderLettersLedger(letters) {
+      const container = document.getElementById('lettersList');
+      const emptyState = document.getElementById('ledgerEmptyState');
+      if (!container) return;
+
+      const filtered = letters.filter(item => {
+        if (currentFilter === 'all') return true;
+        return item.status === currentFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      container.innerHTML = filtered.map(item => {
+        const refCode = item.referenceCode || `Ref: VMS-${item.id.slice(0, 8).toUpperCase()}`;
+        const statusBadge = getStatusBadgeHTML(item.status);
+        const isApproved = item.status === 'approved';
+        const dateStr = isApproved && item.approvedAt
+          ? `Approved ${formatDate(item.approvedAt)}`
+          : `Submitted ${formatDate(item.requestedAt)}`;
+
+        const downloadButton = isApproved
+          ? `<button type="button" class="btn btn-sm btn-primary download-btn" data-letter-id="${item.id}" data-ref="${refCode}">
+              <span class="material-symbols-outlined" style="font-size: 16px;">download</span> Download PDF
+            </button>`
+          : '';
+
+        return `
+          <div class="ledger-item" data-status="${item.status}" data-letter-id="${item.id}">
+            <div class="ledger-item-left">
+              <div class="ledger-item-top">
+                <span class="ledger-ref-code">${escapeHTML(refCode)}</span>
+                ${statusBadge}
+                <span class="ledger-purpose-title">${escapeHTML(item.purposeLabel || capitalize(item.purpose) || 'Service Letter')}</span>
+              </div>
+              <div class="ledger-item-meta">
+                <span class="ledger-item-meta-item">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">calendar_month</span>
+                  <span>${dateStr}</span>
+                </span>
+                <span>•</span>
+                <span class="ledger-item-meta-item">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">timelapse</span>
+                  <span>${(item.totalHours || 0).toFixed(1)} Verified Hours</span>
+                </span>
+                <span>•</span>
+                <span>Scope: ${escapeHTML(item.scopeLabel || capitalize(item.scope) || 'Cumulative')}</span>
+              </div>
+            </div>
+            <div class="ledger-item-right">
+              ${downloadButton}
+              <button type="button" class="btn btn-sm btn-secondary view-btn" data-letter-id="${item.id}">
+                <span class="material-symbols-outlined" style="font-size: 16px;">visibility</span> Details
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      bindDownloadEvents();
+    }
+
+    function getStatusBadgeHTML(status) {
+      switch (status) {
+        case 'approved':
+          return `<span class="badge badge-green"><span class="material-symbols-outlined" style="font-size: 12px;">verified</span> Approved</span>`;
+        case 'rejected':
+          return `<span class="badge badge-red"><span class="material-symbols-outlined" style="font-size: 12px;">cancel</span> Rejected</span>`;
+        default:
+          return `<span class="badge badge-orange"><span class="material-symbols-outlined" style="font-size: 12px;">pending</span> In Review</span>`;
+      }
+    }
+
+    function updateDownloadAlertBanner() {
+      const banner = document.getElementById('downloadAlertBanner');
+      const refEl = document.getElementById('readyLetterRef');
+      const downloadBtn = document.getElementById('downloadBannerBtn');
+      if (!banner) return;
+
+      const latestApproved = serviceLettersList.find(l => l.status === 'approved');
+      if (latestApproved) {
+        banner.style.display = 'flex';
+        if (refEl) refEl.textContent = `#${latestApproved.referenceCode || latestApproved.id.slice(0, 8)}`;
+        if (downloadBtn) {
+          downloadBtn.onclick = () => handleDownloadLetter(latestApproved.id);
+        }
+      } else {
+        banner.style.display = 'none';
+      }
+    }
+
+    // ── Interactive Logic: Scope Cards ────────────────────────
+    function bindScopeCards() {
+      const cards = document.querySelectorAll('.scope-card');
+      const yearSelect = document.getElementById('scopeYearSelect');
+      const chapterSelect = document.getElementById('scopeChapterSelect');
+
+      cards.forEach(card => {
+        card.addEventListener('click', (e) => {
+          // If clicked inside the select dropdown itself, do not re-trigger card radio logic
+          if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return;
+
+          cards.forEach(c => {
+            c.classList.remove('active');
+            const radio = c.querySelector('input[type="radio"]');
+            if (radio) radio.checked = false;
+            const ind = c.querySelector('.scope-radio-icon');
+            if (ind) ind.textContent = 'radio_button_unchecked';
+          });
+
+          card.classList.add('active');
+          const radio = card.querySelector('input[type="radio"]');
+          if (radio) radio.checked = true;
+          const ind = card.querySelector('.scope-radio-icon');
+          if (ind) ind.textContent = 'check_circle';
+
+          activeScope = card.getAttribute('data-scope');
+          filterEngagementsByScope();
+        });
+      });
+
+      if (yearSelect) {
+        yearSelect.addEventListener('change', filterEngagementsByScope);
+      }
+      if (chapterSelect) {
+        chapterSelect.addEventListener('change', filterEngagementsByScope);
+      }
+    }
+
+    function filterEngagementsByScope() {
+      const rows = document.querySelectorAll('.engagement-row');
+      const yearSelect = document.getElementById('scopeYearSelect');
+      const chapterSelect = document.getElementById('scopeChapterSelect');
+
+      const selectedYear = yearSelect?.value || '2024/25';
+      const selectedChapter = chapterSelect?.value || 'all';
+
+      rows.forEach(row => {
+        let visible = true;
+        const rowYear = row.getAttribute('data-year');
+        const rowChapter = row.getAttribute('data-chapter');
+
+        if (activeScope === 'year') {
+          if (rowYear !== selectedYear) visible = false;
+        } else if (activeScope === 'event') {
+          if (selectedChapter !== 'all' && rowChapter !== selectedChapter) visible = false;
+        }
+
+        row.style.display = visible ? 'flex' : 'none';
+      });
+
+      updateSummaryMetrics();
+    }
+
+    // ── Interactive Logic: Checkboxes & Summary Metric ─────────
+    function bindCheckboxInteractions() {
+      const rows = document.querySelectorAll('.engagement-row');
+      const toggleAllBtn = document.getElementById('toggleAllBtn');
+      const searchInput = document.getElementById('engagementSearch');
+
+      rows.forEach(row => {
+        row.onclick = function(e) {
+          // Prevent double trigger if target is input
+          if (e.target.tagName === 'INPUT') return;
+
+          const chk = row.querySelector('.engagement-chk');
+          if (!chk) return;
+
+          chk.checked = !chk.checked;
+          row.classList.toggle('checked', chk.checked);
+          updateSummaryMetrics();
+        };
+
+        const chk = row.querySelector('.engagement-chk');
+        if (chk) {
+          chk.onchange = function() {
+            row.classList.toggle('checked', chk.checked);
+            updateSummaryMetrics();
+          };
+        }
+      });
+
+      if (toggleAllBtn) {
+        toggleAllBtn.onclick = function() {
+          const visibleRows = Array.from(document.querySelectorAll('.engagement-row')).filter(r => r.style.display !== 'none');
+          const anyUnchecked = visibleRows.some(r => {
+            const c = r.querySelector('.engagement-chk');
+            return c && !c.checked;
+          });
+
+          visibleRows.forEach(r => {
+            const c = r.querySelector('.engagement-chk');
+            if (c) {
+              c.checked = anyUnchecked;
+              r.classList.toggle('checked', anyUnchecked);
+            }
+          });
+
+          updateSummaryMetrics();
+        };
+      }
+
+      if (searchInput) {
+        searchInput.oninput = function() {
+          const term = searchInput.value.toLowerCase().trim();
+          const rows = document.querySelectorAll('.engagement-row');
+          let visibleCount = 0;
+
+          rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            const matches = !term || text.includes(term);
+            row.style.display = matches ? 'flex' : 'none';
+            if (matches) visibleCount++;
+          });
+
+          const countText = document.getElementById('visibleCountText');
+          if (countText) {
+            countText.textContent = `Showing ${visibleCount} verified engagement${visibleCount === 1 ? '' : 's'}`;
+          }
+          updateSummaryMetrics();
+        };
+      }
+    }
+
+    function updateSummaryMetrics() {
+      const checkboxes = Array.from(document.querySelectorAll('.engagement-chk'));
+      const counterEl = document.getElementById('summaryCounter');
+      const hoursEl = document.getElementById('summaryHours');
+      const toggleText = document.getElementById('toggleAllText');
+
+      let totalHours = 0;
+      let selectedCount = 0;
+      let visibleCount = 0;
+
+      checkboxes.forEach(chk => {
+        const row = chk.closest('.engagement-row');
+        if (row && row.style.display !== 'none') {
+          visibleCount++;
+          if (chk.checked) {
+            selectedCount++;
+            const hrs = parseFloat(chk.getAttribute('data-hours') || 0);
+            totalHours += hrs;
+          }
+        }
+      });
+
+      if (counterEl) {
+        counterEl.textContent = `${selectedCount} Engagement${selectedCount === 1 ? '' : 's'} Selected`;
+      }
+      if (hoursEl) {
+        hoursEl.textContent = totalHours.toFixed(1);
+      }
+      if (toggleText) {
+        toggleText.textContent = (selectedCount > 0 && selectedCount === visibleCount) ? 'Deselect All' : 'Select All';
+      }
+    }
+
+    // ── Interactive Logic: Filter Tabs ─────────────────────────
+    function bindFilterTabs() {
+      const tabs = document.querySelectorAll('.ledger-tab-btn');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          currentFilter = tab.getAttribute('data-filter') || 'all';
+          renderLettersLedger(serviceLettersList);
+        });
+      });
+    }
+
+    // ── Interactive Logic: Form Submission ─────────────────────
+    function bindFormSubmit() {
+      const form = document.getElementById('letterRequestForm');
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // 1. Gather selected engagements
+        const checkedBoxes = Array.from(document.querySelectorAll('.engagement-chk')).filter(c => {
+          const row = c.closest('.engagement-row');
+          return c.checked && row && row.style.display !== 'none';
+        });
+
+        if (checkedBoxes.length === 0) {
+          showToast('Please select at least one verified engagement to include in your service letter.', 'warning');
+          return;
+        }
+
+        const selectedEventIds = checkedBoxes.map(c => c.getAttribute('data-event-id')).filter(Boolean);
+        const selectedEngagementIds = checkedBoxes.map(c => c.getAttribute('data-engagement-id')).filter(Boolean);
+        const totalHours = checkedBoxes.reduce((sum, c) => sum + parseFloat(c.getAttribute('data-hours') || 0), 0);
+
+        // 2. Gather form inputs
+        const purposeSelect = document.getElementById('purposeSelect');
+        const purposeVal = purposeSelect?.value || 'education';
+        const purposeLabel = purposeSelect?.options[purposeSelect.selectedIndex]?.text || 'General Service Letter';
+        const addresseeNote = document.getElementById('addresseeNote')?.value.trim() || '';
+
+        const yearSelect = document.getElementById('scopeYearSelect');
+        const chapterSelect = document.getElementById('scopeChapterSelect');
+        const scopeYear = yearSelect?.value || '2024/25';
+        const scopeChapter = chapterSelect?.value || 'all';
+
+        let scopeLabel = 'Comprehensive Cumulative';
+        if (activeScope === 'year') scopeLabel = `Specific Academic Year (AY ${scopeYear})`;
+        if (activeScope === 'event') scopeLabel = `Chapter / Event (${scopeChapter})`;
+
+        const submitBtn = document.getElementById('submitRequestBtn');
+        setLoading(submitBtn, true);
+
+        const newRefCode = `SL-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 900) + 100).padStart(3, '0')}`;
+
+        const newLetterData = {
+          userId: currentUser?.uid || 'preview-user',
+          userName: currentUserProfile?.name || currentUser?.displayName || 'Volunteer Member',
+          userEmail: currentUser?.email || 'volunteer@sliit.lk',
+          referenceCode: newRefCode,
+          status: 'pending',
+          scope: activeScope,
+          scopeLabel: scopeLabel,
+          academicYear: scopeYear,
+          chapter: scopeChapter,
+          purpose: purposeVal,
+          purposeLabel: purposeLabel,
+          addresseeNote: addresseeNote,
+          totalHours: totalHours,
+          engagementsCount: checkedBoxes.length,
+          eventIds: selectedEventIds,
+          engagementIds: selectedEngagementIds,
+          requestedAt: new Date(),
+          createdAt: serverTimestamp()
+        };
+
+        try {
+          if (currentUser?.uid && currentUser.uid !== 'preview-volunteer-id') {
+            const docRef = await addDoc(collection(db, 'serviceLetters'), newLetterData);
+            newLetterData.id = docRef.id;
+          } else {
+            newLetterData.id = `local-${Date.now()}`;
+          }
+
+          // Prepend to local ledger
+          serviceLettersList.unshift(newLetterData);
+          renderLettersLedger(serviceLettersList);
+
+          showToast(`Request ${newRefCode} submitted successfully! Queued for Chapter Counselor sign-off.`, 'success', 'Letter Queued');
+
+          // Reset addressee notes
+          if (document.getElementById('addresseeNote')) {
+            document.getElementById('addresseeNote').value = '';
+          }
+
+          // Scroll gracefully to ledger
+          const ledgerEl = document.getElementById('ledgerSection');
+          if (ledgerEl) {
+            ledgerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } catch (err) {
+          console.error('Error submitting letter request:', err);
+          showToast('Failed to queue request. Please try again.', 'error');
+        } finally {
+          setLoading(submitBtn, false);
+        }
+      });
+    }
+
+    // ── Interactive Logic: Details & Download ──────────────────
+    function bindDownloadEvents() {
+      // Download buttons
+      document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          const letterId = btn.getAttribute('data-letter-id');
+          handleDownloadLetter(letterId, btn);
+        };
+      });
+
+      // View details buttons
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          const letterId = btn.getAttribute('data-letter-id');
+          handleViewDetails(letterId);
+        };
+      });
+    }
+
+    async function handleDownloadLetter(letterId, btn = null) {
+      const letter = serviceLettersList.find(l => l.id === letterId);
+      if (!letter) {
+        showToast('Service letter record not found.', 'error');
+        return;
+      }
+
+      // If remote PDF URL is present, open directly
+      if (letter.pdfUrl) {
+        window.open(letter.pdfUrl, '_blank');
+        return;
+      }
+
+      if (btn) setLoading(btn, true);
+      showToast(`Generating cryptographic service letter ${letter.referenceCode || ''}...`, 'info');
+
+      try {
+        // Collect engagements for this letter
+        let letterEngagements = userEngagements.filter(e =>
+          (letter.eventIds || []).includes(e.eventId || e.id)
+        );
+
+        if (letterEngagements.length === 0) {
+          letterEngagements = defaultEngagements.slice(0, letter.engagementsCount || 3);
+        }
+
+        // Collect events
+        const eventsList = letterEngagements.map(eng => ({
+          id: eng.eventId || eng.id,
+          title: eng.title,
+          startDate: new Date('2024-10-01'),
+          endDate: new Date('2025-01-31')
+        }));
+
+        const pdfBytes = await buildServiceLetterPdf({
+          letterId: letter.referenceCode || letter.id,
+          user: {
+            name: currentUserProfile?.name || currentUser?.displayName || 'Volunteer Member',
+            email: currentUser?.email || 'volunteer@sliit.lk'
+          },
+          engagements: letterEngagements,
+          events: eventsList,
+          chapter: { name: 'IEEE Student Branch of SLIIT' }
+        });
+
+        const safeRef = (letter.referenceCode || 'Service_Letter').replace(/[^a-zA-Z0-9_-]/g, '_');
+        downloadPdf(pdfBytes, `IEEE_Service_Letter_${safeRef}.pdf`);
+        showToast(`Downloaded certificate ${letter.referenceCode}!`, 'success');
+      } catch (err) {
+        console.error('PDF generation error:', err);
+        showToast('Failed to generate PDF letter. Please try again.', 'error');
+      } finally {
+        if (btn) setLoading(btn, false);
+      }
+    }
+
+    function handleViewDetails(letterId) {
+      const letter = serviceLettersList.find(l => l.id === letterId);
+      if (!letter) return;
+
+      const modalRef = document.getElementById('modalLetterRef');
+      const modalDate = document.getElementById('modalLetterDate');
+      const modalStatus = document.getElementById('modalLetterStatus');
+      const modalScope = document.getElementById('modalLetterScope');
+      const modalPurpose = document.getElementById('modalLetterPurpose');
+      const modalHours = document.getElementById('modalLetterHours');
+      const modalCount = document.getElementById('modalLetterCount');
+      const modalNote = document.getElementById('modalLetterNote');
+      const downloadBtn = document.getElementById('modalDownloadBtn');
+
+      if (modalRef) modalRef.textContent = `Service Letter ${letter.referenceCode || letter.id}`;
+      if (modalDate) modalDate.textContent = `Submitted on ${formatDate(letter.requestedAt)}`;
+      if (modalStatus) {
+        modalStatus.innerHTML = getStatusBadgeHTML(letter.status);
+      }
+      if (modalScope) modalScope.textContent = letter.scopeLabel || capitalize(letter.scope) || 'Cumulative';
+      if (modalPurpose) modalPurpose.textContent = letter.purposeLabel || capitalize(letter.purpose);
+      if (modalHours) modalHours.textContent = `${(letter.totalHours || 0).toFixed(1)} verified hours`;
+      if (modalCount) modalCount.textContent = `${letter.engagementsCount || (letter.eventIds?.length || 0)} verified activities`;
+      if (modalNote) modalNote.textContent = letter.addresseeNote || 'None provided (Standard IEEE branch endorsement)';
+
+      if (downloadBtn) {
+        if (letter.status === 'approved') {
+          downloadBtn.style.display = 'inline-flex';
+          downloadBtn.onclick = () => {
+            closeModal('letterDetailsModal');
+            handleDownloadLetter(letter.id);
+          };
+        } else {
+          downloadBtn.style.display = 'none';
+        }
+      }
+
+      openModal('letterDetailsModal');
+    }
+
+    // ── Global Window Helpers (for template callbacks) ────────
+    window.toggleSidebar = function() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar) sidebar.classList.toggle('open');
+      if (backdrop) backdrop.classList.toggle('active');
+    };
+
+    window.toggleUserMenu = function() {
+      const menu = document.getElementById('user-dropdown');
+      if (menu) menu.classList.toggle('hidden');
+    };
+
+    window.handleSignOut = async function() {
+      try {
+        await signOut();
+      } catch (e) {
+        window.location.href = '/login.html';
+      }
+    };
+
+    // Close user menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const userMenu = document.getElementById('user-dropdown');
+      const btn = document.getElementById('btn-user-menu');
+      if (userMenu && !userMenu.classList.contains('hidden')) {
+        if (!userMenu.contains(e.target) && !btn?.contains(e.target)) {
+          userMenu.classList.add('hidden');
+        }
+      }
+    });
+
+    function escapeHTML(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Bootstrap app
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#3631b4", "background": "#faf9fe", "on-surface": "#1a1b1f", "surface-bright": "#faf9fe", "surface-container": "#eeedf3", "inverse-surface": "#2f3034", "surface-variant": "#e3e2e7", "on-background": "#1a1b1f", "on-secondary": "#ffffff", "surface-tint": "#005bc1", "surface": "#faf9fe", "secondary-fixed-dim": "#c2c1ff", "secondary-fixed": "#e2dfff", "outline-variant": "#c1c6d7", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-fixed-dim": "#53e16f", "on-tertiary-fixed": "#002107", "surface-container-high": "#e9e7ed", "on-secondary-fixed": "#0c006a", "on-primary-container": "#fefcff", "primary-fixed-dim": "#adc6ff", "inverse-primary": "#adc6ff", "on-tertiary": "#ffffff", "primary-fixed": "#d8e2ff", "surface-container-highest": "#e3e2e7", "secondary-container": "#6664e4", "surface-container-lowest": "#ffffff", "primary": "#0058bc", "surface-container-low": "#f4f3f8", "on-tertiary-container": "#f7fff2", "on-error-container": "#93000a", "on-secondary-container": "#fffbff", "primary-container": "#0070eb", "tertiary-fixed": "#72fe88", "secondary": "#4c4aca", "on-primary-fixed": "#001a41", "error-container": "#ffdad6", "surface-dim": "#dad9df", "tertiary-container": "#008733", "outline": "#717786", "tertiary": "#006b27", "on-surface-variant": "#414755", "error": "#ba1a1a", "on-primary-fixed-variant": "#004493", "on-tertiary-fixed-variant": "#00531c", "inverse-on-surface": "#f1f0f5" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "margin": "1.5rem", "margin-lg": "2.5rem", "gutter": "1.25rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "margin-sm": "1rem", "space-xl": "2rem", "gutter-lg": "1.5rem" }, "fontFamily": { "label-md": ["Inter"], "display-mobile": ["Inter"], "label-sm": ["Inter"], "metric-xl": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "metric-md": ["Inter"], "headline-sm": ["Inter"], "body-sm": ["Inter"], "display": ["Inter"], "subheadline": ["Inter"] }, "fontSize": { "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}], "display-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.019em", "fontWeight": "700"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500"}], "metric-xl": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "700"}], "headline-lg": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.017em", "fontWeight": "600"}], "body-lg": ["15px", {"lineHeight": "21px", "letterSpacing": "-0.009em", "fontWeight": "400"}], "metric-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.018em", "fontWeight": "600"}], "headline-sm": ["20px", {"lineHeight": "25px", "letterSpacing": "-0.015em", "fontWeight": "600"}], "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "-0.004em", "fontWeight": "400"}], "display": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.022em", "fontWeight": "700"}], "subheadline": ["16px", {"lineHeight": "22px", "letterSpacing": "-0.011em", "fontWeight": "500"}] } } } };</script></head><body class="bg-surface font-body-sm text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-full px-gutter-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="IEEE SLIIT Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V-vu1eXsncL1shB8VUswuaJWfpnG2MHifHY0HJaRQPFyM7rH87EGNDe1Hdqa_jBum1gADE_3CkSoLtWb3PLSJSbf7yH_I3dHpQgG4KDVWbpnhdA25fn3gh_IgXX_6JiEIpBgd74c7nSl0hp3fIVJnb_QkLODV53tcGHMQhGc2WJW2XvY8R-YbnzEJxO1S7GVf1yAchEAgPEfehSK0B2fZhwpHF0iMtYTSgTel2qpVigurcWKgZHWuTseI"><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface tracking-tight leading-none">IEEE SLIIT</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-1">Student Branch</span></div></div><div class="h-4 w-px bg-surface-variant hidden md:block"></div><nav class="hidden lg:flex items-center bg-surface-container-low p-1 rounded-xl" data-active-classes="bg-surface-container-high text-on-surface font-label-md shadow-[0_1px_3px_rgba(0,0,0,0.06)]"><a class="px-space-md py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="volunteer-dashboard" href="#">Volunteer Dashboard</a><a class="px-space-md py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="ex-com-portal" href="#">Ex-Com Portal</a><a class="px-space-md py-1.5 rounded-lg font-label-md text-label-md bg-surface-container-high text-on-surface shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all" data-path="admin-console" href="#">Admin Console</a></nav></div><div class="flex items-center gap-space-md"><div class="relative hidden sm:flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="w-64 pl-9 pr-space-md py-1.5 bg-surface-container-low font-body-sm text-body-sm text-on-surface rounded-xl placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search volunteers, events, chapters..." type="text"></div><div class="flex items-center bg-surface-container-low rounded-xl px-2.5 py-1 text-on-surface-variant hover:text-on-surface cursor-pointer"><span class="font-label-sm text-label-sm mr-1.5 text-on-surface">AY 2024/25</span><span class="material-symbols-outlined text-[16px]">expand_more</span></div><button class="relative p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary"></span></button><div class="flex items-center gap-space-sm pl-2 cursor-pointer"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxg0PqaDhOhRUCYBCdMub_ZptcaZPuWxx5uBQtpjHjj8NsbiSVi5ZTsEXkMWRfkE8O5v4N_LSBODnLIZvKIgc8g7WSQxYg9vZ7RUyFMWiyxHGobKgtFe_Mg8KB6x0DxKqgy72fFC_CCQM6uhrfnj8VysjhoSZUFYdJ-ovxoNMtHxw5amhtfdPcFEpEtvlalZdoPHHfQXvCBfwSC6y20feoaOGYtMBvVgsgKKMczoECOTX3q9MuXxOz"><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-tertiary-container ring-2 ring-surface-container-lowest"></span></div><span class="material-symbols-outlined text-outline text-[18px]">unfold_more</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-[#00172e] border-r border-[#002b52]/40 shadow-xl z-40 hidden md:flex flex-col justify-between py-space-lg px-space-md text-[#e2e8f0]"><div class="flex flex-col gap-space-lg"><div class="px-space-sm"><p class="font-label-sm text-label-sm text-[#85aee8] uppercase tracking-wider font-semibold">Operational Hub</p></div><nav class="flex flex-col gap-1" data-active-classes="bg-[#0a4174] text-white font-label-md"><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="admin-console" href="#">Overview</a><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="events-trackers" href="#">Events &amp; Trackers</a><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="member-roster" href="#">Member Roster</a><a aria-current="page" class="px-space-sm py-2 rounded-xl transition-all bg-[#0a4174] text-white font-label-md" data-path="chapters-and-affinity-group" href="#">Chapters and Affinity Group</a><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="engagement-telemetry" href="#">Engagement Telemetry</a></nav></div><div class="bg-[#002242] border border-[#0a4174]/60 rounded-xl p-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-[#85aee8]">Branch Standing</span><span class="font-label-sm text-label-sm text-[#53e16f] font-bold bg-[#003816]/70 px-2 py-0.5 rounded-full border border-[#53e16f]/30">Premier Tier</span></div><div class="w-full bg-[#00172e] rounded-full h-1.5 mt-1 overflow-hidden"><div class="bg-[#2684ff] h-1.5 rounded-full w-[84%]"></div></div><p class="font-label-sm text-label-sm text-[#94a3b8] mt-1">84% target retention recorded</p></div></aside><div class="md:pl-64"><main class="w-full pt-16 bg-[#eef4fb] min-h-screen"><div class="flex flex-col w-full">
+<div class="px-margin sm:px-margin-lg py-space-lg flex flex-col gap-space-lg">
+<!-- Top Executive Header & Governance Bar -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-1 max-w-3xl">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Governance &amp; Operations</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-semibold">Academic Year 2024/2025</span>
+<span class="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed-dim/20 text-tertiary font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            IEEE R10 Region Certified
+          </span>
+</div>
+<h1 class="font-display text-display text-on-surface tracking-tight">
+          Chapters &amp; Affinity Groups Directory
+        </h1><div class="flex items-center gap-2 mt-1 text-on-surface-variant font-label-sm text-label-sm"><span class="px-2 py-0.5 rounded bg-surface-container-high font-mono font-medium text-primary">SBC Geocode: R10-SL-SLIIT</span><span class="text-outline">•</span><span class="">Chartered / Est. 2018 (Sri Lanka Section, Region 10)</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Administrative governance, ex-com officer continuity, event tracking, and authenticated vTools reporting across all active IEEE SLIIT organizational units.
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm self-start lg:self-auto">
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">cloud_sync</span>
+<span class="">vTools Activity Sync</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span class="">Export Governance Report</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span class="">Provision New Chapter</span>
+</button>
+</div>
+</div>
+<!-- 4 High-Impact Metric Cards with Midnight Navy Banners -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="bg-[#001C38] px-space-md py-2.5 flex items-center justify-between">
+<span class="text-white font-label-sm text-label-sm tracking-wider uppercase font-semibold">Active Entities</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/20 text-tertiary-fixed">100% Active</span>
+</div>
+<div class="p-space-lg flex flex-col items-center justify-center text-center"><div class="font-metric-xl text-metric-xl text-on-surface font-bold">12</div><p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Active SB Ex-Com, chapters &amp; subcommittees</p><div class="mt-3 flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary"><span class="material-symbols-outlined text-[16px]">verified</span><span class="">All Charters in Good Standing</span></div></div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="bg-[#001C38] px-space-md py-2.5 flex items-center justify-between">
+<span class="text-white font-label-sm text-label-sm tracking-wider uppercase font-semibold">Ex-Com Officers</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed/30 text-primary-fixed-dim">All Tenured</span>
+</div>
+<div class="p-space-lg flex flex-col items-center justify-center text-center">
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold">28</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Appointed chairs, vice chairs, and secretaries</p>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-label-sm text-primary">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span class="">100% Verified IEEE Credentials</span>
+</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="bg-[#001C38] px-space-md py-2.5 flex items-center justify-between">
+<span class="text-white font-label-sm text-label-sm tracking-wider uppercase font-semibold">Total Chapter Events</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-fixed/30 text-secondary-fixed">AY 2024/25</span>
+</div>
+<div class="p-space-lg flex flex-col items-center justify-center text-center">
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold">42</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Aggregated across all technical societies</p>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="">+31% vs previous academic term</span>
+</div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="bg-[#001C38] px-space-md py-2.5 flex items-center justify-between">
+<span class="text-white font-label-sm text-label-sm tracking-wider uppercase font-semibold">vTools Reporting</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/20 text-tertiary-fixed">Compliant</span>
+</div>
+<div class="p-space-lg flex flex-col items-center justify-center text-center">
+<div class="font-metric-xl text-metric-xl text-on-surface font-bold">98%</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Official IEEE meeting reports filed &amp; verified</p>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+<span class="">HQ Section Audit Clean</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Chapter Filter & View Mode Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<div class="relative flex-1 sm:w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-space-md py-2 bg-surface-container-low rounded-lg text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" id="chapterSearchInput" placeholder="Filter by chapter code, name, or lead..." type="text">
+</div>
+<div class="flex items-center bg-surface-container-low p-1 rounded-lg"><button class="px-3 py-1 rounded bg-surface-container-lowest shadow-xs text-on-surface font-label-sm text-label-sm">All (12)</button><button class="px-3 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">SB Ex-Com &amp; Subcommittees (5)</button><button class="px-3 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">Chapters (6)</button><button class="px-3 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">Affinity (1)</button></div>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Active Roster
+        </span>
+<span class="flex items-center gap-1 ml-3">
+<span class="w-2 h-2 rounded-full bg-primary"></span> All Keys Provisioned
+        </span>
+</div>
+</div>
+<!-- Chapters & Affinity Groups Grid (7 Entities) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter"><div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden"><div><div class="p-space-lg bg-[#00172e] flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="h-9 w-9 rounded-lg bg-primary flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">account_balance</span></div><div class="flex flex-col"><span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE SLIIT SB Ex-Com</span><span class="text-[#85aee8] font-label-sm text-label-sm">Student Branch Executive Committee</span></div></div><span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/20 text-tertiary-fixed font-medium">Central Body</span></div><div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Charter: SBC-SLIIT-MAIN</span><span class="font-label-sm text-label-sm text-primary font-medium">Governing Council</span></div><div class="p-space-lg flex flex-col gap-space-md"><div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl"><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span class="">Branch Counselor &amp; Chair</span><span class="text-primary font-medium">Verified Ex-Com</span></div><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">DP</div><div class="flex flex-col"><span class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Pradeep Abeygunawardhana</span><span class="font-label-sm text-label-sm text-on-surface-variant">Branch Counselor • Faculty Sponsor</span></div></div><div class="h-px bg-surface-variant"></div><div class="grid grid-cols-2 gap-2 text-on-surface"><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Chairperson</span><span class="font-body-sm text-body-sm font-medium truncate block">Chathura Senarath</span><span class="font-label-sm text-label-sm text-outline">IEEE #96280112</span></div><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Secretary</span><span class="font-body-sm text-body-sm font-medium truncate block">Sanduni Jayawardena</span><span class="font-label-sm text-label-sm text-outline">IEEE #96341208</span></div></div></div><div class="grid grid-cols-3 gap-2 text-center"><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">520</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Members</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">24</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Flagship AY</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">1,480</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Vol Hours</span></div></div><div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-outline">key</span><span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span><span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">SB-SLIIT-EXCOM</span></div><button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('SB-SLIIT-EXCOM')" title="Copy Passkey"><span class="material-symbols-outlined text-[16px]">content_copy</span></button></div></div></div><div class="p-space-md bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary"><span class="material-symbols-outlined text-[16px]">sync</span><span class="">vTools Synced</span></div><div class="flex items-center gap-2"><button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">Manage Ex-Com</button><button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">View Events</button></div></div></div>
+<!-- 1. Computer Society (CS) -->
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Bar -->
+<div class="p-space-lg bg-[#00172e] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-2 rounded-lg bg-white flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWIdSMPEn83dhuA7o-xm6yXW8sPXguTtGQPY4ubKovfFezO0T7nkd88dVvXB4ra_fLBfEC_TEmx8U5l7AaPRK8RpikhJJVdMBtd1e6tdMVkjEOAK3Oc0zVuv3uT58b2fgYDJo6-6_acPyx1HS21cRhghqnu1nOGDbrkMowx22yfqUeiYKj_1QxcSXiVUsoFBxUESziTIg54TTYQlYG1ByJ-fp3_NMbD8pdnlfgJwTDE-UNIk8QiaMb" alt="IEEE Computer Society" class="h-7 w-auto object-contain"></div>
+<div class="flex flex-col">
+<span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE Computer Society</span>
+<span class="text-[#85aee8] font-label-sm text-label-sm">SLIIT Student Branch Chapter</span>
+</div>
+</div>
+
+</div>
+<!-- Society Banner Visual Graphic -->
+<div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Charter: SBC94821-CS</span></div>
+<!-- Body Info -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Leadership -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Executive Leadership</span>
+<span class="text-primary font-medium">Verified Ex-Com</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#0058bc]/10 text-primary flex items-center justify-center font-bold text-xs">
+                  DR
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Samantha Rajapakse</span>
+
+</div>
+</div>
+<div class="h-px bg-surface-variant"></div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Kavindu Senanayake</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #96284102</span>
+</div>
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Nethmi Perera</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #96401923</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">148</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">14</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">520</span>
+
+</div>
+</div>
+<!-- Ex-Com Credential Passkey Box -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">key</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span>
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">CS-9482-SL</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('CS-9482-SL')" title="Copy Passkey">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">vTools Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">
+              Manage Ex-Com
+            </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">
+              View Events
+            </button>
+</div>
+</div>
+</div>
+<!-- 2. Women in Engineering (WIE) -->
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Bar -->
+<div class="p-space-lg bg-[#270e3a] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-2 rounded-lg bg-white flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWE-Ec0LQZm02t2-lZwwBi6lY3OLz8U2DN-civ1JLKMtk74kVZuPFNRFjNejXVoDyZVe2w1FEiq__V_rrKSLwdcHUF1RwN01Da315aLFQA2LzdpErtPP4d_ll7eIH54G-lNM5bbkEnlqglZrOGPcxQ4UED2nzJq9O1lTGcvUnniWXcAsWcmdh1uZNBbn__GJCh5T4TLpFnk8y4bAVA5Th7yj6eIORegHiI__L53iijoi3KCn117r2b" alt="IEEE WIE" class="h-6 w-auto object-contain"></div>
+<div class="flex flex-col">
+<span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE WIE Affinity Group</span>
+<span class="text-[#d8b4e2] font-label-sm text-label-sm">SLIIT Student Branch AG</span>
+</div>
+</div>
+
+</div>
+<!-- Affinity Banner Visual -->
+<div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Affinity: SBA94821-WIE</span></div>
+<!-- Body Info -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Leadership -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Executive Leadership</span>
+<span class="text-secondary font-medium">Verified Ex-Com</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">
+                  PW
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Prof. Windhya Rankothge</span>
+
+</div>
+</div>
+<div class="h-px bg-surface-variant"></div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Anuki Dissanayake</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97103855</span>
+</div>
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Rashmi Fernando</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97228941</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">119</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">18</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">482</span>
+
+</div>
+</div>
+<!-- Passkey Box -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">key</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span>
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">WIE-STBD-4028</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('WIE-STBD-4028')" title="Copy Passkey">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">vTools Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">
+              Manage Ex-Com
+            </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">
+              View Events
+            </button>
+</div>
+</div>
+</div>
+<!-- 3. Industry Applications Society (IAS) -->
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Bar -->
+<div class="p-space-lg bg-[#002a20] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-2 rounded-lg bg-white flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyeq2APrYT1EP7VM5F4ezoIHPh2EFR0Q-ohgKn2MUNAMVeNFK2jWOYsIhmlBt0LZeVk-z5KxS8gqYdVd6Xy15Op6MFS9bck6H1BV1-aAxrkxsr6iXgVSgTwIFrbbeDiJXQQTxswez-qtZFnUHQlzRp--XxmtDgBTp_envqUJpHXseH2AahCYwtHQ6Go_y6OphflAZoGeuUAg9Vp9Eg6NuBd1-Zz-aJOswfimN2FtPXHNG-xPv4l1-i" alt="IEEE IAS" class="h-6 w-auto object-contain"></div>
+<div class="flex flex-col">
+<span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE IAS Student Chapter</span>
+<span class="text-[#84e0a7] font-label-sm text-label-sm">Industry Applications Society</span>
+</div>
+</div>
+
+</div>
+<!-- Banner Visual -->
+<div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Charter: SBC94821-IAS</span></div>
+<!-- Body Info -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Leadership -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Executive Leadership</span>
+<span class="text-tertiary font-medium">Verified Ex-Com</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center font-bold text-xs">
+                  DA
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Nimsiri Abhayasinghe</span>
+
+</div>
+</div>
+<div class="h-px bg-surface-variant"></div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Thilanka Jayasinghe</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #96918233</span>
+</div>
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Sithija Dewmith</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97092144</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">96</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">9</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">310</span>
+
+</div>
+</div>
+<!-- Passkey Box -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">key</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span>
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">IAS-7102-SL</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('IAS-7102-SL')" title="Copy Passkey">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">vTools Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">
+              Manage Ex-Com
+            </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">
+              View Events
+            </button>
+</div>
+</div>
+</div>
+<!-- 4. Power & Energy Society (PES) -->
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Bar -->
+<div class="p-space-lg bg-[#002436] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-2 rounded-lg bg-white flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVsifoQUvhKXOo3u8rVgaQDpF8LZvhsXL3tw-X5_RHIDiFpGkH1xu5HxxpBaVtqYfOFjdBYMiFXedMb6w45yskuN1Dlb3Ux7pP42HU3PhfGJy8gsyUsUX-FfGg5key77JkBQzhXQSjKYO6kwqBDMMjViHDRWtYt0JeiaIpTCapwoX445U2TWHhbbYS8zuz6C_irzDQTIrphvsRmX6KQQKUPXUi_gzTNHCr3UBTOfwpbiDAYtKHP8yG" alt="IEEE PES" class="h-6 w-auto object-contain"></div>
+<div class="flex flex-col">
+<span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE PES Student Chapter</span>
+<span class="text-[#89cdfc] font-label-sm text-label-sm">Power &amp; Energy Society</span>
+</div>
+</div>
+
+</div>
+<!-- Banner Visual -->
+<div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Charter: SBC94821-PES</span></div>
+<!-- Body Info -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Leadership -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Executive Leadership</span>
+<span class="text-primary font-medium">Verified Ex-Com</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">
+                  MK
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Eng. Manupa Kalhara</span>
+
+</div>
+</div>
+<div class="h-px bg-surface-variant"></div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Buddhika Madushanka</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #96551829</span>
+</div>
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Kasuni Liyanage</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #96881720</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">104</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">11</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">390</span>
+
+</div>
+</div>
+<!-- Passkey Box -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">key</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span>
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">PES-4190-SL</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('PES-4190-SL')" title="Copy Passkey">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">vTools Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">
+              Manage Ex-Com
+            </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">
+              View Events
+            </button>
+</div>
+</div>
+</div>
+<!-- 5. Robotics & Automation Society (RAS) -->
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Bar -->
+<div class="p-space-lg bg-[#2e091b] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-2 rounded-lg bg-white flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH0FOuOQ5TL66kkuKC-K0eFLg1Y8aKmKNIGPTA87bFGk3IgSyHh3F-ZRGEyCzc8GULuJhw92hvNCJ1Sbby0xu0mdTwo49zFbabQ3lPxPhofW4D4i78PRb1nRXaGslXtVN92Gw_zy4d_Qix06ivBnCuGGVSvOe0uTiLzH9PDA0pol5M-r0sNGmY6UeDJzCHDXy-E8O3QC_QQcsjkoeRXjOaXtiypqzFkwX4KwWzDdWAiCKaJh5O2rJ-" alt="IEEE RAS" class="h-6 w-auto object-contain"></div>
+<div class="flex flex-col">
+<span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE RAS Student Chapter</span>
+<span class="text-[#f7a6c2] font-label-sm text-label-sm">Robotics &amp; Automation Society</span>
+</div>
+</div>
+
+</div>
+<!-- Banner Visual -->
+<div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Charter: SBC94821-RAS</span></div>
+<!-- Body Info -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Leadership -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Executive Leadership</span>
+<span class="text-secondary font-medium">Verified Ex-Com</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">
+                  DU
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Uditha Wijewardhana</span>
+
+</div>
+</div>
+<div class="h-px bg-surface-variant"></div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Isuru Wickramasinghe</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97441029</span>
+</div>
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Dinithi Alwis</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97558291</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">128</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">12</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">410</span>
+
+</div>
+</div>
+<!-- Passkey Box -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">key</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span>
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">RAS-8831-SL</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('RAS-8831-SL')" title="Copy Passkey">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">vTools Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">
+              Manage Ex-Com
+            </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">
+              View Events
+            </button>
+</div>
+</div>
+</div>
+<!-- 6. Communications Society (ComSoc) -->
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Bar -->
+<div class="p-space-lg bg-[#032035] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-2 rounded-lg bg-white flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDntmmrIBhAKcLOy2GWNBPPxwOfmQ8dLma5BvE52w2ZS74PPjezu1fCFZ9ASGHsAtP8L5Wq8CBIjOhOjrRIQ_eGRc_sKs7mUmj-GKYVxyujLbgdWt4DLCjSaPfihLzreQr3OGCdUa3jyYWoRsO96Lg0_5wFEt3Icz1ifzscjRd1JthXDu3BS5S8wrdZzh39uBY8eoCF-UaYzIfvqMH2prVpBVqfKS3jZGyxqYrHFAoHtUvTIWTkJs9V" alt="IEEE ComSoc" class="h-6 w-auto object-contain"></div>
+<div class="flex flex-col">
+<span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE ComSoc Chapter</span>
+<span class="text-[#7ec2eb] font-label-sm text-label-sm">Communications Society</span>
+</div>
+</div>
+
+</div>
+<!-- Banner Visual -->
+<div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Charter: SBC94821-COM</span></div>
+<!-- Body Info -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Leadership -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Executive Leadership</span>
+<span class="text-primary font-medium">Verified Ex-Com</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">
+                  DP
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Pradeep Abeygunawardhana</span>
+
+</div>
+</div>
+<div class="h-px bg-surface-variant"></div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Shenal Jayatillake</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97339102</span>
+</div>
+<div>
+
+<span class="font-body-sm text-body-sm font-medium truncate block">Himasha Rajapakse</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97441830</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">85</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">8</span>
+
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">295</span>
+
+</div>
+</div>
+<!-- Passkey Box -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">key</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span>
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">COM-3391-SL</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('COM-3391-SL')" title="Copy Passkey">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">vTools Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">
+              Manage Ex-Com
+            </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">
+              View Events
+            </button>
+</div>
+</div>
+</div>
+<!-- 7. Engineering in Medicine & Biology Society (EMBS) -->
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Bar -->
+<div class="p-space-lg bg-[#001d2e] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-2 rounded-lg bg-white flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJXPpdelDWvel_zVCqnHsfirj6Z4yG7QxMoF4qWZnwTBUzwLBmx4yM6ZnOovUK-UkANwuQG51NLXAn7eCt_JbqnMxZgKIgjZSgaMrCLv9-_Dec8LzR3CaxALo-SOTpAQZXZmwtvmPc4jOmletkVyx7205TZMf_u_EecQn4Xns1CQ1tylB00gRThU7F9PESXdey2nzwAFlVE4VIWrVARgq5om9ahK8ZGajOFvN86JV9ZQuummUs9O95" alt="IEEE EMBS" class="h-6 w-auto object-contain"></div>
+<div class="flex flex-col">
+<span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">IEEE EMBS Chapter</span>
+<span class="text-[#89cdfc] font-label-sm text-label-sm">Medicine &amp; Biology Society</span>
+</div>
+</div>
+
+</div>
+<!-- Official Banner Provided from DataStore -->
+<div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Charter: SBC94821-EMB</span></div>
+<!-- Body Info -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Leadership -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Executive Leadership</span>
+<span class="text-primary font-medium">Verified Ex-Com</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">
+                  SG
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Shamantha Gunasekara</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Chapter Advisor • Bio-Med Eng</span>
+</div>
+</div>
+<div class="h-px bg-surface-variant"></div>
+<div class="grid grid-cols-2 gap-2 text-on-surface">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Chair</span>
+<span class="font-body-sm text-body-sm font-medium truncate block">Sachini Hettiarachchi</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97601934</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Secretary</span>
+<span class="font-body-sm text-body-sm font-medium truncate block">Tharindu Bandara</span>
+<span class="font-label-sm text-label-sm text-outline">IEEE #97711204</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">74</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Members</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">6</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Events AY</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-metric-md text-metric-md text-on-surface font-bold">220</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Vol Hours</span>
+</div>
+</div>
+<!-- Passkey Box -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">key</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span>
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">EMB-9021-SL</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('EMB-9021-SL')" title="Copy Passkey">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">vTools Synced</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">
+              Manage Ex-Com
+            </button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">
+              View Events
+            </button>
+</div>
+</div>
+</div>
+<div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden"><div><div class="p-space-lg bg-[#002242] flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="h-9 w-9 rounded-lg bg-[#0a4174] flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">campaign</span></div><div class="flex flex-col"><span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">Editorial &amp; Media Board</span><span class="text-[#85aee8] font-label-sm text-label-sm">Design &amp; PR Subcommittee</span></div></div><span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed/30 text-primary-fixed-dim font-medium">Subcommittee</span></div><div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Code: SUB94821-MED</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Communications</span></div><div class="p-space-lg flex flex-col gap-space-md"><div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl"><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span class="">Subcommittee Lead</span><span class="text-primary font-medium">Verified Ex-Com</span></div><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">RW</div><div class="flex flex-col"><span class="font-body-sm text-body-sm font-semibold text-on-surface">Ruvindu Weerasinghe</span><span class="font-label-sm text-label-sm text-on-surface-variant">Editor-in-Chief • Creative Director</span></div></div><div class="h-px bg-surface-variant"></div><div class="grid grid-cols-2 gap-2 text-on-surface"><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Design Lead</span><span class="font-body-sm text-body-sm font-medium truncate block">Nimna Fernando</span><span class="font-label-sm text-label-sm text-outline">IEEE #97801423</span></div><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Media Coordinator</span><span class="font-body-sm text-body-sm font-medium truncate block">Oshadha Bandara</span><span class="font-label-sm text-label-sm text-outline">IEEE #97845119</span></div></div></div><div class="grid grid-cols-3 gap-2 text-center"><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">36</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Crew</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">58</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Releases</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">410</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Vol Hours</span></div></div><div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-outline">key</span><span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span><span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">MED-4820-SL</span></div><button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('MED-4820-SL')" title="Copy Passkey"><span class="material-symbols-outlined text-[16px]">content_copy</span></button></div></div></div><div class="p-space-md bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary"><span class="material-symbols-outlined text-[16px]">sync</span><span class="">vTools Synced</span></div><div class="flex items-center gap-2"><button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">Manage Ex-Com</button><button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">View Events</button></div></div></div><div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden"><div><div class="p-space-lg bg-[#001d2e] flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="h-9 w-9 rounded-lg bg-secondary flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span></div><div class="flex flex-col"><span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">Finance &amp; Membership Board</span><span class="text-[#7ec2eb] font-label-sm text-label-sm">Treasury &amp; MD Subcommittee</span></div></div><span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-fixed/30 text-secondary-fixed font-medium">Subcommittee</span></div><div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Code: SUB94821-FIN</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Oversight &amp; MD</span></div><div class="p-space-lg flex flex-col gap-space-md"><div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl"><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span class="">Subcommittee Lead</span><span class="text-secondary font-medium">Verified Ex-Com</span></div><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">KP</div><div class="flex flex-col"><span class="font-body-sm text-body-sm font-semibold text-on-surface">Kaveen Perera</span><span class="font-label-sm text-label-sm text-on-surface-variant">SB Treasurer • Financial Controller</span></div></div><div class="h-px bg-surface-variant"></div><div class="grid grid-cols-2 gap-2 text-on-surface"><div><span class="font-label-sm text-label-sm text-on-surface-variant block">MD Lead</span><span class="font-body-sm text-body-sm font-medium truncate block">Chamodi Ranasinghe</span><span class="font-label-sm text-label-sm text-outline">IEEE #97910481</span></div><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Audit Officer</span><span class="font-body-sm text-body-sm font-medium truncate block">Malith Wickramasinghe</span><span class="font-label-sm text-label-sm text-outline">IEEE #97934012</span></div></div></div><div class="grid grid-cols-3 gap-2 text-center"><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">22</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Officers</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">18</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Audits AY</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">290</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Vol Hours</span></div></div><div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-outline">key</span><span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span><span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">FIN-9912-SL</span></div><button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('FIN-9912-SL')" title="Copy Passkey"><span class="material-symbols-outlined text-[16px]">content_copy</span></button></div></div></div><div class="p-space-md bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary"><span class="material-symbols-outlined text-[16px]">sync</span><span class="">vTools Synced</span></div><div class="flex items-center gap-2"><button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">Manage Ex-Com</button><button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">View Events</button></div></div></div><div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden"><div><div class="p-space-lg bg-[#002436] flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="h-9 w-9 rounded-lg bg-[#0058bc] flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">code</span></div><div class="flex flex-col"><span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">Web &amp; Dev Subcommittee</span><span class="text-[#89cdfc] font-label-sm text-label-sm">Digital Infrastructure &amp; Systems</span></div></div><span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed/30 text-primary-fixed-dim font-medium">Subcommittee</span></div><div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Code: SUB94821-DEV</span><span class="font-label-sm text-label-sm text-primary font-medium">Tech &amp; Systems</span></div><div class="p-space-lg flex flex-col gap-space-md"><div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl"><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span class="">Subcommittee Lead</span><span class="text-primary font-medium">Verified Ex-Com</span></div><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">TW</div><div class="flex flex-col"><span class="font-body-sm text-body-sm font-semibold text-on-surface">Tharindu Wickramasinghe</span><span class="font-label-sm text-label-sm text-on-surface-variant">Webmaster &amp; Systems Lead</span></div></div><div class="h-px bg-surface-variant"></div><div class="grid grid-cols-2 gap-2 text-on-surface"><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Frontend Architect</span><span class="font-body-sm text-body-sm font-medium truncate block">Kaveen De Silva</span><span class="font-label-sm text-label-sm text-outline">IEEE #9744102</span></div><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Cloud &amp; Database Lead</span><span class="font-body-sm text-body-sm font-medium truncate block">Dinithi Alwis</span><span class="font-label-sm text-label-sm text-outline">IEEE #9755829</span></div></div></div><div class="grid grid-cols-3 gap-2 text-center"><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">28</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Active Devs</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">14</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Repos AY</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">380</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Vol Hours</span></div></div><div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-outline">key</span><span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span><span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">DEV-SLIIT-2025</span></div><button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('DEV-SLIIT-2025')" title="Copy Passkey"><span class="material-symbols-outlined text-[16px]">content_copy</span></button></div></div></div><div class="p-space-md bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary"><span class="material-symbols-outlined text-[16px]">sync</span><span class="">vTools Synced</span></div><div class="flex items-center gap-2"><button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">Manage Leads</button><button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">View Projects</button></div></div></div><div class="chapter-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden"><div><div class="p-space-lg bg-[#001d2e] flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="h-9 w-9 rounded-lg bg-[#0a4174] flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">local_shipping</span></div><div class="flex flex-col"><span class="text-white font-headline-sm text-[16px] font-bold tracking-tight">Logistics &amp; Operations</span><span class="text-[#85aee8] font-label-sm text-label-sm">Event Infrastructure &amp; Field Ops</span></div></div><span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed/30 text-primary-fixed-dim font-medium">Subcommittee</span></div><div class="px-space-lg pt-space-md flex items-center justify-between"><span class="font-mono font-medium text-label-sm text-on-surface-variant tracking-wider uppercase">Code: SUB94821-LOG</span><span class="font-label-sm text-label-sm text-primary font-medium">Field Logistics</span></div><div class="p-space-lg flex flex-col gap-space-md"><div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl"><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span class="">Subcommittee Lead</span><span class="text-primary font-medium">Verified Ex-Com</span></div><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">DJ</div><div class="flex flex-col"><span class="font-body-sm text-body-sm font-semibold text-on-surface">Dineth Jayasundara</span><span class="font-label-sm text-label-sm text-on-surface-variant">Head of Logistics &amp; Operations</span></div></div><div class="h-px bg-surface-variant"></div><div class="grid grid-cols-2 gap-2 text-on-surface"><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Inventory &amp; Venue Lead</span><span class="font-body-sm text-body-sm font-medium truncate block">Thisara Bandara</span><span class="font-label-sm text-label-sm text-outline">IEEE #9688172</span></div><div><span class="font-label-sm text-label-sm text-on-surface-variant block">Procurement &amp; Security</span><span class="font-body-sm text-body-sm font-medium truncate block">Shenal Perera</span><span class="font-label-sm text-label-sm text-outline">IEEE #9733910</span></div></div></div><div class="grid grid-cols-3 gap-2 text-center"><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">42</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Field Crew</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">26</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Deploys AY</span></div><div class="bg-surface-container-low p-2 rounded-lg"><span class="font-metric-md text-metric-md text-on-surface font-bold">495</span><span class="block font-label-sm text-label-sm text-on-surface-variant">Vol Hours</span></div></div><div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-outline">key</span><span class="font-label-sm text-label-sm text-on-surface-variant">Admin Passkey:</span><span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">LOG-SLIIT-4028</span></div><button class="text-outline hover:text-primary transition-colors p-1" onclick="navigator.clipboard.writeText('LOG-SLIIT-4028')" title="Copy Passkey"><span class="material-symbols-outlined text-[16px]">content_copy</span></button></div></div></div><div class="p-space-md bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary"><span class="material-symbols-outlined text-[16px]">sync</span><span class="">vTools Synced</span></div><div class="flex items-center gap-2"><button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all shadow-xs">Manage Leads</button><button class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all">View Deploys</button></div></div></div></div>
+<!-- Governance & Reporting Ledger Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- vTools Table (Spans 2 columns) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
+<div>
+<div class="p-space-lg flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">assignment_turned_in</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">vTools Reporting &amp; Verification Status</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Official record submitted to IEEE Headquarters and Regional Council</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed-dim/20 text-tertiary font-label-sm text-label-sm font-semibold">
+              41 of 42 Filed
+            </span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-space-md">Entity Name</th>
+<th class="py-2.5 px-space-md">Last Event Logged</th>
+<th class="py-2.5 px-space-md">Date Submitted</th>
+<th class="py-2.5 px-space-md">Reporting Officer</th>
+<th class="py-2.5 px-space-md">HQ Sync Status</th>
+<th class="py-2.5 px-space-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant font-body-sm text-body-sm text-on-surface">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-md font-semibold">IEEE Computer Society</td>
+<td class="py-3 px-space-md">DevHack 2024 Final Hackathon</td>
+<td class="py-3 px-space-md text-on-surface-variant">Nov 14, 2024</td>
+<td class="py-3 px-space-md">Nethmi Perera</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed-dim/20 text-tertiary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Synchronized
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm font-semibold">View Record</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-md font-semibold">IEEE WIE AG</td>
+<td class="py-3 px-space-md">EmpowerTech Women in STEM Forum</td>
+<td class="py-3 px-space-md text-on-surface-variant">Nov 11, 2024</td>
+<td class="py-3 px-space-md">Rashmi Fernando</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed-dim/20 text-tertiary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Synchronized
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm font-semibold">View Record</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-md font-semibold">IEEE IAS Chapter</td>
+<td class="py-3 px-space-md">Industrial Automation Workshop</td>
+<td class="py-3 px-space-md text-on-surface-variant">Nov 04, 2024</td>
+<td class="py-3 px-space-md">Sithija Dewmith</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed-dim/20 text-tertiary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Synchronized
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm font-semibold">View Record</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-md font-semibold">IEEE RAS Chapter</td>
+<td class="py-3 px-space-md">SLIIT RoboFest National Series</td>
+<td class="py-3 px-space-md text-on-surface-variant">Oct 28, 2024</td>
+<td class="py-3 px-space-md">Dinithi Alwis</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-fixed/30 text-secondary-fixed-variant font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Pending Approval
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm font-semibold">Audit Sign-off</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Displaying 4 most recent vTools transaction batches</span>
+<a class="text-primary font-semibold hover:underline" href="#">Launch vTools Portal Ledger →</a>
+</div>
+</div>
+<!-- Counselor Sign-off Card (Spans 1 column) -->
+
+</div>
+</div>
+</div>
+<script>
+  // Simple client-side instant filtering for chapter cards
+  document.getElementById('chapterSearchInput')?.addEventListener('input', function(e) {
+    const val = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.chapter-card');
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      if (text.includes(val)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script></main></div>
+
+
+</body></html>

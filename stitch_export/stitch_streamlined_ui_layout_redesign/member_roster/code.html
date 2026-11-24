@@ -1,0 +1,748 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#3631b4", "background": "#faf9fe", "on-surface": "#1a1b1f", "surface-bright": "#faf9fe", "surface-container": "#eeedf3", "inverse-surface": "#2f3034", "surface-variant": "#e3e2e7", "on-background": "#1a1b1f", "on-secondary": "#ffffff", "surface-tint": "#005bc1", "surface": "#faf9fe", "secondary-fixed-dim": "#c2c1ff", "secondary-fixed": "#e2dfff", "outline-variant": "#c1c6d7", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-fixed-dim": "#53e16f", "on-tertiary-fixed": "#002107", "surface-container-high": "#e9e7ed", "on-secondary-fixed": "#0c006a", "on-primary-container": "#fefcff", "primary-fixed-dim": "#adc6ff", "inverse-primary": "#adc6ff", "on-tertiary": "#ffffff", "primary-fixed": "#d8e2ff", "surface-container-highest": "#e3e2e7", "secondary-container": "#6664e4", "surface-container-lowest": "#ffffff", "primary": "#0058bc", "surface-container-low": "#f4f3f8", "on-tertiary-container": "#f7fff2", "on-error-container": "#93000a", "on-secondary-container": "#fffbff", "primary-container": "#0070eb", "tertiary-fixed": "#72fe88", "secondary": "#4c4aca", "on-primary-fixed": "#001a41", "error-container": "#ffdad6", "surface-dim": "#dad9df", "tertiary-container": "#008733", "outline": "#717786", "tertiary": "#006b27", "on-surface-variant": "#414755", "error": "#ba1a1a", "on-primary-fixed-variant": "#004493", "on-tertiary-fixed-variant": "#00531c", "inverse-on-surface": "#f1f0f5" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "margin": "1.5rem", "margin-lg": "2.5rem", "gutter": "1.25rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "margin-sm": "1rem", "space-xl": "2rem", "gutter-lg": "1.5rem" }, "fontFamily": { "label-md": ["Inter"], "display-mobile": ["Inter"], "label-sm": ["Inter"], "metric-xl": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "metric-md": ["Inter"], "headline-sm": ["Inter"], "body-sm": ["Inter"], "display": ["Inter"], "subheadline": ["Inter"] }, "fontSize": { "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}], "display-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.019em", "fontWeight": "700"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500"}], "metric-xl": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "700"}], "headline-lg": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.017em", "fontWeight": "600"}], "body-lg": ["15px", {"lineHeight": "21px", "letterSpacing": "-0.009em", "fontWeight": "400"}], "metric-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.018em", "fontWeight": "600"}], "headline-sm": ["20px", {"lineHeight": "25px", "letterSpacing": "-0.015em", "fontWeight": "600"}], "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "-0.004em", "fontWeight": "400"}], "display": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.022em", "fontWeight": "700"}], "subheadline": ["16px", {"lineHeight": "22px", "letterSpacing": "-0.011em", "fontWeight": "500"}] } } } };</script></head><body class="bg-surface font-body-sm text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-full px-gutter-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="IEEE SLIIT Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V-vu1eXsncL1shB8VUswuaJWfpnG2MHifHY0HJaRQPFyM7rH87EGNDe1Hdqa_jBum1gADE_3CkSoLtWb3PLSJSbf7yH_I3dHpQgG4KDVWbpnhdA25fn3gh_IgXX_6JiEIpBgd74c7nSl0hp3fIVJnb_QkLODV53tcGHMQhGc2WJW2XvY8R-YbnzEJxO1S7GVf1yAchEAgPEfehSK0B2fZhwpHF0iMtYTSgTel2qpVigurcWKgZHWuTseI"><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface tracking-tight leading-none">IEEE SLIIT</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-1">Student Branch</span></div></div><div class="h-4 w-px bg-surface-variant hidden md:block"></div><nav class="hidden lg:flex items-center bg-surface-container-low p-1 rounded-xl" data-active-classes="bg-surface-container-high text-on-surface font-label-md shadow-[0_1px_3px_rgba(0,0,0,0.06)]"><a class="px-space-md py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="volunteer-dashboard" href="#">Volunteer Dashboard</a><a class="px-space-md py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="ex-com-portal" href="#">Ex-Com Portal</a><a class="px-space-md py-1.5 rounded-lg font-label-md text-label-md bg-surface-container-high text-on-surface shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all" data-path="admin-console" href="#">Admin Console</a></nav></div><div class="flex items-center gap-space-md"><div class="relative hidden sm:flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="w-64 pl-9 pr-space-md py-1.5 bg-surface-container-low font-body-sm text-body-sm text-on-surface rounded-xl placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search volunteers, events, chapters..." type="text"></div><div class="flex items-center bg-surface-container-low rounded-xl px-2.5 py-1 text-on-surface-variant hover:text-on-surface cursor-pointer"><span class="font-label-sm text-label-sm mr-1.5 text-on-surface">AY 2024/25</span><span class="material-symbols-outlined text-[16px]">expand_more</span></div><button class="relative p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary"></span></button><div class="flex items-center gap-space-sm pl-2 cursor-pointer"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxg0PqaDhOhRUCYBCdMub_ZptcaZPuWxx5uBQtpjHjj8NsbiSVi5ZTsEXkMWRfkE8O5v4N_LSBODnLIZvKIgc8g7WSQxYg9vZ7RUyFMWiyxHGobKgtFe_Mg8KB6x0DxKqgy72fFC_CCQM6uhrfnj8VysjhoSZUFYdJ-ovxoNMtHxw5amhtfdPcFEpEtvlalZdoPHHfQXvCBfwSC6y20feoaOGYtMBvVgsgKKMczoECOTX3q9MuXxOz"><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-tertiary-container ring-2 ring-surface-container-lowest"></span></div><span class="material-symbols-outlined text-outline text-[18px]">unfold_more</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-[#00172e] border-r border-[#002b52]/40 shadow-xl z-40 hidden md:flex flex-col justify-between py-space-lg px-space-md text-[#e2e8f0]"><div class="flex flex-col gap-space-lg"><div class="px-space-sm"><p class="font-label-sm text-label-sm text-[#85aee8] uppercase tracking-wider font-semibold">Operational Hub</p></div><nav class="flex flex-col gap-1" data-active-classes="bg-[#0a4174] text-white font-label-md"><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="admin-console" href="#">Overview</a><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="events-trackers" href="#">Events &amp; Trackers</a><a aria-current="page" class="px-space-sm py-2 rounded-xl transition-all bg-[#0a4174] text-white font-label-md" data-path="member-roster" href="#">Member Roster</a><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="chapters-and-affinity-group" href="#">Chapters and Affinity Group</a><a class="px-space-sm py-2 rounded-xl font-label-md text-label-md text-[#94a3b8] hover:bg-[#00284f] hover:text-white transition-all" data-path="engagement-telemetry" href="#">Engagement Telemetry</a></nav></div><div class="bg-[#002242] border border-[#0a4174]/60 rounded-xl p-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-[#85aee8]">Branch Standing</span><span class="font-label-sm text-label-sm text-[#53e16f] font-bold bg-[#003816]/70 px-2 py-0.5 rounded-full border border-[#53e16f]/30">Premier Tier</span></div><div class="w-full bg-[#00172e] rounded-full h-1.5 mt-1 overflow-hidden"><div class="bg-[#2684ff] h-1.5 rounded-full w-[84%]"></div></div><p class="font-label-sm text-label-sm text-[#94a3b8] mt-1">84% target retention recorded</p></div></aside><div class="md:pl-64"><main class="w-full pt-16 bg-[#eef4fb] min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive & Notification Backdrop Layer -->
+<div class="px-gutter-lg py-space-lg flex flex-col gap-space-lg">
+<!-- Top Executive Header & Context Controls -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#00172e] text-[#85aee8] font-label-sm text-label-sm uppercase tracking-wider">
+            Governance &amp; Operations
+          </span>
+<span class="text-outline text-label-sm font-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Academic Year 2024/2025</span>
+<span class="text-outline text-label-sm font-label-sm">•</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-[#006b27] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#34c759]"></span> Live Sync Active
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight mt-1">
+          Student Member Roster &amp; Volunteers
+        </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">
+          Directory of all registered IEEE SLIIT student members, assigned technical chapter roles, active OC commitments, and cumulative verified volunteer hours.
+        </p>
+</div>
+<!-- Action Button Group -->
+<div class="flex items-center flex-wrap gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-label-md font-label-md shadow-sm hover:bg-surface-container-low transition-all" type="button">
+<span class="material-symbols-outlined text-[17px] text-primary">file_download</span>
+          Export Roster
+        </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-label-md font-label-md shadow-sm hover:bg-surface-container-low transition-all" type="button">
+<span class="material-symbols-outlined text-[17px] text-secondary">upload_file</span>
+          Bulk CSV Import
+        </button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-primary text-on-primary text-label-md font-label-md shadow-md hover:bg-[#004fa8] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+          + Add Member
+        </button>
+</div>
+</div>
+<!-- 4 Midnight Navy Header Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
+<div class="bg-[#001C38] px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#85aee8] uppercase tracking-wider font-semibold">TOTAL REGISTERED MEMBERS</span>
+<span class="material-symbols-outlined text-[#85aee8] text-[16px]">groups</span>
+</div>
+<div class="p-space-md flex flex-col items-center text-center">
+<span class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">284</span>
+
+<div class="mt-3 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#34c759]/15 text-[#006b27] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">trending_up</span> +24 this semester
+          </div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
+<div class="bg-[#001C38] px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#85aee8] uppercase tracking-wider font-semibold">ACTIVE OC VOLUNTEERS</span>
+<span class="material-symbols-outlined text-[#85aee8] text-[16px]">assignment_ind</span>
+</div>
+<div class="p-space-md flex flex-col items-center text-center">
+<span class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">118</span>
+
+<div class="mt-3 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">pie_chart</span> 41.5% Participation
+          </div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
+<div class="bg-[#001C38] px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#85aee8] uppercase tracking-wider font-semibold">AVERAGE SERVICE HOURS</span>
+<span class="material-symbols-outlined text-[#85aee8] text-[16px]">schedule</span>
+</div>
+<div class="p-space-md flex flex-col items-center text-center">
+<div class="flex items-baseline gap-1">
+<span class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">22.4</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">hrs</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Hours per volunteer this academic year</span>
+
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col justify-between">
+<div class="bg-[#001C38] px-space-md py-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-[#e2dfff] uppercase tracking-wider font-semibold">MAX OC LIMIT REACHED</span>
+<span class="material-symbols-outlined text-[#e2dfff] text-[16px]">warning</span>
+</div>
+<div class="p-space-md flex flex-col items-center text-center">
+<span class="font-metric-xl text-metric-xl text-on-surface font-bold tracking-tight">19</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Volunteers at 2-OC cap (role lock)</span>
+
+</div>
+</div>
+</div>
+<!-- Main Content Workspace Grid (12-Column Responsive) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter items-start">
+<!-- Primary Data Roster Container (Left 9-Cols on XL) -->
+<div class="xl:col-span-9 flex flex-col gap-space-md">
+<!-- Search, Filter & Bulk Action Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search bar -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-space-md py-2 bg-surface-container-low font-body-sm text-body-sm text-on-surface rounded-xl placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" id="memberSearchInput" placeholder="Search volunteer name, IEEE ID (#9482...), SLIIT student email..." type="text">
+</div>
+<!-- Segmented View / Fast Filter Pills -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-xl overflow-x-auto">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm whitespace-nowrap" type="button">All (284)</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap" type="button">Premier Tier (52)</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap" type="button">Gold Tier (94)</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap" type="button">At 2-OC Cap (19)</button>
+</div>
+</div>
+<!-- Secondary Filters Row -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-2">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Chapter Dropdown Filter -->
+<div class="relative inline-flex items-center bg-surface-container-low rounded-xl px-2.5 py-1.5 cursor-pointer">
+<span class="material-symbols-outlined text-outline text-[16px] mr-1">hub</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">Entity:</span>
+<select class="bg-transparent font-label-sm text-label-sm text-on-surface font-semibold focus:outline-none cursor-pointer">
+<option>All Chapters &amp; AGs</option>
+<option>IEEE CS (Computer Society)</option>
+<option>IEEE RAS (Robotics &amp; Automation)</option>
+<option>IEEE WIE (Women in Engineering)</option>
+<option>Executive Board</option>
+<option>IEEE ComSoc</option>
+</select>
+</div>
+<!-- OC Commitment Filter -->
+<div class="relative inline-flex items-center bg-surface-container-low rounded-xl px-2.5 py-1.5 cursor-pointer">
+<span class="material-symbols-outlined text-outline text-[16px] mr-1">badge</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">Commitment:</span>
+<select class="bg-transparent font-label-sm text-label-sm text-on-surface font-semibold focus:outline-none cursor-pointer">
+<option>All Roles</option>
+<option>0 Active OCs</option>
+<option>1 Active OC</option>
+<option>2 Active OCs (Capped)</option>
+</select>
+</div>
+<!-- Standing Filter -->
+<div class="relative inline-flex items-center bg-surface-container-low rounded-xl px-2.5 py-1.5 cursor-pointer">
+<span class="material-symbols-outlined text-outline text-[16px] mr-1">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">Standing:</span>
+<select class="bg-transparent font-label-sm text-label-sm text-on-surface font-semibold focus:outline-none cursor-pointer">
+<option>All Standings</option>
+<option>Premier Tier (Top 5%)</option>
+<option>Gold Tier</option>
+<option>Active Tier</option>
+<option>Needs Hours</option>
+</select>
+</div>
+</div>
+<!-- Bulk Operation Triggers -->
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline">Selected: <strong class="text-on-surface">0</strong></span>
+<button class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">send</span> Broadcast
+              </button>
+<button class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">badge</span> Credentials
+              </button>
+</div>
+</div>
+</div>
+<!-- Member Directory Table Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<th class="py-2.5 px-space-md font-semibold">
+<div class="flex items-center gap-2">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<span class="">STUDENT VOLUNTEER</span>
+</div>
+</th>
+<th class="py-2.5 px-space-md font-semibold">DEGREE &amp; YEAR</th>
+<th class="py-2.5 px-space-md font-semibold">CHAPTER AFFILIATION</th>
+<th class="py-2.5 px-space-md font-semibold">ACTIVE OC COMMITMENT</th>
+<th class="py-2.5 px-space-md font-semibold">VERIFIED HOURS</th>
+<th class="py-2.5 px-space-md font-semibold">STANDING</th>
+<th class="py-2.5 px-space-md text-right font-semibold">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-on-surface">
+<!-- Row 1: Kavindi Perera -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<div class="w-9 h-9 rounded-full bg-secondary/15 text-secondary flex items-center justify-center font-bold text-label-md flex-shrink-0">
+                        KP
+                      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-subheadline text-subheadline font-semibold text-on-surface truncate">Kavindi Perera</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-medium">#9482014</span>
+<span class="">•</span>
+<span class="truncate">kavindi.p@sliit.lk</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">BSc (Hons) SE</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Year 3 • Sem 2</span>
+</td>
+<td class="py-3 px-space-md"><div class="flex items-center gap-2 flex-wrap"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeYP0uFm1H10VY4XSNq_VQepMYDweJunB-z19mTWi6JJOQg2UPqIJ48XL4VA7-csTTj3MkmCynqNNjJl-cKIqZSiJoQd1sq9b3LCHCe0FeUlS2cVVe5b48w_QuMSc8rDf7SMedzC_DdJfwuJfngXSGFfpqCweiAlnmL7YJC6D6xXj_uvik13DxQnzP7mYpbtJk-6TxTDKFvRAfpDD0-XWRvjmPLjp9X4jr6k5Pro3PYkfSNPM0VHFo" alt="IEEE CS" class="h-6 w-auto object-contain"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2Ocn_pY13HGYpY6KP09mxh_LcF_oNYHZb4GybEkqtkxR6hHSWm6mBIRufumPqvY1ndDTuWrccpVnJsp0O0n98gwFM6OiaJQHICvp504KPPfW_040dwrGjA1YaAamfkgGU90MLaafoEaAxSiEkLQa7E0b_U-zBL3l324O_kh62zNEwLzxLZp-8PWkL5Iri9UXFr0O50j39pegM8N83c40vVjMH-HXtINAjNkR2orLbCEuAN-ECcBVz" alt="IEEE RAS" class="h-6 w-auto object-contain"></div></td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-error font-label-sm text-label-sm font-semibold w-fit">
+<span class="material-symbols-outlined text-[12px]">lock</span> 2 / 2 (Capped)
+                      </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]" title="RoboFest 2025 Lead, Asst Secretary">
+                        RoboFest 2025 Lead, Asst Secretary
+                      </span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1 w-28">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-bold text-on-surface">56.5</span>
+<span class="font-label-sm text-label-sm text-[#006b27] font-semibold">+113%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full w-[100%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#34c759]/15 text-[#006b27] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">workspace_premium</span> Premier Tier
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" title="View Dossier" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" title="Issue Service Letter" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Dineth Jayasundara -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<div class="w-9 h-9 rounded-full bg-primary/15 text-primary flex items-center justify-center font-bold text-label-md flex-shrink-0">
+                        DJ
+                      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-subheadline text-subheadline font-semibold text-on-surface truncate">Dineth Jayasundara</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-medium">#9482109</span>
+<span class="">•</span>
+<span class="truncate">dineth.j@sliit.lk</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">BSc (Hons) IT</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Year 4 • Sem 1</span>
+</td>
+<td class="py-3 px-space-md"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOv60K5FIvYvVfnyx_MR0qlDVCdiuVka2EWAyRn1XyCqmFQQedXr0Iifi_cp5mEaBVDGlJqZTd0IaacL65v4HIKG2Csu20G5PsGohR_PBv0MZxXu9BxzBoPdOqsPfzuQY9eGO2c_B8qiyStyBENtXUOtnwXsBUc3jWsnNdtOF2hBAisq2uD4ZmT2-I6C7WhIZ2W_9zF5vrHO1k95REar2RuyB5ZixnupqpPlvbBdzf1D_rTAFxWB3C" alt="IEEE CS" class="h-6 w-auto object-contain"></div></td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold w-fit">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> 1 / 2 (Open)
+                      </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]" title="MoraXtreme 9.0 Logistics">
+                        MoraXtreme 9.0 Logistics
+                      </span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1 w-28">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-bold text-on-surface">48.5</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">97%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full w-[97%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#34c759]/15 text-[#006b27] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">workspace_premium</span> Premier Tier
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Tharindu Wickramasinghe -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<div class="w-9 h-9 rounded-full bg-[#00172e] text-[#85aee8] flex items-center justify-center font-bold text-label-md flex-shrink-0">
+                        TW
+                      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-subheadline text-subheadline font-semibold text-on-surface truncate">Tharindu Wickramasinghe</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-medium">#9482338</span>
+<span class="">•</span>
+<span class="truncate">tharindu.w@sliit.lk</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">BSc (Hons) CSNE</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Year 3 • Sem 1</span>
+</td>
+<td class="py-3 px-space-md"><div class="flex items-center gap-2 flex-wrap"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOv60K5FIvYvVfnyx_MR0qlDVCdiuVka2EWAyRn1XyCqmFQQedXr0Iifi_cp5mEaBVDGlJqZTd0IaacL65v4HIKG2Csu20G5PsGohR_PBv0MZxXu9BxzBoPdOqsPfzuQY9eGO2c_B8qiyStyBENtXUOtnwXsBUc3jWsnNdtOF2hBAisq2uD4ZmT2-I6C7WhIZ2W_9zF5vrHO1k95REar2RuyB5ZixnupqpPlvbBdzf1D_rTAFxWB3C" alt="IEEE CS" class="h-6 w-auto object-contain"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG3pwpfa9WblN2bQN7L6lo7SQxo7MBlBX6PVKbrZCg2wIQ_pvQ0DZ5k8HE9CuEHYdM_FDMFw7ZZ4IkNT5efHt0HVpPeZMm_WD3kkXFpJ446FvE4xKnpyj0o0RNgDbtKAW3vb9MrITkBcXHIui96_LuBuf2ojYEFmMjedXebR08RRG1XUM05COS0EeVpxioEITOJMQQqhf6KmXr5Z0Ibj-rpkqL8PCef0B3DgmhpbpPaFQcwANX40av" alt="IEEE ComSoc" class="h-6 w-auto object-contain"></div></td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-error font-label-sm text-label-sm font-semibold w-fit">
+<span class="material-symbols-outlined text-[12px]">lock</span> 2 / 2 (Capped)
+                      </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]" title="TechPulse Webmaster, IEEE Xtreme Host">
+                        TechPulse Webmaster, IEEE Xtreme Host
+                      </span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1 w-28">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-bold text-on-surface">62.0</span>
+<span class="font-label-sm text-label-sm text-[#006b27] font-semibold">+124%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full w-[100%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#34c759]/15 text-[#006b27] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">workspace_premium</span> Premier Tier
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Senuri Fernando -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<div class="w-9 h-9 rounded-full bg-[#6d28d9]/15 text-[#6d28d9] flex items-center justify-center font-bold text-label-md flex-shrink-0">
+                        SF
+                      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-subheadline text-subheadline font-semibold text-on-surface truncate">Senuri Fernando</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-medium">#9481992</span>
+<span class="">•</span>
+<span class="truncate">senuri.f@sliit.lk</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">BEng Mechatronics</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Year 2 • Sem 2</span>
+</td>
+<td class="py-3 px-space-md"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAliA9TvkAS6Ju1VJ4NicEfYNtWVC6Ph3-xuhJ7BtylkWuz6WlxJuvVmB3UnbZJmgr3gIB-sw_-nXoktIlYZZ0DqSVZOuGgvXJOyWRVx6DG53jyNhSPiyt1fsebazecTYKDl351auy1_tPn7m77-lriH1XG418Bf0qZkWxj1hL8_u-MErcRFuOZUAr7asvm5SMt2FAn6ZduJVKV1qflnCTYmApOTKAEWxJRdz_x3nSrFecStwP_14fO" alt="IEEE WIE" class="h-6 w-auto object-contain"></div></td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold w-fit">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> 1 / 2 (Open)
+                      </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]" title="WIE Empower Summit OC">
+                        WIE Empower Summit OC
+                      </span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1 w-28">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-bold text-on-surface">29.0</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">58%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary/80 h-1.5 rounded-full w-[58%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#f4a000]/15 text-[#9a5b00] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">military_tech</span> Gold Tier
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Nimesha Weerasinghe -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-bold text-label-md flex-shrink-0">
+                        NW
+                      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-subheadline text-subheadline font-semibold text-on-surface truncate">Nimesha Weerasinghe</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-medium">#9482511</span>
+<span class="">•</span>
+<span class="truncate">nimesha.w@sliit.lk</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">BSc (Hons) CS</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Year 2 • Sem 1</span>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+                      IEEE SB Core
+                    </span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold w-fit">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> 1 / 2 (Open)
+                      </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]" title="IEEE Day Sri Lanka OC">
+                        IEEE Day Sri Lanka OC
+                      </span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1 w-28">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-bold text-on-surface">18.5</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">37%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary/50 h-1.5 rounded-full w-[37%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">hourglass_empty</span> Active Tier
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Sahan Dissanayake -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<div class="w-9 h-9 rounded-full bg-[#f4a000]/20 text-[#9a5b00] flex items-center justify-center font-bold text-label-md flex-shrink-0">
+                        SD
+                      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-subheadline text-subheadline font-semibold text-on-surface truncate">Sahan Dissanayake</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-medium">#9481804</span>
+<span class="">•</span>
+<span class="truncate">sahan.d@sliit.lk</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">BSc (Hons) SE</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Year 4 • Sem 2</span>
+</td>
+<td class="py-3 px-space-md"><div class="flex items-center gap-2 flex-wrap"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOv60K5FIvYvVfnyx_MR0qlDVCdiuVka2EWAyRn1XyCqmFQQedXr0Iifi_cp5mEaBVDGlJqZTd0IaacL65v4HIKG2Csu20G5PsGohR_PBv0MZxXu9BxzBoPdOqsPfzuQY9eGO2c_B8qiyStyBENtXUOtnwXsBUc3jWsnNdtOF2hBAisq2uD4ZmT2-I6C7WhIZ2W_9zF5vrHO1k95REar2RuyB5ZixnupqpPlvbBdzf1D_rTAFxWB3C" alt="IEEE CS" class="h-6 w-auto object-contain"><span class="px-2 py-0.5 rounded-full bg-[#f4a000]/15 text-[#9a5b00] font-label-sm text-label-sm font-semibold inline-flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">stars</span> Chair</span></div></td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-error font-label-sm text-label-sm font-semibold w-fit">
+<span class="material-symbols-outlined text-[12px]">lock</span> 2 / 2 (Capped)
+                      </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]" title="Chapter Lead, CodeSprint Convener">
+                        Chapter Lead, CodeSprint
+                      </span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1 w-28">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-bold text-on-surface">74.0</span>
+<span class="font-label-sm text-label-sm text-[#006b27] font-semibold">+148%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full w-[100%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#34c759]/15 text-[#006b27] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">workspace_premium</span> Premier Tier
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Chamath Jayalath -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer" type="checkbox">
+<div class="w-9 h-9 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-label-md flex-shrink-0">
+                        CJ
+                      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-subheadline text-subheadline font-semibold text-on-surface truncate">Chamath Jayalath</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-medium">#9482701</span>
+<span class="">•</span>
+<span class="truncate">chamath.j@sliit.lk</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">BEng Mechatronics</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Year 3 • Sem 2</span>
+</td>
+<td class="py-3 px-space-md"><div class="flex items-center gap-2 flex-wrap"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2Ocn_pY13HGYpY6KP09mxh_LcF_oNYHZb4GybEkqtkxR6hHSWm6mBIRufumPqvY1ndDTuWrccpVnJsp0O0n98gwFM6OiaJQHICvp504KPPfW_040dwrGjA1YaAamfkgGU90MLaafoEaAxSiEkLQa7E0b_U-zBL3l324O_kh62zNEwLzxLZp-8PWkL5Iri9UXFr0O50j39pegM8N83c40vVjMH-HXtINAjNkR2orLbCEuAN-ECcBVz" alt="IEEE RAS" class="h-6 w-auto object-contain"><span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold inline-flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">stars</span> Chair</span></div></td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-error font-label-sm text-label-sm font-semibold w-fit">
+<span class="material-symbols-outlined text-[12px]">lock</span> 2 / 2 (Capped)
+                      </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]" title="RoboFest Co-Chair, Ex-Com Rep">
+                        RoboFest Co-Chair, Ex-Com Rep
+                      </span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col gap-1 w-28">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-bold text-on-surface">51.0</span>
+<span class="font-label-sm text-label-sm text-[#006b27] font-semibold">+102%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full w-[100%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#34c759]/15 text-[#006b27] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">workspace_premium</span> Premier Tier
+                    </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-md py-3 bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+              Showing <strong class="text-on-surface">1 - 7</strong> of <strong class="text-on-surface">284</strong> members
+            </span>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-outline cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold" type="button">1</button>
+<button class="px-2.5 py-1 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm" type="button">2</button>
+<button class="px-2.5 py-1 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm" type="button">3</button>
+<span class="px-1 text-outline font-label-sm text-label-sm">...</span>
+<button class="px-2.5 py-1 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm" type="button">41</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Summary & Executive Telemetry Rail (Right 3-Cols on XL) -->
+<div class="xl:col-span-3 flex flex-col gap-space-md">
+<!-- Safeguard Governance Policy Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+
+
+</div>
+<!-- Top Volunteer Leaderboard -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+
+
+</div>
+<!-- Chapter Roster Allocation Donut & Telemetry -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-subheadline text-subheadline font-bold text-on-surface">Chapter Headcount</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total 284</span>
+</div>
+<!-- Inline SVG Distribution Indicator -->
+<div class="flex items-center justify-center py-2">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<!-- Background track -->
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4.5"></path>
+<!-- IEEE CS (42%) -->
+<path class="text-[#f4a000]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="42, 100" stroke-width="4.5"></path>
+<!-- IEEE RAS (28%) -->
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="28, 100" stroke-dashoffset="-42" stroke-width="4.5"></path>
+<!-- IEEE WIE (18%) -->
+<path class="text-[#6d28d9]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="18, 100" stroke-dashoffset="-70" stroke-width="4.5"></path>
+<!-- Other/General SB (12%) -->
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="12, 100" stroke-dashoffset="-88" stroke-width="4.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-subheadline text-subheadline font-bold text-on-surface">42%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant -mt-1">IEEE CS</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-1 font-label-sm text-label-sm">
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-on-surface-variant font-medium">
+<span class="w-2.5 h-2.5 rounded-full bg-[#f4a000]"></span> IEEE CS
+              </span>
+<span class="font-semibold text-on-surface">119 members (42%)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-on-surface-variant font-medium">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span> IEEE RAS
+              </span>
+<span class="font-semibold text-on-surface">80 members (28%)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-on-surface-variant font-medium">
+<span class="w-2.5 h-2.5 rounded-full bg-[#6d28d9]"></span> IEEE WIE
+              </span>
+<span class="font-semibold text-on-surface">51 members (18%)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-on-surface-variant font-medium">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> Branch General &amp; Others
+              </span>
+<span class="font-semibold text-on-surface">34 members (12%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple quick filter interaction for demonstration
+  const searchInput = document.getElementById('memberSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      const rows = document.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+  }
+</script></main></div>
+
+
+</body></html>

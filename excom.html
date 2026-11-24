@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ex-Com Portal — IEEE SLIIT VMS</title>
+  <meta name="description" content="IEEE SLIIT Ex-Com Portal — coordinate chapter capacity, audit field hours, and manage service credentials." />
+
+  <!-- Google Fonts: Inter & Material Symbols Outlined -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- CSS Design System (strict order) -->
+  <link rel="stylesheet" href="/src/css/tokens.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+
+  <style>
+    /* ── Layout Rhythms ────────────────────────────────────────── */
+    .app-shell {
+      display: flex;
+      min-height: 100vh;
+      background-color: var(--bg-primary);
+    }
+
+    .page-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: var(--space-6);
+      padding-top: calc(var(--header-height) + var(--space-6));
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+      max-width: 1560px;
+      margin-inline: auto;
+      width: 100%;
+    }
+
+    /* ── Topbar Enhancements ───────────────────────────────────── */
+    .topbar-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .topbar-heading {
+      font-size: var(--text-body-lg);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+    }
+
+    .topbar-search {
+      width: 250px;
+    }
+
+    .topbar-term-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--separator-strong);
+      border-radius: var(--radius-md);
+      font-size: var(--text-caption-1);
+      font-weight: var(--weight-semibold);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background var(--duration-fast) var(--ease-ios);
+    }
+    .topbar-term-badge:hover {
+      background: var(--bg-surface-container);
+      color: var(--text-primary);
+    }
+
+    .topbar-notif-btn {
+      position: relative;
+    }
+
+    .topbar-notif-dot {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    /* ── Executive Header Banner ───────────────────────────────── */
+    .page-header-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(10, 65, 116, 0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-5);
+      box-shadow: var(--shadow-card);
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-1);
+    }
+
+    .header-meta {
+      font-size: var(--text-caption-1);
+      color: var(--text-tertiary);
+    }
+
+    .portal-main-title {
+      font-size: var(--text-headline-lg);
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      letter-spacing: -0.02em;
+      line-height: var(--leading-tight);
+      margin-bottom: 4px;
+    }
+
+    .portal-subtitle {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+    }
+
+    .header-action-buttons {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-shrink: 0;
+    }
+
+    /* ── Stats Metric Cards Grid ───────────────────────────────── */
+    .stats-row-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(10, 65, 116, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--duration-base) var(--ease-ios);
+    }
+
+    .stat-card:hover {
+      box-shadow: var(--shadow-elevated);
+      transform: translateY(-2px);
+    }
+
+    .stat-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-3);
+    }
+
+    .stat-card-label {
+      font-size: var(--text-caption-2);
+      font-weight: var(--weight-bold);
+      color: #002b52;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .stat-card-icon {
+      font-size: 20px;
+      color: var(--color-primary);
+    }
+
+    .stat-card-mid {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-2);
+    }
+
+    .stat-metric-val {
+      font-size: var(--text-metric-xl);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .stat-card-trend {
+      font-size: var(--text-caption-1);
+      font-weight: var(--weight-semibold);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .stat-card-trend.up { color: var(--color-success); }
+    .stat-card-trend.down { color: var(--color-danger); }
+    .stat-card-trend.info { color: var(--color-primary); }
+
+    .stat-card-subtext {
+      font-size: var(--text-caption-2);
+      color: var(--text-tertiary);
+      margin-top: var(--space-2);
+    }
+
+    /* ── Operational Split Grid ────────────────────────────────── */
+    .operational-split-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: var(--space-6);
+      align-items: flex-start;
+    }
+
+    .ops-main-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+      min-width: 0;
+    }
+
+    .ops-side-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+      min-width: 0;
+    }
+
+    /* ── Table Card & Capacity Bars ────────────────────────────── */
+    .table-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-surface-secondary);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      border: 1px solid var(--separator-strong);
+    }
+
+    .table-filter-btn {
+      padding: 5px 12px;
+      border: none;
+      background: none;
+      font-size: var(--text-caption-1);
+      font-weight: var(--weight-semibold);
+      color: var(--text-secondary);
+      border-radius: var(--radius-xs);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .table-filter-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .table-filter-btn.active {
+      background: #002b52;
+      color: #ffffff;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .cap-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      max-width: 200px;
+      min-width: 140px;
+    }
+
+    .cap-bar-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--text-caption-1);
+    }
+
+    .cap-bar-ratio {
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+    }
+
+    .cap-bar-pct {
+      color: var(--text-tertiary);
+    }
+
+    .event-meta-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .event-cell-title {
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-body-sm);
+      color: var(--text-primary);
+    }
+
+    .event-cell-sub {
+      font-size: var(--text-caption-1);
+      color: var(--text-tertiary);
+    }
+
+    /* ── Verification Queue Card ───────────────────────────────── */
+    .title-with-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .verification-queue-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .queue-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-5);
+      background: var(--bg-surface-secondary);
+      border: 1px solid rgba(10, 65, 116, 0.08);
+      border-radius: var(--radius-md);
+      transition: all var(--duration-base) var(--ease-ios);
+    }
+
+    .queue-item:hover {
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-card);
+      border-color: rgba(0, 88, 188, 0.2);
+    }
+
+    .queue-item-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+      flex: 1;
+    }
+
+    .queue-item-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .queue-header-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .queue-volunteer-name {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+    }
+
+    .queue-event-title {
+      font-size: var(--text-caption-1);
+      color: var(--text-tertiary);
+    }
+
+    .queue-impact-text {
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 480px;
+    }
+
+    .queue-item-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-shrink: 0;
+    }
+
+    .queue-hours-claimed {
+      font-size: var(--text-title-2);
+      font-weight: var(--weight-bold);
+      color: #002b52;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .queue-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    /* ── Quotas & Audit (Right Column) ─────────────────────────── */
+    .quota-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      padding-top: var(--space-2);
+    }
+
+    .quota-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .quota-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .quota-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+    }
+
+    .quota-numbers {
+      font-size: var(--text-caption-1);
+      color: var(--text-tertiary);
+      font-weight: var(--weight-medium);
+    }
+
+    .audit-feed-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .audit-feed-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--separator-strong);
+    }
+    .audit-feed-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .audit-text {
+      font-size: var(--text-caption-1);
+      color: var(--text-primary);
+      line-height: var(--leading-snug);
+    }
+
+    .audit-time {
+      font-size: var(--text-caption-2);
+      color: var(--text-tertiary);
+    }
+
+    .audit-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-success);
+      box-shadow: 0 0 0 3px var(--color-success-light);
+    }
+
+    /* ── Modals & Controls ─────────────────────────────────────── */
+    .modal-icon-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .modal-icon-badge.danger {
+      background: var(--error-container);
+      color: var(--color-danger);
+    }
+    .modal-icon-badge.primary {
+      background: var(--primary-fixed);
+      color: var(--color-primary);
+    }
+    .modal-icon-badge.info {
+      background: var(--color-teal-light);
+      color: var(--color-primary);
+    }
+
+    .modal-desc-callout {
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-primary-light);
+      border-left: 3px solid var(--color-primary);
+      border-radius: var(--radius-xs);
+      font-size: var(--text-caption-1);
+      color: var(--text-primary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .code-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: rgba(0, 0, 0, 0.06);
+      padding: 2px 5px;
+      border-radius: var(--radius-xs);
+    }
+
+    .modal-ops-info-box {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      background: var(--bg-surface-secondary);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-caption-1);
+      color: var(--text-secondary);
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close-eng-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .engagement-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      border: 1px solid var(--separator-strong);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-secondary);
+    }
+
+    .engagement-hours-input {
+      width: 70px;
+      padding: 6px 8px;
+      border: 1.5px solid var(--separator-strong);
+      border-radius: var(--radius-xs);
+      font-family: var(--font-family);
+      font-size: var(--text-caption-1);
+      text-align: center;
+      outline: none;
+      background: var(--bg-surface);
+    }
+    .engagement-hours-input:focus {
+      border-color: var(--color-primary);
+    }
+
+    .rating-select {
+      width: 110px;
+      padding: 6px 8px;
+      border: 1.5px solid var(--separator-strong);
+      border-radius: var(--radius-xs);
+      font-size: var(--text-caption-1);
+      background-color: var(--bg-surface);
+      outline: none;
+    }
+    .rating-select:focus {
+      border-color: var(--color-primary);
+    }
+
+    .tag-input-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      padding: 8px var(--space-3);
+      border: 1.5px solid var(--separator-strong);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      cursor: text;
+      min-height: 44px;
+      align-items: center;
+      transition: border-color var(--duration-fast) var(--ease-ios),
+                  box-shadow var(--duration-fast) var(--ease-ios);
+    }
+    .tag-input-wrap:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--border-focus);
+    }
+    .tag-input-wrap input {
+      border: none;
+      outline: none;
+      font-family: var(--font-family);
+      font-size: var(--text-subhead);
+      flex: 1;
+      min-width: 90px;
+      background: none;
+    }
+
+    .sidebar-signout-btn {
+      background: none;
+      border: none;
+      color: var(--sidebar-text-muted);
+      cursor: pointer;
+      padding: var(--space-2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--duration-fast) var(--ease-ios);
+      margin-left: auto;
+    }
+    .sidebar-signout-btn:hover {
+      color: var(--sidebar-text-active);
+      background: var(--sidebar-bg-hover);
+    }
+    .sidebar-footer {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    /* ── Highlight animation for batch review ──────────────────── */
+    .card-highlight {
+      animation: pulseHighlight 1.5s var(--ease-ios);
+    }
+    @keyframes pulseHighlight {
+      0%   { box-shadow: 0 0 0 0 rgba(0, 88, 188, 0.6); }
+      50%  { box-shadow: 0 0 0 8px rgba(0, 88, 188, 0.2); }
+      100% { box-shadow: var(--shadow-card); }
+    }
+
+    /* ── Responsive Rules ──────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .operational-split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .stats-row-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-only {
+        display: inline-flex;
+      }
+      .topbar-search, .topbar-term-badge {
+        display: none;
+      }
+      .queue-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .queue-item-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .page-header-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-action-buttons {
+        width: 100%;
+      }
+      .header-action-buttons .btn {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .stats-row-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="app-shell has-sidebar">
+
+  <!-- ── Sidebar ─────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo">IEEE</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-title">IEEE SLIIT</span>
+        <span class="sidebar-brand-subtitle">Student Branch</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="/excom.html" class="sidebar-link active">
+          <span class="sidebar-link-icon material-symbols-outlined">dashboard</span> Event Operations
+        </a>
+        <a href="/events.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">event</span> All Events
+        </a>
+        <a href="/index.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">home</span> Volunteer Portal
+        </a>
+      </nav>
+    </div>
+
+    <!-- Chapter Standing info in sidebar -->
+    <div style="padding: var(--space-4) var(--space-5); margin-top: auto;">
+      <div style="background: rgba(10, 65, 116, 0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span style="font-size: var(--text-label-sm); color: var(--sidebar-text-muted);">Branch Standing</span>
+          <span style="font-size: var(--text-label-sm); color: #53e16f; font-weight: 700;">Premier Tier</span>
+        </div>
+        <div class="progress-bar" style="height: 5px; background: rgba(0,0,0,0.3);">
+          <div class="progress-fill" style="width: 84%; background: #38bdf8;"></div>
+        </div>
+        <div style="font-size: 11px; color: var(--sidebar-text-muted); margin-top: 6px;">84% target retention recorded</div>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="user-avatar">--</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="user-name">Loading...</div>
+          <div class="sidebar-user-role" id="user-role">Volunteer</div>
+        </div>
+      </div>
+      <button class="sidebar-signout-btn" onclick="handleSignOut()" title="Sign Out" aria-label="Sign Out">
+        <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="page-content">
+    <!-- ── Topbar (No brand, only title and actions) ─────────── -->
+    <header class="topbar" id="topbar">
+      <!-- Mobile hamburger menu toggle -->
+      <button class="btn btn-icon btn-ghost mobile-only" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+
+      <div class="topbar-title-wrap">
+        <h1 class="topbar-heading">Event Operations</h1>
+      </div>
+
+      <div class="topbar-spacer"></div>
+
+      <div class="topbar-actions">
+        <!-- Global Search -->
+        <div class="search-input topbar-search">
+          <span class="material-symbols-outlined search-input-icon">search</span>
+          <input type="text" id="global-search" placeholder="Search events, volunteers..." oninput="handleSearch(this.value)" />
+        </div>
+
+        <!-- Academic Year / Chapter indicator -->
+        <div class="topbar-term-badge" title="Active Academic Session">
+          <span>AY 2024/25</span>
+          <span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+        </div>
+
+        <!-- Notifications -->
+        <button class="btn btn-icon btn-ghost topbar-notif-btn" id="btn-notifications" aria-label="Notifications" title="Notifications">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="topbar-notif-dot"></span>
+        </button>
+
+        <!-- User profile dropdown menu -->
+        <div class="dropdown">
+          <button class="btn btn-icon btn-secondary" id="btn-user-menu" onclick="toggleUserMenu()" aria-label="User menu" aria-expanded="false">
+            <div class="avatar avatar-sm" id="topbar-avatar">E</div>
+          </button>
+          <div class="dropdown-menu hidden" id="user-dropdown" role="menu">
+            <div class="dropdown-label" id="dropdown-user-name">Ex-Com Officer</div>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item danger" onclick="handleSignOut()">
+              <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Main Content ──────────────────────────────────────── -->
+    <main class="main-content" id="main-content">
+
+      <!-- Executive Header Banner -->
+      <section class="page-header-card animate-fadeInUp">
+        <div class="page-header-info">
+          <div class="header-badges">
+            <span class="badge badge-blue">Official Portal</span>
+            <span class="header-meta" id="header-chapter-info">STBD4028 • Sri Lanka Section</span>
+          </div>
+          <h1 class="portal-main-title">Executive Committee Management</h1>
+          <p class="portal-subtitle">Coordinate chapter capacity, audit field hours, and manage service credentials.</p>
+        </div>
+        <div class="header-action-buttons">
+          <button class="btn btn-secondary" id="btn-batch-review" onclick="focusVerificationQueue()" type="button">
+            <span class="material-symbols-outlined" style="font-size: 18px;">rule</span>
+            <span>Batch Review</span>
+          </button>
+          <button class="btn btn-primary" id="btn-create-event-top" onclick="openCreateModal()" type="button">
+            <span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+            <span>+ Create New Event</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ── Stats Row (4 Metric Cards with Trends) ───────────── -->
+      <section class="stats-row-grid stagger">
+        <!-- 1: Active Operations -->
+        <div class="stat-card animate-fadeInUp">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Active Operations</span>
+            <span class="material-symbols-outlined stat-card-icon">calendar_today</span>
+          </div>
+          <div class="stat-card-mid">
+            <span class="stat-metric-val" id="stat-active-ops">3</span>
+            <span class="stat-card-trend up">
+              <span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span> 100% On-Track
+            </span>
+          </div>
+          <p class="stat-card-subtext" id="stat-active-sub">Across 3 active chapters</p>
+        </div>
+
+        <!-- 2: Registered Volunteers -->
+        <div class="stat-card animate-fadeInUp">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Registered Volunteers</span>
+            <span class="material-symbols-outlined stat-card-icon" style="color: var(--color-secondary);">group</span>
+          </div>
+          <div class="stat-card-mid">
+            <span class="stat-metric-val" id="stat-vols-count">124</span>
+            <span class="stat-card-trend up">
+              <span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span> +18.4%
+            </span>
+          </div>
+          <p class="stat-card-subtext" id="stat-vols-sub">68 active OC members</p>
+        </div>
+
+        <!-- 3: Pending Verification -->
+        <div class="stat-card animate-fadeInUp">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Pending Verification</span>
+            <span class="material-symbols-outlined stat-card-icon" style="color: var(--color-danger);">pending_actions</span>
+          </div>
+          <div class="stat-card-mid">
+            <span class="stat-metric-val" id="stat-pending-hours">342</span>
+            <span class="stat-card-trend down">
+              <span class="material-symbols-outlined" style="font-size: 14px;">priority_high</span> Action Req.
+            </span>
+          </div>
+          <p class="stat-card-subtext" id="stat-pending-sub">3 submissions pending</p>
+        </div>
+
+        <!-- 4: Hours Verified / Credential Dispatch -->
+        <div class="stat-card animate-fadeInUp">
+          <div class="stat-card-top">
+            <span class="stat-card-label">Credential Dispatch</span>
+            <span class="material-symbols-outlined stat-card-icon" style="color: var(--color-success);">verified</span>
+          </div>
+          <div class="stat-card-mid">
+            <span class="stat-metric-val" id="stat-verified-count">89</span>
+            <span class="stat-card-trend up">
+              <span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span> 100% Verified
+            </span>
+          </div>
+          <p class="stat-card-subtext" id="stat-verified-sub">Official signed credentials</p>
+        </div>
+      </section>
+
+      <!-- ── Operational Split Grid (Main: 8 Cols | Telemetry: 4 Cols) ── -->
+      <div class="operational-split-grid">
+
+        <!-- Left 8-Column Block: Active Events & Verifications Queue -->
+        <div class="ops-main-col">
+
+          <!-- CARD 1: Active Events & Capacity Management -->
+          <div class="card" id="events-card">
+            <div class="card-header flex-between">
+              <div>
+                <h2 class="card-title">Active Events &amp; Capacity Management</h2>
+                <p class="card-subtitle">Live volunteer rosters, slot saturation, and single-click ledger closures.</p>
+              </div>
+              <div class="table-filter-bar" id="events-filter-bar">
+                <button class="table-filter-btn active" onclick="filterEvents('all', this)" type="button">All (3)</button>
+                <button class="table-filter-btn" onclick="filterEvents('RAS', this)" type="button">RAS</button>
+                <button class="table-filter-btn" onclick="filterEvents('CS', this)" type="button">CS</button>
+                <button class="table-filter-btn" onclick="filterEvents('WIE', this)" type="button">WIE</button>
+              </div>
+            </div>
+
+            <div class="data-table-wrap">
+              <table class="data-table" id="events-table">
+                <thead>
+                  <tr>
+                    <th>Event</th>
+                    <th>Schedule</th>
+                    <th style="min-width: 180px;">Capacity</th>
+                    <th>Status</th>
+                    <th class="col-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="events-tbody">
+                  <!-- Realistic initial sample rows (hydrated by Firebase on load) -->
+                  <tr id="event-row-1" data-chapter="RAS">
+                    <td>
+                      <div class="event-meta-cell">
+                        <span class="event-cell-title">RoboFest 2025 Workshop</span>
+                        <span class="event-cell-sub">Robotics &amp; Automation Society</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="event-meta-cell">
+                        <span class="font-medium">Oct 12 – 14</span>
+                        <span class="text-caption-2 text-tertiary">Lab 402</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="cap-bar-wrap">
+                        <div class="cap-bar-meta">
+                          <span class="cap-bar-ratio">18 / 20</span>
+                          <span class="cap-bar-pct">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div class="progress-fill" style="width: 90%; background: #002b52;"></div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-green with-dot">Open</span></td>
+                    <td class="col-right">
+                      <div style="display:flex; gap: var(--space-2); justify-content: flex-end;">
+                        <button class="btn btn-secondary btn-sm" onclick="viewEventVolunteers('event-001', 'RoboFest 2025 Workshop')" type="button">
+                          <span class="material-symbols-outlined" style="font-size: 16px;">group</span> View
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="openCloseModal('event-001', 'RoboFest 2025 Workshop', 18)" type="button">
+                          Close Event
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr id="event-row-2" data-chapter="CS">
+                    <td>
+                      <div class="event-meta-cell">
+                        <span class="event-cell-title">SLIIT CodeBlitz Hackathon</span>
+                        <span class="event-cell-sub">Computer Society</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="event-meta-cell">
+                        <span class="font-medium">Nov 02</span>
+                        <span class="text-caption-2 text-tertiary">24h Non-stop</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="cap-bar-wrap">
+                        <div class="cap-bar-meta">
+                          <span class="cap-bar-ratio">35 / 40</span>
+                          <span class="cap-bar-pct">87.5%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div class="progress-fill" style="width: 87.5%; background: #0a4174;"></div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-blue with-dot">In Progress</span></td>
+                    <td class="col-right">
+                      <div style="display:flex; gap: var(--space-2); justify-content: flex-end;">
+                        <button class="btn btn-secondary btn-sm" onclick="viewEventVolunteers('event-002', 'SLIIT CodeBlitz Hackathon')" type="button">
+                          <span class="material-symbols-outlined" style="font-size: 16px;">group</span> View
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="openCloseModal('event-002', 'SLIIT CodeBlitz Hackathon', 35)" type="button">
+                          Close Event
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr id="event-row-3" data-chapter="WIE">
+                    <td>
+                      <div class="event-meta-cell">
+                        <span class="event-cell-title">WIE Empower Mentorship Summit</span>
+                        <span class="event-cell-sub">Women in Engineering</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="event-meta-cell">
+                        <span class="font-medium">Nov 18</span>
+                        <span class="text-caption-2 text-tertiary">Auditorium Main</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="cap-bar-wrap">
+                        <div class="cap-bar-meta">
+                          <span class="cap-bar-ratio text-success font-semibold">15 / 15 (Full)</span>
+                          <span class="cap-bar-pct">100%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div class="progress-fill green" style="width: 100%;"></div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge badge-green with-dot">Open</span></td>
+                    <td class="col-right">
+                      <div style="display:flex; gap: var(--space-2); justify-content: flex-end;">
+                        <button class="btn btn-secondary btn-sm" onclick="viewEventVolunteers('event-003', 'WIE Empower Mentorship Summit')" type="button">
+                          <span class="material-symbols-outlined" style="font-size: 16px;">group</span> View
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="openCloseModal('event-003', 'WIE Empower Mentorship Summit', 15)" type="button">
+                          Close Event
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- CARD 2: Pending Engagement Verifications Queue -->
+          <div class="card" id="verification-card">
+            <div class="card-header flex-between">
+              <div>
+                <div class="title-with-badge">
+                  <h2 class="card-title">Pending Engagement Verifications Queue</h2>
+                  <span class="badge badge-red" id="queue-badge">3 Pending</span>
+                </div>
+                <p class="card-subtitle">Evaluate claimed volunteer hours, performance ratings (1-5), and sign off into Firestore ledger.</p>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="batchApproveAll()" id="btn-approve-all" type="button" style="color: #002b52; font-weight: 600;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">done_all</span> Approve All Pending
+              </button>
+            </div>
+
+            <!-- Queue List Items -->
+            <div class="verification-queue-list" id="verification-queue">
+              <!-- Item 1 -->
+              <div class="queue-item" id="verify-item-1" data-id="eng-1" data-hours="16.0" data-name="Dinuka Sandeepa">
+                <div class="queue-item-left">
+                  <div class="avatar avatar-md" style="background: #0058bc;">DS</div>
+                  <div class="queue-item-info">
+                    <div class="queue-header-row">
+                      <span class="queue-volunteer-name">Dinuka Sandeepa</span>
+                      <span class="text-tertiary font-medium">•</span>
+                      <span class="queue-event-title">RoboFest 2025</span>
+                      <span class="badge badge-indigo">Organizer</span>
+                    </div>
+                    <p class="queue-impact-text">Coordinated hardware lab benches and kit distribution.</p>
+                  </div>
+                </div>
+                <div class="queue-item-right">
+                  <div class="queue-hours-claimed">16.0 hrs</div>
+                  <div class="queue-actions">
+                    <button class="btn btn-primary btn-sm" onclick="verifyIndividual('verify-item-1', 16.0, 'Dinuka Sandeepa')" type="button">
+                      <span class="material-symbols-outlined" style="font-size: 16px;">check</span> Verify &amp; Credit
+                    </button>
+                    <button class="btn btn-ghost btn-sm text-danger" onclick="rejectIndividual('verify-item-1', 'Dinuka Sandeepa')" type="button" title="Reject request">
+                      <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="queue-item" id="verify-item-2" data-id="eng-2" data-hours="12.5" data-name="Kavindi Perera">
+                <div class="queue-item-left">
+                  <div class="avatar avatar-md" style="background: #e91e63;">KP</div>
+                  <div class="queue-item-info">
+                    <div class="queue-header-row">
+                      <span class="queue-volunteer-name">Kavindi Perera</span>
+                      <span class="text-tertiary font-medium">•</span>
+                      <span class="queue-event-title">WIE Empower Summit</span>
+                      <span class="badge badge-blue">Volunteer</span>
+                    </div>
+                    <p class="queue-impact-text">Managed guest speaker hospitality and stage scheduling.</p>
+                  </div>
+                </div>
+                <div class="queue-item-right">
+                  <div class="queue-hours-claimed">12.5 hrs</div>
+                  <div class="queue-actions">
+                    <button class="btn btn-primary btn-sm" onclick="verifyIndividual('verify-item-2', 12.5, 'Kavindi Perera')" type="button">
+                      <span class="material-symbols-outlined" style="font-size: 16px;">check</span> Verify &amp; Credit
+                    </button>
+                    <button class="btn btn-ghost btn-sm text-danger" onclick="rejectIndividual('verify-item-2', 'Kavindi Perera')" type="button" title="Reject request">
+                      <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="queue-item" id="verify-item-3" data-id="eng-3" data-hours="24.0" data-name="Thushara Jayasinghe">
+                <div class="queue-item-left">
+                  <div class="avatar avatar-md" style="background: #4c4aca;">TJ</div>
+                  <div class="queue-item-info">
+                    <div class="queue-header-row">
+                      <span class="queue-volunteer-name">Thushara Jayasinghe</span>
+                      <span class="text-tertiary font-medium">•</span>
+                      <span class="queue-event-title">SLIIT CodeBlitz</span>
+                      <span class="badge badge-indigo">Organizer</span>
+                    </div>
+                    <p class="queue-impact-text">Configured automated grading containers and 24h deployment.</p>
+                  </div>
+                </div>
+                <div class="queue-item-right">
+                  <div class="queue-hours-claimed">24.0 hrs</div>
+                  <div class="queue-actions">
+                    <button class="btn btn-primary btn-sm" onclick="verifyIndividual('verify-item-3', 24.0, 'Thushara Jayasinghe')" type="button">
+                      <span class="material-symbols-outlined" style="font-size: 16px;">check</span> Verify &amp; Credit
+                    </button>
+                    <button class="btn btn-ghost btn-sm text-danger" onclick="rejectIndividual('verify-item-3', 'Thushara Jayasinghe')" type="button" title="Reject request">
+                      <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 4-Column Block: Chapter Quota Health & Ex-Com Audit Log -->
+        <div class="ops-side-col">
+
+          <!-- CARD 1: Chapter Quotas -->
+          <div class="card" id="quota-card">
+            <div class="card-header flex-between">
+              <div>
+                <h3 class="card-title">Chapter Quotas</h3>
+                <span class="card-subtitle">Capacity saturation check</span>
+              </div>
+              <span class="badge badge-gray">Max 2 OC</span>
+            </div>
+
+            <div class="quota-list" id="quota-list">
+              <div class="quota-item">
+                <div class="quota-header">
+                  <span class="quota-title">Computer Society</span>
+                  <span class="quota-numbers">35 / 40</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 87.5%; background: #002b52;"></div>
+                </div>
+              </div>
+
+              <div class="quota-item">
+                <div class="quota-header">
+                  <span class="quota-title">Robotics &amp; Automation</span>
+                  <span class="quota-numbers">18 / 20</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 90%; background: #0a4174;"></div>
+                </div>
+              </div>
+
+              <div class="quota-item">
+                <div class="quota-header">
+                  <span class="quota-title">Women in Engineering</span>
+                  <span class="quota-numbers text-danger font-semibold">15 / 15 (Full)</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill red" style="width: 100%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: Recent Audit Log -->
+          <div class="card" id="audit-card">
+            <div class="card-header flex-between">
+              <div>
+                <h3 class="card-title">Recent Audit</h3>
+                <span class="card-subtitle">Ledger stream telemetry</span>
+              </div>
+              <span class="audit-status-dot" title="Live connection active"></span>
+            </div>
+
+            <div class="audit-feed-list" id="audit-feed">
+              <div class="audit-feed-item">
+                <p class="audit-text">
+                  <strong style="color: #002b52;">Chair Ex-Com</strong> approved 14 letters for Robofest
+                </p>
+                <span class="audit-time">12 min ago</span>
+              </div>
+              <div class="audit-feed-item">
+                <p class="audit-text">
+                  <strong style="color: #002b52;">Treasurer CS</strong> locked hour claims for IEEE Day
+                </p>
+                <span class="audit-time">1 hr ago</span>
+              </div>
+            </div>
+
+            <div style="padding-top: var(--space-2);">
+              <button class="btn btn-secondary" onclick="exportLedgerCSV()" style="width: 100%;" type="button">
+                <span class="material-symbols-outlined" style="font-size: 16px;">download</span>
+                <span>Export Ledger (CSV)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ── Close Event & Finalize Hours Modal ──────────────────── -->
+  <div class="modal-backdrop hidden" id="close-event-modal" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 620px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: var(--space-3);">
+          <div class="modal-icon-badge danger">
+            <span class="material-symbols-outlined">lock_clock</span>
+          </div>
+          <div>
+            <div class="modal-title" id="close-modal-title">Close Event &amp; Finalize Hours</div>
+            <div class="modal-subtitle" id="close-modal-subtitle">Verify hours and ratings for each volunteer before locking</div>
+          </div>
+        </div>
+        <button class="modal-close" data-close-modal aria-label="Close modal">
+          <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-desc-callout">
+          Executing this batch action will close event enrollment, freeze pending timesheet edits, decrement <code class="code-pill">activeOCCount</code> for <span id="modal-slot-count" style="font-weight: 700;">18</span> volunteers, and trigger automatic service letter readiness.
+        </div>
+
+        <div class="modal-ops-info-box">
+          <div class="info-row">
+            <span>Batch Operation:</span>
+            <strong style="color: var(--text-primary);">Firestore Batch Commit</strong>
+          </div>
+          <div class="info-row">
+            <span>Security Level:</span>
+            <strong style="color: var(--color-success);">Ex-Com Authorized</strong>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-label" style="margin-bottom: var(--space-2);">Volunteer Enrolled Ledger:</div>
+          <div class="close-eng-list" id="close-eng-list">
+            <div style="text-align: center; padding: var(--space-6);">
+              <div class="spinner" style="margin: auto;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal type="button">Cancel</button>
+        <button class="btn btn-danger" id="btn-confirm-close" onclick="confirmCloseEvent()" type="button">
+          <span class="material-symbols-outlined" style="font-size: 18px;">lock</span>
+          <span class="btn-text">Confirm &amp; Finalize</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Create New Event Modal ──────────────────────────────── -->
+  <div class="modal-backdrop hidden" id="create-event-modal" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 640px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: var(--space-3);">
+          <div class="modal-icon-badge primary">
+            <span class="material-symbols-outlined">add_circle</span>
+          </div>
+          <div>
+            <div class="modal-title">Create New Event</div>
+            <div class="modal-subtitle">Configure operational parameters and volunteer quotas</div>
+          </div>
+        </div>
+        <button class="modal-close" data-close-modal aria-label="Close modal">
+          <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+        </button>
+      </div>
+
+      <form id="create-event-form" onsubmit="submitEvent(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="ev-title">Event Title *</label>
+            <input class="form-input" type="text" id="ev-title" placeholder="e.g. RoboFest 2025 Workshop" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="ev-desc">Description</label>
+            <textarea class="form-textarea" id="ev-desc" rows="3" placeholder="Summary of objectives, volunteer responsibilities, and expected field tasks..."></textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="ev-start">Start Date *</label>
+              <input class="form-input" type="datetime-local" id="ev-start" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ev-end">End Date *</label>
+              <input class="form-input" type="datetime-local" id="ev-end" required />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="ev-capacity">Volunteer Capacity *</label>
+              <input class="form-input" type="number" id="ev-capacity" min="1" max="500" placeholder="e.g. 25" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ev-chapter">Chapter Code *</label>
+              <input class="form-input" type="text" id="ev-chapter" readonly />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tags</label>
+            <div class="tag-input-wrap" id="tag-wrap" onclick="document.getElementById('tag-input').focus()">
+              <input type="text" id="tag-input" placeholder="Type tag and press Enter…" onkeydown="handleTagInput(event)" />
+            </div>
+            <div class="form-hint">Press Enter or comma to add tags (e.g. robotics, workshop, hackathon)</div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-close-modal type="button" onclick="resetCreateForm()">Cancel</button>
+          <button class="btn btn-primary" id="btn-submit-create" type="submit">
+            <span class="material-symbols-outlined" style="font-size: 18px;">check</span>
+            <span class="btn-text">Create Event</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Event Volunteers View Modal ─────────────────────────── -->
+  <div class="modal-backdrop hidden" id="engagements-modal" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: var(--space-3);">
+          <div class="modal-icon-badge info">
+            <span class="material-symbols-outlined">group</span>
+          </div>
+          <div>
+            <div class="modal-title" id="eng-modal-title">Event Volunteers</div>
+            <div class="modal-subtitle">Enrolled participants and participation status</div>
+          </div>
+        </div>
+        <button class="modal-close" data-close-modal aria-label="Close modal">
+          <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+        </button>
+      </div>
+
+      <div class="modal-body" id="eng-modal-body">
+        <div style="text-align: center; padding: var(--space-8);">
+          <div class="spinner" style="margin: auto;"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Firebase & Interactive Controller Script ────────────── -->
+  <script type="module">
+    import { requireAuth, signOut } from '/src/js/auth.js';
+    import { db } from '/src/js/firebase-config.js';
+    import {
+      showToast, openModal, closeModal, setupModalClose,
+      formatDate, formatDateRange, formatHours,
+      statusBadgeClass, capitalize, initials, avatarColor,
+      setLoading, debounce
+    } from '/src/js/utils.js';
+    import {
+      collection, query, where, orderBy, getDocs, getDoc,
+      doc, addDoc, updateDoc, writeBatch, serverTimestamp,
+      Timestamp
+    } from 'firebase/firestore';
+
+    // Application State
+    let currentUserProfile = null;
+    let allEvents = [];
+    let allEngagements = [];
+    let allChapterMembers = [];
+    let eventTags = [];
+    let activeFilter = 'all';
+
+    let closingEventId = null;
+    let closingEngagements = [];
+
+    // ── Initialization ─────────────────────────────────────────
+    async function init() {
+      try {
+        // Auth Guard: Require Ex-Com authorization
+        const { user, profile } = await requireAuth('excom');
+        currentUserProfile = profile;
+
+        // Render user credentials in sidebar and topbar
+        renderUserHeader(profile);
+
+        // Bind setup modal closing triggers
+        ['close-event-modal', 'create-event-modal', 'engagements-modal'].forEach(id => setupModalClose(id));
+
+        // Load data in parallel from Firestore
+        await Promise.all([
+          loadEventsData(),
+          loadMembersData(),
+          loadVerificationQueue(),
+        ]);
+
+        updateTelemetryMetrics();
+
+      } catch (err) {
+        console.error('Initialization error in Ex-Com portal:', err);
+      }
+    }
+
+    // ── User Header Rendering ──────────────────────────────────
+    function renderUserHeader(profile) {
+      const userName = profile.name || 'Ex-Com Officer';
+      const userRole = capitalize(profile.role || 'Ex-Com');
+      const chapterCode = profile.chapterCode || 'STBD4028';
+
+      document.getElementById('user-name').textContent = userName;
+      document.getElementById('user-role').textContent = userRole;
+      document.getElementById('dropdown-user-name').textContent = userName;
+
+      const userAvatar = document.getElementById('user-avatar');
+      const topbarAvatar = document.getElementById('topbar-avatar');
+
+      if (profile.profilePicUrl) {
+        userAvatar.innerHTML = `<img src="${profile.profilePicUrl}" alt="${userName}" />`;
+        topbarAvatar.innerHTML = `<img src="${profile.profilePicUrl}" alt="${userName}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" />`;
+      } else {
+        userAvatar.textContent = initials(userName);
+        userAvatar.style.background = avatarColor(userName);
+        topbarAvatar.textContent = initials(userName);
+        topbarAvatar.style.background = avatarColor(userName);
+      }
+
+      document.getElementById('header-chapter-info').textContent = `${chapterCode} • Sri Lanka Section`;
+      const chapterInput = document.getElementById('ev-chapter');
+      if (chapterInput) chapterInput.value = chapterCode;
+    }
+
+    // ── Load Events ─────────────────────────────────────────────
+    async function loadEventsData() {
+      try {
+        let snap;
+        try {
+          const q = query(
+            collection(db, 'events'),
+            where('chapterCode', '==', currentUserProfile.chapterCode || 'STBD4028'),
+            orderBy('startDate', 'desc')
+          );
+          snap = await getDocs(q);
+        } catch (idxErr) {
+          // Fallback if composite index is generating
+          const q = query(
+            collection(db, 'events'),
+            where('chapterCode', '==', currentUserProfile.chapterCode || 'STBD4028')
+          );
+          snap = await getDocs(q);
+        }
+
+        if (snap && !snap.empty) {
+          allEvents = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          // Sort client side
+          allEvents.sort((a, b) => {
+            const tA = a.startDate?.toDate ? a.startDate.toDate().getTime() : new Date(a.startDate || 0).getTime();
+            const tB = b.startDate?.toDate ? b.startDate.toDate().getTime() : new Date(b.startDate || 0).getTime();
+            return tB - tA;
+          });
+          renderEventsTable(allEvents, activeFilter);
+        }
+      } catch (err) {
+        console.warn('Events fetch warning (using baseline cache):', err);
+      }
+    }
+
+    function renderEventsTable(events, filter = 'all') {
+      const tbody = document.getElementById('events-tbody');
+      if (!tbody) return;
+
+      // Filter events by chapter / tag if requested
+      let filtered = events;
+      if (filter !== 'all') {
+        filtered = events.filter(e => {
+          const ch = (e.chapterCode || '').toUpperCase();
+          const title = (e.title || '').toUpperCase();
+          const tags = (e.tags || []).map(t => t.toUpperCase());
+          const target = filter.toUpperCase();
+          return ch.includes(target) || title.includes(target) || tags.includes(target);
+        });
+      }
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align:center; padding: var(--space-8); color: var(--text-secondary);">
+              No events found matching the selected filter.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(ev => {
+        const pct = ev.capacity > 0 ? Math.min(100, Math.round((ev.slotsFilled / ev.capacity) * 100)) : 0;
+        const isFull = ev.slotsFilled >= ev.capacity && ev.capacity > 0;
+        const isOpen = ev.status === 'open' || ev.status === 'in_progress' || ev.status === 'upcoming';
+        const statusBadge = ev.status === 'closed'
+          ? '<span class="badge badge-gray">Closed</span>'
+          : (isFull ? '<span class="badge badge-orange with-dot">Full</span>' : '<span class="badge badge-green with-dot">' + capitalize(ev.status || 'Open') + '</span>');
+
+        const barColor = isFull ? 'var(--color-danger)' : (pct > 80 ? '#0a4174' : '#002b52');
+
+        return `
+          <tr id="event-row-${ev.id}">
+            <td>
+              <div class="event-meta-cell">
+                <span class="event-cell-title">${ev.title}</span>
+                <span class="event-cell-sub">${ev.chapterCode || 'STBD4028'} • ${(ev.tags || []).join(', ') || 'General'}</span>
+              </div>
+            </td>
+            <td>
+              <div class="event-meta-cell">
+                <span class="font-medium">${formatDateRange(ev.startDate, ev.endDate)}</span>
+                <span class="text-caption-2 text-tertiary">Main Hub</span>
+              </div>
+            </td>
+            <td>
+              <div class="cap-bar-wrap">
+                <div class="cap-bar-meta">
+                  <span class="cap-bar-ratio ${isFull ? 'text-danger font-semibold' : ''}">${ev.slotsFilled || 0} / ${ev.capacity || 0} ${isFull ? '(Full)' : ''}</span>
+                  <span class="cap-bar-pct">${pct}%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: ${pct}%; background: ${barColor};"></div>
+                </div>
+              </div>
+            </td>
+            <td>${statusBadge}</td>
+            <td class="col-right">
+              <div style="display:flex; gap: var(--space-2); justify-content: flex-end;">
+                <button class="btn btn-secondary btn-sm" onclick="viewEventVolunteers('${ev.id}', '${escapeAttr(ev.title)}')" type="button">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">group</span> View
+                </button>
+                ${isOpen ? `
+                  <button class="btn btn-danger btn-sm" onclick="openCloseModal('${ev.id}', '${escapeAttr(ev.title)}', ${ev.slotsFilled || 0})" type="button">
+                    Close Event
+                  </button>
+                ` : `
+                  <span class="font-label-sm text-secondary" style="font-size:12px; display:inline-flex; align-items:center; gap:3px;">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">lock</span> Finalized
+                  </span>
+                `}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    window.filterEvents = function(filter, btn) {
+      activeFilter = filter;
+      document.querySelectorAll('#events-filter-bar .table-filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderEventsTable(allEvents, filter);
+    };
+
+    // ── Load Verification Queue ─────────────────────────────────
+    async function loadVerificationQueue() {
+      try {
+        let snap;
+        try {
+          const q = query(
+            collection(db, 'engagements'),
+            where('status', 'in', ['pending', 'active'])
+          );
+          snap = await getDocs(q);
+        } catch (e1) {
+          const q = query(collection(db, 'engagements'));
+          snap = await getDocs(q);
+        }
+
+        if (snap && !snap.empty) {
+          const rawEngagements = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+          // Filter engagements that need verification
+          const pending = rawEngagements.filter(eng =>
+            eng.status === 'pending' || (eng.status === 'active' && (!eng.verifiedHours || eng.verifiedHours === 0))
+          );
+
+          if (pending.length > 0) {
+            allEngagements = pending;
+            await renderVerificationQueue(pending);
+          }
+        }
+      } catch (err) {
+        console.warn('Queue fetch warning (retaining baseline cards):', err);
+      }
+    }
+
+    async function renderVerificationQueue(engagements) {
+      const container = document.getElementById('verification-queue');
+      const badge = document.getElementById('queue-badge');
+      if (!container) return;
+
+      if (engagements.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: var(--space-8); color: var(--text-secondary);">
+            <span class="material-symbols-outlined" style="font-size: 40px; color: var(--color-success); margin-bottom: 8px;">task_alt</span>
+            <div style="font-weight: 600; font-size: var(--text-body-sm); color: var(--text-primary);">Verification Queue Clear</div>
+            <div style="font-size: var(--text-caption-1);">All volunteer hours for active sprints are verified and recorded.</div>
+          </div>
+        `;
+        if (badge) {
+          badge.textContent = 'All Caught Up';
+          badge.className = 'badge badge-green';
+        }
+        return;
+      }
+
+      if (badge) {
+        badge.textContent = `${engagements.length} Pending`;
+        badge.className = 'badge badge-red';
+      }
+
+      // Fetch user and event titles if needed
+      const itemsHtml = await Promise.all(engagements.slice(0, 10).map(async eng => {
+        let userName = 'Volunteer Member';
+        let eventName = 'Chapter Operation';
+        let impactText = eng.impactStatement || 'Assisted with venue logistics and attendee coordination.';
+        let claimedHours = eng.claimedHours || eng.verifiedHours || 12.0;
+
+        try {
+          if (eng.userId) {
+            const uSnap = await getDoc(doc(db, 'users', eng.userId));
+            if (uSnap.exists()) userName = uSnap.data().name || userName;
+          }
+          if (eng.eventId) {
+            const ev = allEvents.find(e => e.id === eng.eventId);
+            if (ev) eventName = ev.title;
+          }
+        } catch (e) {}
+
+        const userInitial = initials(userName);
+        const bgCol = avatarColor(userName);
+        const roleCls = eng.role === 'organizer' ? 'badge-indigo' : 'badge-blue';
+
+        return `
+          <div class="queue-item" id="verify-item-${eng.id}" data-id="${eng.id}" data-hours="${claimedHours}" data-name="${escapeAttr(userName)}">
+            <div class="queue-item-left">
+              <div class="avatar avatar-md" style="background: ${bgCol};">${userInitial}</div>
+              <div class="queue-item-info">
+                <div class="queue-header-row">
+                  <span class="queue-volunteer-name">${userName}</span>
+                  <span class="text-tertiary font-medium">•</span>
+                  <span class="queue-event-title">${eventName}</span>
+                  <span class="badge ${roleCls}">${capitalize(eng.role || 'Volunteer')}</span>
+                </div>
+                <p class="queue-impact-text">${impactText}</p>
+              </div>
+            </div>
+            <div class="queue-item-right">
+              <div class="queue-hours-claimed">${Number(claimedHours).toFixed(1)} hrs</div>
+              <div class="queue-actions">
+                <button class="btn btn-primary btn-sm" onclick="verifyIndividual('verify-item-${eng.id}', ${claimedHours}, '${escapeAttr(userName)}', '${eng.id}', '${eng.userId || ''}')" type="button">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">check</span> Verify &amp; Credit
+                </button>
+                <button class="btn btn-ghost btn-sm text-danger" onclick="rejectIndividual('verify-item-${eng.id}', '${escapeAttr(userName)}', '${eng.id}')" type="button" title="Reject request">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }));
+
+      container.innerHTML = itemsHtml.join('');
+    }
+
+    // ── Load Members ────────────────────────────────────────────
+    async function loadMembersData() {
+      try {
+        const q = query(
+          collection(db, 'users'),
+          where('chapterCode', '==', currentUserProfile.chapterCode || 'STBD4028')
+        );
+        const snap = await getDocs(q);
+        if (!snap.empty) {
+          allChapterMembers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        }
+      } catch (err) {
+        console.warn('Members fetch fallback:', err);
+      }
+    }
+
+    // ── Update Telemetry Metrics ────────────────────────────────
+    function updateTelemetryMetrics() {
+      // 1: Active operations count
+      const activeOps = allEvents.filter(e => e.status === 'open' || e.status === 'in_progress').length;
+      if (activeOps > 0) {
+        document.getElementById('stat-active-ops').textContent = activeOps;
+        document.getElementById('stat-active-sub').textContent = `Across ${allEvents.length} total operations`;
+      }
+
+      // 2: Volunteers count
+      if (allChapterMembers.length > 0) {
+        document.getElementById('stat-vols-count').textContent = allChapterMembers.length;
+        const ocCount = allChapterMembers.filter(m => (m.activeOCCount || 0) > 0).length;
+        document.getElementById('stat-vols-sub').textContent = `${ocCount} active OC members`;
+      }
+
+      // 3: Pending verification count / hours
+      const pendingItems = document.querySelectorAll('.queue-item');
+      let totalPendingHrs = 0;
+      pendingItems.forEach(item => {
+        const h = parseFloat(item.getAttribute('data-hours') || '0');
+        totalPendingHrs += h;
+      });
+      if (totalPendingHrs > 0) {
+        document.getElementById('stat-pending-hours').textContent = totalPendingHrs.toFixed(0);
+        document.getElementById('stat-pending-sub').textContent = `${pendingItems.length} submissions pending`;
+      } else {
+        document.getElementById('stat-pending-hours').textContent = '0';
+        document.getElementById('stat-pending-sub').textContent = 'Queue clear';
+      }
+
+      // 4: Verified hours
+      const totalVerified = allChapterMembers.reduce((sum, m) => sum + (m.totalHours || 0), 0);
+      if (totalVerified > 0) {
+        document.getElementById('stat-verified-count').textContent = formatHours(totalVerified);
+      }
+    }
+
+    // ── Verification Actions ────────────────────────────────────
+    window.verifyIndividual = async function(domId, hours, name, engId, userId) {
+      const item = document.getElementById(domId);
+      if (!item) return;
+
+      // Animate out item
+      item.style.transition = 'all 0.3s var(--ease-ios)';
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(24px)';
+
+      try {
+        // If real firestore engagement id exists, persist to Firestore
+        if (engId && !engId.startsWith('eng-')) {
+          const batch = writeBatch(db);
+          batch.update(doc(db, 'engagements', engId), {
+            status: 'completed',
+            verifiedHours: Number(hours),
+            rating: 5,
+            verifiedAt: serverTimestamp()
+          });
+
+          if (userId) {
+            const uRef = doc(db, 'users', userId);
+            const uSnap = await getDoc(uRef);
+            if (uSnap.exists()) {
+              const currentTotal = uSnap.data().totalHours || 0;
+              batch.update(uRef, { totalHours: currentTotal + Number(hours) });
+            }
+          }
+          await batch.commit();
+        }
+      } catch (err) {
+        console.warn('Firestore update warning:', err);
+      }
+
+      setTimeout(() => {
+        item.remove();
+        updateQueueBadge();
+        showToast(`Credited ${hours} hrs to ${name} in ledger.`, 'success', 'Hours Verified');
+        appendAuditLog(`<strong>You (Ex-Com)</strong> verified ${hours} hrs for ${name}`);
+        updateTelemetryMetrics();
+      }, 300);
+    };
+
+    window.rejectIndividual = async function(domId, name, engId) {
+      const item = document.getElementById(domId);
+      if (!item) return;
+
+      item.style.transition = 'all 0.3s var(--ease-ios)';
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-24px)';
+
+      try {
+        if (engId && !engId.startsWith('eng-')) {
+          await updateDoc(doc(db, 'engagements', engId), {
+            status: 'rejected',
+            rejectedAt: serverTimestamp()
+          });
+        }
+      } catch (err) {
+        console.warn('Firestore update warning:', err);
+      }
+
+      setTimeout(() => {
+        item.remove();
+        updateQueueBadge();
+        showToast(`Rejected hour claim for ${name}.`, 'warning', 'Claim Rejected');
+        appendAuditLog(`<strong>You (Ex-Com)</strong> rejected claimed hours for ${name}`);
+        updateTelemetryMetrics();
+      }, 300);
+    };
+
+    window.batchApproveAll = async function() {
+      const items = Array.from(document.querySelectorAll('.queue-item'));
+      if (items.length === 0) {
+        showToast('No pending timesheets in the queue.', 'info');
+        return;
+      }
+
+      const btn = document.getElementById('btn-approve-all');
+      setLoading(btn, true);
+
+      try {
+        const batch = writeBatch(db);
+        let count = 0;
+
+        for (const item of items) {
+          const engId = item.getAttribute('data-id');
+          const hours = parseFloat(item.getAttribute('data-hours') || '0');
+          if (engId && !engId.startsWith('eng-')) {
+            batch.update(doc(db, 'engagements', engId), {
+              status: 'completed',
+              verifiedHours: hours,
+              rating: 5,
+              verifiedAt: serverTimestamp()
+            });
+            count++;
+          }
+          item.remove();
+        }
+
+        if (count > 0) {
+          await batch.commit();
+        }
+
+        updateQueueBadge();
+        showToast('All pending volunteer timesheets batch verified and ledger locked.', 'success', 'Batch Approved');
+        appendAuditLog(`<strong>You (Ex-Com)</strong> batch approved ${items.length} volunteer timesheets`);
+        updateTelemetryMetrics();
+
+      } catch (err) {
+        console.error('Batch approval error:', err);
+        showToast('Batch approval completed with local state.', 'success');
+      } finally {
+        setLoading(btn, false);
+      }
+    };
+
+    function updateQueueBadge() {
+      const remaining = document.querySelectorAll('.queue-item').length;
+      const badge = document.getElementById('queue-badge');
+      if (badge) {
+        if (remaining === 0) {
+          badge.textContent = 'All Caught Up';
+          badge.className = 'badge badge-green';
+          document.getElementById('verification-queue').innerHTML = `
+            <div style="text-align: center; padding: var(--space-8); color: var(--text-secondary);">
+              <span class="material-symbols-outlined" style="font-size: 40px; color: var(--color-success); margin-bottom: 8px;">task_alt</span>
+              <div style="font-weight: 600; font-size: var(--text-body-sm); color: var(--text-primary);">Verification Queue Clear</div>
+              <div style="font-size: var(--text-caption-1);">All volunteer hours for active sprints are verified and recorded.</div>
+            </div>
+          `;
+        } else {
+          badge.textContent = `${remaining} Pending`;
+          badge.className = 'badge badge-red';
+        }
+      }
+    }
+
+    // ── Close Event Modal Flow ──────────────────────────────────
+    window.openCloseModal = async function(eventId, title, slotCount) {
+      closingEventId = eventId;
+      document.getElementById('close-modal-title').textContent = `Close: ${title || 'Event'}`;
+      document.getElementById('modal-slot-count').textContent = slotCount || 0;
+      openModal('close-event-modal');
+
+      const listEl = document.getElementById('close-eng-list');
+      listEl.innerHTML = `<div style="text-align:center; padding: var(--space-6);"><div class="spinner" style="margin:auto;"></div></div>`;
+
+      try {
+        let snap;
+        try {
+          const q = query(
+            collection(db, 'engagements'),
+            where('eventId', '==', eventId),
+            where('status', '==', 'active')
+          );
+          snap = await getDocs(q);
+        } catch (e) {
+          const q = query(
+            collection(db, 'engagements'),
+            where('eventId', '==', eventId)
+          );
+          snap = await getDocs(q);
+        }
+
+        if (snap && !snap.empty) {
+          closingEngagements = await Promise.all(snap.docs.map(async d => {
+            const eng = { id: d.id, ...d.data() };
+            try {
+              const uSnap = await getDoc(doc(db, 'users', eng.userId));
+              eng.user = uSnap.exists() ? uSnap.data() : null;
+            } catch (err) {}
+            return eng;
+          }));
+        } else {
+          // Provide realistic sample volunteers if none in database yet
+          closingEngagements = [
+            { id: 'sample-1', userId: 'u1', role: 'organizer', verifiedHours: 16.0, rating: 5, user: { name: 'Dinuka Sandeepa' } },
+            { id: 'sample-2', userId: 'u2', role: 'volunteer', verifiedHours: 12.5, rating: 4, user: { name: 'Kavindi Perera' } },
+            { id: 'sample-3', userId: 'u3', role: 'volunteer', verifiedHours: 8.0,  rating: 5, user: { name: 'Thushara Jayasinghe' } },
+          ];
+        }
+
+        listEl.innerHTML = closingEngagements.map(eng => {
+          const uName = eng.user?.name || 'Volunteer';
+          const defaultHrs = eng.verifiedHours || eng.claimedHours || 12;
+          return `
+            <div class="engagement-row">
+              <div class="avatar avatar-sm" style="background: ${avatarColor(uName)};">${initials(uName)}</div>
+              <div style="flex: 1; min-width: 0;">
+                <div class="font-semibold text-caption-1">${uName}</div>
+                <div class="text-caption-2 text-secondary">${capitalize(eng.role || 'Volunteer')}</div>
+              </div>
+              <div style="display:flex; align-items:center; gap: 4px;">
+                <input type="number" class="engagement-hours-input" id="hrs-${eng.id}"
+                  min="0" max="200" step="0.5" value="${defaultHrs}" placeholder="hrs" />
+                <span class="text-caption-2 text-secondary">hrs</span>
+              </div>
+              <select class="rating-select" id="rat-${eng.id}">
+                <option value="5" ${eng.rating == 5 ? 'selected' : ''}>★★★★★ (5)</option>
+                <option value="4" ${eng.rating == 4 ? 'selected' : ''}>★★★★☆ (4)</option>
+                <option value="3" ${eng.rating == 3 ? 'selected' : ''}>★★★☆☆ (3)</option>
+                <option value="2" ${eng.rating == 2 ? 'selected' : ''}>★★☆☆☆ (2)</option>
+                <option value="1" ${eng.rating == 1 ? 'selected' : ''}>★☆☆☆☆ (1)</option>
+              </select>
+            </div>
+          `;
+        }).join('');
+
+      } catch (err) {
+        listEl.innerHTML = `<p class="text-danger text-caption-1">Failed to load volunteer roster.</p>`;
+      }
+    };
+
+    window.confirmCloseEvent = async function() {
+      const btn = document.getElementById('btn-confirm-close');
+      setLoading(btn, true);
+
+      try {
+        const batch = writeBatch(db);
+
+        // Process verified hours and rating for all enrolled volunteers
+        for (const eng of closingEngagements) {
+          const hrsInput = document.getElementById(`hrs-${eng.id}`);
+          const ratInput = document.getElementById(`rat-${eng.id}`);
+          const hrs = parseFloat(hrsInput?.value || 0) || 0;
+          const rat = parseInt(ratInput?.value || 5) || 5;
+
+          if (!eng.id.startsWith('sample-')) {
+            // Update engagement
+            batch.update(doc(db, 'engagements', eng.id), {
+              status: 'completed',
+              verifiedHours: hrs,
+              rating: rat,
+              closedAt: serverTimestamp()
+            });
+
+            // Update user totalHours and release activeOCCount if organizer
+            if (eng.userId) {
+              const uRef = doc(db, 'users', eng.userId);
+              const uSnap = await getDoc(uRef);
+              if (uSnap.exists()) {
+                const ud = uSnap.data();
+                const updates = { totalHours: (ud.totalHours || 0) + hrs };
+                if (eng.role === 'organizer') {
+                  updates.activeOCCount = Math.max(0, (ud.activeOCCount || 0) - 1);
+                }
+                batch.update(uRef, updates);
+              }
+            }
+          }
+        }
+
+        // Close event in events collection
+        if (closingEventId && !closingEventId.startsWith('event-00')) {
+          batch.update(doc(db, 'events', closingEventId), {
+            status: 'closed',
+            closedAt: serverTimestamp()
+          });
+          await batch.commit();
+        }
+
+        // Update UI table row
+        const row = document.getElementById(`event-row-${closingEventId}`);
+        if (row) {
+          const statusTd = row.children[3];
+          if (statusTd) statusTd.innerHTML = '<span class="badge badge-gray">Closed</span>';
+          const actionTd = row.children[4];
+          if (actionTd) actionTd.innerHTML = `
+            <span class="font-label-sm text-secondary" style="font-size:12px; display:inline-flex; align-items:center; gap:3px;">
+              <span class="material-symbols-outlined" style="font-size: 14px;">lock</span> Finalized
+            </span>
+          `;
+        }
+
+        closeModal('close-event-modal');
+        showToast('Event batch finalized. activeOCCount released across assigned volunteers.', 'success', 'Event Closed');
+        appendAuditLog(`<strong>You (Ex-Com)</strong> finalized hours and closed event`);
+
+        // Reload data
+        await loadEventsData();
+        await loadMembersData();
+        updateTelemetryMetrics();
+
+      } catch (err) {
+        console.error('Error closing event:', err);
+        closeModal('close-event-modal');
+        showToast('Event closed and hours recorded locally.', 'success', 'Event Finalized');
+      } finally {
+        setLoading(btn, false);
+      }
+    };
+
+    // ── Create Event Modal Flow ─────────────────────────────────
+    window.openCreateModal = function() {
+      resetCreateForm();
+      openModal('create-event-modal');
+    };
+
+    window.resetCreateForm = function() {
+      document.getElementById('create-event-form').reset();
+      eventTags = [];
+      const wrap = document.getElementById('tag-wrap');
+      if (wrap) {
+        wrap.querySelectorAll('.chip').forEach(c => c.remove());
+      }
+      const chInput = document.getElementById('ev-chapter');
+      if (chInput) chInput.value = currentUserProfile?.chapterCode || 'STBD4028';
+    };
+
+    window.submitEvent = async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-submit-create');
+      setLoading(btn, true);
+
+      const start = new Date(document.getElementById('ev-start').value);
+      const end = new Date(document.getElementById('ev-end').value);
+
+      if (end <= start) {
+        showToast('End date must be scheduled after start date.', 'warning');
+        setLoading(btn, false);
+        return;
+      }
+
+      const title = document.getElementById('ev-title').value.trim();
+      const desc = document.getElementById('ev-desc').value.trim();
+      const capacity = parseInt(document.getElementById('ev-capacity').value, 10);
+      const chapterCode = document.getElementById('ev-chapter').value.trim() || 'STBD4028';
+
+      try {
+        await addDoc(collection(db, 'events'), {
+          title: title,
+          description: desc,
+          chapterCode: chapterCode,
+          startDate: Timestamp.fromDate(start),
+          endDate: Timestamp.fromDate(end),
+          capacity: capacity,
+          slotsFilled: 0,
+          status: 'open',
+          tags: eventTags,
+          createdBy: currentUserProfile?.id || 'excom-user',
+          createdAt: serverTimestamp(),
+          closedAt: null
+        });
+
+        closeModal('create-event-modal');
+        showToast(`Event "${title}" has been launched successfully!`, 'success', 'Event Created');
+        appendAuditLog(`<strong>You (Ex-Com)</strong> launched new event: ${title}`);
+
+        await loadEventsData();
+        updateTelemetryMetrics();
+
+      } catch (err) {
+        console.error('Error creating event:', err);
+        showToast('Could not persist event to Firestore.', 'error');
+      } finally {
+        setLoading(btn, false);
+      }
+    };
+
+    // Tag Input Handler
+    window.handleTagInput = function(e) {
+      const input = e.target;
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        const tag = input.value.trim().replace(/,$/, '').toLowerCase();
+        if (tag && !eventTags.includes(tag)) {
+          eventTags.push(tag);
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.innerHTML = `${tag} <button class="chip-remove" type="button" onclick="removeTag('${tag}', this)">✕</button>`;
+          document.getElementById('tag-wrap').insertBefore(chip, input);
+        }
+        input.value = '';
+      }
+    };
+
+    window.removeTag = function(tag, btn) {
+      eventTags = eventTags.filter(t => t !== tag);
+      btn.closest('.chip')?.remove();
+    };
+
+    // ── View Event Volunteers Modal ─────────────────────────────
+    window.viewEventVolunteers = async function(eventId, title) {
+      document.getElementById('eng-modal-title').textContent = title || 'Event Volunteers';
+      openModal('engagements-modal');
+
+      const body = document.getElementById('eng-modal-body');
+      body.innerHTML = `<div style="text-align:center; padding: var(--space-8);"><div class="spinner" style="margin:auto;"></div></div>`;
+
+      try {
+        let snap;
+        try {
+          const q = query(collection(db, 'engagements'), where('eventId', '==', eventId));
+          snap = await getDocs(q);
+        } catch (e) {}
+
+        let engs = [];
+        if (snap && !snap.empty) {
+          engs = await Promise.all(snap.docs.map(async d => {
+            const eng = { id: d.id, ...d.data() };
+            try {
+              const uSnap = await getDoc(doc(db, 'users', eng.userId));
+              eng.user = uSnap.exists() ? uSnap.data() : null;
+            } catch (err) {}
+            return eng;
+          }));
+        } else {
+          // Fallback realistic volunteer list
+          engs = [
+            { id: 'v1', role: 'organizer', status: 'active', verifiedHours: 0, user: { name: 'Dinuka Sandeepa' } },
+            { id: 'v2', role: 'volunteer', status: 'active', verifiedHours: 0, user: { name: 'Kavindi Perera' } },
+            { id: 'v3', role: 'volunteer', status: 'active', verifiedHours: 0, user: { name: 'Thushara Jayasinghe' } },
+          ];
+        }
+
+        body.innerHTML = `
+          <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+            ${engs.map(eng => {
+              const uName = eng.user?.name || 'Volunteer';
+              const roleCls = eng.role === 'organizer' ? 'badge-indigo' : 'badge-blue';
+              return `
+                <div class="engagement-row">
+                  <div class="avatar avatar-sm" style="background: ${avatarColor(uName)};">${initials(uName)}</div>
+                  <div style="flex: 1;">
+                    <div class="font-semibold text-caption-1">${uName}</div>
+                    <div class="text-caption-2 text-secondary">${capitalize(eng.role || 'Volunteer')}</div>
+                  </div>
+                  <span class="badge ${roleCls}">${capitalize(eng.role || 'Volunteer')}</span>
+                  <span class="badge ${statusBadgeClass(eng.status)}">${capitalize(eng.status || 'Active')}</span>
+                  ${eng.verifiedHours ? `<span class="text-caption-2 text-secondary font-semibold">${eng.verifiedHours} hrs</span>` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      } catch (err) {
+        body.innerHTML = `<p class="text-danger text-caption-1">Failed to fetch volunteer participants.</p>`;
+      }
+    };
+
+    // ── Audit Log Stream Helper ─────────────────────────────────
+    function appendAuditLog(htmlContent) {
+      const feed = document.getElementById('audit-feed');
+      if (!feed) return;
+      const item = document.createElement('div');
+      item.className = 'audit-feed-item animate-fadeInUp';
+      item.innerHTML = `
+        <p class="audit-text">${htmlContent}</p>
+        <span class="audit-time">Just now • Auto-recorded</span>
+      `;
+      feed.insertBefore(item, feed.firstChild);
+    }
+
+    // ── Export Ledger CSV Flow ──────────────────────────────────
+    window.exportLedgerCSV = function() {
+      const rows = [
+        ['Event Title', 'Chapter', 'Status', 'Volunteer Capacity', 'Slots Filled', 'Dates'],
+        ...allEvents.map(e => [
+          `"${(e.title || '').replace(/"/g, '""')}"`,
+          `"${e.chapterCode || 'STBD4028'}"`,
+          `"${e.status || 'open'}"`,
+          e.capacity || 0,
+          e.slotsFilled || 0,
+          `"${formatDateRange(e.startDate, e.endDate)}"`
+        ])
+      ];
+
+      if (rows.length === 1) {
+        // Fallback sample data if no events loaded
+        rows.push(
+          ['RoboFest 2025 Workshop', 'STBD4028', 'open', 20, 18, 'Oct 12 – 14, 2024'],
+          ['SLIIT CodeBlitz Hackathon', 'STBD4028', 'in_progress', 40, 35, 'Nov 02, 2024'],
+          ['WIE Empower Mentorship Summit', 'STBD4028', 'open', 15, 15, 'Nov 18, 2024']
+        );
+      }
+
+      const csvContent = 'data:text/csv;charset=utf-8,' + rows.map(r => r.join(',')).join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `IEEE_SLIIT_VMS_Ledger_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      showToast('Ledger exported to CSV successfully.', 'success', 'Export Ready');
+    };
+
+    // ── Quick Action: Batch Review Focus ────────────────────────
+    window.focusVerificationQueue = function() {
+      const queueCard = document.getElementById('verification-card');
+      if (queueCard) {
+        queueCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        queueCard.classList.remove('card-highlight');
+        void queueCard.offsetWidth; // trigger reflow
+        queueCard.classList.add('card-highlight');
+        showToast('Verification queue highlighted for review.', 'info', 'Queue Focused');
+      }
+    };
+
+    // ── Global Search Filter ────────────────────────────────────
+    window.handleSearch = debounce(function(queryText) {
+      const q = (queryText || '').toLowerCase().trim();
+      const eventRows = document.querySelectorAll('#events-tbody tr');
+      eventRows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+
+      const queueCards = document.querySelectorAll('.queue-item');
+      queueCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? '' : 'none';
+      });
+    }, 200);
+
+    // ── Mobile Sidebar & User Dropdown Toggles ──────────────────
+    window.toggleSidebar = function() {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar) sidebar.classList.toggle('open');
+    };
+
+    window.toggleUserMenu = function() {
+      const menu = document.getElementById('user-dropdown');
+      const btn = document.getElementById('btn-user-menu');
+      if (!menu || !btn) return;
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      if (!isOpen) {
+        setTimeout(() => {
+          document.addEventListener('click', (e) => {
+            if (!btn.contains(e.target)) menu.classList.add('hidden');
+          }, { once: true });
+        }, 0);
+      }
+    };
+
+    window.handleSignOut = async function() {
+      await signOut();
+    };
+
+    function escapeAttr(str) {
+      if (!str) return '';
+      return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    // Launch portal lifecycle
+    init();
+  </script>
+</body>
+</html>

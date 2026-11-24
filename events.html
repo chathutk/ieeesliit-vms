@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Events Directory — IEEE SLIIT VMS</title>
+  <meta name="description" content="Explore upcoming volunteering opportunities, ongoing flagship events, and past initiative archives for IEEE SLIIT." />
+
+  <!-- Preconnect & Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="/src/css/tokens.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+
+  <!-- Page-Specific Styles Extending Design System -->
+  <style>
+    /* ── Ambient Glow Background Accents ────────────────────────── */
+    .ambient-wrap {
+      position: relative;
+      overflow: hidden;
+      min-height: calc(100vh - var(--header-height));
+    }
+
+    .ambient-glow-1 {
+      position: absolute;
+      top: -120px;
+      left: 20%;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(0, 88, 188, 0.12) 0%, rgba(0, 88, 188, 0) 70%);
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-glow-2 {
+      position: absolute;
+      top: 60px;
+      right: 8%;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(76, 74, 202, 0.09) 0%, rgba(76, 74, 202, 0) 70%);
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content-relative {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Mobile Sidebar Overlay ─────────────────────────────────── */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.48);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      z-index: 1050;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    /* ── Topbar Specifics ───────────────────────────────────────── */
+    .topbar-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar-title {
+      font-size: var(--text-title-3);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .topbar-subtitle {
+      font-size: var(--text-caption-2);
+      color: var(--text-tertiary);
+    }
+
+    /* ── Executive Telemetry Summary Group ──────────────────────── */
+    .telemetry-group {
+      display: flex;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--separator-strong);
+      border-radius: var(--radius-md);
+      padding: var(--space-2) var(--space-3);
+      box-shadow: var(--shadow-xs);
+      gap: var(--space-2);
+    }
+
+    .telemetry-item {
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-1) var(--space-3);
+    }
+
+    .telemetry-label {
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+    }
+
+    .telemetry-value {
+      font-size: var(--text-subhead);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 3px;
+    }
+
+    .telemetry-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--separator-strong);
+    }
+
+    /* ── Filter Controls Row ────────────────────────────────────── */
+    .search-filter-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      box-shadow: var(--shadow-xs);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .search-filter-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .search-box-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-box-wrap .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .search-box-input {
+      width: 100%;
+      padding: 9px var(--space-4) 9px 38px;
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--separator);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-subhead);
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .search-box-input:focus {
+      background: var(--bg-surface);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--border-focus);
+    }
+
+    .filter-pills-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .filter-pills-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill {
+      padding: 7px 15px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-label-md);
+      font-weight: var(--weight-semibold);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--separator);
+      box-shadow: var(--shadow-xs);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--duration-fast) var(--ease-ios);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-pill:hover {
+      color: var(--text-primary);
+      background: var(--bg-surface-secondary);
+      border-color: var(--outline-variant);
+    }
+
+    .filter-pill.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(0, 88, 188, 0.3);
+    }
+
+    .filter-pill-count {
+      font-size: 11px;
+      opacity: 0.85;
+      font-weight: var(--weight-medium);
+    }
+
+    .chapter-chips-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .chapter-chip {
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-label-sm);
+      font-weight: var(--weight-medium);
+      background: var(--bg-surface-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--separator);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .chapter-chip:hover {
+      background: var(--bg-surface-container);
+      color: var(--text-primary);
+    }
+
+    .chapter-chip.active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+    }
+
+    /* ── Event Directory Cards ──────────────────────────────────── */
+    .event-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--separator);
+      border-top: 3px solid var(--color-primary);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--duration-base) var(--ease-ios),
+                  box-shadow var(--duration-base) var(--ease-ios);
+      position: relative;
+    }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .event-card-banner {
+      position: relative;
+      height: 165px;
+      width: 100%;
+      overflow: hidden;
+      background: var(--sidebar-bg);
+    }
+
+    .event-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-ios);
+    }
+
+    .event-card:hover .event-card-img {
+      transform: scale(1.05);
+    }
+
+    .event-card-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.35) 45%, rgba(15,23,42,0.88) 100%);
+    }
+
+    .event-card-top-badges {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .event-card-title-scrim {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      z-index: 2;
+    }
+
+    .event-card-title-text {
+      font-size: var(--text-title-md);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      line-height: 1.28;
+      letter-spacing: -0.015em;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .event-card-body {
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      flex: 1;
+      background: var(--bg-surface);
+    }
+
+    .event-meta-line {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--text-secondary);
+      font-size: var(--text-caption-1);
+    }
+
+    .event-capacity-box {
+      background: var(--bg-surface-secondary);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .event-card-footer {
+      padding: var(--space-4) var(--space-5);
+      background: var(--bg-surface);
+      border-top: 1px solid var(--separator);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    /* ── Concurrency Notice Callout ─────────────────────────────── */
+    .concurrency-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-caption-1);
+      line-height: 1.4;
+    }
+
+    .concurrency-notice.eligible {
+      background: var(--color-success-light);
+      color: var(--color-success);
+      border: 1px solid rgba(0, 107, 39, 0.18);
+    }
+
+    .concurrency-notice.warning {
+      background: var(--color-warning-light);
+      color: #945300;
+      border: 1px solid rgba(255, 149, 0, 0.28);
+    }
+
+    /* ── Pulsing Dots ───────────────────────────────────────────── */
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .pulse-dot.green {
+      background: var(--color-success);
+      box-shadow: 0 0 0 0 rgba(0, 107, 39, 0.7);
+      animation: pulseGreen 2s infinite;
+    }
+
+    .pulse-dot.blue {
+      background: var(--color-primary);
+      box-shadow: 0 0 0 0 rgba(0, 88, 188, 0.7);
+      animation: pulseBlue 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 107, 39, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 107, 39, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 107, 39, 0); }
+    }
+
+    @keyframes pulseBlue {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 88, 188, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 88, 188, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 88, 188, 0); }
+    }
+
+    /* ── Section Title Row ──────────────────────────────────────── */
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+
+    .section-title-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    /* ── Responsive adjustments ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .telemetry-group { width: 100%; justify-content: space-around; }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        z-index: 1200;
+        width: 82vw;
+        max-width: 310px;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+        box-shadow: var(--shadow-modal);
+      }
+      .has-sidebar .main-content { margin-left: 0; }
+      .has-sidebar .topbar { left: 0; }
+      .topbar { padding-inline: var(--space-4); }
+      .search-filter-card { padding: var(--space-3); }
+      .telemetry-group { flex-direction: column; align-items: stretch; gap: var(--space-2); }
+      .telemetry-divider { display: none; }
+    }
+  </style>
+</head>
+<body class="app-shell has-sidebar">
+
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- ── Executive Azure Dark Navy Sidebar ──────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo">IEEE</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-title">IEEE SLIIT</span>
+        <span class="sidebar-brand-subtitle">Student Branch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="/index.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">dashboard</span> Dashboard
+        </a>
+        <a href="/profile.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">person</span> My Profile
+        </a>
+        <a href="/events.html" class="sidebar-link active">
+          <span class="sidebar-link-icon material-symbols-outlined">event</span> All Events
+        </a>
+        <a href="/awards.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">emoji_events</span> Awards
+        </a>
+        <a href="/request-letter.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">description</span> Service Letters
+        </a>
+      </nav>
+    </div>
+
+    <!-- Mini Standing Status in Sidebar (from Stitch reference) -->
+    <div style="padding: 0 var(--space-4) var(--space-4);">
+      <div style="background: rgba(10, 65, 116, 0.4); border: 1px solid rgba(123, 189, 232, 0.2); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); color: #c8dcf0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: var(--text-label-sm);">
+          <span style="color: #8EB8E0;">Volunteer Standing</span>
+          <span style="background: rgba(123, 189, 232, 0.2); color: #7BBDE8; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-full);">Active Tier</span>
+        </div>
+        <div class="progress-bar" style="height: 5px; margin-top: 6px; background: rgba(255,255,255,0.15);">
+          <div class="progress-fill" id="sidebar-hours-fill" style="width: 78%; background-color: #7BBDE8;"></div>
+        </div>
+        <p style="font-size: var(--text-label-sm); margin-top: 6px; color: #BDD8E9;" id="sidebar-hours-text">39 of 50 Service Hours Logged</p>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="user-avatar">--</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="user-name">Loading...</div>
+          <div class="sidebar-user-role" id="user-role">Volunteer</div>
+        </div>
+        <button class="btn btn-icon btn-ghost" onclick="handleSignOut()" title="Sign Out" aria-label="Sign Out" style="color: var(--sidebar-text-muted); margin-left: auto;">
+          <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Topbar (No brand, sidebar has it) ──────────────────────── -->
+  <header class="topbar" id="topbar">
+    <button class="btn btn-icon btn-ghost" id="mob-toggle" onclick="toggleSidebar()" aria-label="Toggle navigation">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+    <div class="topbar-title-wrap">
+      <div class="topbar-title">All Events Directory</div>
+    </div>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-actions">
+      <!-- Academic Year Chip -->
+      <div class="chip" style="font-weight: 600; cursor: pointer; background: var(--bg-surface-secondary); border: 1px solid var(--separator);" title="Current Academic Year">
+        <span class="material-symbols-outlined" style="font-size: 15px; color: var(--color-primary);">calendar_month</span>
+        <span>AY 2024/25</span>
+      </div>
+
+      <!-- Notification button -->
+      <button class="btn btn-icon btn-secondary" title="Notifications" aria-label="Notifications" style="position: relative;">
+        <span class="material-symbols-outlined" style="font-size: 19px;">notifications</span>
+        <span style="position: absolute; top: 6px; right: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--color-primary);"></span>
+      </button>
+
+      <!-- User avatar dropdown -->
+      <div class="dropdown">
+        <button class="btn btn-icon btn-secondary" id="btn-user-menu" onclick="toggleUserMenu()" aria-label="User menu" style="padding: 2px;">
+          <div class="avatar avatar-sm" id="topbar-avatar" style="width: 28px; height: 28px; font-size: 11px;">U</div>
+        </button>
+        <div class="dropdown-menu hidden" id="user-dropdown">
+          <div class="dropdown-label" id="dropdown-user-name">Volunteer</div>
+          <a href="/profile.html" class="dropdown-item">
+            <span class="material-symbols-outlined" style="font-size: 18px;">person</span> My Profile
+          </a>
+          <a href="/index.html" class="dropdown-item">
+            <span class="material-symbols-outlined" style="font-size: 18px;">dashboard</span> Dashboard
+          </a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item danger" onclick="handleSignOut()">
+            <span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Content Area ──────────────────────────────────────── -->
+  <div class="page-content">
+    <div class="ambient-wrap">
+      <div class="ambient-glow-1"></div>
+      <div class="ambient-glow-2"></div>
+
+      <main class="main-content content-relative" id="main-content">
+        <div class="container" style="max-width: 1240px;">
+
+          <!-- ── Section 1: Page Header with Telemetry Summary ──────── -->
+          <section class="page-header animate-fadeInDown" style="margin-bottom: var(--space-6);">
+            <div class="page-header-top" style="align-items: flex-end;">
+              <div>
+                <div class="flex items-center gap-1 text-tertiary" style="font-size: var(--text-label-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-1);">
+                  <span style="color: var(--color-primary);">SLIIT Student Branch</span>
+                  <span>•</span>
+                  <span>Central Directory</span>
+                </div>
+                <h1 style="font-size: var(--text-headline-lg); font-weight: 700; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: var(--space-1);">
+                  All Events &amp; Opportunities
+                </h1>
+                <p style="font-size: var(--text-body-sm); color: var(--text-secondary); max-width: 640px;">
+                  Explore upcoming IEEE volunteering calls, ongoing flagship events, and browse past project archives.
+                </p>
+              </div>
+
+              <!-- Telemetry Summary Pill Group (from Stitch reference) -->
+              <div class="telemetry-group">
+                <div class="telemetry-item">
+                  <span class="telemetry-label">Active OC Quota</span>
+                  <span class="telemetry-value" id="telemetry-oc">
+                    <span id="telemetry-oc-text">1 / 2 Assigned</span>
+                    <span class="pulse-dot green" id="telemetry-oc-dot"></span>
+                  </span>
+                </div>
+                <div class="telemetry-divider"></div>
+                <div class="telemetry-item">
+                  <span class="telemetry-label">Open Opportunities</span>
+                  <span class="telemetry-value" style="color: var(--color-primary);" id="telemetry-open">
+                    4 Open Calls
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── Section 2: Search, Chapter Select, and Category Filter Pills ── -->
+          <section class="search-filter-card animate-fadeInUp" style="margin-bottom: var(--space-8);">
+            <div class="search-filter-top">
+              <!-- Search Box -->
+              <div class="search-box-wrap">
+                <span class="material-symbols-outlined search-icon">search</span>
+                <input
+                  type="text"
+                  id="eventSearchInput"
+                  class="search-box-input"
+                  placeholder="Search events by name, chapter, venue, or tag..."
+                  aria-label="Search events"
+                />
+              </div>
+
+              <!-- Chapter Dropdown -->
+              <div style="display: flex; align-items: center; gap: var(--space-2); min-width: 220px;">
+                <select id="chapterSelect" class="form-select" style="padding: 9px var(--space-8) 9px var(--space-3); font-size: var(--text-caption-1);" aria-label="Filter by chapter">
+                  <option value="all">All OUs (All Chapters)</option>
+                  <option value="cs">IEEE Computer Society (CS)</option>
+                  <option value="ras">IEEE RAS (Robotics &amp; Automation)</option>
+                  <option value="wie">IEEE WIE (Women in Engineering)</option>
+                  <option value="ias">IEEE IAS (Industry Applications)</option>
+                  <option value="pes">IEEE PES (Power &amp; Energy)</option>
+                  <option value="comsoc">IEEE ComSoc (Communications)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Segmented Category Filter Pills -->
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; border-top: 1px solid var(--separator); padding-top: var(--space-3);">
+              <div class="filter-pills-row" id="filter-pills-container">
+                <button class="filter-pill active" data-filter="all" onclick="setFilterPill('all')">
+                  <span>All Events</span>
+                  <span class="filter-pill-count" id="count-pill-all">(12)</span>
+                </button>
+                <button class="filter-pill" data-filter="ongoing" onclick="setFilterPill('ongoing')">
+                  <span class="pulse-dot green" style="width: 6px; height: 6px;"></span>
+                  <span>Ongoing</span>
+                  <span class="filter-pill-count" id="count-pill-ongoing">(2)</span>
+                </button>
+                <button class="filter-pill" data-filter="upcoming" onclick="setFilterPill('upcoming')">
+                  <span>Upcoming</span>
+                  <span class="filter-pill-count" id="count-pill-upcoming">(4)</span>
+                </button>
+                <button class="filter-pill" data-filter="completed" onclick="setFilterPill('completed')">
+                  <span>Completed</span>
+                  <span class="filter-pill-count" id="count-pill-completed">(6)</span>
+                </button>
+              </div>
+
+              <!-- Chapter Quick Chips -->
+              <div class="chapter-chips-row" id="chapter-chips">
+                <span style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600; text-transform: uppercase;">Chapters:</span>
+                <button class="chapter-chip active" data-chip="all" onclick="setChapterChip('all')">All</button>
+                <button class="chapter-chip" data-chip="cs" onclick="setChapterChip('cs')">CS</button>
+                <button class="chapter-chip" data-chip="ras" onclick="setChapterChip('ras')">RAS</button>
+                <button class="chapter-chip" data-chip="wie" onclick="setChapterChip('wie')">WIE</button>
+                <button class="chapter-chip" data-chip="ias" onclick="setChapterChip('ias')">IAS</button>
+                <button class="chapter-chip" data-chip="pes" onclick="setChapterChip('pes')">PES</button>
+                <button class="chapter-chip" data-chip="comsoc" onclick="setChapterChip('comsoc')">ComSoc</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── Container for Dynamic Content ──────────────────────── -->
+          <div id="events-sections-container">
+
+            <!-- SECTION A: Ongoing Flagship Events -->
+            <section id="section-ongoing" class="mb-6 animate-fadeInUp">
+              <div class="section-title-row">
+                <div class="section-title-left">
+                  <span class="pulse-dot blue"></span>
+                  <h2 style="font-size: var(--text-headline-sm); font-weight: 700; color: var(--text-primary); letter-spacing: -0.015em;">
+                    Ongoing Flagship Events
+                  </h2>
+                  <span class="badge badge-blue">Active Operations</span>
+                </div>
+                <span class="text-caption-1 text-tertiary" style="font-size: var(--text-caption-1);">
+                  Real-time execution &amp; volunteer engagement
+                </span>
+              </div>
+              <div class="grid-2" id="grid-ongoing">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </section>
+
+            <!-- SECTION B: Upcoming Open Calls (Volunteers Needed) -->
+            <section id="section-upcoming" class="mb-6 animate-fadeInUp">
+              <div class="section-title-row">
+                <div class="section-title-left">
+                  <span class="material-symbols-outlined" style="color: var(--color-secondary); font-size: 22px;">campaign</span>
+                  <h2 style="font-size: var(--text-headline-sm); font-weight: 700; color: var(--text-primary); letter-spacing: -0.015em;">
+                    Upcoming Open Calls (Volunteers Needed)
+                  </h2>
+                  <span class="badge badge-indigo">Recruitment Window Open</span>
+                </div>
+                <span class="text-caption-1 text-secondary" style="font-weight: 500;">
+                  Max 2 Concurrent OC Limit Strictly Monitored
+                </span>
+              </div>
+              <div class="grid-2" id="grid-upcoming">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </section>
+
+            <!-- SECTION C: Archived Events & Completed Initiatives -->
+            <section id="section-completed" class="mb-6 animate-fadeInUp">
+              <div class="section-title-row">
+                <div class="section-title-left">
+                  <span class="material-symbols-outlined" style="color: var(--text-tertiary); font-size: 22px;">inventory_2</span>
+                  <h2 style="font-size: var(--text-headline-sm); font-weight: 700; color: var(--text-primary); letter-spacing: -0.015em;">
+                    Archived Events &amp; Completed Initiatives
+                  </h2>
+                </div>
+                <span class="text-caption-1 text-tertiary">
+                  Verified records for Dean's Commendation &amp; Service Letters
+                </span>
+              </div>
+
+              <!-- Apple HIG Sleek Data Table Card -->
+              <div class="card" style="padding: 0; overflow: hidden;">
+                <div class="data-table-wrap" style="border: none; border-radius: 0;">
+                  <table class="data-table" style="margin: 0;">
+                    <thead>
+                      <tr>
+                        <th>Event Name &amp; Focus</th>
+                        <th>Host Chapter</th>
+                        <th>Completed Date</th>
+                        <th>Verified Pool</th>
+                        <th>Status / Impact</th>
+                        <th class="col-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="archived-table-body">
+                      <!-- Populated dynamically via JS -->
+                    </tbody>
+                  </table>
+                </div>
+                <div style="padding: var(--space-3) var(--space-5); background: var(--bg-surface-secondary); display: flex; align-items: center; justify-content: space-between; font-size: var(--text-label-sm); color: var(--text-tertiary); border-top: 1px solid var(--separator);">
+                  <span id="archived-count-summary">Showing recorded event archives</span>
+                  <span style="font-weight: 500; color: var(--color-primary); display: inline-flex; align-items: center; gap: 4px;">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">verified</span> IEEE SLIIT Certified Records
+                  </span>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Filtered Single Grid Container (Used when search or non-all filter is applied) -->
+          <div id="filtered-view-container" class="hidden mb-6">
+            <div class="section-title-row">
+              <div class="section-title-left">
+                <h2 id="filtered-view-title" style="font-size: var(--text-headline-sm); font-weight: 700; color: var(--text-primary);">
+                  Filtered Events
+                </h2>
+                <span class="badge badge-blue" id="filtered-view-count">0 Events</span>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="resetFilters()">
+                <span class="material-symbols-outlined" style="font-size: 16px;">refresh</span> Reset Filters
+              </button>
+            </div>
+            <div class="grid-2" id="grid-filtered">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Empty State Container -->
+          <div id="empty-state-container" class="card hidden" style="margin-top: var(--space-6); text-align: center; padding: var(--space-12);">
+            <div class="empty-state">
+              <span class="material-symbols-outlined empty-state-icon" style="font-size: 54px; color: var(--text-tertiary);">event_busy</span>
+              <div class="empty-state-title" style="margin-top: var(--space-2);">No matching events found</div>
+              <div class="empty-state-desc">We couldn't find any events matching your search or filter criteria. Try adjusting your query or resetting filters.</div>
+              <button class="btn btn-primary" onclick="resetFilters()" style="margin-top: var(--space-4);">
+                <span class="material-symbols-outlined">restart_alt</span> Reset Filters
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ── Event Detail & Registration Modal ──────────────────────── -->
+  <div class="modal-backdrop hidden" id="event-modal-backdrop">
+    <div class="modal" id="event-detail-modal" style="max-width: 620px;">
+      <div class="modal-header">
+        <div>
+          <div class="flex items-center gap-2" style="margin-bottom: 4px;">
+            <span class="badge" id="modal-badge-status">Status</span>
+            <span class="badge badge-gray" id="modal-badge-chapter">Chapter</span>
+            <span class="chip" id="modal-badge-format" style="font-size: 11px;">In-Person</span>
+          </div>
+          <h2 class="modal-title" id="modal-event-title" style="font-size: var(--text-title-1); line-height: 1.25;">Event Title</h2>
+        </div>
+        <button class="modal-close" data-close-modal aria-label="Close modal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Banner Preview if available -->
+        <div id="modal-banner-wrap" style="position: relative; height: 160px; border-radius: var(--radius-sm); overflow: hidden; background: #001D39;">
+          <img id="modal-event-img" src="" alt="Event Banner" style="width: 100%; height: 100%; object-fit: cover;" />
+          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.65) 100%);"></div>
+          <div style="position: absolute; bottom: 10px; left: 14px; right: 14px; color: #fff; font-size: var(--text-label-sm); font-weight: 500;" id="modal-banner-caption">
+            IEEE SLIIT Official Initiative
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div>
+          <p id="modal-event-desc" style="font-size: var(--text-subhead); line-height: var(--leading-relaxed); color: var(--text-secondary);">
+            Event description goes here.
+          </p>
+        </div>
+
+        <!-- Details Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); background: var(--bg-surface-secondary); padding: var(--space-4); border-radius: var(--radius-sm); border: 1px solid var(--separator);">
+          <div class="event-meta-line">
+            <span class="material-symbols-outlined text-outline" style="font-size: 18px; color: var(--color-primary);">calendar_today</span>
+            <div>
+              <div style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600;">DATE &amp; TIME</div>
+              <div style="font-size: var(--text-caption-1); font-weight: 600; color: var(--text-primary);" id="modal-event-date">—</div>
+            </div>
+          </div>
+          <div class="event-meta-line">
+            <span class="material-symbols-outlined text-outline" style="font-size: 18px; color: var(--color-primary);">pin_drop</span>
+            <div>
+              <div style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600;">VENUE / LOCATION</div>
+              <div style="font-size: var(--text-caption-1); font-weight: 600; color: var(--text-primary);" id="modal-event-venue">—</div>
+            </div>
+          </div>
+          <div class="event-meta-line">
+            <span class="material-symbols-outlined text-outline" style="font-size: 18px; color: var(--color-primary);">timer</span>
+            <div>
+              <div style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600;">SERVICE HOURS</div>
+              <div style="font-size: var(--text-caption-1); font-weight: 600; color: var(--text-primary);" id="modal-event-hours">Est. 12 Hours</div>
+            </div>
+          </div>
+          <div class="event-meta-line">
+            <span class="material-symbols-outlined text-outline" style="font-size: 18px; color: var(--color-primary);">group</span>
+            <div>
+              <div style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600;">CAPACITY STATUS</div>
+              <div style="font-size: var(--text-caption-1); font-weight: 600; color: var(--text-primary);" id="modal-event-capacity-text">0 / 0 Slots</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Capacity Progress Bar -->
+        <div class="event-capacity-box">
+          <div class="flex items-center justify-between" style="font-size: var(--text-label-sm);">
+            <span style="color: var(--text-secondary); font-weight: 500;">Committee &amp; Volunteer Quota</span>
+            <span style="font-weight: 600;" id="modal-capacity-pct">0% Filled</span>
+          </div>
+          <div class="progress-bar" style="height: 6px;">
+            <div class="progress-fill" id="modal-capacity-bar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Open Committee Tracks / Roles -->
+        <div id="modal-roles-section">
+          <div style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">
+            Operational Tracks &amp; Roles
+          </div>
+          <div class="flex flex-wrap gap-2" id="modal-roles-chips">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- Event Tags -->
+        <div id="modal-tags-section">
+          <div style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">
+            Focus Areas &amp; Skills
+          </div>
+          <div class="flex flex-wrap gap-1" id="modal-tags-chips">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- Registration & Eligibility Callout -->
+        <div id="modal-registration-box" style="margin-top: var(--space-2);">
+          <!-- Concurrency Notice Box -->
+          <div class="concurrency-notice eligible" id="modal-concurrency-notice">
+            <span class="material-symbols-outlined" style="font-size: 18px; shrink: 0; margin-top: 1px;">check_circle</span>
+            <div>
+              <strong id="modal-notice-title">Eligible to Register:</strong>
+              <span id="modal-notice-body">You have active capacity within the SLIIT volunteer guidelines.</span>
+            </div>
+          </div>
+
+          <!-- Join Form (Role Selection) -->
+          <div id="modal-join-form" style="margin-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="join-role-select">Select Your Volunteering Role</label>
+              <select id="join-role-select" class="form-select">
+                <option value="volunteer">General Volunteer (Operations / Logistics / Registration)</option>
+                <option value="organizer" id="option-role-organizer">Organizing Committee (OC Track Lead / Core Member)</option>
+              </select>
+              <span class="form-hint" id="join-role-hint">Note: Each volunteer can hold a maximum of 2 concurrent Organizing Committee (OC) roles.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="join-motivation">Note / Specific Preferences (Optional)</label>
+              <textarea id="join-motivation" class="form-textarea" placeholder="Mention relevant experience, chapter affiliations, or specific committee preferences..." style="min-height: 70px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Already Registered Banner (Shown if user already joined) -->
+          <div id="modal-already-registered" class="hidden" style="background: var(--color-success-light); border: 1px solid rgba(0, 107, 39, 0.2); border-radius: var(--radius-sm); padding: var(--space-4); display: flex; align-items: center; gap: var(--space-3);">
+            <span class="material-symbols-outlined" style="color: var(--color-success); font-size: 26px;">verified_user</span>
+            <div>
+              <div style="font-weight: 700; color: var(--color-success);">You Are Enrolled in This Event</div>
+              <div style="font-size: var(--text-caption-1); color: var(--text-secondary);" id="modal-registered-role-desc">
+                Your application is active on the event roster.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal type="button">Close</button>
+        <button class="btn btn-primary" id="btn-submit-registration" onclick="submitRegistration()">
+          <span class="material-symbols-outlined" style="font-size: 18px;">how_to_reg</span>
+          <span class="btn-text">Confirm Registration</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ES Module Script ───────────────────────────────────────── -->
+  <script type="module">
+    import { requireAuth, signOut, currentUserProfile } from '/src/js/auth.js';
+    import { db } from '/src/js/firebase-config.js';
+    import {
+      showToast, openModal, closeModal, setupModalClose,
+      formatDate, formatDateRange, formatHours,
+      capitalize, initials, avatarColor,
+      statusBadgeClass, roleBadgeClass, setLoading, debounce
+    } from '/src/js/utils.js';
+    import {
+      collection, query, where, orderBy, getDocs, getDoc,
+      doc, addDoc, updateDoc, serverTimestamp
+    } from 'firebase/firestore';
+
+    // ── Application State ─────────────────────────────────────────
+    let user = null;
+    let userProfile = null;
+    let allEvents = [];
+    let userEngagements = [];
+    let userRegisteredEventMap = {}; // eventId -> engagement doc
+    let currentModalEvent = null;
+    let activeFilterPill = 'all';
+    let activeChapterFilter = 'all';
+    let currentSearchTerm = '';
+
+    // ── Realistic High-Fidelity Mock Seed Data (Fallback) ────────
+    const DEFAULT_MOCK_EVENTS = [
+      {
+        id: 'event-001',
+        title: 'RoboFest 2025 — National Hardware Hackathon',
+        description: 'Flagship national robotics and autonomous rover hackathon organized by the IEEE Robotics and Automation Society (RAS) SLIIT Chapter. Features intense hardware prototyping, embedded systems tracks, and corporate sponsorships.',
+        chapterCode: 'ras',
+        chapterName: 'IEEE RAS Chapter SLIIT',
+        status: 'ongoing',
+        startDate: '2024-10-12T09:00:00Z',
+        endDate: '2024-10-14T18:00:00Z',
+        capacity: 20,
+        slotsFilled: 20,
+        venue: 'SLIIT Computing Labs 3-5 & Hardware Labs',
+        format: 'In-Person',
+        estHours: 24,
+        openRoles: ['Tech Lead (Soldering/Embedded)', 'Logistics & Lab Access', 'Protocol & Safety Liaison'],
+        tags: ['Robotics', 'Hardware', 'Hackathon', 'Embedded'],
+        bannerUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBohd-wVC6Bzdhk2rutyEWbbjmc6cgCDhswABQX9pMz_U0_1cCqg7Ur3Us17YvBTkKstS8veRnc-UczMdxXArbFoLKM36_BZo-Fc2Xwg7NojFEIihrIKyxZBwA80GCh4-2qNUFMWiILHlqD0cLsQCvN-v63JLOe0HOs2uXs3E22cvOR3gmPwzhACDtIpSH7v-lMhj6_sa-DW47x5eg_U0Aqsyd-9TaFzpgmybBhVLspWmZSsclwpcRD'
+      },
+      {
+        id: 'event-002',
+        title: 'SLIIT CodeBlitz Hackathon 2024',
+        description: '24-hour non-stop algorithmic problem solving and web systems competition hosted by the IEEE Computer Society SLIIT. Over 50 collegiate teams compete across system scalability, security, and AI tracks.',
+        chapterCode: 'cs',
+        chapterName: 'IEEE Computer Society',
+        status: 'ongoing',
+        startDate: '2024-11-02T08:00:00Z',
+        endDate: '2024-11-03T08:00:00Z',
+        capacity: 40,
+        slotsFilled: 35,
+        venue: 'Main Auditorium & Online Discord Hub',
+        format: 'Hybrid',
+        estHours: 20,
+        openRoles: ['Judging Liaison', 'Live Stream & Media PR', 'Night Operations Coordinator'],
+        tags: ['Coding', 'Algorithms', 'Hackathon', 'Web Dev'],
+        bannerUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCf6W8a3QPyoH6GvChL5TFBU_BqhEX3qRrWBognFA1IvW85PayluNnGcvuW1DZKjFZEzmnfO9dazNnfFKPp1pHxF93JeE0HHSMf_o_5NLFVXMNA-tJH10qd3DLfJmqB9lRnov2av0XMleHf9w3v-lUDgtEFD9D0aW-Pc4eNsuRKI_Sxg_h6RyDMsEMNbDmh5nAu9z0PXdlXLkzyyA27LBdiw9rlXut8tAkQj_8O9QcpUHA8-AOjQzno'
+      },
+      {
+        id: 'event-003',
+        title: 'IEEE Day Celebration 2024 — SLIIT Gala & Showcase',
+        description: 'Annual global celebration of IEEE founding. Includes an engineering project exhibition, inspiring keynote sessions by industry fellows, networking gala, and awards ceremony.',
+        chapterCode: 'sb',
+        chapterName: 'IEEE Student Branch SLIIT',
+        status: 'upcoming',
+        startDate: '2024-11-25T14:00:00Z',
+        endDate: '2024-11-25T20:00:00Z',
+        capacity: 30,
+        slotsFilled: 18,
+        venue: 'SLIIT Campus Amphitheatre',
+        format: 'In-Person',
+        estHours: 12,
+        openRoles: ['Media & PR Team (4 slots)', 'Registration & Reception (2 slots)', 'Guest Speaker Escort'],
+        tags: ['Networking', 'Celebration', 'Exhibition', 'Outreach'],
+        bannerUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'event-004',
+        title: 'TechPulse 2025 — AI & Automation Symposium',
+        description: 'Joint flagship international symposium bridging academia and enterprise automation. Explores generative models, industrial robotic process automation, and intelligent communications.',
+        chapterCode: 'comsoc',
+        chapterName: 'IEEE ComSoc & IAS Joint Chapter',
+        status: 'upcoming',
+        startDate: '2024-12-10T09:00:00Z',
+        endDate: '2024-12-10T17:00:00Z',
+        capacity: 50,
+        slotsFilled: 28,
+        venue: 'Grand Ballroom, Cinnamon Lakeside Colombo',
+        format: 'In-Person',
+        estHours: 18,
+        openRoles: ['Stage Management & AV (3)', 'Delegate Relations (2)', 'Paper Presentation Aide'],
+        tags: ['AI', 'Symposium', 'Automation', 'Industry'],
+        bannerUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'event-005',
+        title: 'SheLeads STEM Summit 2025',
+        description: 'Leadership, career mentoring, and technical workshop summit organized by IEEE Women in Engineering (WIE) Affinity Group SLIIT. Connects aspiring female engineers with top tech executives.',
+        chapterCode: 'wie',
+        chapterName: 'IEEE WIE Affinity Group',
+        status: 'upcoming',
+        startDate: '2025-01-18T10:00:00Z',
+        endDate: '2025-01-18T16:30:00Z',
+        capacity: 35,
+        slotsFilled: 15,
+        venue: 'SLIIT Auditorium 2 & Zoom Livestream',
+        format: 'Hybrid',
+        estHours: 14,
+        openRoles: ['Workshop Moderator', 'Mentorship Speed-Dating Liaison', 'Design & Social PR'],
+        tags: ['WIE', 'Leadership', 'Mentorship', 'STEM'],
+        bannerUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'event-006',
+        title: 'GreenPower Innovation Forum 2025',
+        description: 'Renewable energy transition and smart grid tech panel conference hosted by the IEEE Power & Energy Society (PES) SLIIT Student Chapter. Features solar, EV integration, and battery storage research.',
+        chapterCode: 'pes',
+        chapterName: 'IEEE PES Chapter SLIIT',
+        status: 'upcoming',
+        startDate: '2025-02-05T09:30:00Z',
+        endDate: '2025-02-05T16:00:00Z',
+        capacity: 25,
+        slotsFilled: 8,
+        venue: 'Faculty of Engineering Seminar Hall, SLIIT',
+        format: 'In-Person',
+        estHours: 10,
+        openRoles: ['Poster Session Coordinator', 'Technical AV Assistant', 'Guest Hospitality'],
+        tags: ['CleanTech', 'Renewables', 'PES', 'SmartGrid'],
+        bannerUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'event-007',
+        title: 'MoraXtreme 9.0 (Inter-Uni Hackathon)',
+        description: 'Comprehensive algorithmic and problem-solving collegiate competition completed in late September. Over 450 attendees and 80 universities competed.',
+        chapterCode: 'cs',
+        chapterName: 'IEEE CS & WIE Joint',
+        status: 'completed',
+        startDate: '2024-09-18T08:00:00Z',
+        endDate: '2024-09-18T20:00:00Z',
+        capacity: 35,
+        slotsFilled: 32,
+        venue: 'SLIIT Computing Labs 1-4',
+        format: 'In-Person',
+        attendees: 450,
+        estHours: 16,
+        tags: ['Algorithms', 'Inter-Uni', 'Hackathon'],
+        bannerUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'event-008',
+        title: 'WIE Empower Summit 2024',
+        description: 'Women in STEM leadership forum and hands-on Python data analysis bootcamp completed in August 2024.',
+        chapterCode: 'wie',
+        chapterName: 'IEEE WIE Affinity Group',
+        status: 'completed',
+        startDate: '2024-08-04T09:00:00Z',
+        endDate: '2024-08-04T17:00:00Z',
+        capacity: 20,
+        slotsFilled: 18,
+        venue: 'Main Auditorium, SLIIT',
+        format: 'In-Person',
+        attendees: 210,
+        estHours: 12,
+        tags: ['Leadership', 'STEM', 'WIE'],
+        bannerUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'event-009',
+        title: 'Arduino Day Sri Lanka 2024',
+        description: 'IoT Hardware exhibition, robotics showcase, and interactive clinic for over 600 school and university students.',
+        chapterCode: 'ras',
+        chapterName: 'IEEE RAS Chapter SLIIT',
+        status: 'completed',
+        startDate: '2024-03-23T08:30:00Z',
+        endDate: '2024-03-23T18:00:00Z',
+        capacity: 40,
+        slotsFilled: 40,
+        venue: 'SLIIT Campus Grounds & Atrium',
+        format: 'In-Person',
+        attendees: 600,
+        estHours: 18,
+        tags: ['Hardware', 'IoT', 'Arduino', 'Robotics'],
+        bannerUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80'
+      }
+    ];
+
+    // ── Chapter Styling & Display Helpers ─────────────────────────
+    const CHAPTER_INFO = {
+      cs:     { name: 'IEEE Computer Society', color: '#0058bc', badgeClass: 'badge-blue' },
+      ras:    { name: 'IEEE RAS (Robotics)',   color: '#006b27', badgeClass: 'badge-green' },
+      wie:    { name: 'IEEE WIE (Women in Eng)', color: '#FF2D55', badgeClass: 'badge-pink' },
+      ias:    { name: 'IEEE IAS (Industry App)', color: '#FF9500', badgeClass: 'badge-orange' },
+      pes:    { name: 'IEEE PES (Power & Energy)', color: '#5AC8FA', badgeClass: 'badge-teal' },
+      comsoc: { name: 'IEEE ComSoc (Comm)',    color: '#4c4aca', badgeClass: 'badge-indigo' },
+      sb:     { name: 'IEEE SLIIT Branch',     color: '#001D39', badgeClass: 'badge-gray' },
+    };
+
+    function getChapterMeta(code = '') {
+      const c = (code || '').toLowerCase();
+      for (const key of Object.keys(CHAPTER_INFO)) {
+        if (c.includes(key)) return CHAPTER_INFO[key];
+      }
+      return { name: 'IEEE SLIIT Chapter', color: '#0058bc', badgeClass: 'badge-blue' };
+    }
+
+    // ── Initialization Flow ───────────────────────────────────────
+    async function init() {
+      try {
+        // 1. Auth Guard (requires volunteer or higher)
+        const authData = await requireAuth('volunteer');
+        user = authData.user;
+        userProfile = authData.profile || {};
+
+        // 2. Populate Sidebar and Topbar User Information
+        updateUserUI(user, userProfile);
+
+        // 3. Setup Modals
+        setupModalClose('event-modal-backdrop');
+
+        // 4. Fetch Engagements & Events
+        await loadUserEngagements();
+        await loadEvents();
+
+        // 5. Update Telemetry and Render
+        updateTelemetry();
+        renderAllSections();
+
+        // 6. Setup Search Listener
+        const searchInput = document.getElementById('eventSearchInput');
+        if (searchInput) {
+          searchInput.addEventListener('input', debounce((e) => {
+            currentSearchTerm = e.target.value.trim().toLowerCase();
+            applyFilters();
+          }, 250));
+        }
+
+        // 7. Setup Chapter Dropdown Listener
+        const chapterSelect = document.getElementById('chapterSelect');
+        if (chapterSelect) {
+          chapterSelect.addEventListener('change', (e) => {
+            setChapterFilter(e.target.value);
+          });
+        }
+
+      } catch (err) {
+        console.error('Initialization error:', err);
+        // Fallback gracefully so page still operates
+        allEvents = DEFAULT_MOCK_EVENTS;
+        renderAllSections();
+      }
+    }
+
+    // ── User UI Update ────────────────────────────────────────────
+    function updateUserUI(u, p) {
+      const name = p.name || u.displayName || 'Volunteer Member';
+      const role = p.role || 'volunteer';
+
+      document.getElementById('user-name').textContent = name;
+      document.getElementById('user-role').textContent = capitalize(role);
+      document.getElementById('dropdown-user-name').textContent = name;
+
+      const avatarEl = document.getElementById('user-avatar');
+      const topAvatarEl = document.getElementById('topbar-avatar');
+
+      if (p.profilePicUrl || u.photoURL) {
+        const pic = p.profilePicUrl || u.photoURL;
+        avatarEl.innerHTML = `<img src="${pic}" alt="${name}">`;
+        topAvatarEl.innerHTML = `<img src="${pic}" alt="${name}">`;
+      } else {
+        const init = initials(name);
+        const bg = avatarColor(name);
+        avatarEl.textContent = init;
+        avatarEl.style.background = bg;
+        topAvatarEl.textContent = init;
+        topAvatarEl.style.background = bg;
+      }
+
+      // Sidebar Standing Bar
+      const totalHrs = p.totalHours || 39;
+      const hoursPct = Math.min(100, Math.round((totalHrs / 50) * 100));
+      const hoursFill = document.getElementById('sidebar-hours-fill');
+      const hoursText = document.getElementById('sidebar-hours-text');
+      if (hoursFill) hoursFill.style.width = `${hoursPct}%`;
+      if (hoursText) hoursText.textContent = `${totalHrs} of 50 Service Hours Logged`;
+    }
+
+    // ── Load User Engagements from Firestore ───────────────────────
+    async function loadUserEngagements() {
+      try {
+        if (!user) return;
+        const q = query(collection(db, 'engagements'), where('userId', '==', user.uid));
+        const snap = await getDocs(q);
+        userEngagements = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        // Map event IDs to engagement records
+        userRegisteredEventMap = {};
+        userEngagements.forEach(eng => {
+          if (eng.eventId) {
+            userRegisteredEventMap[eng.eventId] = eng;
+          }
+        });
+
+        // Compute active OC count if not present on profile
+        const activeOCs = userEngagements.filter(e => e.role === 'organizer' && e.status === 'active');
+        if (userProfile.activeOCCount == null) {
+          userProfile.activeOCCount = activeOCs.length;
+        }
+
+      } catch (err) {
+        console.warn('Could not load user engagements from Firestore:', err);
+        // Fallback default: user has 1 active OC role in RoboFest
+        userRegisteredEventMap['event-001'] = {
+          role: 'organizer',
+          subRole: 'Tech Lead',
+          status: 'active'
+        };
+        if (userProfile.activeOCCount == null) {
+          userProfile.activeOCCount = 1;
+        }
+      }
+    }
+
+    // ── Load Events from Firestore (with Mock Fallback) ───────────
+    async function loadEvents() {
+      try {
+        const q = query(collection(db, 'events'), orderBy('startDate', 'desc'));
+        const snap = await getDocs(q);
+
+        if (!snap.empty) {
+          const firestoreEvents = snap.docs.map(d => {
+            const data = d.data();
+            return {
+              id: d.id,
+              ...data,
+              // Normalize status
+              status: normalizeEventStatus(data),
+              chapterCode: (data.chapterCode || 'sb').toLowerCase(),
+              chapterName: data.chapterName || data.chapterCode || 'IEEE SLIIT',
+              venue: data.venue || 'SLIIT Malabe Campus',
+              format: data.format || 'In-Person',
+              estHours: data.estHours || data.estimatedHours || 12,
+              openRoles: data.openRoles || ['Media & PR', 'Logistics', 'Registration Desk'],
+              tags: data.tags || ['IEEE', 'SLIIT'],
+              bannerUrl: data.bannerUrl || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+            };
+          });
+
+          // If firestore has items, merge them or prioritize them
+          allEvents = firestoreEvents;
+        } else {
+          // If Firestore collection is empty, use our high quality mock list
+          allEvents = DEFAULT_MOCK_EVENTS;
+        }
+      } catch (err) {
+        console.warn('Could not query Firestore events collection, using default mock directory:', err);
+        allEvents = DEFAULT_MOCK_EVENTS;
+      }
+    }
+
+    function normalizeEventStatus(ev) {
+      if (!ev) return 'upcoming';
+      const s = (ev.status || '').toLowerCase();
+      if (s === 'ongoing' || s === 'active') return 'ongoing';
+      if (s === 'completed' || s === 'closed' || s === 'archived') return 'completed';
+      return 'upcoming';
+    }
+
+    // ── Telemetry Stats ───────────────────────────────────────────
+    function updateTelemetry() {
+      const ocCount = userProfile.activeOCCount || 0;
+      const ocText = document.getElementById('telemetry-oc-text');
+      const ocDot  = document.getElementById('telemetry-oc-dot');
+
+      if (ocText) ocText.textContent = `${ocCount} / 2 Assigned`;
+      if (ocDot) {
+        ocDot.className = ocCount >= 2 ? 'pulse-dot' : 'pulse-dot green';
+        if (ocCount >= 2) {
+          ocDot.style.background = 'var(--color-warning)';
+          ocDot.style.boxShadow = 'none';
+        }
+      }
+
+      const openCount = allEvents.filter(e => e.status === 'upcoming' || e.status === 'ongoing').length;
+      const openEl = document.getElementById('telemetry-open');
+      if (openEl) openEl.textContent = `${openCount} Open Calls`;
+
+      // Update pill count badges
+      const totalAll = allEvents.length;
+      const totalOngoing = allEvents.filter(e => e.status === 'ongoing').length;
+      const totalUpcoming = allEvents.filter(e => e.status === 'upcoming').length;
+      const totalCompleted = allEvents.filter(e => e.status === 'completed').length;
+
+      document.getElementById('count-pill-all').textContent = `(${totalAll})`;
+      document.getElementById('count-pill-ongoing').textContent = `(${totalOngoing})`;
+      document.getElementById('count-pill-upcoming').textContent = `(${totalUpcoming})`;
+      document.getElementById('count-pill-completed').textContent = `(${totalCompleted})`;
+    }
+
+    // ── Render All Default Sections ───────────────────────────────
+    function renderAllSections() {
+      const ongoingEvents = allEvents.filter(e => e.status === 'ongoing');
+      const upcomingEvents = allEvents.filter(e => e.status === 'upcoming');
+      const completedEvents = allEvents.filter(e => e.status === 'completed');
+
+      // 1. Ongoing
+      const gridOngoing = document.getElementById('grid-ongoing');
+      if (gridOngoing) {
+        if (ongoingEvents.length === 0) {
+          gridOngoing.innerHTML = `<div class="card" style="grid-column: 1 / -1; padding: var(--space-4); text-align: center; color: var(--text-tertiary);">No ongoing events right now. Check upcoming open calls below.</div>`;
+        } else {
+          gridOngoing.innerHTML = ongoingEvents.map(ev => renderEventCard(ev)).join('');
+        }
+      }
+
+      // 2. Upcoming
+      const gridUpcoming = document.getElementById('grid-upcoming');
+      if (gridUpcoming) {
+        if (upcomingEvents.length === 0) {
+          gridUpcoming.innerHTML = `<div class="card" style="grid-column: 1 / -1; padding: var(--space-4); text-align: center; color: var(--text-tertiary);">No open calls currently recruiting. Check back soon.</div>`;
+        } else {
+          gridUpcoming.innerHTML = upcomingEvents.map(ev => renderEventCard(ev)).join('');
+        }
+      }
+
+      // 3. Completed (Table)
+      const tbody = document.getElementById('archived-table-body');
+      if (tbody) {
+        if (completedEvents.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-tertiary); padding: var(--space-6);">No archived records found.</td></tr>`;
+        } else {
+          tbody.innerHTML = completedEvents.map(ev => renderArchivedRow(ev)).join('');
+        }
+      }
+
+      const summaryText = document.getElementById('archived-count-summary');
+      if (summaryText) {
+        summaryText.textContent = `Showing ${completedEvents.length} certified historical event archives`;
+      }
+    }
+
+    // ── Event Card HTML Generator ─────────────────────────────────
+    function renderEventCard(ev) {
+      const chapter = getChapterMeta(ev.chapterCode);
+      const isRegistered = Boolean(userRegisteredEventMap[ev.id]);
+      const userRole = userRegisteredEventMap[ev.id]?.role || 'volunteer';
+      const userSubRole = userRegisteredEventMap[ev.id]?.subRole || capitalize(userRole);
+
+      // Capacity Calculation
+      const cap = ev.capacity || 20;
+      const filled = ev.slotsFilled != null ? ev.slotsFilled : 0;
+      const pct = Math.min(100, Math.round((filled / cap) * 100));
+      const isFull = filled >= cap;
+      const slotsLeft = Math.max(0, cap - filled);
+
+      // Status Badge Style
+      let statusBadge = '';
+      if (ev.status === 'ongoing') {
+        statusBadge = `
+          <span class="font-label-sm" style="background: rgba(0, 107, 39, 0.9); backdrop-filter: blur(4px); color: #ffffff; padding: 4px 10px; border-radius: var(--radius-full); font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+            <span class="pulse-dot green" style="width: 6px; height: 6px;"></span> Ongoing Active
+          </span>`;
+      } else if (ev.status === 'upcoming') {
+        statusBadge = `
+          <span class="font-label-sm" style="background: rgba(0, 88, 188, 0.9); backdrop-filter: blur(4px); color: #ffffff; padding: 4px 10px; border-radius: var(--radius-full); font-size: 11px; font-weight: 700;">
+            Open Call
+          </span>`;
+      } else {
+        statusBadge = `
+          <span class="badge badge-gray">Completed</span>`;
+      }
+
+      // User Joined Badge
+      const registeredBadge = isRegistered
+        ? `<span class="badge badge-indigo" style="box-shadow: 0 1px 4px rgba(0,0,0,0.25);">
+             <span class="material-symbols-outlined" style="font-size: 13px;">shield_person</span>
+             You: ${userSubRole}
+           </span>`
+        : '';
+
+      // Date Format
+      const dateDisplay = formatDateRange(ev.startDate, ev.endDate);
+
+      // Roles Badges
+      const rolesMarkup = (ev.openRoles || []).slice(0, 2).map(r => `
+        <span class="chip" style="font-size: 11px; background: var(--bg-surface); border: 1px solid var(--separator); padding: 2px 8px;">
+          ${r}
+        </span>
+      `).join('');
+
+      // Concurrency eligibility notice on upcoming cards
+      const ocCount = userProfile.activeOCCount || 0;
+      const eligibleHtml = ev.status === 'upcoming'
+        ? (ocCount >= 2
+            ? `<div class="concurrency-notice warning">
+                 <span class="material-symbols-outlined" style="font-size: 16px;">info</span>
+                 <span><strong>OC Limit Reached:</strong> You hold 2/2 OC roles. Eligible for General Volunteer only.</span>
+               </div>`
+            : `<div class="concurrency-notice eligible">
+                 <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span>
+                 <span><strong>Eligible to Apply:</strong> You hold ${ocCount} of 2 allowed concurrent Organizing Committees.</span>
+               </div>`
+          )
+        : '';
+
+      // Action button
+      let actionBtn = '';
+      if (isRegistered) {
+        actionBtn = `
+          <button class="btn btn-secondary btn-sm" onclick="openEventDetails('${ev.id}')">
+            <span>View Workspace</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+          </button>`;
+      } else if (ev.status === 'completed') {
+        actionBtn = `
+          <button class="btn btn-secondary btn-sm" onclick="openEventDetails('${ev.id}')">
+            <span>View Archive</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">visibility</span>
+          </button>`;
+      } else {
+        actionBtn = `
+          <button class="btn btn-primary btn-sm" onclick="openEventDetails('${ev.id}')">
+            <span>${ev.status === 'ongoing' ? 'View & Register' : 'Join Volunteer Roster'}</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">how_to_reg</span>
+          </button>`;
+      }
+
+      return `
+        <article class="event-card" style="border-top-color: ${chapter.color};" id="card-${ev.id}">
+          <div class="event-card-banner">
+            <img class="event-card-img" src="${ev.bannerUrl}" alt="${ev.title}" loading="lazy" />
+            <div class="event-card-scrim"></div>
+            
+            <!-- Top Floating Overlays -->
+            <div class="event-card-top-badges">
+              <div class="flex items-center gap-2">
+                ${statusBadge}
+                <span style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(6px); color: var(--text-primary); font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: var(--radius-full);">
+                  ${ev.chapterName}
+                </span>
+              </div>
+              <div>
+                ${registeredBadge}
+              </div>
+            </div>
+
+            <!-- Title inside Banner Scrim -->
+            <div class="event-card-title-scrim">
+              <h3 class="event-card-title-text">${ev.title}</h3>
+            </div>
+          </div>
+
+          <div class="event-card-body">
+            <!-- Date & Venue -->
+            <div class="event-meta-line">
+              <span class="material-symbols-outlined text-outline" style="font-size: 16px; color: var(--color-primary);">calendar_today</span>
+              <span style="font-weight: 500;">${dateDisplay}</span>
+            </div>
+            <div class="event-meta-line">
+              <span class="material-symbols-outlined text-outline" style="font-size: 16px;">pin_drop</span>
+              <span class="truncate">${ev.venue} • <strong style="color: var(--color-primary);">${ev.format}</strong></span>
+            </div>
+
+            <!-- Capacity Progress -->
+            <div class="event-capacity-box">
+              <div class="flex items-center justify-between" style="font-size: var(--text-label-sm);">
+                <span style="color: var(--text-secondary); font-weight: 500;">Capacity Quota</span>
+                <span style="font-weight: 600; color: ${isFull ? 'var(--color-danger)' : 'var(--color-success)'};">
+                  ${filled} / ${cap} Slots Filled ${isFull ? '(Full)' : `(${slotsLeft} Left)`}
+                </span>
+              </div>
+              <div class="progress-bar" style="height: 5px;">
+                <div class="progress-fill ${isFull ? 'red' : pct > 75 ? 'orange' : 'green'}" style="width: ${pct}%;"></div>
+              </div>
+            </div>
+
+            <!-- Roles chips if available -->
+            ${rolesMarkup ? `
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 600; text-transform: uppercase;">Roles Open:</span>
+                <div class="flex flex-wrap gap-1">${rolesMarkup}</div>
+              </div>
+            ` : ''}
+
+            <!-- Concurrency Notice -->
+            ${eligibleHtml}
+          </div>
+
+          <div class="event-card-footer">
+            <span style="font-size: var(--text-label-sm); color: var(--text-tertiary); font-weight: 500;">
+              Est. ${ev.estHours} Volunteer Service Hours
+            </span>
+            ${actionBtn}
+          </div>
+        </article>`;
+    }
+
+    // ── Archived Table Row Generator ──────────────────────────────
+    function renderArchivedRow(ev) {
+      const chapter = getChapterMeta(ev.chapterCode);
+      const completedDate = formatDate(ev.endDate || ev.startDate);
+      const volunteersCount = ev.slotsFilled || ev.capacity || 24;
+      const attendeesCount = ev.attendees || '400+';
+
+      return `
+        <tr class="animate-fadeInUp">
+          <td style="padding: var(--space-4) var(--space-5);">
+            <div class="flex flex-col">
+              <span style="font-weight: 600; color: var(--text-primary); font-size: var(--text-subhead);">${ev.title}</span>
+              <span style="font-size: var(--text-caption-2); color: var(--text-tertiary);">${ev.venue}</span>
+            </div>
+          </td>
+          <td style="white-space: nowrap;">
+            <span class="badge ${chapter.badgeClass}" style="font-weight: 600;">${ev.chapterName}</span>
+          </td>
+          <td style="white-space: nowrap; font-size: var(--text-caption-1); color: var(--text-secondary);">
+            ${completedDate}
+          </td>
+          <td style="white-space: nowrap;">
+            <div class="flex items-center gap-1.5" style="font-size: var(--text-caption-1);">
+              <strong style="color: var(--text-primary);">${volunteersCount} Volunteers</strong>
+              <span class="material-symbols-outlined" style="font-size: 16px; color: var(--color-success);" title="Fully Validated">verified</span>
+            </div>
+          </td>
+          <td style="white-space: nowrap;">
+            <span class="badge badge-green">
+              Completed • ${attendeesCount} Attendees
+            </span>
+          </td>
+          <td class="col-right" style="white-space: nowrap; padding-right: var(--space-5);">
+            <button class="btn btn-ghost btn-xs" onclick="openEventDetails('${ev.id}')">
+              <span>View Details</span>
+              <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+            </button>
+          </td>
+        </tr>`;
+    }
+
+    // ── Filter & Search Logic ─────────────────────────────────────
+    function applyFilters() {
+      const sectionsContainer = document.getElementById('events-sections-container');
+      const filteredContainer = document.getElementById('filtered-view-container');
+      const emptyContainer    = document.getElementById('empty-state-container');
+      const gridFiltered      = document.getElementById('grid-filtered');
+
+      // Check if default view ("all" status, "all" chapter, empty search)
+      const isDefault = activeFilterPill === 'all' && activeChapterFilter === 'all' && !currentSearchTerm;
+
+      if (isDefault) {
+        sectionsContainer.classList.remove('hidden');
+        filteredContainer.classList.add('hidden');
+        emptyContainer.classList.add('hidden');
+        renderAllSections();
+        return;
+      }
+
+      // Filter events
+      const filtered = allEvents.filter(ev => {
+        // Status filter
+        if (activeFilterPill !== 'all' && ev.status !== activeFilterPill) {
+          return false;
+        }
+
+        // Chapter filter
+        if (activeChapterFilter !== 'all') {
+          const cCode = (ev.chapterCode || '').toLowerCase();
+          const cName = (ev.chapterName || '').toLowerCase();
+          if (!cCode.includes(activeChapterFilter) && !cName.includes(activeChapterFilter)) {
+            return false;
+          }
+        }
+
+        // Search text
+        if (currentSearchTerm) {
+          const matchTitle = (ev.title || '').toLowerCase().includes(currentSearchTerm);
+          const matchDesc  = (ev.description || '').toLowerCase().includes(currentSearchTerm);
+          const matchVenue = (ev.venue || '').toLowerCase().includes(currentSearchTerm);
+          const matchChap  = (ev.chapterName || '').toLowerCase().includes(currentSearchTerm);
+          const matchTags  = (ev.tags || []).some(t => t.toLowerCase().includes(currentSearchTerm));
+          if (!matchTitle && !matchDesc && !matchVenue && !matchChap && !matchTags) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      sectionsContainer.classList.add('hidden');
+
+      if (filtered.length === 0) {
+        filteredContainer.classList.add('hidden');
+        emptyContainer.classList.remove('hidden');
+      } else {
+        emptyContainer.classList.add('hidden');
+        filteredContainer.classList.remove('hidden');
+
+        // Update Title & Badge
+        const titleEl = document.getElementById('filtered-view-title');
+        const badgeEl = document.getElementById('filtered-view-count');
+
+        let label = 'Filtered Events';
+        if (currentSearchTerm) label = `Results for "${currentSearchTerm}"`;
+        else if (activeFilterPill !== 'all') label = `${capitalize(activeFilterPill)} Events`;
+        else if (activeChapterFilter !== 'all') label = `Chapter: ${activeChapterFilter.toUpperCase()}`;
+
+        if (titleEl) titleEl.textContent = label;
+        if (badgeEl) badgeEl.textContent = `${filtered.length} Events`;
+
+        if (gridFiltered) {
+          gridFiltered.innerHTML = filtered.map(ev => renderEventCard(ev)).join('');
+        }
+      }
+    }
+
+    // ── Global Filter Pill Handler ────────────────────────────────
+    window.setFilterPill = function(status) {
+      activeFilterPill = status;
+
+      // Update Pill UI
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === status);
+      });
+
+      applyFilters();
+    };
+
+    // ── Global Chapter Filter Handler ─────────────────────────────
+    window.setChapterChip = function(code) {
+      activeChapterFilter = code.toLowerCase();
+
+      // Sync Dropdown
+      const select = document.getElementById('chapterSelect');
+      if (select) select.value = activeChapterFilter;
+
+      // Sync Chips
+      document.querySelectorAll('.chapter-chip').forEach(chip => {
+        chip.classList.toggle('active', chip.dataset.chip === activeChapterFilter);
+      });
+
+      applyFilters();
+    };
+
+    window.setChapterFilter = function(code) {
+      activeChapterFilter = (code || 'all').toLowerCase();
+
+      // Sync Chips
+      document.querySelectorAll('.chapter-chip').forEach(chip => {
+        chip.classList.toggle('active', chip.dataset.chip === activeChapterFilter);
+      });
+
+      applyFilters();
+    };
+
+    window.resetFilters = function() {
+      activeFilterPill = 'all';
+      activeChapterFilter = 'all';
+      currentSearchTerm = '';
+
+      const searchInput = document.getElementById('eventSearchInput');
+      if (searchInput) searchInput.value = '';
+
+      const select = document.getElementById('chapterSelect');
+      if (select) select.value = 'all';
+
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === 'all');
+      });
+
+      document.querySelectorAll('.chapter-chip').forEach(chip => {
+        chip.classList.toggle('active', chip.dataset.chip === 'all');
+      });
+
+      applyFilters();
+    };
+
+    // ── Event Detail Modal & Join Flow ────────────────────────────
+    window.openEventDetails = function(eventId) {
+      const ev = allEvents.find(e => e.id === eventId);
+      if (!ev) return;
+
+      currentModalEvent = ev;
+      const chapter = getChapterMeta(ev.chapterCode);
+      const isRegistered = Boolean(userRegisteredEventMap[ev.id]);
+      const registeredRole = userRegisteredEventMap[ev.id]?.role || 'volunteer';
+
+      // Header info
+      document.getElementById('modal-event-title').textContent = ev.title;
+      document.getElementById('modal-event-desc').textContent = ev.description;
+      document.getElementById('modal-event-date').textContent = formatDateRange(ev.startDate, ev.endDate);
+      document.getElementById('modal-event-venue').textContent = `${ev.venue} (${ev.format})`;
+      document.getElementById('modal-event-hours').textContent = `Est. ${ev.estHours} Verified Hours`;
+
+      // Badges
+      const statusBadgeEl = document.getElementById('modal-badge-status');
+      statusBadgeEl.textContent = capitalize(ev.status);
+      statusBadgeEl.className = `badge ${statusBadgeClass(ev.status)}`;
+
+      const chapterBadgeEl = document.getElementById('modal-badge-chapter');
+      chapterBadgeEl.textContent = ev.chapterName;
+      chapterBadgeEl.className = `badge ${chapter.badgeClass}`;
+
+      document.getElementById('modal-badge-format').textContent = ev.format;
+
+      // Banner Image
+      const bannerImg = document.getElementById('modal-event-img');
+      if (bannerImg) bannerImg.src = ev.bannerUrl;
+
+      // Capacity Bar
+      const cap = ev.capacity || 20;
+      const filled = ev.slotsFilled || 0;
+      const pct = Math.min(100, Math.round((filled / cap) * 100));
+      document.getElementById('modal-event-capacity-text').textContent = `${filled} / ${cap} Slots Filled`;
+      document.getElementById('modal-capacity-pct').textContent = `${pct}% Capacity`;
+      const capBar = document.getElementById('modal-capacity-bar');
+      if (capBar) {
+        capBar.style.width = `${pct}%`;
+        capBar.className = `progress-fill ${filled >= cap ? 'red' : pct > 75 ? 'orange' : 'green'}`;
+      }
+
+      // Roles Open
+      const rolesSection = document.getElementById('modal-roles-section');
+      const rolesChips = document.getElementById('modal-roles-chips');
+      if (ev.openRoles && ev.openRoles.length > 0) {
+        rolesSection.style.display = '';
+        rolesChips.innerHTML = ev.openRoles.map(r => `
+          <span class="chip" style="background: var(--bg-surface); border: 1px solid var(--separator-strong); font-weight: 500;">
+            <span class="material-symbols-outlined" style="font-size: 14px; color: var(--color-primary);">work</span> ${r}
+          </span>
+        `).join('');
+      } else {
+        rolesSection.style.display = 'none';
+      }
+
+      // Tags
+      const tagsChips = document.getElementById('modal-tags-chips');
+      if (tagsChips) {
+        tagsChips.innerHTML = (ev.tags || []).map(t => `<span class="chip">#${t}</span>`).join('');
+      }
+
+      // Registration & Concurrency Guard
+      const ocCount = userProfile?.activeOCCount || 0;
+      const noticeBox = document.getElementById('modal-concurrency-notice');
+      const noticeTitle = document.getElementById('modal-notice-title');
+      const noticeBody = document.getElementById('modal-notice-body');
+      const joinForm = document.getElementById('modal-join-form');
+      const alreadyRegisteredBox = document.getElementById('modal-already-registered');
+      const submitBtn = document.getElementById('btn-submit-registration');
+      const organizerOption = document.getElementById('option-role-organizer');
+      const roleSelect = document.getElementById('join-role-select');
+      const roleHint = document.getElementById('join-role-hint');
+
+      if (isRegistered) {
+        // User is already registered
+        joinForm.classList.add('hidden');
+        noticeBox.classList.add('hidden');
+        alreadyRegisteredBox.classList.remove('hidden');
+        document.getElementById('modal-registered-role-desc').textContent =
+          `You are enrolled as a ${capitalize(registeredRole)}. Access materials and coordination channels through the IEEE SLIIT workspace.`;
+        submitBtn.style.display = 'none';
+      } else if (ev.status === 'completed') {
+        // Event is completed
+        joinForm.classList.add('hidden');
+        noticeBox.classList.remove('hidden');
+        noticeBox.className = 'concurrency-notice eligible';
+        noticeTitle.textContent = 'Event Concluded:';
+        noticeBody.textContent = 'This event has successfully finished. Service hours have been verified for attendees.';
+        alreadyRegisteredBox.classList.add('hidden');
+        submitBtn.style.display = 'none';
+      } else {
+        // Event is open for registration
+        joinForm.classList.remove('hidden');
+        alreadyRegisteredBox.classList.add('hidden');
+        submitBtn.style.display = '';
+        noticeBox.classList.remove('hidden');
+
+        if (ocCount >= 2) {
+          // At OC Limit
+          noticeBox.className = 'concurrency-notice warning';
+          noticeTitle.textContent = 'Organizing Committee Quota (2/2):';
+          noticeBody.textContent = 'You are at your 2-OC maximum cap. You can register as a General Volunteer.';
+          organizerOption.disabled = true;
+          roleSelect.value = 'volunteer';
+          roleHint.textContent = 'Organizing Committee option is disabled because you have reached the 2 concurrent OC role cap.';
+          roleHint.style.color = 'var(--color-danger)';
+        } else {
+          // Within limit
+          noticeBox.className = 'concurrency-notice eligible';
+          noticeTitle.textContent = `Eligible for OC or Volunteer (${ocCount}/2 Assigned):`;
+          noticeBody.textContent = 'You may choose either a core Organizing Committee track or General Volunteer support.';
+          organizerOption.disabled = false;
+          roleSelect.value = 'volunteer';
+          roleHint.textContent = `You currently have ${ocCount} active OC role(s). IEEE SLIIT permits up to 2 concurrent OC roles.`;
+          roleHint.style.color = 'var(--text-secondary)';
+        }
+      }
+
+      openModal('event-modal-backdrop');
+    };
+
+    // ── Confirm Registration Handler ──────────────────────────────
+    window.submitRegistration = async function() {
+      if (!currentModalEvent) return;
+
+      const btn = document.getElementById('btn-submit-registration');
+      const role = document.getElementById('join-role-select').value;
+      const motivation = document.getElementById('join-motivation').value.trim();
+
+      setLoading(btn, true);
+
+      try {
+        // 1. Write to Firestore 'engagements' collection
+        const newEngagement = {
+          userId:          user ? user.uid : 'guest-user',
+          userName:        userProfile.name || (user ? user.displayName : 'Volunteer'),
+          userEmail:       user ? user.email : '',
+          eventId:         currentModalEvent.id,
+          eventTitle:      currentModalEvent.title,
+          role:            role,
+          subRole:         role === 'organizer' ? 'Organizing Committee' : 'General Volunteer',
+          verifiedHours:   0,
+          impactStatement: motivation,
+          rating:          null,
+          status:          'active',
+          createdAt:       serverTimestamp(),
+        };
+
+        let newDocId = `eng-${Date.now()}`;
+        try {
+          const docRef = await addDoc(collection(db, 'engagements'), newEngagement);
+          newDocId = docRef.id;
+        } catch (dbErr) {
+          console.warn('Could not write to Firestore engagements collection:', dbErr);
+        }
+
+        // 2. Increment user activeOCCount if organizer
+        if (role === 'organizer') {
+          userProfile.activeOCCount = (userProfile.activeOCCount || 0) + 1;
+          try {
+            if (user) {
+              await updateDoc(doc(db, 'users', user.uid), {
+                activeOCCount: userProfile.activeOCCount
+              });
+            }
+          } catch (uErr) {
+            console.warn('Could not update user activeOCCount in Firestore:', uErr);
+          }
+        }
+
+        // 3. Update local event slot count
+        currentModalEvent.slotsFilled = (currentModalEvent.slotsFilled || 0) + 1;
+        try {
+          await updateDoc(doc(db, 'events', currentModalEvent.id), {
+            slotsFilled: currentModalEvent.slotsFilled
+          });
+        } catch (evErr) {
+          console.warn('Could not increment event slotsFilled in Firestore:', evErr);
+        }
+
+        // 4. Update local map
+        userRegisteredEventMap[currentModalEvent.id] = {
+          id: newDocId,
+          ...newEngagement
+        };
+
+        // 5. Success Toast & UI Update
+        showToast(
+          `Successfully registered for ${currentModalEvent.title}!`,
+          'success',
+          'Registered'
+        );
+
+        closeModal('event-modal-backdrop');
+        updateTelemetry();
+        applyFilters();
+
+      } catch (err) {
+        console.error('Registration error:', err);
+        showToast('Registration encountered an error. Please try again.', 'error');
+      } finally {
+        setLoading(btn, false);
+      }
+    };
+
+    // ── Global Helper Handlers ────────────────────────────────────
+    window.toggleSidebar = function() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const isOpen  = sidebar.classList.toggle('open');
+      overlay.classList.toggle('active', isOpen);
+    };
+
+    window.toggleUserMenu = function() {
+      const menu = document.getElementById('user-dropdown');
+      const btn  = document.getElementById('btn-user-menu');
+      const open = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', open);
+      btn.setAttribute('aria-expanded', String(!open));
+
+      if (!open) {
+        const closeDropdown = (e) => {
+          if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.add('hidden');
+            document.removeEventListener('click', closeDropdown);
+          }
+        };
+        setTimeout(() => document.addEventListener('click', closeDropdown), 0);
+      }
+    };
+
+    window.handleSignOut = async function() {
+      await signOut();
+    };
+
+    // Run on script ready
+    init();
+  </script>
+</body>
+</html>

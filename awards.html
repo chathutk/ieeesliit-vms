@@ -1,0 +1,2789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awards &amp; Recognition — IEEE SLIIT VMS</title>
+  <meta name="description" content="Awards and Recognition honors, annual AGM distinctions, and monthly commendations for IEEE SLIIT Student Branch volunteers." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- Design System Stylesheets -->
+  <link rel="stylesheet" href="/src/css/tokens.css" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/animations.css" />
+
+  <style>
+    /* ── Page Layout & Typography Extensions ───────────────────────── */
+    body {
+      background-color: #eef3f9;
+      min-height: 100vh;
+      color: var(--text-primary);
+    }
+
+    .main-content {
+      padding-top: calc(var(--header-height) + var(--space-6));
+      padding-bottom: var(--space-12);
+      min-height: 100vh;
+      background-color: #eef3f9;
+    }
+
+    .awards-container {
+      max-width: 1220px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    /* ── Topbar Refinements (No Brand - Sidebar Has Brand) ───────── */
+    .topbar {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--outline-variant);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding-inline: var(--space-6);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    .topbar-heading {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .topbar-title {
+      font-size: var(--text-headline-sm);
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      letter-spacing: -0.015em;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .topbar-ay-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      background: var(--bg-surface-secondary);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-full);
+      font-size: var(--text-label-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-secondary);
+      user-select: none;
+    }
+
+    .topbar-search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar-search-wrap .search-icon {
+      position: absolute;
+      left: 12px;
+      font-size: 18px;
+      color: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    .topbar-search-input {
+      width: 240px;
+      padding: 7px 12px 7px 36px;
+      background: var(--bg-surface-secondary);
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      font-size: var(--text-body-sm);
+      font-family: inherit;
+      color: var(--text-primary);
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .topbar-search-input:focus {
+      outline: none;
+      background: var(--bg-surface);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+      width: 280px;
+    }
+
+    .topbar-icon-btn {
+      position: relative;
+      color: var(--text-secondary);
+    }
+
+    .topbar-notification-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+    }
+
+    .user-profile-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 4px 8px 4px 4px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background var(--duration-fast) var(--ease-ios);
+    }
+
+    .user-profile-btn:hover {
+      background: var(--bg-surface-secondary);
+    }
+
+    .user-name-text {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+    }
+
+    .dropdown-user-header {
+      padding: var(--space-2) var(--space-3);
+    }
+
+    .dropdown-user-title {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+    }
+
+    .dropdown-user-sub {
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+    }
+
+    /* ── Sidebar Standing Widget & Backdrop ───────────────────────── */
+    .sidebar-standing-card {
+      background: rgba(10, 65, 116, 0.45);
+      border: 1px solid rgba(73, 118, 159, 0.35);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      margin: var(--space-3) var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .standing-row-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .standing-label {
+      font-size: var(--text-label-sm);
+      color: #85aee8;
+      font-weight: var(--weight-semibold);
+    }
+
+    .standing-pill {
+      font-size: 11px;
+      color: #72fe88;
+      font-weight: var(--weight-bold);
+      background: rgba(0, 33, 7, 0.6);
+      padding: 1px 7px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(83, 225, 111, 0.3);
+    }
+
+    .standing-meter {
+      width: 100%;
+      height: 6px;
+      background: rgba(0, 29, 57, 0.8);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 2px;
+    }
+
+    .standing-meter-bar {
+      height: 100%;
+      background: #7BBDE8;
+      border-radius: var(--radius-full);
+      transition: width 0.6s var(--ease-ios);
+    }
+
+    .standing-row-bot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: rgba(211, 227, 255, 0.85);
+    }
+
+    .standing-goal-text {
+      color: #85aee8;
+    }
+
+    .sidebar-signout-btn {
+      margin-left: auto;
+      color: var(--sidebar-text-muted);
+      border-radius: var(--radius-full);
+      padding: 6px;
+    }
+
+    .sidebar-signout-btn:hover {
+      color: #ff6b6b;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1050;
+      backdrop-filter: blur(2px);
+    }
+
+    .sidebar-backdrop.active {
+      display: block;
+    }
+
+    /* ── Hero Banner Card ────────────────────────────────────────── */
+    .awards-hero-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(194, 198, 209, 0.5);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 768px) {
+      .awards-hero-card {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .hero-top-stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #001D39 0%, #0A4174 50%, #7BBDE8 100%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-label-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+    }
+
+    .kicker-dot {
+      color: var(--outline-variant);
+    }
+
+    .kicker-highlight {
+      color: #0a4174;
+      font-weight: var(--weight-bold);
+    }
+
+    .hero-title {
+      font-size: var(--text-display);
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      letter-spacing: -0.022em;
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    /* ── Personal Nomination Card ("Your AGM Nomination Status") ─── */
+    .nomination-status-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(194, 198, 209, 0.55);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    @media (min-width: 1024px) {
+      .nomination-status-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .nomination-accent-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 6px;
+      background: #0a4174;
+    }
+
+    .nomination-main-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      padding-left: var(--space-2);
+    }
+
+    .nomination-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nomination-emblem {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #0a4174 0%, #206679 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(10, 65, 116, 0.25);
+    }
+
+    .nomination-emblem .emblem-icon {
+      font-size: 34px;
+      font-variation-settings: 'FILL' 1;
+    }
+
+    .pulse-indicator {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pulse-ping {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: #53e16f;
+      opacity: 0.75;
+      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-full);
+      background: #006b27;
+      border: 2px solid #ffffff;
+    }
+
+    .nomination-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nomination-user-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .nomination-user-name {
+      font-size: var(--text-headline-sm);
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+
+    .badge-standing {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(199, 231, 255, 0.6);
+      color: #002b52;
+      border: 1px solid #71b3de;
+    }
+
+    .nomination-user-role {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .nomination-meta-chips {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: 4px;
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: var(--weight-medium);
+      color: #001c38;
+    }
+
+    .meta-chip.highlight {
+      color: #0a4174;
+      font-weight: var(--weight-semibold);
+    }
+
+    .meta-chip .chip-icon {
+      font-size: 18px;
+      color: #0a4174;
+    }
+
+    .chip-divider {
+      color: var(--outline-variant);
+    }
+
+    .nomination-readiness-box {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      background: #f4f7fb;
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 1024px) {
+      .nomination-readiness-box {
+        border-left: 1px solid rgba(194, 198, 209, 0.5);
+        background: transparent;
+        padding-left: var(--space-6);
+        border-radius: 0;
+      }
+    }
+
+    .readiness-text-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .readiness-label {
+      font-size: var(--text-label-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+      font-weight: var(--weight-semibold);
+    }
+
+    .readiness-status-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
+    }
+
+    .readiness-val {
+      font-size: 22px;
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      letter-spacing: -0.018em;
+    }
+
+    .readiness-timeline {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+    }
+
+    .readiness-chart-col {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+
+    .readiness-gauge {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .gauge-bg {
+      stroke: #d3e4ff;
+    }
+
+    .gauge-fill {
+      stroke: #0a4174;
+      transition: stroke-dasharray 0.8s var(--ease-ios);
+    }
+
+    .gauge-text {
+      transform: rotate(90deg);
+      transform-origin: 18px 18px;
+      font-size: 8px;
+      font-weight: 700;
+      fill: #0a4174;
+      font-family: inherit;
+    }
+
+    .btn-nom-details {
+      margin-left: var(--space-2);
+      border: 1px solid rgba(163, 201, 255, 0.7);
+      background: #eff4ff;
+      color: #0a4174;
+      border-radius: var(--radius-md);
+      font-weight: var(--weight-semibold);
+    }
+
+    .btn-nom-details:hover {
+      background: #dce9ff;
+    }
+
+    /* ── Section Headers ─────────────────────────────────────────── */
+    .section-header-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    @media (min-width: 640px) {
+      .section-header-block {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .section-icon-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-md);
+      background: #0a4174;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(10, 65, 116, 0.2);
+    }
+
+    .section-title-wrap h2 {
+      font-size: var(--text-headline-lg);
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      letter-spacing: -0.017em;
+      margin: 0;
+    }
+
+    .section-subtitle {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      margin: 2px 0 0;
+    }
+
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: #eff4ff;
+      color: #0a4174;
+      font-size: var(--text-label-md);
+      font-weight: var(--weight-semibold);
+      border: 1px solid #a3c9ff;
+      align-self: flex-start;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: #206679;
+    }
+
+    /* ── Annual Awards Showcase Grid ─────────────────────────────── */
+    .annual-awards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 640px) {
+      .annual-awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .annual-awards-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .award-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(194, 198, 209, 0.5);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--duration-fast) var(--ease-ios);
+      position: relative;
+    }
+
+    .award-card:hover {
+      box-shadow: var(--shadow-elevated);
+      transform: translateY(-2px);
+    }
+
+    .award-card-t1 { border-top: 4px solid #0a4174; }
+    .award-card-t2 { border-top: 4px solid #206679; }
+    .award-card-t3 { border-top: 4px solid #49769F; }
+    .award-card-t4 { border-top: 4px solid #7BBDE8; }
+
+    .award-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .award-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-2);
+    }
+
+    .award-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: #eff4ff;
+      color: #0a4174;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d3e3ff;
+      flex-shrink: 0;
+    }
+
+    .award-card-t2 .award-icon-box { color: #206679; }
+    .award-card-t3 .award-icon-box { color: #0a4174; }
+    .award-card-t4 .award-icon-box { color: #0a4174; }
+
+    .award-icon-box .material-symbols-outlined {
+      font-size: 22px;
+      font-variation-settings: 'FILL' 1;
+    }
+
+    .award-kicker {
+      font-size: var(--text-label-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+      font-weight: var(--weight-semibold);
+      display: block;
+    }
+
+    .award-card-title {
+      font-size: 19px;
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      margin: 4px 0 0;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    .award-card-desc {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 6px 0 0;
+    }
+
+    /* Past winner & meta snippet */
+    .award-past-winner {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      background: #f4f7fb;
+      border: 1px solid rgba(194, 198, 209, 0.4);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-3);
+    }
+
+    .winner-thumb {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--outline-variant);
+    }
+
+    .winner-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .winner-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      font-weight: var(--weight-semibold);
+    }
+
+    .winner-name {
+      font-size: var(--text-label-md);
+      font-weight: var(--weight-semibold);
+      color: #001c38;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .award-period-tag {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 6px;
+    }
+
+    .award-card-footer {
+      padding-top: var(--space-4);
+      border-top: 1px solid #e6eeff;
+      margin-top: var(--space-4);
+    }
+
+    .btn-award-details {
+      width: 100%;
+      background: #eff4ff;
+      color: #0a4174;
+      border: 1px solid #a3c9ff;
+      border-radius: var(--radius-md);
+      font-size: var(--text-label-md);
+      font-weight: var(--weight-semibold);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .btn-award-details:hover {
+      background: #dce9ff;
+    }
+
+    /* ── Monthly Honor Roll Grid ─────────────────────────────────── */
+    .monthly-tabs-wrap {
+      display: inline-flex;
+      background: rgba(220, 233, 255, 0.6);
+      border: 1px solid rgba(194, 198, 209, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 4px;
+      gap: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .monthly-tab-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-md);
+      font-size: var(--text-label-md);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .monthly-tab-btn.active {
+      background: #ffffff;
+      color: #0a4174;
+      font-weight: var(--weight-bold);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .monthly-honor-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 768px) {
+      .monthly-honor-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .honor-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(194, 198, 209, 0.5);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--duration-fast) var(--ease-ios);
+      position: relative;
+    }
+
+    .honor-card:hover {
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .honor-card.is-user {
+      border: 2px solid #0a4174;
+      box-shadow: 0 4px 16px rgba(10, 65, 116, 0.12);
+    }
+
+    .honor-card-t1 { border-top: 3px solid #0a4174; }
+    .honor-card-t2 { border-top: 3px solid #206679; }
+    .honor-card-t3 { border-top: 3px solid #49769F; }
+
+    .honor-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    .honor-member-info {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .honor-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .honor-avatar-img {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      border: 1px solid rgba(194, 198, 209, 0.6);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .honor-card.is-user .honor-avatar-img {
+      border: 2px solid #0a4174;
+    }
+
+    .honor-you-tag {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      background: #0a4174;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.05em;
+    }
+
+    .honor-text-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .honor-name-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .honor-name {
+      font-size: 19px;
+      font-weight: var(--weight-bold);
+      color: #001c38;
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+
+    .honor-role-title {
+      font-size: var(--text-body-sm);
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .honor-faculty {
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+    }
+
+    .honor-badge-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .honor-hours-tag {
+      font-size: var(--text-label-sm);
+      font-weight: var(--weight-bold);
+      background: #eff4ff;
+      color: #0a4174;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .honor-quote-box {
+      background: #f4f7fb;
+      border: 1px solid rgba(194, 198, 209, 0.4);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      margin: var(--space-3) 0;
+      position: relative;
+    }
+
+    .quote-icon {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-size: 26px;
+      color: #c2c6d1;
+      pointer-events: none;
+    }
+
+    .honor-quote-text {
+      font-size: var(--text-body-sm);
+      color: #001c38;
+      font-style: italic;
+      line-height: 1.5;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .honor-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-3);
+      border-top: 1px solid #e6eeff;
+      margin-top: var(--space-2);
+    }
+
+    .honor-affiliation {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-label-sm);
+      color: var(--text-tertiary);
+    }
+
+    .affiliation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: var(--weight-semibold);
+      color: #0a4174;
+      background: #eff4ff;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .honor-actions-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .btn-view-citation {
+      background: none;
+      border: none;
+      color: #0a4174;
+      font-size: var(--text-label-md);
+      font-weight: var(--weight-semibold);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: var(--radius-sm);
+      transition: background var(--duration-fast) var(--ease-ios);
+    }
+
+    .btn-view-citation:hover {
+      background: #eff4ff;
+      text-decoration: underline;
+    }
+
+    .btn-cert-pdf {
+      background: #eff4ff;
+      color: #0a4174;
+      border: 1px solid #a3c9ff;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-label-md);
+      font-weight: var(--weight-semibold);
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-ios);
+    }
+
+    .btn-cert-pdf:hover {
+      background: #dce9ff;
+    }
+
+    /* ── Bottom Stats Banner ─────────────────────────────────────── */
+    .branch-stats-banner {
+      background: linear-gradient(135deg, #001D39 0%, #0A4174 60%, #155589 100%);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8) var(--space-6);
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 29, 57, 0.2);
+      position: relative;
+      overflow: hidden;
+      margin-top: var(--space-2);
+    }
+
+    .stats-banner-bg-decor {
+      position: absolute;
+      top: -60px;
+      right: -40px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123, 189, 232, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .stats-banner-header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: var(--space-6);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats-banner-kicker {
+      font-size: var(--text-label-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #8ccefa;
+      font-weight: var(--weight-bold);
+    }
+
+    .stats-banner-title {
+      font-size: 26px;
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      letter-spacing: -0.018em;
+      margin: 0;
+    }
+
+    .stats-banner-subtitle {
+      font-size: 14px;
+      color: #d3e3ff;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .stats-grid-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 900px) {
+      .stats-grid-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-metric-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background var(--duration-fast) var(--ease-ios);
+    }
+
+    .stat-metric-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .stat-metric-icon {
+      font-size: 28px;
+      color: #7BBDE8;
+    }
+
+    .stat-metric-number {
+      font-size: var(--text-metric-xl);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: -0.025em;
+    }
+
+    .stat-metric-label {
+      font-size: var(--text-body-sm);
+      font-weight: var(--weight-semibold);
+      color: #ffffff;
+    }
+
+    .stat-metric-sub {
+      font-size: 12px;
+      color: #bdd8e9;
+      line-height: 1.4;
+    }
+
+    .stats-banner-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-5);
+      margin-top: var(--space-5);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 12px;
+      color: #bdd8e9;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* ── Commendation Certificate Modal Frame ────────────────────── */
+    .certificate-modal-frame {
+      background: #fffcf8;
+      border: 8px solid #0a4174;
+      border-radius: var(--radius-md);
+      padding: var(--space-8);
+      position: relative;
+      box-shadow: inset 0 0 0 2px #d4af37, inset 0 0 0 5px #ffffff;
+      text-align: center;
+      color: #1a1b1f;
+    }
+
+    .cert-seal-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #d4af37, #aa820a);
+      color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: var(--space-3);
+    }
+
+    .cert-heading-small {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #0a4174;
+      font-weight: var(--weight-bold);
+    }
+
+    .cert-main-title {
+      font-size: 24px;
+      font-weight: var(--weight-bold);
+      color: #001D39;
+      margin: 8px 0;
+      letter-spacing: -0.015em;
+    }
+
+    .cert-presented-text {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    .cert-recipient-name {
+      font-size: 26px;
+      font-weight: var(--weight-bold);
+      color: #0a4174;
+      margin: 10px 0 6px;
+      font-family: inherit;
+      border-bottom: 2px solid rgba(10, 65, 116, 0.2);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .cert-citation-body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      font-style: italic;
+      max-width: 440px;
+      margin: 14px auto;
+    }
+
+    .cert-signatures-row {
+      display: flex;
+      justify-content: space-around;
+      margin-top: var(--space-6);
+      padding-top: var(--space-4);
+      border-top: 1px dashed rgba(194, 198, 209, 0.6);
+    }
+
+    .cert-sig-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cert-sig-line {
+      width: 140px;
+      height: 1px;
+      background: #717786;
+      margin-bottom: 4px;
+    }
+
+    .cert-sig-name {
+      font-size: 11px;
+      font-weight: var(--weight-semibold);
+      color: #1a1b1f;
+    }
+
+    .cert-sig-title {
+      font-size: 10px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Responsive Overrides ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .topbar {
+        padding-inline: var(--space-4);
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .topbar-search-wrap {
+        display: none;
+      }
+      .user-name-text {
+        display: none;
+      }
+      .awards-hero-card {
+        padding: var(--space-4);
+      }
+      .hero-title {
+        font-size: 24px;
+      }
+      .nomination-status-card {
+        padding: var(--space-4);
+      }
+      .nomination-main-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nomination-readiness-box {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .branch-stats-banner {
+        padding: var(--space-5) var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body class="app-shell has-sidebar">
+
+  <!-- ── Topbar (Page Title & Action Buttons; Sidebar has Brand) ──── -->
+  <header class="topbar" id="topbar">
+    <button class="btn btn-icon btn-ghost mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+    <div class="topbar-heading">
+      <h1 class="topbar-title">Awards &amp; Recognition</h1>
+      <span class="topbar-ay-pill">
+        <span>AY 2024/25</span>
+        <span class="material-symbols-outlined" style="font-size: 15px;">expand_more</span>
+      </span>
+    </div>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-actions">
+      <!-- Search Box -->
+      <div class="topbar-search-wrap">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" class="topbar-search-input" id="search-input" placeholder="Search honors, awards, criteria..." aria-label="Search awards and honorees" />
+      </div>
+
+      <!-- Notification Bell -->
+      <button class="btn btn-icon btn-ghost topbar-icon-btn" id="btn-notifications" title="Notifications" aria-label="Notifications">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="topbar-notification-badge"></span>
+      </button>
+
+      <!-- User Menu Dropdown -->
+      <div class="dropdown">
+        <button class="btn btn-ghost user-profile-btn" id="btn-user-dropdown" aria-expanded="false" aria-label="User profile menu">
+          <div class="avatar avatar-sm" id="topbar-avatar">KP</div>
+          <span class="user-name-text" id="topbar-name">Kavindi Perera</span>
+          <span class="material-symbols-outlined" style="font-size: 18px; color: var(--text-tertiary);">expand_more</span>
+        </button>
+        <div class="dropdown-menu hidden" id="user-dropdown-menu" role="menu">
+          <div class="dropdown-user-header">
+            <div class="dropdown-user-title" id="dropdown-name">Kavindi Perera</div>
+            <div class="dropdown-user-sub" id="dropdown-role">Volunteer</div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a href="/profile.html" class="dropdown-item">
+            <span class="material-symbols-outlined">person</span> My Profile
+          </a>
+          <a href="/events.html" class="dropdown-item">
+            <span class="material-symbols-outlined">event</span> All Events
+          </a>
+          <a href="/request-letter.html" class="dropdown-item">
+            <span class="material-symbols-outlined">description</span> Service Letters
+          </a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item danger" id="topbar-signout-btn">
+            <span class="material-symbols-outlined">logout</span> Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Executive Azure Dark Navy Sidebar ────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo">IEEE</div>
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-title">IEEE SLIIT</span>
+        <span class="sidebar-brand-subtitle">Student Branch</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="/index.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">dashboard</span> Dashboard
+        </a>
+        <a href="/profile.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">person</span> My Profile
+        </a>
+        <a href="/events.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">event</span> All Events
+        </a>
+        <a href="/awards.html" class="sidebar-link active">
+          <span class="sidebar-link-icon material-symbols-outlined">emoji_events</span> Awards
+        </a>
+        <a href="/request-letter.html" class="sidebar-link">
+          <span class="sidebar-link-icon material-symbols-outlined">description</span> Service Letters
+        </a>
+      </nav>
+    </div>
+
+    <!-- Sidebar Volunteer Standing Widget -->
+    <div class="sidebar-standing-card">
+      <div class="standing-row-top">
+        <span class="standing-label">Volunteer Standing</span>
+        <span class="standing-pill">Active Tier</span>
+      </div>
+      <div class="standing-meter">
+        <div class="standing-meter-bar" id="sidebar-standing-bar" style="width: 78%;"></div>
+      </div>
+      <div class="standing-row-bot">
+        <span id="sidebar-hours-logged">39 hrs logged</span>
+        <span class="standing-goal-text">Goal: 50 hrs</span>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="user-avatar">KP</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="user-name">Kavindi Perera</div>
+          <div class="sidebar-user-role" id="user-role">Volunteer</div>
+        </div>
+        <button class="btn btn-icon btn-ghost sidebar-signout-btn" id="sidebar-signout-btn" title="Sign Out" aria-label="Sign Out">
+          <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ── Main Content Area ────────────────────────────────────────── -->
+  <main class="main-content" id="main-content">
+    <div class="container awards-container">
+
+      <!-- 1. Page Header & Hero Banner -->
+      <section class="awards-hero-card animate-fadeInUp">
+        <div class="hero-top-stripe"></div>
+        <div class="hero-content">
+          <div class="hero-kicker">
+            <span>SLIIT Student Branch</span>
+            <span class="kicker-dot">•</span>
+            <span class="kicker-highlight">Honors &amp; Commendations</span>
+          </div>
+          <h1 class="hero-title">Awards &amp; Recognition</h1>
+          <p class="hero-desc">
+            Celebrating outstanding volunteer contributions, dedication, and exemplary impact across IEEE SLIIT Student Branch chapters and initiatives.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-secondary" id="btn-guidelines">
+            <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+            <span>Nomination Guidelines PDF</span>
+          </button>
+          <button class="btn btn-primary" id="btn-view-criteria">
+            <span class="material-symbols-outlined" style="font-size: 18px;">rule</span>
+            <span>View Criteria</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. Personal Nomination Card ("Your AGM Nomination Status") -->
+      <section class="nomination-status-card animate-fadeInUp" id="personal-nomination-card">
+        <div class="nomination-accent-bar"></div>
+        <div class="nomination-main-wrap">
+          <div class="nomination-avatar-wrap">
+            <div class="nomination-emblem">
+              <span class="material-symbols-outlined emblem-icon">military_tech</span>
+            </div>
+            <span class="pulse-indicator" title="Active nomination under evaluation">
+              <span class="pulse-ping"></span>
+              <span class="pulse-dot"></span>
+            </span>
+          </div>
+          <div class="nomination-details">
+            <div class="nomination-user-row">
+              <h2 class="nomination-user-name" id="nomination-user-name">Kavindi Perera</h2>
+              <span class="badge badge-blue">Premier Tier Volunteer</span>
+              <span class="badge badge-teal badge-standing">
+                <span class="material-symbols-outlined" style="font-size: 13px;">verified</span>
+                Good Standing
+              </span>
+            </div>
+            <p class="nomination-user-role" id="nomination-user-role">
+              Technical Chapter Lead • IEEE Robotics and Automation Society (RAS) Student Branch Chapter
+            </p>
+            <div class="nomination-meta-chips">
+              <span class="meta-chip">
+                <span class="material-symbols-outlined chip-icon">verified_user</span>
+                <span id="nomination-commendations-count">3x Monthly Commendations</span>
+              </span>
+              <span class="chip-divider">•</span>
+              <span class="meta-chip highlight">
+                <span class="material-symbols-outlined chip-icon">campaign</span>
+                Nominated for 2024 Annual Awards
+              </span>
+              <span class="chip-divider">•</span>
+              <span class="meta-chip">
+                <span class="material-symbols-outlined chip-icon">schedule</span>
+                <span id="nomination-hours-badge">39 Logged Hours (AY 2024/25)</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="nomination-readiness-box">
+          <div class="readiness-text-col">
+            <span class="readiness-label">AGM 2024 Readiness</span>
+            <div class="readiness-status-row">
+              <span class="readiness-val">Shortlisted</span>
+              <span class="badge badge-blue">Top 5%</span>
+            </div>
+            <span class="readiness-timeline">Deliberation ends Nov 28</span>
+          </div>
+          <div class="readiness-chart-col">
+            <svg class="readiness-gauge" viewBox="0 0 36 36" aria-label="82% evaluation readiness">
+              <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5"></path>
+              <path class="gauge-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="82, 100" stroke-linecap="round" stroke-width="3.5"></path>
+              <text x="18" y="20.5" class="gauge-text" text-anchor="middle">82%</text>
+            </svg>
+          </div>
+          <button class="btn btn-sm btn-nom-details" id="btn-nom-details" title="View Full Nomination Rubric">
+            <span>Details</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 3. Annual Awards Showcase Section -->
+      <section class="section-block" id="section-annual-awards">
+        <div class="section-header-block" style="margin-bottom: var(--space-4);">
+          <div class="section-title-wrap">
+            <div class="section-icon-badge">
+              <span class="material-symbols-outlined" style="font-size: 20px;">emoji_events</span>
+            </div>
+            <div>
+              <h2>Annual Student Branch Awards 2024/2025</h2>
+              <p class="section-subtitle">Formal honors presented at the Annual General Meeting (AGM) &amp; Volunteer Gala</p>
+            </div>
+          </div>
+          <span class="live-status-pill">
+            <span class="live-dot"></span>
+            Evaluation &amp; Nominations In Progress
+          </span>
+        </div>
+
+        <div class="annual-awards-grid stagger" id="annual-awards-grid">
+          <!-- Award 1: Volunteer of the Year -->
+          <article class="award-card award-card-t1 animate-fadeInUp" data-award-id="voy">
+            <div class="award-card-body">
+              <div class="award-card-header">
+                <div class="award-icon-box">
+                  <span class="material-symbols-outlined">workspace_premium</span>
+                </div>
+                <span class="badge badge-blue">Final Deliberation</span>
+              </div>
+              <div>
+                <span class="award-kicker">Highest SB Distinction</span>
+                <h3 class="award-card-title">Volunteer of the Year</h3>
+                <p class="award-card-desc">
+                  Awarded to an exemplary volunteer demonstrating extraordinary leadership, proactive initiative, and consistent service across all flagship pillars.
+                </p>
+              </div>
+              <div class="award-past-winner">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBjjYHUDCO5UcyzYcMkFlZGu2I6rIwfVOkFUGcekAxr4-AAWRfHDCeCAVb-EKssYXVb_PxBxXKA2ZWF1k7-LsFRlM0T7avS5Cyv_5OE8Fd6vgSJLOQvrzzeKwofMuCUEnYt4NTSv0jm98PdOvHmN4HBlb7u9JaM1CAjREcWOeDKnEFkUWFZCE--9hJ7oYdRh6UuAhN3u1TGnayDJxrIsgGk6sX1a9R-Nc6aH1co40" alt="Chamath Jayawardena" class="winner-thumb" />
+                <div class="winner-info">
+                  <span class="winner-label">2023 Recipient</span>
+                  <span class="winner-name">Chamath Jayawardena</span>
+                </div>
+              </div>
+              <div class="award-period-tag">
+                <span class="material-symbols-outlined" style="font-size: 15px;">calendar_month</span>
+                <span>Nomination Window: Oct 01 – Nov 15</span>
+              </div>
+            </div>
+            <div class="award-card-footer">
+              <button class="btn btn-award-details" data-award="voy">
+                <span>More Details</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Award 2: OC Member of the Year -->
+          <article class="award-card award-card-t2 animate-fadeInUp" data-award-id="oc">
+            <div class="award-card-body">
+              <div class="award-card-header">
+                <div class="award-icon-box">
+                  <span class="material-symbols-outlined">groups</span>
+                </div>
+                <span class="badge badge-teal">Open Nominations</span>
+              </div>
+              <div>
+                <span class="award-kicker">Organizing Committees</span>
+                <h3 class="award-card-title">OC Member of the Year</h3>
+                <p class="award-card-desc">
+                  Recognizing peer-nominated operational excellence, team cohesion, and logistical precision in IEEE SLIIT major symposiums and competitions.
+                </p>
+              </div>
+              <div class="award-past-winner">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGz01OrkUQmcSRUlo4fwPGQabeOHH-tpnrdLYSIJstFNTTC0fHfBICGgH-URtPukSlYJ-0cvqt6BV6mQG2YsS9f0sS6E4IvRqSPTIamYIs_Tel3-TX9BqjKGnY2xtKjGmPJwzv4yHZp0BY7QCcpuu8YBSNMrN7ohq9uhnRTFmfPW1tUVMMEQCxIFRFfNx3nV5AXwrxev0Yu1PVIbDAgfYUVwDCh1ffVN9BSKzTHOg" alt="Rashmi Gunasekara" class="winner-thumb" />
+                <div class="winner-info">
+                  <span class="winner-label">2023 Recipient</span>
+                  <span class="winner-name">Rashmi Gunasekara</span>
+                </div>
+              </div>
+              <div class="award-period-tag">
+                <span class="material-symbols-outlined" style="font-size: 15px;">calendar_month</span>
+                <span>Nomination Window: Oct 15 – Nov 20</span>
+              </div>
+            </div>
+            <div class="award-card-footer">
+              <button class="btn btn-award-details" data-award="oc">
+                <span>More Details</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Award 3: Outstanding Leader Award -->
+          <article class="award-card award-card-t3 animate-fadeInUp" data-award-id="lead">
+            <div class="award-card-body">
+              <div class="award-card-header">
+                <div class="award-icon-box">
+                  <span class="material-symbols-outlined">stars</span>
+                </div>
+                <span class="badge badge-gray">Under Review</span>
+              </div>
+              <div>
+                <span class="award-kicker">Governance &amp; Chapters</span>
+                <h3 class="award-card-title">Outstanding Leader</h3>
+                <p class="award-card-desc">
+                  Celebrates exceptional chapter-level leadership, technical innovation, retention growth, and community impact within CS, RAS, IAS, ComSoc, or WIE.
+                </p>
+              </div>
+              <div class="award-past-winner">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvToMb7Edjt3yUUVx_VvCnTTLayaDqCchedVXcmXqe1JIS400n5ESRNxQCao8JMZdVCPz0OArOnkQzv3Bs8-vlxeDghVHWPDtowZD2JTdZ_v0QbD8CvVHy50UNQiiC7T9EmI6dOHfn-zd2QPgVOEEQvXUVJSNQNn50eTBHfUt46aFEKmsJzjXnlK3GhezNjHJFWFsV4YKwiokVo3ShSdD9MhLV45P1iZGt_O8tJMM" alt="Nisith Silva" class="winner-thumb" />
+                <div class="winner-info">
+                  <span class="winner-label">2023 Recipient</span>
+                  <span class="winner-name">Nisith Silva</span>
+                </div>
+              </div>
+              <div class="award-period-tag">
+                <span class="material-symbols-outlined" style="font-size: 15px;">calendar_month</span>
+                <span>Nomination Window: Oct 10 – Nov 18</span>
+              </div>
+            </div>
+            <div class="award-card-footer">
+              <button class="btn btn-award-details" data-award="lead">
+                <span>More Details</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Award 4: Emerging Volunteer Award -->
+          <article class="award-card award-card-t4 animate-fadeInUp" data-award-id="emerging">
+            <div class="award-card-body">
+              <div class="award-card-header">
+                <div class="award-icon-box">
+                  <span class="material-symbols-outlined">psychology_alt</span>
+                </div>
+                <span class="badge badge-blue">Nominations Open</span>
+              </div>
+              <div>
+                <span class="award-kicker">New Talent Spotlight</span>
+                <h3 class="award-card-title">Emerging Volunteer</h3>
+                <p class="award-card-desc">
+                  Honoring high-potential 1st and 2nd year undergraduates who displayed remarkable passion, reliability, and growth in their induction year.
+                </p>
+              </div>
+              <div class="award-past-winner">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH1G0M_vaC_cF-yPdQOsIMURtr6x8LWm305Kd2G3KWpf3ojuM1t0gEEDZ0UkqWBjoGwN1kkURURliah-ymtT5Oi2mg6RGoy9FQLpyq4QA3bnQS_QLudc7bo8dpN8fCftAvsepLKS_6mGP88xv117ZmfovklfnUG_hC4XvGHH7uL0MI2bOww8TlLc7D3fDvj5oZ77XHlcoNEvwBiqHiUgYtQjro8_f7_ZDyLasb_a8" alt="Dulani Pathirana" class="winner-thumb" />
+                <div class="winner-info">
+                  <span class="winner-label">2023 Recipient</span>
+                  <span class="winner-name">Dulani Pathirana</span>
+                </div>
+              </div>
+              <div class="award-period-tag">
+                <span class="material-symbols-outlined" style="font-size: 15px;">calendar_month</span>
+                <span>Nomination Window: Oct 20 – Nov 25</span>
+              </div>
+            </div>
+            <div class="award-card-footer">
+              <button class="btn btn-award-details" data-award="emerging">
+                <span>More Details</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. Monthly Honor Roll Section ("Volunteers of the Month") -->
+      <section class="section-block" id="section-monthly-honors">
+        <div class="section-header-block" style="margin-bottom: var(--space-4);">
+          <div class="section-title-wrap">
+            <div class="section-icon-badge">
+              <span class="material-symbols-outlined" style="font-size: 20px;">military_tech</span>
+            </div>
+            <div>
+              <h2>Volunteers of the Month</h2>
+              <p class="section-subtitle">Peer and executive commendations conferred each month for immediate operational impact</p>
+            </div>
+          </div>
+          <div class="monthly-tabs-wrap">
+            <button class="monthly-tab-btn active" id="tab-current-ay" data-ay="current">AY 2024/2025 (Current)</button>
+            <button class="monthly-tab-btn" id="tab-past-ay" data-ay="past">AY 2023/2024</button>
+          </div>
+        </div>
+
+        <div class="monthly-honor-grid stagger" id="monthly-honor-grid">
+          <!-- Honoree 1: Dineth Jayasundara -->
+          <article class="honor-card honor-card-t1 animate-fadeInUp" data-honoree="dineth">
+            <div>
+              <div class="honor-top-row">
+                <div class="honor-member-info">
+                  <div class="honor-avatar-wrap">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBjjYHUDCO5UcyzYcMkFlZGu2I6rIwfVOkFUGcekAxr4-AAWRfHDCeCAVb-EKssYXVb_PxBxXKA2ZWF1k7-LsFRlM0T7avS5Cyv_5OE8Fd6vgSJLOQvrzzeKwofMuCUEnYt4NTSv0jm98PdOvHmN4HBlb7u9JaM1CAjREcWOeDKnEFkUWFZCE--9hJ7oYdRh6UuAhN3u1TGnayDJxrIsgGk6sX1a9R-Nc6aH1co40" alt="Dineth Jayasundara" class="honor-avatar-img" />
+                  </div>
+                  <div class="honor-text-meta">
+                    <div class="honor-name-row">
+                      <h3 class="honor-name">Dineth Jayasundara</h3>
+                    </div>
+                    <p class="honor-role-title">Lead Logistics • MoraXtreme 9.0</p>
+                    <span class="honor-faculty">Faculty of Computing</span>
+                  </div>
+                </div>
+                <div class="honor-badge-col">
+                  <span class="badge badge-blue">October 2024</span>
+                  <span class="honor-hours-tag">34 Logged Hours</span>
+                </div>
+              </div>
+
+              <div class="honor-quote-box">
+                <span class="material-symbols-outlined quote-icon">format_quote</span>
+                <p class="honor-quote-text">
+                  “Executed end-to-end overnight hackathon logistics for 150+ participants with zero hardware delays. Maintained immaculate incident logs and coordinated regional transport.”
+                </p>
+              </div>
+            </div>
+
+            <div class="honor-bottom-bar">
+              <div class="honor-affiliation">
+                <span>Affiliation:</span>
+                <span class="affiliation-badge">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">laptop_mac</span>
+                  IEEE CS SLIIT
+                </span>
+              </div>
+              <div class="honor-actions-wrap">
+                <button class="btn-view-citation" data-honoree-name="Dineth Jayasundara" data-citation="Executed end-to-end overnight hackathon logistics for 150+ participants with zero hardware delays. Maintained immaculate incident logs and coordinated regional transport." data-month="October 2024" data-role="Lead Logistics • MoraXtreme 9.0" data-hours="34 hrs">
+                  <span>View Citation</span>
+                  <span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Honoree 2: Current User (Kavindi Perera) -->
+          <article class="honor-card is-user animate-fadeInUp" data-honoree="kavindi">
+            <div>
+              <div class="honor-top-row">
+                <div class="honor-member-info">
+                  <div class="honor-avatar-wrap">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH1G0M_vaC_cF-yPdQOsIMURtr6x8LWm305Kd2G3KWpf3ojuM1t0gEEDZ0UkqWBjoGwN1kkURURliah-ymtT5Oi2mg6RGoy9FQLpyq4QA3bnQS_QLudc7bo8dpN8fCftAvsepLKS_6mGP88xv117ZmfovklfnUG_hC4XvGHH7uL0MI2bOww8TlLc7D3fDvj5oZ77XHlcoNEvwBiqHiUgYtQjro8_f7_ZDyLasb_a8" alt="Kavindi Perera" class="honor-avatar-img" id="user-honor-avatar" />
+                    <span class="honor-you-tag">You</span>
+                  </div>
+                  <div class="honor-text-meta">
+                    <div class="honor-name-row">
+                      <h3 class="honor-name" id="user-honor-name">Kavindi Perera</h3>
+                      <span class="badge badge-blue">Recipient</span>
+                    </div>
+                    <p class="honor-role-title">Technical Lead • RoboFest 2025</p>
+                    <span class="honor-faculty">Dept. of Electrical &amp; Computer Eng.</span>
+                  </div>
+                </div>
+                <div class="honor-badge-col">
+                  <span class="badge badge-blue">September 2024</span>
+                  <span class="honor-hours-tag">42 Logged Hours</span>
+                </div>
+              </div>
+
+              <div class="honor-quote-box">
+                <span class="material-symbols-outlined quote-icon">format_quote</span>
+                <p class="honor-quote-text">
+                  “Designed national arena specifications and coordinated 24 university team tracks with exceptional technical rigor. Led referee briefing and firmware certification.”
+                </p>
+              </div>
+            </div>
+
+            <div class="honor-bottom-bar">
+              <div class="honor-affiliation">
+                <span>Affiliation:</span>
+                <span class="affiliation-badge">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">precision_manufacturing</span>
+                  IEEE RAS SLIIT
+                </span>
+              </div>
+              <div class="honor-actions-wrap">
+                <button class="btn-cert-pdf" id="btn-user-cert" data-honoree-name="Kavindi Perera" data-citation="Designed national arena specifications and coordinated 24 university team tracks with exceptional technical rigor. Led referee briefing and firmware certification." data-month="September 2024" data-role="Technical Lead • RoboFest 2025" data-hours="42 hrs">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">file_download</span>
+                  <span>Certificate PDF</span>
+                </button>
+                <button class="btn-view-citation" data-honoree-name="Kavindi Perera" data-citation="Designed national arena specifications and coordinated 24 university team tracks with exceptional technical rigor. Led referee briefing and firmware certification." data-month="September 2024" data-role="Technical Lead • RoboFest 2025" data-hours="42 hrs">
+                  <span>View Citation</span>
+                  <span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Honoree 3: Senuri Fernando -->
+          <article class="honor-card honor-card-t2 animate-fadeInUp" data-honoree="senuri">
+            <div>
+              <div class="honor-top-row">
+                <div class="honor-member-info">
+                  <div class="honor-avatar-wrap">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGz01OrkUQmcSRUlo4fwPGQabeOHH-tpnrdLYSIJstFNTTC0fHfBICGgH-URtPukSlYJ-0cvqt6BV6mQG2YsS9f0sS6E4IvRqSPTIamYIs_Tel3-TX9BqjKGnY2xtKjGmPJwzv4yHZp0BY7QCcpuu8YBSNMrN7ohq9uhnRTFmfPW1tUVMMEQCxIFRFfNx3nV5AXwrxev0Yu1PVIbDAgfYUVwDCh1ffVN9BSKzTHOg" alt="Senuri Fernando" class="honor-avatar-img" />
+                  </div>
+                  <div class="honor-text-meta">
+                    <div class="honor-name-row">
+                      <h3 class="honor-name">Senuri Fernando</h3>
+                    </div>
+                    <p class="honor-role-title">Delegate Relations • WIE Empower Summit</p>
+                    <span class="honor-faculty">Faculty of Business / Information Systems</span>
+                  </div>
+                </div>
+                <div class="honor-badge-col">
+                  <span class="badge badge-blue">August 2024</span>
+                  <span class="honor-hours-tag">29 Logged Hours</span>
+                </div>
+              </div>
+
+              <div class="honor-quote-box">
+                <span class="material-symbols-outlined quote-icon">format_quote</span>
+                <p class="honor-quote-text">
+                  “Coordinated 210+ female STEM delegates and guest speakers across national academic institutions. Seamlessly facilitated panelist liaison and travel arrangements.”
+                </p>
+              </div>
+            </div>
+
+            <div class="honor-bottom-bar">
+              <div class="honor-affiliation">
+                <span>Affiliation:</span>
+                <span class="affiliation-badge">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">female</span>
+                  IEEE WIE SLIIT
+                </span>
+              </div>
+              <div class="honor-actions-wrap">
+                <button class="btn-cert-pdf" data-honoree-name="Senuri Fernando" data-citation="Coordinated 210+ female STEM delegates and guest speakers across national academic institutions. Seamlessly facilitated panelist liaison and travel arrangements." data-month="August 2024" data-role="Delegate Relations • WIE Empower Summit" data-hours="29 hrs">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">file_download</span>
+                  <span>Certificate</span>
+                </button>
+                <button class="btn-view-citation" data-honoree-name="Senuri Fernando" data-citation="Coordinated 210+ female STEM delegates and guest speakers across national academic institutions. Seamlessly facilitated panelist liaison and travel arrangements." data-month="August 2024" data-role="Delegate Relations • WIE Empower Summit" data-hours="29 hrs">
+                  <span>View Citation</span>
+                  <span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Honoree 4: Tharindu Wickramasinghe -->
+          <article class="honor-card honor-card-t3 animate-fadeInUp" data-honoree="tharindu">
+            <div>
+              <div class="honor-top-row">
+                <div class="honor-member-info">
+                  <div class="honor-avatar-wrap">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvToMb7Edjt3yUUVx_VvCnTTLayaDqCchedVXcmXqe1JIS400n5ESRNxQCao8JMZdVCPz0OArOnkQzv3Bs8-vlxeDghVHWPDtowZD2JTdZ_v0QbD8CvVHy50UNQiiC7T9EmI6dOHfn-zd2QPgVOEEQvXUVJSNQNn50eTBHfUt46aFEKmsJzjXnlK3GhezNjHJFWFsV4YKwiokVo3ShSdD9MhLV45P1iZGt_O8tJMM" alt="Tharindu Wickramasinghe" class="honor-avatar-img" />
+                  </div>
+                  <div class="honor-text-meta">
+                    <div class="honor-name-row">
+                      <h3 class="honor-name">Tharindu Wickramasinghe</h3>
+                    </div>
+                    <p class="honor-role-title">Webmaster • TechPulse AI Symposium</p>
+                    <span class="honor-faculty">Faculty of Computing • Software Eng.</span>
+                  </div>
+                </div>
+                <div class="honor-badge-col">
+                  <span class="badge badge-blue">July 2024</span>
+                  <span class="honor-hours-tag">36 Logged Hours</span>
+                </div>
+              </div>
+
+              <div class="honor-quote-box">
+                <span class="material-symbols-outlined quote-icon">format_quote</span>
+                <p class="honor-quote-text">
+                  “Architected automated participant credentialing and live telemetry dashboard. Supported 850 concurrent streaming sessions without downtime.”
+                </p>
+              </div>
+            </div>
+
+            <div class="honor-bottom-bar">
+              <div class="honor-affiliation">
+                <span>Affiliation:</span>
+                <span class="affiliation-badge">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">satellite_alt</span>
+                  IEEE ComSoc SLIIT
+                </span>
+              </div>
+              <div class="honor-actions-wrap">
+                <button class="btn-cert-pdf" data-honoree-name="Tharindu Wickramasinghe" data-citation="Architected automated participant credentialing and live telemetry dashboard. Supported 850 concurrent streaming sessions without downtime." data-month="July 2024" data-role="Webmaster • TechPulse AI Symposium" data-hours="36 hrs">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">file_download</span>
+                  <span>Certificate</span>
+                </button>
+                <button class="btn-view-citation" data-honoree-name="Tharindu Wickramasinghe" data-citation="Architected automated participant credentialing and live telemetry dashboard. Supported 850 concurrent streaming sessions without downtime." data-month="July 2024" data-role="Webmaster • TechPulse AI Symposium" data-hours="36 hrs">
+                  <span>View Citation</span>
+                  <span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5. Bottom Stats Banner: Branch-wide achievement stats -->
+      <section class="branch-stats-banner animate-fadeInUp">
+        <div class="stats-banner-bg-decor"></div>
+        <div class="stats-banner-header">
+          <span class="stats-banner-kicker">Branch Impact &amp; Volunteer Leadership</span>
+          <h2 class="stats-banner-title">Branch-wide Achievement Statistics</h2>
+          <p class="stats-banner-subtitle">
+            Cumulative verified impact driven across SLIIT Central SB, 6 Society Chapters, and 1 Affinity Group for AY 2024/25.
+          </p>
+        </div>
+
+        <div class="stats-grid-row">
+          <!-- Stat 1: Total Hours -->
+          <div class="stat-metric-card">
+            <span class="material-symbols-outlined stat-metric-icon">schedule</span>
+            <div class="stat-metric-number" id="banner-stat-hours">4,850+</div>
+            <div class="stat-metric-label">Contributed Hours</div>
+            <div class="stat-metric-sub">Verified community service logged by volunteers.</div>
+          </div>
+
+          <!-- Stat 2: Events Organized -->
+          <div class="stat-metric-card">
+            <span class="material-symbols-outlined stat-metric-icon">event_available</span>
+            <div class="stat-metric-number" id="banner-stat-events">38</div>
+            <div class="stat-metric-label">Events Organized</div>
+            <div class="stat-metric-sub">Hackathons, summits, robotic tracks &amp; workshops.</div>
+          </div>
+
+          <!-- Stat 3: Certificates Issued -->
+          <div class="stat-metric-card">
+            <span class="material-symbols-outlined stat-metric-icon">verified</span>
+            <div class="stat-metric-number" id="banner-stat-certs">142</div>
+            <div class="stat-metric-label">Certificates Issued</div>
+            <div class="stat-metric-sub">Digitally signed letters and honors conferred.</div>
+          </div>
+
+          <!-- Stat 4: Active Volunteers -->
+          <div class="stat-metric-card">
+            <span class="material-symbols-outlined stat-metric-icon">diversity_3</span>
+            <div class="stat-metric-number" id="banner-stat-volunteers">260+</div>
+            <div class="stat-metric-label">Active Volunteers</div>
+            <div class="stat-metric-sub">Undergraduates serving in good standing.</div>
+          </div>
+        </div>
+
+        <div class="stats-banner-footer">
+          <span>IEEE SLIIT Student Branch · Sri Lanka Section · Region 10</span>
+          <span>SBC Geocode: STB08431 · Governance &amp; Honors Registry</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Modals ─────────────────────────────────────────────────── -->
+
+  <!-- Modal 1: Award Details & Rubric -->
+  <div class="modal-backdrop hidden" id="modal-award-details" role="dialog" aria-modal="true" aria-labelledby="modal-award-title">
+    <div class="modal" style="max-width: 620px;">
+      <div class="modal-header">
+        <div>
+          <span class="award-kicker" id="modal-award-kicker">Highest SB Distinction</span>
+          <h3 class="modal-title" id="modal-award-title">Volunteer of the Year</h3>
+        </div>
+        <button class="modal-close" onclick="window.closeModal('modal-award-details')" aria-label="Close modal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <p id="modal-award-desc" style="font-size: var(--text-body-sm); color: var(--text-secondary); line-height: 1.5; margin: 0;">
+          Award description goes here.
+        </p>
+
+        <div style="background: var(--bg-surface-secondary); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--outline-variant);">
+          <div style="font-size: var(--text-label-sm); font-weight: var(--weight-bold); text-transform: uppercase; color: #0a4174; margin-bottom: 8px;">
+            Evaluation Criteria &amp; Weights
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;" id="modal-award-criteria-list">
+            <!-- Dynamically populated or static default -->
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); font-size: var(--text-body-sm);">
+          <div style="padding: 10px; background: #eff4ff; border-radius: var(--radius-md); border: 1px solid #d3e3ff;">
+            <div style="font-size: 11px; color: var(--text-tertiary); text-transform: uppercase;">Eligibility Floor</div>
+            <div style="font-weight: var(--weight-bold); color: #001c38;" id="modal-award-floor">35+ Verified Hours</div>
+          </div>
+          <div style="padding: 10px; background: #eff4ff; border-radius: var(--radius-md); border: 1px solid #d3e3ff;">
+            <div style="font-size: 11px; color: var(--text-tertiary); text-transform: uppercase;">Nomination Status</div>
+            <div style="font-weight: var(--weight-bold); color: #0a4174;" id="modal-award-status-tag">Open for Review</div>
+          </div>
+        </div>
+
+        <div style="font-size: var(--text-label-sm); color: var(--text-tertiary);">
+          Nominations are vetted by the Awards Subcommittee and endorsed by the Branch Counselor. Winners announced at AGM 2024.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.closeModal('modal-award-details')">Close</button>
+        <button class="btn btn-primary" id="btn-submit-nomination">Submit Self-Nomination</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Citation & Commendation Certificate Preview -->
+  <div class="modal-backdrop hidden" id="modal-certificate" role="dialog" aria-modal="true" aria-labelledby="cert-modal-name">
+    <div class="modal" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <span class="award-kicker">Digital Credential Preview</span>
+          <h3 class="modal-title">Certificate of Commendation</h3>
+        </div>
+        <button class="modal-close" onclick="window.closeModal('modal-certificate')" aria-label="Close modal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: var(--space-4);">
+        <!-- Certificate Card Frame -->
+        <div class="certificate-modal-frame">
+          <div class="cert-seal-badge">
+            <span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'FILL' 1;">military_tech</span>
+          </div>
+          <div class="cert-heading-small">IEEE Student Branch of SLIIT · Sri Lanka Section</div>
+          <h2 class="cert-main-title">CERTIFICATE OF COMMENDATION</h2>
+          <div class="cert-presented-text">This honor is officially conferred upon</div>
+          <div class="cert-recipient-name" id="cert-modal-name">Kavindi Perera</div>
+          <div style="font-size: 13px; font-weight: 600; color: #001c38; margin-top: 4px;" id="cert-modal-role">
+            Volunteer of the Month • September 2024
+          </div>
+          <p class="cert-citation-body" id="cert-modal-citation">
+            “Designed national arena specifications and coordinated 24 university team tracks with exceptional technical rigor. Led referee briefing and firmware certification.”
+          </p>
+
+          <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(0, 88, 188, 0.08); border-radius: var(--radius-full); font-size: 11px; color: #0058bc; font-weight: 600;">
+            <span class="material-symbols-outlined" style="font-size: 14px;">verified</span>
+            Digitally Audited • Verified Hours: <span id="cert-modal-hours">42 hrs</span>
+          </div>
+
+          <div class="cert-signatures-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <span class="cert-sig-name">Dr. Pradeep Abeygunawardhana</span>
+              <span class="cert-sig-title">Branch Counselor · IEEE SLIIT</span>
+            </div>
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <span class="cert-sig-name">Dinithi Ekanayake</span>
+              <span class="cert-sig-title">Student Branch Chair · 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.closeModal('modal-certificate')">Close</button>
+        <button class="btn btn-primary" id="btn-download-pdf-cert">
+          <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+          <span>Download PDF Certificate</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Nomination Status & Readiness Audit -->
+  <div class="modal-backdrop hidden" id="modal-nomination-audit" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 540px;">
+      <div class="modal-header">
+        <div>
+          <span class="award-kicker">AGM 2024 Deliberation</span>
+          <h3 class="modal-title">Nomination Readiness Audit</h3>
+        </div>
+        <button class="modal-close" onclick="window.closeModal('modal-nomination-audit')" aria-label="Close modal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <p style="font-size: var(--text-body-sm); color: var(--text-secondary); margin: 0;">
+          Your volunteer portfolio is currently in the <strong>Top 5% Percentile</strong> for the 2024 Annual Awards deliberation. Below is the automated criteria verification audit:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #effbf2; border: 1px solid #c3e6cb; border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined" style="color: #006b27; font-size: 20px;">check_circle</span>
+              <span style="font-size: var(--text-body-sm); font-weight: var(--weight-medium);">Minimum Verified Hours (35 hrs required)</span>
+            </div>
+            <span style="font-size: var(--text-body-sm); font-weight: var(--weight-bold); color: #006b27;" id="audit-hours-val">39 hrs (Met)</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #effbf2; border: 1px solid #c3e6cb; border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined" style="color: #006b27; font-size: 20px;">check_circle</span>
+              <span style="font-size: var(--text-body-sm); font-weight: var(--weight-medium);">Active OC Appointment Count (&le; 2 Max)</span>
+            </div>
+            <span style="font-size: var(--text-body-sm); font-weight: var(--weight-bold); color: #006b27;">1 Active (Met)</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #effbf2; border: 1px solid #c3e6cb; border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined" style="color: #006b27; font-size: 20px;">check_circle</span>
+              <span style="font-size: var(--text-body-sm); font-weight: var(--weight-medium);">Monthly Commendations Received</span>
+            </div>
+            <span style="font-size: var(--text-body-sm); font-weight: var(--weight-bold); color: #006b27;">3 Awards</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #eff4ff; border: 1px solid #d3e3ff; border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-outlined" style="color: #0a4174; font-size: 20px;">hourglass_top</span>
+              <span style="font-size: var(--text-body-sm); font-weight: var(--weight-medium);">Ex-Com &amp; Counselor Final Ballot</span>
+            </div>
+            <span style="font-size: var(--text-body-sm); font-weight: var(--weight-bold); color: #0a4174;">Pending Nov 28</span>
+          </div>
+        </div>
+
+        <div style="padding: 10px; background: var(--bg-surface-secondary); border-radius: var(--radius-md); font-size: 12px; color: var(--text-secondary);">
+          Final laurels will be awarded during the IEEE SLIIT Volunteer Gala &amp; AGM at Main Auditorium.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.closeModal('modal-nomination-audit')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Nomination Guidelines & Criteria Overview -->
+  <div class="modal-backdrop hidden" id="modal-guidelines-info" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <span class="award-kicker">IEEE SLIIT Student Branch</span>
+          <h3 class="modal-title">Honors &amp; Commendation Policy</h3>
+        </div>
+        <button class="modal-close" onclick="window.closeModal('modal-guidelines-info')" aria-label="Close modal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: var(--space-4); font-size: var(--text-body-sm); color: var(--text-secondary); line-height: 1.5;">
+        <div>
+          <h4 style="font-size: 15px; font-weight: 700; color: #001c38; margin: 0 0 6px;">1. Eligibility Framework</h4>
+          <p style="margin: 0;">
+            All registered undergraduate IEEE student members of SLIIT in good financial standing (IEEE global member dues current) are eligible for honors consideration. Volunteers must log verified hours through the VMS platform.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-size: 15px; font-weight: 700; color: #001c38; margin: 0 0 6px;">2. Volunteer of the Month Selection</h4>
+          <p style="margin: 0;">
+            Conferred on the 1st of every month for outstanding performance during the prior calendar month. Nominations are submitted by Chapter Leads or OC Chairs, followed by executive committee consensus.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-size: 15px; font-weight: 700; color: #001c38; margin: 0 0 6px;">3. Annual AGM Distinctions</h4>
+          <p style="margin: 0;">
+            Evaluated annually between October and November based on total verified volunteer hours (weight: 25%), organizing committee leadership (35%), community feedback (20%), and adherence to IEEE Code of Ethics (20%).
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.closeModal('modal-guidelines-info')">Close</button>
+        <button class="btn btn-primary" id="btn-download-pdf-guidelines">
+          <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+          <span>Download Official PDF (v2.4)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ── Application Logic (ES Module with Auth Guard) ───────────── -->
+  <script type="module">
+    import { requireAuth, signOut, currentUserProfile } from '/src/js/auth.js';
+    import { db } from '/src/js/firebase-config.js';
+    import {
+      showToast,
+      openModal,
+      closeModal,
+      setupModalClose,
+      formatDate,
+      formatHours,
+      capitalize,
+      initials,
+      avatarColor,
+      statusBadgeClass,
+      roleBadgeClass,
+      setLoading,
+      debounce
+    } from '/src/js/utils.js';
+    import {
+      collection,
+      query,
+      where,
+      orderBy,
+      getDocs,
+      getDoc,
+      doc,
+      addDoc,
+      updateDoc,
+      deleteDoc,
+      writeBatch,
+      serverTimestamp,
+      onSnapshot,
+      limit
+    } from 'firebase/firestore';
+
+    // Expose modal helpers globally for HTML onclick handlers
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+
+    // Award data dictionary for details modal
+    const AWARDS_DATA = {
+      voy: {
+        kicker: 'Highest SB Distinction',
+        title: 'Volunteer of the Year',
+        desc: 'Conferred upon the most outstanding student volunteer across all IEEE SLIIT Student Branch entities who exemplifies selfless commitment, transformative initiative, and high ethical standards.',
+        floor: '35+ Verified Hours',
+        status: 'Final Deliberation',
+        criteria: [
+          { name: 'Leadership & Cross-Pillar Impact', weight: '35%' },
+          { name: 'Initiative & Problem Solving Under Pressure', weight: '25%' },
+          { name: 'Cumulative Verified Service Hours', weight: '20%' },
+          { name: 'Peer & Faculty Counselor Endorsement', weight: '20%' }
+        ]
+      },
+      oc: {
+        kicker: 'Organizing Committees',
+        title: 'OC Member of the Year',
+        desc: 'Recognizes operational excellence, tireless coordination, and logistical rigor demonstrated within an Organizing Committee for major events such as RoboFest, MoraXtreme, or TechPulse.',
+        floor: '25+ Verified OC Hours',
+        status: 'Open Nominations',
+        criteria: [
+          { name: 'Execution Rigor & Timeliness', weight: '35%' },
+          { name: 'Team Collaboration & Resilience', weight: '30%' },
+          { name: 'Crisis Handling & Incident Resolution', weight: '20%' },
+          { name: 'Lead Coordinator Recommendation', weight: '15%' }
+        ]
+      },
+      lead: {
+        kicker: 'Governance & Chapters',
+        title: 'Outstanding Leader Award',
+        desc: 'Honors extraordinary chapter chairs, vice chairs, and subcommittee heads who drove technical engagement, student chapter growth, and international IEEE visibility.',
+        floor: '30+ Verified Hours',
+        status: 'Under Review',
+        criteria: [
+          { name: 'Chapter Retention & Growth Metrics', weight: '30%' },
+          { name: 'Technical Workshop Quality & Reach', weight: '30%' },
+          { name: 'Mentorship of Junior Volunteers', weight: '25%' },
+          { name: 'Timely Reporting on IEEE vTools', weight: '15%' }
+        ]
+      },
+      emerging: {
+        kicker: 'New Talent Spotlight',
+        title: 'Emerging Volunteer Award',
+        desc: 'Celebrates early-stage undergraduate volunteers in their 1st or 2nd academic year who demonstrated rapid acclimation, active initiative, and dedication to the IEEE mission.',
+        floor: '15+ Verified Hours',
+        status: 'Nominations Open',
+        criteria: [
+          { name: 'Passion & Volunteer Spirit', weight: '35%' },
+          { name: 'Punctuality & Reliability in Assignments', weight: '35%' },
+          { name: 'Willingness to Learn New Skills', weight: '20%' },
+          { name: 'Senior Member Endorsement', weight: '10%' }
+        ]
+      }
+    };
+
+    // Past Academic Year Honorees Data (for tab switching)
+    const PAST_AY_HONOREES = [
+      {
+        name: 'Kasun Bandara',
+        role: 'Symposium Lead • Green Energy Summit',
+        faculty: 'Faculty of Engineering • Electrical & Electronic',
+        month: 'May 2024',
+        hours: '38 Logged Hours',
+        quote: '“Orchestrated 18 keynote technical deliveries and led hybrid livestreaming for 600+ regional IEEE participants without latency issues.”',
+        affiliation: 'IEEE IAS SLIIT',
+        icon: 'bolt',
+        avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBjjYHUDCO5UcyzYcMkFlZGu2I6rIwfVOkFUGcekAxr4-AAWRfHDCeCAVb-EKssYXVb_PxBxXKA2ZWF1k7-LsFRlM0T7avS5Cyv_5OE8Fd6vgSJLOQvrzzeKwofMuCUEnYt4NTSv0jm98PdOvHmN4HBlb7u9JaM1CAjREcWOeDKnEFkUWFZCE--9hJ7oYdRh6UuAhN3u1TGnayDJxrIsgGk6sX1a9R-Nc6aH1co40'
+      },
+      {
+        name: 'Piyumi Alwis',
+        role: 'Head of Content • WIE Horizon',
+        faculty: 'Faculty of Computing • Interactive Media',
+        month: 'April 2024',
+        hours: '31 Logged Hours',
+        quote: '“Curated 14 high-impact social awareness campaigns on women in technology, doubling student chapter engagement across social channels.”',
+        affiliation: 'IEEE WIE SLIIT',
+        icon: 'female',
+        avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAGz01OrkUQmcSRUlo4fwPGQabeOHH-tpnrdLYSIJstFNTTC0fHfBICGgH-URtPukSlYJ-0cvqt6BV6mQG2YsS9f0sS6E4IvRqSPTIamYIs_Tel3-TX9BqjKGnY2xtKjGmPJwzv4yHZp0BY7QCcpuu8YBSNMrN7ohq9uhnRTFmfPW1tUVMMEQCxIFRFfNx3nV5AXwrxev0Yu1PVIbDAgfYUVwDCh1ffVN9BSKzTHOg'
+      },
+      {
+        name: 'Sachith Madusanka',
+        role: 'Chief Proctor • SLIIT CodeRally 4.0',
+        faculty: 'Faculty of Computing • Computer Science',
+        month: 'March 2024',
+        hours: '40 Logged Hours',
+        quote: '“Configured automated sandbox test runners for 120 competitive programming teams, preventing plagiarism and ensuring 100% fair scoring.”',
+        affiliation: 'IEEE CS SLIIT',
+        icon: 'laptop_mac',
+        avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvToMb7Edjt3yUUVx_VvCnTTLayaDqCchedVXcmXqe1JIS400n5ESRNxQCao8JMZdVCPz0OArOnkQzv3Bs8-vlxeDghVHWPDtowZD2JTdZ_v0QbD8CvVHy50UNQiiC7T9EmI6dOHfn-zd2QPgVOEEQvXUVJSNQNn50eTBHfUt46aFEKmsJzjXnlK3GhezNjHJFWFsV4YKwiokVo3ShSdD9MhLV45P1iZGt_O8tJMM'
+      },
+      {
+        name: 'Anuki Jayawardena',
+        role: 'Lead Finance Coordinator • IEEE Day',
+        faculty: 'Faculty of Business • Business Management',
+        month: 'February 2024',
+        hours: '35 Logged Hours',
+        quote: '“Audited 45 transaction vouchers with zero balance discrepancies and negotiated 18% corporate sponsorship cost reductions.”',
+        affiliation: 'IEEE SLIIT Central',
+        icon: 'receipt_long',
+        avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBH1G0M_vaC_cF-yPdQOsIMURtr6x8LWm305Kd2G3KWpf3ojuM1t0gEEDZ0UkqWBjoGwN1kkURURliah-ymtT5Oi2mg6RGoy9FQLpyq4QA3bnQS_QLudc7bo8dpN8fCftAvsepLKS_6mGP88xv117ZmfovklfnUG_hC4XvGHH7uL0MI2bOww8TlLc7D3fDvj5oZ77XHlcoNEvwBiqHiUgYtQjro8_f7_ZDyLasb_a8'
+      }
+    ];
+
+    // Main App Initialization
+    async function init() {
+      // 1. Auth Guard
+      let authResult;
+      try {
+        authResult = await requireAuth('volunteer');
+      } catch (err) {
+        console.warn('Auth guard failed or redirected:', err);
+        return;
+      }
+
+      const { user, profile } = authResult;
+      const userName = profile?.name || 'Kavindi Perera';
+      const userRole = capitalize(profile?.role || 'volunteer');
+
+      // 2. Populate Sidebar & Topbar User Data
+      const sidebarName = document.getElementById('user-name');
+      const sidebarRole = document.getElementById('user-role');
+      const sidebarAvatar = document.getElementById('user-avatar');
+      const topbarName = document.getElementById('topbar-name');
+      const topbarAvatar = document.getElementById('topbar-avatar');
+      const dropdownName = document.getElementById('dropdown-name');
+      const dropdownRole = document.getElementById('dropdown-role');
+
+      if (sidebarName) sidebarName.textContent = userName;
+      if (sidebarRole) sidebarRole.textContent = userRole;
+      if (topbarName) topbarName.textContent = userName;
+      if (dropdownName) dropdownName.textContent = userName;
+      if (dropdownRole) dropdownRole.textContent = userRole;
+
+      const userInitials = initials(userName);
+      const userAvatarBg = avatarColor(userName);
+
+      [sidebarAvatar, topbarAvatar].forEach(el => {
+        if (!el) return;
+        if (profile?.profilePicUrl) {
+          el.innerHTML = `<img src="${profile.profilePicUrl}" alt="${userName}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`;
+        } else {
+          el.textContent = userInitials;
+          el.style.background = userAvatarBg;
+        }
+      });
+
+      // Update Personal Nomination Card name
+      const nomName = document.getElementById('nomination-user-name');
+      if (nomName) nomName.textContent = userName;
+
+      // Update featured card if it's current user
+      const userHonorName = document.getElementById('user-honor-name');
+      if (userHonorName) userHonorName.textContent = userName;
+
+      // 3. Dynamically Fetch User Engagements (Verified Hours)
+      try {
+        if (user?.uid) {
+          const engSnap = await getDocs(
+            query(collection(db, 'engagements'), where('userId', '==', user.uid))
+          );
+          let totalVerifiedHours = 0;
+          let completedCount = 0;
+
+          engSnap.forEach(docSnap => {
+            const data = docSnap.data();
+            if (data.status === 'completed' && data.verifiedHours) {
+              totalVerifiedHours += Number(data.verifiedHours) || 0;
+              completedCount++;
+            }
+          });
+
+          if (totalVerifiedHours > 0) {
+            const hoursBadge = document.getElementById('nomination-hours-badge');
+            if (hoursBadge) hoursBadge.textContent = `${totalVerifiedHours} Logged Hours (AY 2024/25)`;
+
+            const auditHours = document.getElementById('audit-hours-val');
+            if (auditHours) auditHours.textContent = `${totalVerifiedHours} hrs (${totalVerifiedHours >= 35 ? 'Met' : 'In Progress'})`;
+
+            const sidebarHoursLogged = document.getElementById('sidebar-hours-logged');
+            if (sidebarHoursLogged) sidebarHoursLogged.textContent = `${totalVerifiedHours} hrs logged`;
+
+            const sidebarStandingBar = document.getElementById('sidebar-standing-bar');
+            if (sidebarStandingBar) {
+              const pct = Math.min(100, Math.round((totalVerifiedHours / 50) * 100));
+              sidebarStandingBar.style.width = `${pct}%`;
+            }
+          }
+        }
+      } catch (fetchErr) {
+        console.warn('Could not load user engagements for awards stats:', fetchErr);
+      }
+
+      // 4. Setup Modals Close Listeners
+      ['modal-award-details', 'modal-certificate', 'modal-nomination-audit', 'modal-guidelines-info'].forEach(id => {
+        setupModalClose(id);
+      });
+
+      // 5. Wire Up Action Buttons
+      setupEventListeners();
+    }
+
+    function setupEventListeners() {
+      // Mobile sidebar menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+
+      function toggleSidebar() {
+        if (!sidebar) return;
+        const isOpen = sidebar.classList.contains('open');
+        sidebar.classList.toggle('open', !isOpen);
+        if (backdrop) backdrop.classList.toggle('active', !isOpen);
+      }
+
+      if (mobileBtn) mobileBtn.addEventListener('click', toggleSidebar);
+      if (backdrop) backdrop.addEventListener('click', toggleSidebar);
+
+      // User Dropdown in Topbar
+      const userBtn = document.getElementById('btn-user-dropdown');
+      const userDropdown = document.getElementById('user-dropdown-menu');
+
+      if (userBtn && userDropdown) {
+        userBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isHidden = userDropdown.classList.contains('hidden');
+          userDropdown.classList.toggle('hidden', !isHidden);
+          userBtn.setAttribute('aria-expanded', String(isHidden));
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!userBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+            userDropdown.classList.add('hidden');
+            userBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Sign Out buttons
+      const handleSignOutClick = async () => {
+        try {
+          showToast('Signing out...', 'info');
+          await signOut();
+        } catch (err) {
+          console.error('Sign out error:', err);
+          showToast('Failed to sign out. Please try again.', 'error');
+        }
+      };
+
+      const topbarSignout = document.getElementById('topbar-signout-btn');
+      const sidebarSignout = document.getElementById('sidebar-signout-btn');
+      if (topbarSignout) topbarSignout.addEventListener('click', handleSignOutClick);
+      if (sidebarSignout) sidebarSignout.addEventListener('click', handleSignOutClick);
+
+      // Notification button
+      const notifBtn = document.getElementById('btn-notifications');
+      if (notifBtn) {
+        notifBtn.addEventListener('click', () => {
+          showToast('You have 2 unread announcements for AGM 2024.', 'info', 'Notifications');
+        });
+      }
+
+      // Hero buttons
+      const btnGuidelines = document.getElementById('btn-guidelines');
+      if (btnGuidelines) {
+        btnGuidelines.addEventListener('click', () => {
+          openModal('modal-guidelines-info');
+        });
+      }
+
+      const btnViewCriteria = document.getElementById('btn-view-criteria');
+      if (btnViewCriteria) {
+        btnViewCriteria.addEventListener('click', () => {
+          openAwardModal('voy');
+        });
+      }
+
+      // Personal Nomination Card Details button
+      const btnNomDetails = document.getElementById('btn-nom-details');
+      if (btnNomDetails) {
+        btnNomDetails.addEventListener('click', () => {
+          openModal('modal-nomination-audit');
+        });
+      }
+
+      // Award "More Details" Buttons
+      document.querySelectorAll('.btn-award-details').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const awardKey = e.currentTarget.getAttribute('data-award') || 'voy';
+          openAwardModal(awardKey);
+        });
+      });
+
+      // Certificate Preview & Download buttons
+      document.querySelectorAll('.btn-cert-pdf').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const honoree = e.currentTarget.getAttribute('data-honoree-name') || 'Honoree';
+          const citation = e.currentTarget.getAttribute('data-citation') || '';
+          const month = e.currentTarget.getAttribute('data-month') || '';
+          const role = e.currentTarget.getAttribute('data-role') || '';
+          const hours = e.currentTarget.getAttribute('data-hours') || '40 hrs';
+
+          openCertificateModal({ honoree, citation, month, role, hours });
+        });
+      });
+
+      // View Citation buttons
+      document.querySelectorAll('.btn-view-citation').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const honoree = e.currentTarget.getAttribute('data-honoree-name') || 'Honoree';
+          const citation = e.currentTarget.getAttribute('data-citation') || '';
+          const month = e.currentTarget.getAttribute('data-month') || '';
+          const role = e.currentTarget.getAttribute('data-role') || '';
+          const hours = e.currentTarget.getAttribute('data-hours') || '40 hrs';
+
+          openCertificateModal({ honoree, citation, month, role, hours });
+        });
+      });
+
+      // Certificate Modal "Download PDF Certificate"
+      const btnDownloadCert = document.getElementById('btn-download-pdf-cert');
+      if (btnDownloadCert) {
+        btnDownloadCert.addEventListener('click', () => {
+          const honoree = document.getElementById('cert-modal-name')?.textContent || 'Volunteer';
+          setLoading(btnDownloadCert, true, 'Generating PDF...');
+          setTimeout(() => {
+            setLoading(btnDownloadCert, false, 'Download PDF Certificate');
+            showToast(`Commendation Certificate for ${honoree} downloaded!`, 'success', 'Certificate Exported');
+            closeModal('modal-certificate');
+          }, 900);
+        });
+      }
+
+      // Guidelines Modal Download
+      const btnDownloadGuidelines = document.getElementById('btn-download-pdf-guidelines');
+      if (btnDownloadGuidelines) {
+        btnDownloadGuidelines.addEventListener('click', () => {
+          setLoading(btnDownloadGuidelines, true, 'Downloading...');
+          setTimeout(() => {
+            setLoading(btnDownloadGuidelines, false, 'Download Official PDF (v2.4)');
+            showToast('Nomination Guidelines PDF (v2.4) downloaded.', 'success', 'Downloaded');
+            closeModal('modal-guidelines-info');
+          }, 800);
+        });
+      }
+
+      // Nomination Self-Submit
+      const btnSubmitNom = document.getElementById('btn-submit-nomination');
+      if (btnSubmitNom) {
+        btnSubmitNom.addEventListener('click', () => {
+          showToast('Self-nomination verified! Your profile is linked to the deliberation queue.', 'success', 'Nomination Active');
+          closeModal('modal-award-details');
+        });
+      }
+
+      // Monthly Tabs (AY 2024/25 vs AY 2023/24)
+      const tabCurrent = document.getElementById('tab-current-ay');
+      const tabPast = document.getElementById('tab-past-ay');
+      const monthlyGrid = document.getElementById('monthly-honor-grid');
+
+      if (tabCurrent && tabPast && monthlyGrid) {
+        // Save current AY HTML for restoration
+        const currentAyHtml = monthlyGrid.innerHTML;
+
+        tabCurrent.addEventListener('click', () => {
+          tabCurrent.classList.add('active');
+          tabPast.classList.remove('active');
+          monthlyGrid.innerHTML = currentAyHtml;
+          // Rebind certificate buttons
+          setupEventListeners();
+        });
+
+        tabPast.addEventListener('click', () => {
+          tabPast.classList.add('active');
+          tabCurrent.classList.remove('active');
+          renderPastHonorees(monthlyGrid);
+        });
+      }
+
+      // Realtime Search Filter
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', debounce((e) => {
+          const queryText = (e.target.value || '').trim().toLowerCase();
+          filterPageContent(queryText);
+        }, 200));
+      }
+    }
+
+    // Modal Helper: Open Award Details
+    function openAwardModal(awardKey) {
+      const award = AWARDS_DATA[awardKey] || AWARDS_DATA['voy'];
+      document.getElementById('modal-award-kicker').textContent = award.kicker;
+      document.getElementById('modal-award-title').textContent = award.title;
+      document.getElementById('modal-award-desc').textContent = award.desc;
+      document.getElementById('modal-award-floor').textContent = award.floor;
+      document.getElementById('modal-award-status-tag').textContent = award.status;
+
+      const listEl = document.getElementById('modal-award-criteria-list');
+      if (listEl) {
+        listEl.innerHTML = award.criteria.map(c => `
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:var(--text-body-sm);">
+            <span>${c.name}</span>
+            <span style="font-weight:var(--weight-bold);color:#0a4174;">${c.weight}</span>
+          </div>
+        `).join('');
+      }
+
+      openModal('modal-award-details');
+    }
+
+    // Modal Helper: Open Certificate
+    function openCertificateModal({ honoree, citation, month, role, hours }) {
+      const nameEl = document.getElementById('cert-modal-name');
+      const citationEl = document.getElementById('cert-modal-citation');
+      const roleEl = document.getElementById('cert-modal-role');
+      const hoursEl = document.getElementById('cert-modal-hours');
+
+      if (nameEl) nameEl.textContent = honoree;
+      if (citationEl) citationEl.textContent = `“${citation.replace(/^[“”"]+|[“”"]+$/g, '')}”`;
+      if (roleEl) roleEl.textContent = `${role} • ${month}`;
+      if (hoursEl) hoursEl.textContent = hours;
+
+      openModal('modal-certificate');
+    }
+
+    // Render Past Academic Year Honorees
+    function renderPastHonorees(container) {
+      container.innerHTML = PAST_AY_HONOREES.map(h => `
+        <article class="honor-card animate-fadeInUp">
+          <div>
+            <div class="honor-top-row">
+              <div class="honor-member-info">
+                <div class="honor-avatar-wrap">
+                  <img src="${h.avatar}" alt="${h.name}" class="honor-avatar-img" />
+                </div>
+                <div class="honor-text-meta">
+                  <div class="honor-name-row">
+                    <h3 class="honor-name">${h.name}</h3>
+                  </div>
+                  <p class="honor-role-title">${h.role}</p>
+                  <span class="honor-faculty">${h.faculty}</span>
+                </div>
+              </div>
+              <div class="honor-badge-col">
+                <span class="badge badge-gray">${h.month}</span>
+                <span class="honor-hours-tag">${h.hours}</span>
+              </div>
+            </div>
+
+            <div class="honor-quote-box">
+              <span class="material-symbols-outlined quote-icon">format_quote</span>
+              <p class="honor-quote-text">${h.quote}</p>
+            </div>
+          </div>
+
+          <div class="honor-bottom-bar">
+            <div class="honor-affiliation">
+              <span>Affiliation:</span>
+              <span class="affiliation-badge">
+                <span class="material-symbols-outlined" style="font-size: 14px;">${h.icon}</span>
+                ${h.affiliation}
+              </span>
+            </div>
+            <div class="honor-actions-wrap">
+              <button class="btn-cert-pdf past-cert-btn" data-honoree="${h.name}" data-citation="${h.quote}" data-month="${h.month}" data-role="${h.role}" data-hours="${h.hours}">
+                <span class="material-symbols-outlined" style="font-size: 16px;">file_download</span>
+                <span>Certificate</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      container.querySelectorAll('.past-cert-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const honoree = e.currentTarget.getAttribute('data-honoree');
+          const citation = e.currentTarget.getAttribute('data-citation');
+          const month = e.currentTarget.getAttribute('data-month');
+          const role = e.currentTarget.getAttribute('data-role');
+          const hours = e.currentTarget.getAttribute('data-hours');
+          openCertificateModal({ honoree, citation, month, role, hours });
+        });
+      });
+    }
+
+    // Filter Page Content Based on Search Input
+    function filterPageContent(term) {
+      if (!term) {
+        document.querySelectorAll('.award-card, .honor-card').forEach(el => el.style.display = '');
+        return;
+      }
+
+      // Filter annual awards cards
+      document.querySelectorAll('.award-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(term) ? '' : 'none';
+      });
+
+      // Filter monthly honor roll cards
+      document.querySelectorAll('.honor-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(term) ? '' : 'none';
+      });
+    }
+
+    // Launch!
+    init();
+  </script>
+</body>
+</html>

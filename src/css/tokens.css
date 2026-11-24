@@ -1,0 +1,200 @@
+/* ============================================================
+   IEEE SLIIT VMS — Design Tokens
+   Executive Azure Palette (Material Design 3) + Typography + Motion
+   ============================================================ */
+
+:root {
+  /* ── Executive Azure – Primary ─────────────────────────────── */
+  --color-primary:         #0058bc;
+  --color-primary-hover:   #004493;
+  --color-primary-light:   rgba(0, 88, 188, 0.12);
+  --color-primary-container: #0070eb;
+  --on-primary:            #ffffff;
+  --on-primary-container:  #fefcff;
+  --primary-fixed:         #d8e2ff;
+  --primary-fixed-dim:     #adc6ff;
+
+  /* ── Secondary (Indigo) ────────────────────────────────────── */
+  --color-secondary:       #4c4aca;
+  --color-secondary-hover: #3631b4;
+  --color-secondary-light: rgba(76, 74, 202, 0.12);
+  --color-secondary-container: #6664e4;
+  --on-secondary:          #ffffff;
+  --secondary-fixed:       #e2dfff;
+
+  /* ── Tertiary (Green / Success) ────────────────────────────── */
+  --color-success:         #006b27;
+  --color-success-hover:   #00531c;
+  --color-success-light:   rgba(0, 107, 39, 0.12);
+  --color-success-container: #008733;
+  --tertiary-fixed:        #72fe88;
+
+  /* ── Error / Danger ────────────────────────────────────────── */
+  --color-danger:          #ba1a1a;
+  --color-danger-light:    rgba(186, 26, 26, 0.12);
+  --error-container:       #ffdad6;
+  --on-error-container:    #93000a;
+
+  /* ── Warning (Orange) ──────────────────────────────────────── */
+  --color-warning:         #FF9500;
+  --color-warning-light:   rgba(255, 149, 0, 0.12);
+
+  /* ── Accent Colors ─────────────────────────────────────────── */
+  --color-indigo:          #5856D6;
+  --color-indigo-light:    rgba(88, 86, 214, 0.12);
+  --color-teal:            #5AC8FA;
+  --color-teal-light:      rgba(90, 200, 250, 0.12);
+  --color-pink:            #FF2D55;
+  --color-pink-light:      rgba(255, 45, 85, 0.12);
+
+  /* ── Surfaces (Material Design 3) ──────────────────────────── */
+  --bg-primary:            #faf9fe;
+  --bg-surface:            #ffffff;
+  --bg-surface-secondary:  #f4f3f8;
+  --bg-surface-container:  #eeedf3;
+  --bg-surface-container-high: #e9e7ed;
+  --bg-surface-container-highest: #e3e2e7;
+  --bg-surface-container-low: #f4f3f8;
+  --bg-surface-container-lowest: #ffffff;
+  --surface-variant:       #e3e2e7;
+  --surface-tint:          #005bc1;
+
+  /* ── Dark Surfaces ─────────────────────────────────────────── */
+  --bg-dark:               #1C1C1E;
+  --bg-dark-surface:       #2C2C2E;
+  --bg-dark-secondary:     #3A3A3C;
+  --inverse-surface:       #2f3034;
+  --inverse-on-surface:    #f1f0f5;
+
+  /* ── Sidebar (Executive Azure Deep Navy) ───────────────────── */
+  --sidebar-bg:            #001D39;
+  --sidebar-bg-hover:      #0A4174;
+  --sidebar-bg-active:     rgba(173, 198, 255, 0.15);
+  --sidebar-text:          #BDD8E9;
+  --sidebar-text-active:   #FFFFFF;
+  --sidebar-text-muted:    #6EA2B3;
+  --sidebar-divider:       rgba(255, 255, 255, 0.08);
+
+  /* ── Text ──────────────────────────────────────────────────── */
+  --text-primary:          #1a1b1f;
+  --text-secondary:        #414755;
+  --text-tertiary:         #717786;
+  --text-inverse:          #FFFFFF;
+  --text-link:             #0058bc;
+  --on-surface:            #1a1b1f;
+  --on-surface-variant:    #414755;
+  --outline:               #717786;
+  --outline-variant:       #c1c6d7;
+
+  /* ── Borders & Separators ──────────────────────────────────── */
+  --separator:             rgba(0, 0, 0, 0.04);
+  --separator-strong:      rgba(0, 0, 0, 0.08);
+  --border-focus:          rgba(0, 88, 188, 0.5);
+
+  /* ── Shadows ───────────────────────────────────────────────── */
+  --shadow-xs:             0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-card:           0 1px 4px rgba(0, 29, 57, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-modal:          0 8px 32px rgba(0, 0, 0, 0.18);
+  --shadow-elevated:       0 4px 16px -2px rgba(0, 29, 57, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-primary:        0 4px 16px rgba(0, 88, 188, 0.3);
+
+  /* ── Border Radii ──────────────────────────────────────────── */
+  --radius-xs:             4px;
+  --radius-sm:             8px;
+  --radius-md:             12px;
+  --radius-lg:             16px;
+  --radius-xl:             20px;
+  --radius-2xl:            24px;
+  --radius-full:           9999px;
+
+  /* ── Typography ────────────────────────────────────────────── */
+  --font-family:           'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                           'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:             'SF Mono', 'Fira Code', 'Fira Mono', Menlo,
+                           Monaco, Consolas, monospace;
+
+  /* Type Scale – from DESIGN.md */
+  --text-display:          34px;
+  --text-headline-lg:      28px;
+  --text-headline-sm:      22px;
+  --text-title-lg:         20px;
+  --text-title-md:         17px;
+  --text-body-lg:          16px;
+  --text-body-sm:          14px;
+  --text-label-lg:         14px;
+  --text-label-md:         12px;
+  --text-label-sm:         11px;
+  --text-metric-xl:        40px;
+  --text-metric-lg:        32px;
+  --text-metric-md:        24px;
+
+  /* Legacy aliases */
+  --text-large-title:      34px;
+  --text-title-1:          28px;
+  --text-title-2:          22px;
+  --text-title-3:          20px;
+  --text-body:             17px;
+  --text-callout:          16px;
+  --text-subhead:          15px;
+  --text-footnote:         13px;
+  --text-caption-1:        12px;
+  --text-caption-2:        11px;
+
+  /* Font Weights */
+  --weight-regular:        400;
+  --weight-medium:         500;
+  --weight-semibold:       600;
+  --weight-bold:           700;
+
+  /* Line Heights */
+  --leading-tight:         1.2;
+  --leading-snug:          1.35;
+  --leading-normal:        1.5;
+  --leading-relaxed:       1.65;
+
+  /* ── Motion ────────────────────────────────────────────────── */
+  --ease-ios:              cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring:           cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:              cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:           cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-fast:         150ms;
+  --duration-base:         250ms;
+  --duration-slow:         350ms;
+  --duration-page:         400ms;
+
+  /* ── Spacing ───────────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── Layout ────────────────────────────────────────────────── */
+  --sidebar-width:         260px;
+  --header-height:         56px;
+  --content-max-width:     1200px;
+  --card-padding:          var(--space-6);
+}
+
+/* ── Dark Mode Overrides ─────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary:           #111318;
+    --bg-surface:           #1a1b1f;
+    --bg-surface-secondary: #2f3034;
+    --text-primary:         #e3e2e7;
+    --text-secondary:       #c1c6d7;
+    --text-tertiary:        #717786;
+    --separator:            rgba(255, 255, 255, 0.08);
+    --separator-strong:     rgba(255, 255, 255, 0.12);
+    --shadow-card:          0 2px 12px rgba(0, 0, 0, 0.3);
+    --shadow-modal:         0 8px 40px rgba(0, 0, 0, 0.5);
+  }
+}
